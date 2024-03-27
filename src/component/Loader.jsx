@@ -1,3 +1,5 @@
+// src/Loader.js
+
 import React, { useState, useEffect } from 'react';
 
 const Loader = () => {

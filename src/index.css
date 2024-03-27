@@ -11,9 +11,30 @@
   width: 100px;
 }
 .btn:hover {
-  color: yellow;
+  /* color: yellow; */
   transition: width 0.2s ease;
   width: 200px;
+}
+
+.dot-spinner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  --uib-speed: 0.9s;
+  height: 2.8rem;
+  width: 2.8rem;
+  /*animation: float 3s linear infinite;*/
+}
+
+@keyframes float {
+  0% {
+    transform: rotate(0deg) translate(100px) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg) translate(100px) rotate(-360deg);
+  }
 }
 
 .dot-spinner__dot::before {
@@ -109,6 +130,8 @@
     opacity: 1;
   }
 }
+
+
 
 .nav-container {
   width: 100%;
