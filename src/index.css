@@ -11,9 +11,30 @@
   width: 100px;
 }
 .btn:hover {
-  color: yellow;
+  /* color: yellow; */
   transition: width 0.2s ease;
   width: 200px;
+}
+
+.dot-spinner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  --uib-speed: 0.9s;
+  height: 2.8rem;
+  width: 2.8rem;
+  /*animation: float 3s linear infinite;*/
+}
+
+@keyframes float {
+  0% {
+    transform: rotate(0deg) translate(100px) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg) translate(100px) rotate(-360deg);
+  }
 }
 
 .dot-spinner__dot::before {
@@ -110,6 +131,8 @@
   }
 }
 
+
+
 .nav-container {
   width: 100%;
   min-height: 100vh;
@@ -129,4 +152,62 @@
 .nav-header {
   transition: background-color 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.slick-slider {
+  width: 100%;
+  height: 300px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  margin: 20px 0;
+  padding: 10px;
+}
+.slick-slide {
+  width: 200px;
+  background: #000;
+  border-radius: 40px;
+}
+.slick-arrow {
+  cursor: pointer;
+}
+.slick-arrow .slick-prev {
+  background-color: aqua;
+  color: yellow;
+  width: 300px;
+}
+
+.slick-track {
+  background-color: aqua;
+}
+
+.slick-list {
+  background-color: purple;
+}
+.slick-prev,
+.slick-next {
+  color: red;
+}
+
+/* Add these styles to your CSS file */
+.slick-prev {
+  color: red; /* Change the color to whatever you prefer */
+  font-size: 24px; /* Adjust the font size as needed */
+  z-index: 1; /* Ensure the arrows appear above the slides */
+}
+.slick-next {
+  color: red; /* Change the color to whatever you prefer */
+  font-size: 24px; /* Adjust the font size as needed */
+  z-index: 1; /* Ensure the arrows appear above the slides */
+}
+
+/* You can also add hover effects to the arrows for better visibility */
+.slick-prev:hover,
+.slick-next:hover {
+  color: blue; /* Change the color on hover */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.swiper {
+  width: 50%;
+  height: 300px;
 }

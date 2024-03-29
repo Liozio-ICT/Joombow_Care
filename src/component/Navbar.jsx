@@ -75,9 +75,9 @@ function Navbar() {
             </a>
            </Link>
           </ul>
-          <button className="bg-[#fd1014d1] font-clash text-[white] border-none text-[20px] py-[14px] px-[28px] rounded-2xl transition-transform duration-300 ease hover:bg-[#CA0007]">
+          <Link to="/signup" className="bg-[#fd1014d1] font-clash text-[white] border-none text-[20px] py-[14px] px-[28px] rounded-2xl transition-transform duration-300 ease hover:bg-[#CA0007]">
             Sign Up
-          </button>
+          </Link>
         </div>
       </nav>
 
