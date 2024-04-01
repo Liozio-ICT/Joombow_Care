@@ -1,31 +1,73 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
+
 import Discount from "./Discount";
 import Navbar from "./Navbar";
+import AutoType from './AutoType';
 // import { Link } from "react-router-dom";
 
 function Hero() {
+
+  
   return (
     <div>
       <Navbar />
 
-      <div className=" relative w-full h-[300px] lg:h-[680px] md:h-[680px] center md:bg-cover lg:bg-cover bg-cover object-contain bg-no-repeat bg-origin-content bg-red-700 bg-[url('https://res.cloudinary.com/dnldaz7oh/image/upload/v1710929583/bcrajqc3yy3wsojmktj1.png')]">
-        <div className="text-[#FFFFFF] font-clash font-bold  md:text-[50px] lg:text-[50px] ml-[2rem] md:ml-[6rem] lg:ml-[6rem] pt-4 md:pt-[200px] lg:pt-[200px]">
-          <div className="content flex flex-col justify-center leading-10 ">
-            <h3 className="tracking-wider text-[25px]">
-              Joombow Car care & Repair Centre
-            </h3>
-            <h1 className="tracking-wider text-[35px]">Southwest Nigeria</h1>
-            <h1 className="tracking-wider text-[#EAB251] text-[45px]">
-              Auto Detailing
-            </h1>
-          </div>
-          <div className=" py-4 md:py-10 lg:py-10">
-            <button className="bg-[#fd1014d1] border-none text-[30px] py-[10px] lg:py-[16px] md:py-[16px] px-[35px] md:px-[48px] lg:px-[48px] rounded-2xl transition-transform duration-300 ease hover:w-[300px] hover:bg-[#CA0007]">
-              Book Now
+   
+
+      <section className="heroContainer relative lg:hidden over">
+    <div className="overlay inset-0 bg-black opacity-65 absolute"></div>
+    <figure className="heroimgcontainer">
+        <img src="https://res.cloudinary.com/durbee4ln/image/upload/v1711811511/Care_care/man-connecting-jumper-cables-to-battery_ysq6je.jpg" 
+            className="w-full h-[350px] lg:h-[600px] object-cover"
+            alt="" />
+    </figure>
+
+    <figcaption class="text-container absolute inset-0 flex items-center px-8 jusify-center">
+    <section class="text-white t">
+        <h3 class="text-3xl md:text-4xl lg:text-5xl mb-2">Joombow Car Care <br /> & Repair Centre</h3>
+        <h1 class="text-xl md:text-2xl lg:text-3xl mb-2">Southwest Nigeria</h1>
+        <h1 class="text-[#EAB251]  text-3xl mb-6"> <AutoType /></h1>
+     
+    
+    
+        <div class="mb-6">
+            <button class="bg-red-600 w-[50%] hover:bg-red-700 text-white py-3 px-6 rounded-lg transition-transform duration-300 ease transform hover:scale-105">
+                Book Now
             </button>
-          </div>
         </div>
+    </section>
+</figcaption>
+
+</section>
+
+
+{/*destop */}
+
+<section className="heroContainer hidden lg:block relative over">
+  <div className="overlay inset-0 bg-black opacity-75 absolute"></div>
+  <figure className="heroimgcontainer w-full">
+    <img src="https://media.istockphoto.com/id/1469656819/photo/automobile-mechanic-repairman-hands-repairing-a-car-engine-automotive-workshop-with-a-wrench.jpg?s=612x612&w=0&k=20&c=K6ieJylvjUwYusGYOcUHOVcu6HO9Xrb2GcVmrh9tcAY=" 
+      className="w-full lg:h-[500px] object-cover"
+      alt="" />
+  </figure>
+
+  <figcaption class="text-container absolute inset-0 flex items-center justify-center text-white px-8">
+    <section className='px-[15rem]'>
+      <h3 class="  text-7xl mb-2 text-center">Joombow Car Care  & Repair Centre</h3>
+      <h1 class="text-xl mb-2 text-center">Southwest Nigeria</h1>
+      <h1 class="text-[#EAB251] text-center text-4xl mb-6"> <AutoType /></h1>
+     
+    
+      <div class="mb-6 text-center">
+        <button class="bg-red-600 w-[30%] hover:bg-red-700 text-white py-3 px-6 rounded-[30px] transition-transform duration-300 ease transform hover:scale-105">
+          Book Now
+        </button>
       </div>
+    </section>
+  </figcaption>
+</section>
+
+
       <Discount />
     </div>
   );

@@ -6,9 +6,9 @@ function About() {
       <main
         id="about"
         className="abtContainer flex gap-6 flex-wrap lg:flex-nowrap py-2 md:py-6 lg:py-6 px-4 lg:px-[4rem] bg-white">
-        <div data-aos="fade-up" className="abt w-full lg:w-[40%] mb-8">
+        <div data-aos="fade-up" className="abt w-full lg:w-[40%] mb-2">
           <img
-            src="https://res.cloudinary.com/dnldaz7oh/image/upload/v1710941278/qowgaxnzsivunwkx6nhm.png"
+            src="https://res.cloudinary.com/durbee4ln/image/upload/v1711811528/Care_care/mechanic-examining-car_pwvuck.jpg"
             className="w-full h-[300px] lg:h-[700px] object-cover rounded-lg shadow-lg"
             alt="Image"
           />
@@ -18,12 +18,12 @@ function About() {
             <h1
               id="about"
               data-aos="fade-up"
-              className=" font-bold bb font-clash text-[#FD1014] text-[45px]">
+              className=" font-bold  text-[#FD1014] text-[35px]">
               About Us
             </h1>
             <p
               data-aos="fade-up"
-              className="abtd my-2 font-montserrat text-[18px] leading-8">
+              className="abtd my-2  text-[18px] leading-8">
                Revitalize your driving experience with Joombow Car Care & Repair
               Centre, your trusted automotive partner in the lively city of
               Ibadan, Nigeria. Nestled in a prime location, we take pride in
@@ -37,8 +37,8 @@ function About() {
 
           <div className="abtTest w-full">
             <h1
-              data-aos="fade-up"
-              className="text-[20px] md:text-[25px] lg:text-[25px] my-5 font-bold bb font-clash">
+             
+              className="text-[20px] md:text-[25px] lg:text-[25px] my-5 font-bold bb ">
               Joombow Car Care & Repair Centre - Elevating Your Drive, Ensuring
               Reliability!
             </h1>
@@ -46,8 +46,8 @@ function About() {
 
           <div className="abtTest py-4  md:pt-2 lg:pt-2 w-full">
             <img
-              className="w-[600px] h-[300px]  ml-auto  rounded-lg shadow-lg"
-              src="https://res.cloudinary.com/dnldaz7oh/image/upload/v1711208928/images_a05wxz.jpg"
+              className="w-full h-[300px]   object-cover  rounded-lg shadow-lg"
+              src="https://res.cloudinary.com/durbee4ln/image/upload/v1711811511/Care_care/pexels-khunkorn-laowisit-5233258_onjgmd.jpg"
               alt="Image"
             />
           </div>

@@ -41,41 +41,42 @@ function Navbar() {
           <ul className="flex gap-16 text-white">
             <a
               href="#home"
-              className="block font-clash  font-semibold text-[20px] hover:text-[#FD1014] transition">
+              className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
               Home
             </a>
 
             <a
               href="#about"
-              className="block font-clash  font-semibold text-[20px] hover:text-[#FD1014] transition">
+              className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
               About
             </a>
             <a
               href="#services"
-              className="block font-clash  font-semibold text-[20px] hover:text-[#FD1014] transition">
+              className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
               Our Services
             </a>
 
             <a
               href="#why"
-              className="block font-clash  font-semibold text-[20px] hover:text-[#FD1014] transition">
+              className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
               {" "}
               Why us
             </a>
             <a
               href="#review"
-              className="block font-clash  font-semibold text-[20px] hover:text-[#FD1014] transition">
+              className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
               Review
             </a>
            <Link to="/contactPage">
            <a
               href="#contact"
-              className="block font-clash  font-semibold text-[20px] hover:text-[#FD1014] transition">
+              className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
               Contact Us
             </a>
            </Link>
           </ul>
-          <Link to="/signup" className="bg-[#fd1014d1] font-clash text-[white] border-none text-[20px] py-[14px] px-[28px] rounded-2xl transition-transform duration-300 ease hover:bg-[#CA0007]">
+          <Link to="/signup" className="bg-[#fd1014d1]  text-[white] border-none text-[16px] 
+          py-[8px] px-[28px] w-[15%] rounded-[20px] text-center block transition-transform duration-300 ease hover:bg-[#CA0007]">
             Sign Up
           </Link>
         </div>
@@ -84,16 +85,16 @@ function Navbar() {
       {/* mobile  */}
 
       <nav
-        className={`bg-[black] border-b border-gray-500 ${
+        className={`bg-[#c44141] border-b border-gray-500 ${
           isScrolled ? "fixed top-0 left-0 right-0 z-[100]" : ""
         }`}>
         <div class="navLink text-[#0C0C0C] lg:hidden">
           <section
-            className={`flex items-center shadow-sm justify-between w-[90%] m-auto bg-black`}>
+            className={`flex items-center h-[3.5rem] px-4  justify-between w-full bg-black`}>
             <div>
               <FaPhone
                 style={{ transform: "rotate(90deg)" }}
-                className="text-white font-bold text-[2rem]"
+                className="text-white font-bold text-[1.6rem]"
               />
             </div>
             <div>
@@ -105,7 +106,7 @@ function Navbar() {
             </div>
 
             <div onClick={toggle}>
-              <FaBars className="text-white text-[2rem]" />
+              <FaBars className="text-white text-[1.6rem]" />
             </div>
           </section>
 
@@ -129,47 +130,51 @@ function Navbar() {
                 <a
                   onClick={toggle}
                   href="#home"
-                  className="block font-clash py-4 border-b border-dashed border-gray-700  font-semibold text-[20px] hover:text-[#FD1014] transition">
+                  className="block fonth py-4 border-b border-dashed border-gray-700   text-[20px] hover:text-[#FD1014] transition">
                   Home
                 </a>
 
                 <a
                   onClick={toggle}
                   href="#about"
-                  className="block font-clash py-4 border-b border-dashed border-gray-700  font-semibold text-[20px] hover:text-[#FD1014] transition">
+                  className="block fonth py-4 border-b border-dashed border-gray-700  font-s text-[20px] hover:text-[#FD1014] transition">
                   About
                 </a>
                 <a
                   onClick={toggle}
                   href="#services"
-                  className="block font-clash py-4 border-b border-dashed border-gray-700  font-semibold text-[20px] hover:text-[#FD1014] transition">
+                  className="block fonth py-4 border-b border-dashed border-gray-700   text-[20px] hover:text-[#FD1014] transition">
                   Our Services
                 </a>
 
                 <a
                   onClick={toggle}
                   href="#why"
-                  className="block font-clash py-4 border-b border-dashed border-gray-700  font-semibold text-[20px] hover:text-[#FD1014] transition">
+                  className="block fonth py-4 border-b border-dashed border-gray-700   text-[20px] hover:text-[#FD1014] transition">
                   {" "}
                   Why us
                 </a>
                 <a
                   onClick={toggle}
                   href="#review"
-                  className="block font-clash py-4 border-b border-dashed border-gray-700  font-semibold text-[20px] hover:text-[#FD1014] transition">
+                  className="block fonth py-4 border-b border-dashed border-gray-700  f text-[20px] hover:text-[#FD1014] transition">
                   Review
                 </a>
                 <a
                   onClick={toggle}
                   href="#contact"
-                  className="block font-clash py-4 border-b border-dashed border-gray-700  font-semibold text-[20px] hover:text-[#FD1014] transition">
+                  className="block fonth py-4 border-b border-dashed border-gray-700 d text-[20px] hover:text-[#FD1014] transition">
                   Contact Us
                 </a>
                 <div className="pt-8 pb-10">
-                  <button className="bg-[#EAB251] font-clash text-[white] w-full border-none text-[18px] py-[14px] px-[28px] rounded transition-transform duration-300 ease hover:bg-[#dfaa50]">
-                    Sign Up
-                  </button>
-                </div>
+  <Link to="/signup" className="block w-full text-center">
+    <button className="bg-[#EAB251] text-white text-[16px]
+     py-[14px] px-[28px] w-[80%] rounded-[30px] border-none transition-transform duration-300 ease-in-out transform hover:scale-105">
+      Sign Up
+    </button>
+  </Link>
+</div>
+
               </ul>
             </div>
           </div>

@@ -8,13 +8,21 @@ import Work from "./Work";
 import Review from "./component/Review";
 import Footer from "./component/Footer";
 
+import 'aos/dist/aos.css'; // Import AOS styles
+import AOS from 'aos';
 
 import "./App.css";
 
 function App() {
+
+  AOS.init({
+    duration: 800, // Animation duration
+    once: false, // Whether animation should only happen once
+    // mirror: false, // Whether elements should animate out while scrolling past them in reverse
+  });
   return (
     <>
-      <div className="overflow-x-hidden">
+      <div className="">
         <Loader />
         <Header />
         <Hero />
@@ -22,7 +30,11 @@ function App() {
         <Services />
         <Moreser />
         <Work />
+
+        <div className=" overflow-x-hidden">
+
         <Review />
+        </div>
         <Footer />
       </div>
     </>

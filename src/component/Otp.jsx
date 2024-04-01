@@ -71,7 +71,7 @@ const YourComponent = ({ Gmail }) => {
     <>
       <div
         className="flex lg:hidden flex-col  
-        px-6 pt-8 bg-white fixed top-0 z-50 bottom-0 w-full left-0 right-0">
+     px-6 pt-8 bg-white fixed top-0 z-50 bottom-0 w-full left-0 right-0">
         <h2 className="oo text-[27px] font-clash font-bold">Enter OTP</h2>
         <p className="mon my-4">
           A 4 digit code has been sent to
@@ -161,7 +161,7 @@ const YourComponent = ({ Gmail }) => {
       <section className="art lg:block  hidden  bg-red-500 w-full p-6">
         <div className="fixed top-0 left-0 right-0 bottom-0 bg-gray-800 z-40">
           <img
-            src="https://res.cloudinary.com/dnldaz7oh/image/upload/v1711544467/istockphoto-1347150429-612x612_kxwt2o.jpg"
+            src="https://res.cloudinary.com/durbee4ln/image/upload/v1707031675/rsz_car-img_dfy7bc.jpg"
             className="w-full object-cover lg:h-[900px]"
             alt=""
           />
@@ -226,7 +226,7 @@ const YourComponent = ({ Gmail }) => {
                 maxLength="1"
                 value={digit}
                 onChange={(e) => handleOtpChange(index, e.target.value)}
-                className="border p-2 w-16 h-16 rounded-md text-[#010102] font-montserrat font-normal text-[14px] focus:border-slate-600 focus:border border-gray-400 text-center outline-none"
+                className="border p-2 w-16 h-16 rounded-md text-slate-900 focus:border-slate-600 focus:border border-gray-400 text-center outline-none"
               />
             ))}
           </div>
