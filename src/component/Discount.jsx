@@ -9,7 +9,6 @@ function Discount() {
             <h1 className="tracking-wider">20% Off All Car Care Packages</h1>
           </div>
           <p className="font-montserrat font-normal text-[16px] md:text-[18px] lg:text-[18px] text-white pt-4">
-            {" "}
             Fill out and claim this offer today! We will contact you via phone
             call or text shortly.
           </p>
@@ -25,58 +24,37 @@ function Discount() {
               <div>
                 <input
                   className="border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[3px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-300 text-black"
-                  type="text"
+                  type="email"
                   placeholder="Enter Email"
                 />
               </div>
               <div>
                 <input
                   className="border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[3px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-300 text-black"
-                  type="text"
+                  type="tel"
                   placeholder="Enter Phone Number"
                 />
               </div>
               <div>
-                <select
-                  name=""
-                  id=""
-                  className="custom-select border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[3px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-300 text-black"
-                  type="text"
-                  placeholder="Car Type">
-                  <option value="Selected">Car Type</option>
-                  <option value="">Honda</option>
-                  <option value="">Honda</option>
-                  <option value="">Honda</option>
-                  <option value="">Honda</option>
-                </select>
-              </div>
-              <div>
-                <select
-                  name=""
-                  id=""
+                <input
                   className="border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[3px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-300 text-black"
                   type="text"
-                  placeholder="Car Type">
-                  <option value="Selected">Car Model</option>
-                  <option value="">Honda</option>
-                  <option value="">Honda</option>
-                  <option value="">Honda</option>
-                  <option value="">Honda</option>
-                </select>
+                  placeholder="Car Type"
+                />
               </div>
               <div>
-                <select
-                  name=""
-                  id=""
+                <input
                   className="border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[3px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-300 text-black"
                   type="text"
-                  placeholder="Car Type">
-                  <option value="Selected">Car Year</option>
-                  <option value="">Honda</option>
-                  <option value="">Honda</option>
-                  <option value="">Honda</option>
-                  <option value="">Honda</option>
-                </select>
+                  placeholder="Car Model"
+                />
+              </div>
+              <div>
+                <input
+                  className="border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[3px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-300 text-black"
+                  type="text"
+                  placeholder="Car Year"
+                />
               </div>
             </div>
             <div className="button py-2">

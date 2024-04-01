@@ -7,14 +7,14 @@ function Moreser() {
       <div id="why" className="heading pb-4 pt-10 lg:pb-10">
         <h1
           data-aos="fade-up"
-          className=" font-bold bb font-clash text-center text-[#FD1014] text-[35px] md:text-[45px] lg:text-[45px]">
+          className=" font-bold bb fonth text-center text-[#FD1014] text-[35px] md:text-[45px] lg:text-[45px]">
           What we Offer At Joombow
         </h1>
       </div>
-      <main className="abtContainer flex gap-8 flex-wrap lg:flex-nowrap md:py-6 lg:py-6 px-4 lg:px-[2rem] bg-white">
+      <main className="abtContainer flex gap-8 flex-wrap lg:flex-nowrap md:py-6 lg:py-6  lg:px-[2rem] bg-white">
         <section className="lg:ml-[2rem] maincon p-6 lg:p-0 w-full lg:w-[50%]">
           <div className="abtTest w-full md:py-4 lg:py-4 border-b border-gray-100 ">
-            <h2 className="font-bold text-[25px] text-center font-clash">
+            <h2 className="font-bold text-[25px]  fonth">
               State-of-the-Art Facilities:
             </h2>
             <p
@@ -31,8 +31,8 @@ function Moreser() {
           </div>
 
           <div className="abtTest w-full py-4 border-b border-gray-100 ">
-            <h2 className="font-bold text-[25px] text-center font-clash">
-              {" "}
+            <h2 className="font-bold text-[25px]  fonth">
+          
               Customer-Centric Approach:
             </h2>
             <p
@@ -49,7 +49,7 @@ function Moreser() {
             </p>
           </div>
           <div className="abtTest w-full py-4 ">
-            <h2 className="font-bold text-[25px] text-center font-clash">
+            <h2 className="font-bold text-[25px]  fonth">
               Affordable Pricing:
             </h2>
             <p
@@ -69,7 +69,7 @@ function Moreser() {
 
         <section data-aos="fade-up" className="abt w-full lg:w-[50%] mb-8">
           <div className="bg-black rounded-t p-6">
-            <p className="text-white font-montserrat text-balance text-center leading-8 font-normal text-[16px]">
+            <p className="text-white  text-balance text-center leading-8 font-normal text-[16px]">
               Secure your personalized service experience by booking your
               appointment now. <br />
               Our dedicated team is ready to tailor our services to meet your
@@ -81,30 +81,17 @@ function Moreser() {
               you with an exceptional automotive service tailored just for you.
             </p>
             <div className=" flex items-center justify-center m-auto py-6">
-              <button className="bg-[#fd1014d1] font-clash text-[white] border-none text-[20px] py-[14px] px-[28px] rounded-2xl transition-transform duration-300 ease hover:bg-[#CA0007]">
+              <button className="bg-[#fd1014d1] fonth text-[white] border-none text-[20px] py-[14px] px-[28px] rounded-2xl transition-transform duration-300 ease hover:bg-[#CA0007]">
                 Book Now
               </button>
             </div>
           </div>
-          <div className="bg-[url('https://res.cloudinary.com/dnldaz7oh/image/upload/v1710949495/fhuvzohdi3acxpcpsr15.png')] bg-no-repeat bg-center object-contain text-center text-white px-2  py-16 h-[400px] relative rounded-b">
-            <div class="bg-black w-full h-full absolute top-0 left-0 opacity-50"></div>
-            <div className="relative z-2 text-balance">
-              <h3 className="font-clash font-semibold text-[25px] text-[#FD1014]">
-                Your Service Will Be Registered On Your Car
-              </h3>
-              <h3 className="font-clash font-semibold text-[25px] text-[#FD1014]">
-                Report To Improve Your Resale Value
-              </h3>
-              <p className="font-clash font-semibold text-[25px] text-white">
-                InvestT In Your Vehicle With Us
-              </p>
-            </div>
-          </div>
+       
         </section>
 
-        <section className="lg:ml-[2rem] maincon   w-full lg:w-[60%]">
+        <section className="lg:ml-[2rem] maincon px-3  w-full lg:w-[60%]">
           <div className="abtTest w-full py-4 border-b border-gray-100 ">
-            <h2 className="font-bold text-[25px] text-center font-clash">
+            <h2 className="font-bold text-[25px]  fonth">
               Convenient Location:
             </h2>
             <p
@@ -122,7 +109,7 @@ function Moreser() {
           </div>
 
           <div className="abtTest w-full py-4 border-b border-gray-100 ">
-            <h2 className="font-bold text-[25px] text-center font-clash">
+            <h2 className="font-bold text-[25px] fonth">
               {" "}
               Get a repair estimate:
             </h2>
@@ -140,7 +127,7 @@ function Moreser() {
             </p>
           </div>
           <div className="abtTest w-full py-4 ">
-            <h2 className="font-bold text-[25px] text-center font-clash">
+            <h2 className="font-bold text-[25px]  fonth">
               Experienced Team:
             </h2>
             <p
@@ -160,13 +147,13 @@ function Moreser() {
       </main>
       <div className="bg-[#fd1014d1] flex flex-col lg:flex-row md:flex-row items-center justify-between md:rounded-lg lg:rounded-lg px-10">
         <div className="  md:py-6 lg:py-6 ">
-          <button className="lg:bg-[#00000080] md:bg-[#00000080] font-clash text-[white] border-none text-[20px] py-[14px] px-[28px] rounded-2xl transition-transform duration-300 ease hover:scale-105">
+          <button className="lg:bg-[#00000080] md:bg-[#00000080] fonth text-[white] border-none text-[20px] py-[14px] px-[28px] rounded-2xl transition-transform duration-300 ease hover:scale-105">
             Book Now
           </button>
         </div>
         <hr className=" block md:hidden lg:hidden w-full bg-gray-900" />
         <div className="  md:py-6 lg:py-6">
-          <button className="lg:bg-[#00000080] md:bg-[#00000080] flex items-center justify-center gap-3 font-clash text-[white] border-none text-[20px] py-[14px] px-[28px] rounded transition-transform duration-300 ease hover:scale-105">
+          <button className="lg:bg-[#00000080] md:bg-[#00000080] flex items-center justify-center gap-3 fonth text-[white] border-none text-[20px] py-[14px] px-[28px] rounded transition-transform duration-300 ease hover:scale-105">
             <FaPhone
               style={{ transform: "rotate(90deg)" }}
               className="text-white font-bold text-[18px]"

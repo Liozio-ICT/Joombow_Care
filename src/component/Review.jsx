@@ -5,9 +5,9 @@ import ImageSlider from "./ImageSlider";
 
 function Review() {
   return (
-    <div>
+    <div className="">
       <div id="review" className="py-8">
-        <h1 className="font-clash text-[#fd1014d1] font-bold text-[35px] text-center">
+        <h1 className="font-clash text-[#fd1014d1] font-bold lg:text-[35px] text-[25px] text-center">
           Our Customer’s Review
         </h1>
       </div>
