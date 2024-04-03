@@ -8,6 +8,7 @@ const AutoType = () => {
       <Typewriter
         options={{
           strings: [
+            "Auto Detailing",
             "Car Care & Repair",
             "Vehicle Servicing ",
             "Collision Repair ",

@@ -5,15 +5,16 @@ import { Link } from "react-router-dom";
 
 function ContactPage() {
   return (
-    <div className="bg-[#FBE7E7] bg-no-repeat bg-center] bg-cover">
-      <section className=" w-full md:w-[50%] lg:w-[50%] lg:p-0 md:p-0 p-6 m-auto">
+    <div className=" relative bg-[url('https://res.cloudinary.com/dnldaz7oh/image/upload/v1712047560/garage-serviceman-holds-mockup-device_ggdnc3.jpg')] bg-no-repeat bg-center bg-cover">
+      <div className="overlay absolute inset-0 bg-black opacity-70"></div>
+      <section className=" relative z-50 w-full md:w-[50%] lg:w-[50%] lg:p-0 md:p-0 p-6 m-auto">
         <div className="py-8">
           <Link to="/">
             <ArrowRight />
           </Link>
         </div>
-        <div className="py-8 md:leading-10 lg:leading-10">
-          <h1 className="text-center font-clash text-red-600 font-bold text-[25px] lg:text-[25px]">
+        <div className="py-8 md:leading-10 lg:leading-10 text-slate-100">
+          <h1 className="text-center font-clash  font-bold text-[25px] lg:text-[25px]">
             Do you've questions or need assistance? Let us know how to help you.
           </h1>
           <p className="text-center font-normal font-montserrat text-[18px] md:text-[20px] lg:text-[20px]">
@@ -24,21 +25,21 @@ function ContactPage() {
         <form action="">
           <div>
             <input
-              className="border-[1px] font-montserrat font-normal border-slate-200 outline-none w-full py-[.6rem] rounded-[3px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-300 text-black"
+              className="border-[1px] font-montserrat font-normal border-slate-800 outline-none w-full py-[.6rem] rounded-[3px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-300 text-black"
               type="text"
               placeholder="Full Name"
             />
           </div>
           <div className="py-8">
             <input
-              className="border-[1px] font-montserrat font-normal border-slate-200 outline-none w-full py-[.6rem] rounded-[3px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-300 text-black"
+              className="border-[1px] font-montserrat font-normal border-slate-800 outline-none w-full py-[.6rem] rounded-[3px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-300 text-black"
               type="email"
               placeholder="Email"
             />
           </div>
           <div>
             <textarea
-              className="border-[1px] font-montserrat font-normal border-slate-200 outline-none w-full h-[200px] py-[.6rem] rounded-[3px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-300 text-black"
+              className="border-[1px] font-montserrat font-normal border-slate-800 outline-none w-full h-[200px] py-[.6rem] rounded-[3px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-300 text-black"
               name="message"
               id="message"
               placeholder="Message"></textarea>

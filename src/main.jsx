@@ -12,6 +12,7 @@ import Forgotpswd from './Pages/Forgotpswd.jsx';
 import Onboarding from './Pages/Onboarding.jsx';
 import User from './Pages/User.jsx';
 import ResetPassword from './Pages/Newpassword.jsx';
+import ContactPage from './component/ContactPage.jsx';
 
 const router = createBrowserRouter([
 
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+  },
+  {
+    path: "contactpage",
+    element: <ContactPage />,
   },
 
 

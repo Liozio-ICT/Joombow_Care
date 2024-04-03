@@ -4,9 +4,11 @@ import { FaBars } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Loader from "./Loader";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const toggle = () => {
     setIsOpen(!isOpen);
   };
@@ -31,6 +33,7 @@ function Navbar() {
   return (
     <div className={`header ${isScrolled ? "scrolled" : ""}`}>
       {/* desktop  */}
+      <Loader />
       <nav
         className={`nav-header bg-[black] border-b border-gray-500 ${
           isScrolled
@@ -67,16 +70,32 @@ function Navbar() {
               className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
               Review
             </a>
-           <Link to="/contactPage">
-           <a
-              href="#contact"
-              className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
-              Contact Us
-            </a>
-           </Link>
+            <Link to="/contactPage">
+              <a className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
+                Contact Us
+              </a>
+            </Link>
+            {loading && (
+              <div
+                className="fixed top-0 left-0 right-0 bottom-0
+                   bg-white w-full flex items-center justify-center">
+                <div class="dot-spinner">
+                  <div class="dot-spinner__dot"></div>
+                  <div class="dot-spinner__dot"></div>
+                  <div class="dot-spinner__dot"></div>
+                  <div class="dot-spinner__dot"></div>
+                  <div class="dot-spinner__dot"></div>
+                  <div class="dot-spinner__dot"></div>
+                  <div class="dot-spinner__dot"></div>
+                  <div class="dot-spinner__dot"></div>
+                </div>
+              </div>
+            )}
           </ul>
-          <Link to="/signup" className="bg-[#fd1014d1]  text-[white] border-none text-[16px] 
-          py-[8px] px-[28px] w-[15%] rounded-[20px] text-center block transition-transform duration-300 ease hover:bg-[#CA0007]">
+          <Link
+            to="/signup"
+            className="bg-[#fd1014d1]  text-[white] border-none text-[16px] 
+          py-4 px-6 w-[15%] rounded-[20px] text-center block transition-transform duration-300 ease hover:bg-[#CA0007]">
             Sign Up
           </Link>
         </div>
@@ -91,12 +110,12 @@ function Navbar() {
         <div class="navLink text-[#0C0C0C] lg:hidden">
           <section
             className={`flex items-center h-[3.5rem] px-4  justify-between w-full bg-black`}>
-            <div>
+            <Link to="/">
               <FaPhone
                 style={{ transform: "rotate(90deg)" }}
-                className="text-white font-bold text-[1.6rem]"
+                className="text-white cursor-pointer font-bold text-[1.6rem]"
               />
-            </div>
+            </Link>
             <div>
               <img
                 className="w-full h-[100px] object-cover"
@@ -106,7 +125,7 @@ function Navbar() {
             </div>
 
             <div onClick={toggle}>
-              <FaBars className="text-white text-[1.6rem]" />
+              <FaBars className="text-white text-[1.6rem] cursor-pointer" />
             </div>
           </section>
 
@@ -122,11 +141,11 @@ function Navbar() {
               />
               <FaTimes
                 onClick={toggle}
-                className="text-white text-[2rem] absolute top-10 right-0 "
+                className=" text-white cursor-pointer text-[2rem] absolute top-10 right-0"
               />
             </div>
             <div>
-              <ul className=" text-white text-center pt- px-2">
+              <ul className=" text-white text-center px-2">
                 <a
                   onClick={toggle}
                   href="#home"
@@ -160,21 +179,21 @@ function Navbar() {
                   className="block fonth py-4 border-b border-dashed border-gray-700  f text-[20px] hover:text-[#FD1014] transition">
                   Review
                 </a>
-                <a
+                <Link
+                  to="/contactpage"
                   onClick={toggle}
-                  href="#contact"
                   className="block fonth py-4 border-b border-dashed border-gray-700 d text-[20px] hover:text-[#FD1014] transition">
                   Contact Us
-                </a>
+                </Link>
                 <div className="pt-8 pb-10">
-  <Link to="/signup" className="block w-full text-center">
-    <button className="bg-[#EAB251] text-white text-[16px]
+                  <Link to="/signup" className="block w-full text-center">
+                    <button
+                      className="bg-[#EAB251] text-white text-[16px]
      py-[14px] px-[28px] w-[80%] rounded-[30px] border-none transition-transform duration-300 ease-in-out transform hover:scale-105">
-      Sign Up
-    </button>
-  </Link>
-</div>
-
+                      Sign Up
+                    </button>
+                  </Link>
+                </div>
               </ul>
             </div>
           </div>

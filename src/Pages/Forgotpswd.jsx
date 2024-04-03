@@ -45,22 +45,22 @@ const Forgotpswd = () => {
         draggable
         pauseOnHover
       />
-      <div className="container mt-8 px-6 lg:hidden">
+      <div className="container px-6 lg:hidden bg-black h-screen ">
         <Loader />
-        <span className="prevLink my-4 block mb-8">
+        <span className="prevLink py-4 block mb-8">
           <Link to="/login">
-            <GrFormPreviousLink className="text-[1.5rem] border border-gray-200 rounded-3xl " />
+            <GrFormPreviousLink className="text-[1.5rem] border border-gray-200 rounded-3xl text-slate-200" />
           </Link>
         </span>
-        <h2 className="text-[1.7rem] font-clash font-semibold mb-8">
+        <h2 className="text-[1.7rem] font-clash font-semibold mb-8 text-slate-200">
           Forgot Password
         </h2>
-        <p>
+        <p className="text-slate-200">
           Don’t worry it happens. Please enter the email address linked to your
           account.
         </p>
 
-        <div className="inpt my-6">
+        <div className="inpt py-6">
           <input
             type="email"
             placeholder="Enter your email"
@@ -99,12 +99,12 @@ const Forgotpswd = () => {
           </div>
         )}
       </div>
-      
+
       {/* desktop */}
 
       <div className=" w-full hidden lg:block">
         <img
-          src="https://res.cloudinary.com/durbee4ln/image/upload/v1707031675/rsz_car-img_dfy7bc.jpg"
+          src="https://res.cloudinary.com/durbee4ln/image/upload/v1711811511/Care_care/man-connecting-jumper-cables-to-battery_ysq6je.jpg"
           className="w-full object-cover h-[780px]"
           alt=""
         />

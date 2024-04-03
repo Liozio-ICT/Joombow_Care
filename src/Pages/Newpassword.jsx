@@ -46,17 +46,17 @@ const ResetPassword = () => {
         draggable
         pauseOnHover
       />
-      <div className="container mx-auto mt-10 px-6 lg:hidden">
-        <span className="prevLink my-4 block mb-8">
+      <div className="container mx-auto px-6 lg:hidden h-screen bg-black">
+        <span className="prevLink block py-8">
           <Link to="/reset">
-            <GrFormPreviousLink className="text-[1.5rem] border border-gray-200 rounded-3xl" />
+            <GrFormPreviousLink className="text-[1.5rem] border border-gray-200 text-gray-200 rounded-3xl" />
           </Link>
         </span>
 
-        <h2 className="text-[1.7rem] font-clash font-bold mb-4">
+        <h2 className="text-[1.7rem] font-clash font-bold text-slate-200 mb-4">
           Create new Password
         </h2>
-        <p className="my-4 text-[#010102] font-montserrat">
+        <p className="my-4 text-slate-200 font-montserrat">
           Your password should be strong and secured.
         </p>
         <input
@@ -108,7 +108,7 @@ const ResetPassword = () => {
       {/* desktop  */}
       <div className="r w-full hidden lg:block md:hidden">
         <img
-          src="https://res.cloudinary.com/durbee4ln/image/upload/v1707031675/rsz_car-img_dfy7bc.jpg"
+          src="https://res.cloudinary.com/durbee4ln/image/upload/v1711811511/Care_care/man-connecting-jumper-cables-to-battery_ysq6je.jpg"
           className="w-full object-cover lg:h-[800px]"
           alt=""
         />

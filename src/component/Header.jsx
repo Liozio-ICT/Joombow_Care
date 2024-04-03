@@ -18,21 +18,24 @@ function Header() {
             </h1>
           </div>
           <div className="logo">
-            <h1 className="text-[#FD1014] text-center  font-meduim text-[20px]">
+            <h1 className="text-[#FD1014] text-center  font-meduim text-[20px] font-bold">
               Address
             </h1>
-            <p className="text-[#000000]  text-[15px]">
+            <p className="text-[#000000]  text-[16px]">
               No 3 Wole Olanipekun Crescent. <br /> State sect, Agodi , ibadan,
               Oyo state, Nigeria
             </p>
           </div>
           <div className=" font-meduim">
-            <h1 className="text-[#FD1014] flex  text-[15px]">
-              Call : <span className="text-[#000000] ml-3">+234 91 327 153 11</span>
+            <h1 className="text-[#FD1014] flex font-bold  text-[15px]">
+              Call :{" "}
+              <span className="text-[#000000] font-light text-[16px] ml-3">
+                +234 91 327 153 11
+              </span>
             </h1>
-            <h1 className="text-[#FD1014] flex   text-[15px]">
-              Contact:  <span className="ml-3 text-[#000000]">business@liozio.com</span>
-             
+            <h1 className="text-[#FD1014] flex font-bold  text-[16px]">
+              Contact:{" "}
+              <span className="ml-3 font-light text-[16px] text-[#000000]">business@liozio.com</span>
             </h1>
           </div>
         </div>

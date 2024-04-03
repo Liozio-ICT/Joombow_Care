@@ -25,8 +25,6 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
-  
-
   const handleSignup = async () => {
     try {
       setLoading(true);
@@ -120,31 +118,31 @@ const Signup = () => {
         draggable
         pauseOnHover
       />
-      <body className="lg:hidden">
+      <body className="lg:hidden bg-black">
         <span className="prevLink px-4 pt-4 block">
           <Link to="/">
-            <GrFormPreviousLink className="text-[1.5rem] border border-gray-200 rounded-3xl" />
+            <GrFormPreviousLink className="text-[1.5rem] border border-gray-200 text-white rounded-3xl" />
           </Link>
         </span>
-        <main className="px-6 min-h-[100vh] bg-white pb-[2rem]">
+        <main className="px-6 min-h-[100vh] pb-[2rem]">
           {showOTPForm ? (
             <Otp Gmail={email} />
           ) : (
             <div className="logo">
               <img
                 src="https://res.cloudinary.com/dnldaz7oh/image/upload/v1707161130/JOOMBOW/rpj2kpw4bbo9ngkd5zob.png"
-                className="w-[250px] h-[250px] m-auto object-cover"
+                className="w-[200px] h-[200px] m-auto object-cover"
                 alt="background image"
               />
             </div>
           )}
 
-          <h2 className="text-[1.7rem] font-clash capitalize font-bold mb-8">
+          <h2 className="text-[1.7rem] text-slate-200 font-clash capitalize font-bold mb-8">
             SignUp
           </h2>
-          <form class="mt-[1rem]" id="registrationForm">
-            <div class="inputCon">
-              <label class="block text-[#010102] font-semibold text-[16px] ">
+          <form class="mt-[1rem]" id="registrationForm ">
+            <div class="inputCon text-slate-200 ">
+              <label class="block  font-semibold text-[16px] ">
                 First Name:
               </label>
               <input
@@ -158,10 +156,8 @@ const Signup = () => {
               />
             </div>
 
-            <div class="inputCon">
-              <label class="block text-[#010102] font-semibold text-[16px]">
-                Last Name:
-              </label>
+            <div class="inputCon text-slate-200 py-2">
+              <label class="block  font-semibold text-[16px]">Last Name:</label>
               <input
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
@@ -173,10 +169,8 @@ const Signup = () => {
               />
             </div>
 
-            <div class="inputCon">
-              <label class="block text-[#010102] font-semibold text-[16px]">
-                Email:
-              </label>
+            <div class="inputCon text-slate-200">
+              <label class="block font-semibold text-[16px]">Email:</label>
               <input
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -188,10 +182,8 @@ const Signup = () => {
               />
             </div>
 
-            <div class="inputCon">
-              <label class="block text-[#010102] font-semibold text-[16px]">
-                Phone No:
-              </label>
+            <div class="inputCon text-slate-200">
+              <label class="block font-semibold text-[16px]">Phone No:</label>
               <input
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
@@ -204,10 +196,8 @@ const Signup = () => {
               />
             </div>
 
-            <div class="inputCon">
-              <label class="block text-[#010102] font-semibold text-[16px]">
-                Password:
-              </label>
+            <div class="inputCon text-slate-200">
+              <label class="block font-semibold text-[16px]">Password:</label>
               <input
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -219,8 +209,8 @@ const Signup = () => {
               />
             </div>
 
-            <div class="inputCon">
-              <label class="block text-[#010102] font-semibold text-[16px]">
+            <div class="inputCon text-slate-200">
+              <label class="block font-semibold text-[16px]">
                 Referral code:
               </label>
               <input
@@ -241,7 +231,7 @@ const Signup = () => {
               Next
             </button>
 
-            <div className="text my-3">
+            <div className="text my-3 text-slate-200">
               <h2>
                 Already have an account?{" "}
                 <span className="log font-bold text-[#FD1014] hover:text-[#E3383B] transition">
@@ -268,7 +258,7 @@ const Signup = () => {
             <button
               type="button"
               onClick={handleOAuth}
-              className="w-full border-red-500 border py-3 px-4 rounded-[10px] flex items-center text-[18px] font-semibold mon justify-center hover:bg-[#E3383B] hover:text-[#FCFBFB] transition">
+              className="w-full border-red-500 border py-3 px-4 rounded-[10px] flex items-center text-[18px] font-semibold mon text-slate-200 duration-300 justify-center hover:bg-[#E3383B] transition">
               <FcGoogle className="mr-2 text-[28px]" />
               Login with Google
             </button>
@@ -305,7 +295,7 @@ const Signup = () => {
             </div>
           </span>
           <img
-            src="https://res.cloudinary.com/durbee4ln/image/upload/v1707031675/rsz_car-img_dfy7bc.jpg"
+            src="https://res.cloudinary.com/durbee4ln/image/upload/v1711811511/Care_care/man-connecting-jumper-cables-to-battery_ysq6je.jpg"
             className="w-full object-cover h-[780px]"
             alt="bh image"
           />

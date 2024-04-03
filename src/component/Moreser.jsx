@@ -1,5 +1,6 @@
 import React from "react";
 import { FaPhone } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function Moreser() {
   return (
@@ -32,7 +33,6 @@ function Moreser() {
 
           <div className="abtTest w-full py-4 border-b border-gray-100 ">
             <h2 className="font-bold text-[25px]  fonth">
-          
               Customer-Centric Approach:
             </h2>
             <p
@@ -81,12 +81,20 @@ function Moreser() {
               you with an exceptional automotive service tailored just for you.
             </p>
             <div className=" flex items-center justify-center m-auto py-6">
-              <button className="bg-[#fd1014d1] fonth text-[white] border-none text-[20px] py-[14px] px-[28px] rounded-2xl transition-transform duration-300 ease hover:bg-[#CA0007]">
+              <Link
+                to="/signup"
+                className="bg-[#fd1014d1] fonth text-[white] border-none text-[20px] py-[14px] px-[28px] rounded-2xl transition-transform duration-300 ease hover:bg-[#CA0007]">
                 Book Now
-              </button>
+              </Link>
+            </div>
+            <div className="w-full">
+              <img
+                className="w-full"
+                src="https://res.cloudinary.com/dnldaz7oh/image/upload/v1712047560/garage-serviceman-holds-mockup-device_ggdnc3.jpg"
+                alt=""
+              />
             </div>
           </div>
-       
         </section>
 
         <section className="lg:ml-[2rem] maincon px-3  w-full lg:w-[60%]">
@@ -127,9 +135,7 @@ function Moreser() {
             </p>
           </div>
           <div className="abtTest w-full py-4 ">
-            <h2 className="font-bold text-[25px]  fonth">
-              Experienced Team:
-            </h2>
+            <h2 className="font-bold text-[25px]  fonth">Experienced Team:</h2>
             <p
               data-aos="fade-up"
               className="abtd my-2 font-montserrat text-[16px] leading-8">
@@ -147,9 +153,11 @@ function Moreser() {
       </main>
       <div className="bg-[#fd1014d1] flex flex-col lg:flex-row md:flex-row items-center justify-between md:rounded-lg lg:rounded-lg px-10">
         <div className="  md:py-6 lg:py-6 ">
-          <button className="lg:bg-[#00000080] md:bg-[#00000080] fonth text-[white] border-none text-[20px] py-[14px] px-[28px] rounded-2xl transition-transform duration-300 ease hover:scale-105">
+          <Link
+            to="/signup"
+            className="lg:bg-[#00000080] md:bg-[#00000080] fonth text-[white] border-none text-[20px] py-[14px] px-[28px] rounded-2xl transition-transform duration-300 ease hover:scale-105">
             Book Now
-          </button>
+          </Link>
         </div>
         <hr className=" block md:hidden lg:hidden w-full bg-gray-900" />
         <div className="  md:py-6 lg:py-6">

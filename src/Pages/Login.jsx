@@ -84,7 +84,7 @@ const Login = () => {
   };
 
   return (
-    <main className="loginCon">
+    <main className="loginCon bg-black">
       <Loader />
       <ToastContainer
         position="top-right"
@@ -99,18 +99,18 @@ const Login = () => {
       />
       <span className="prevLink lg:hidden px-4 pt-4 block">
         <Link to="/">
-          <GrFormPreviousLink className="text-[1.5rem] border border-gray-200 rounded-3xl" />
+          <GrFormPreviousLink className="text-[1.5rem] border border-slate-200 text-white rounded-3xl" />
         </Link>
       </span>
-      <main class="px-6 min-h-[100vh] bg-white pb-[2rem] lg:hidden">
-        <div className="logo w-[250px] h-[250px] object-cover m-auto">
+      <main className="px-6 min-h-[100vh] lg:hidden">
+        <div className="logo w-[200px] h-[200px] object-cover m-auto">
           <img
             src="https://res.cloudinary.com/dnldaz7oh/image/upload/v1707161130/JOOMBOW/rpj2kpw4bbo9ngkd5zob.png"
             className="logo"
             alt="Logo"
           />
         </div>
-        <h2 class="text-[1.7rem] text-[#010102] font-clash capitalize font-bold mb-8">
+        <h2 class="text-[1.7rem] text-slate-200 font-clash capitalize font-bold mb-8">
           login
         </h2>
         <form class="mt-[1rem]" id="registrationForm">
@@ -123,11 +123,12 @@ const Login = () => {
               onChange={(e) => setEmail(e.target.value)}
               id="email"
               type="text"
-              class="apitalize  border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-300 mt-1 mb-2"
+              placeholder="Enter Email"
+              class="apitalize  border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-300"
             />
           </div>
 
-          <div class="inputCon">
+          <div class="inputCon py-2">
             <label class="block text-[#010102] font-semibold text-[16px]">
               Password:
             </label>
@@ -136,14 +137,15 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
               id="password"
               type="text"
-              class="apitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-300 mt-1 mb-2"
+              placeholder="Enter Password"
+              class="apitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-300 "
             />
           </div>
 
           <h2 className="fgpsw text-right my-2 text-sm text-sky-400 font-semibold mon hover:text-sky-500 transition">
             <Link to="/reset"> I forgot my password!</Link>
           </h2>
-          <div class="mt-[2rem]">
+          <div class="mt-[1rem]">
             <button
               type="button"
               onClick={handleLogin}
@@ -152,7 +154,7 @@ const Login = () => {
               Login
             </button>
 
-            <div className="text my-5">
+            <div className="text my-5 text-slate-200">
               <h2>
                 Already have an account?{" "}
                 <span className="log font-bold text-[#FD1014] hover:text-[#E3383B] transition">
@@ -182,7 +184,7 @@ const Login = () => {
               type="button"
               onClick={handleOAuth}
               className="  w-full border-red-500 border
-         py-3 px-4 rounded-[10px] flex items-center text-[18px] font-semibold mon justify-center hover:bg-[#E3383B] hover:text-[#FCFBFB] transition">
+         py-3 px-4 rounded-[10px] flex items-center text-[18px] font-semibold mon justify-center hover:bg-[#E3383B] text-[#FCFBFB] ease-in-out duration-300 transition">
               <FcGoogle className="mr-2 text-[28px]" />
               Login with google
             </button>
@@ -196,7 +198,7 @@ const Login = () => {
                 justifyContent: "center",
               }}>
               <div className="authContent">
-                <p className="authText hidden"> Google</p>
+                <p className="authText hidden text-slate-200"> Google</p>
               </div>
             </button>
           </div>
@@ -214,7 +216,7 @@ const Login = () => {
           />
         </span>
         <img
-          src="https://res.cloudinary.com/durbee4ln/image/upload/v1707031675/rsz_car-img_dfy7bc.jpg"
+          src="https://res.cloudinary.com/durbee4ln/image/upload/v1711811511/Care_care/man-connecting-jumper-cables-to-battery_ysq6je.jpg"
           className="w-full object-cover h-[780px]"
           alt=""
         />
@@ -243,7 +245,8 @@ const Login = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     id="email"
                     type="text"
-                    class="apitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 mt-1 mb-2 bg-[#FCFBFB] focus:border focus:border-gray-400"
+                    placeholder="Enter Email"
+                    class="apitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 my-2 bg-[#FCFBFB] focus:border focus:border-gray-400"
                   />
                 </div>
 
@@ -256,7 +259,8 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     id="password"
                     type="text"
-                    class="apitalize text-slate-900  border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] mt-1 mb-2 px-4 bg-[#FCFBFB] focus:border focus:border-gray-400"
+                    placeholder="Enter Password"
+                    class="apitalize text-slate-900  border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] my-2 px-4 bg-[#FCFBFB] focus:border focus:border-gray-400"
                   />
                 </div>
 
