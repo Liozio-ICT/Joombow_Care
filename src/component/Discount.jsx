@@ -1,8 +1,25 @@
 import React from "react";
+import { ToastContainer, toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 function Discount() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    toast.error(
+      <span>
+        Oops!! Kindly{" "}
+        <Link className="text-sm text-sky-400 font-semibold" to="/signup">
+          Sign Up
+        </Link>{" "}
+        to continue!
+      </span>
+    );
+  };
+
   return (
     <div>
+      <ToastContainer />
       <div className="discount bg-[white] text-[#fd1014d1]">
         <div className="container bg-[#D14B46] m-auto p-6 md:p-10 lg:p-10 w-[95%] relative left-0 right-0 bottom-[30px] md:bottom-[60px]  lg:bottom-[60px] shadow-lg rounded-sm">
           <div className="bg-[#D9D9D9] text-[#fd1014d1] font-clash font-bold text-[20px] md:text-[35px] lg:text-[35px] text-center">
@@ -12,7 +29,7 @@ function Discount() {
             Fill out and claim this offer today! We will contact you via phone
             call or text shortly.
           </p>
-          <form action="/">
+          <form onSubmit={handleSubmit}>
             <div className="input-field grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 my-4">
               <div>
                 <input
@@ -58,7 +75,9 @@ function Discount() {
               </div>
             </div>
             <div className="button py-2">
-              <button className="bg-[#080808] hover:bg-gray-900 rounded-sm border border-[#F8CB47] w-full py-[12px] text-white transition duration-200">
+              <button
+                onClick={handleSubmit}
+                className="bg-[#080808] hover:bg-gray-900 rounded-sm border border-[#F8CB47] w-full py-[12px] text-white transition duration-200">
                 Submit
               </button>
             </div>
