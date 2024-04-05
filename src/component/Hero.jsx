@@ -75,7 +75,7 @@ function Hero() {
               </div>
               <div>
                 <Link
-                  to="/signup"
+                  to="https://joombow-web-application.vercel.app/"
                   class="bg-red-600 hover:bg-red-700 text-white py-5 px-12 rounded-lg transition-transform duration-300 ease transform hover:scale-105">
                   Explore our Car Wash
                 </Link>
