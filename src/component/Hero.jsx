@@ -33,14 +33,20 @@ function Hero() {
               {" "}
               <AutoType />
             </h1>
+            <section className="btnc flex w-full space-x-5 justify-center">
+  <div class="mb-6 w-full">
+    <a href="/signup" class="bg-red-600 text-[12px] px-2 hover:bg-red-700 text-white block py-3 text-center rounded-lg transition-transform duration-300 ease transform hover:scale-105">
+      Book car care
+    </a>
+  </div>
+  <div class="mb-6 w-full">
+    <a href="https://joombow-web-application.vercel.app" target="_blank" class="bg-red-600 text-[12px] hover:bg-red-700 block text-white py-3 px-6 rounded-lg transition-transform duration-300 ease transform hover:scale-105">
+       Our Car Wash
+    </a>
+  </div>
+</section>
 
-            <div class="mb-6">
-              <Link
-                to="/signup"
-                class="bg-red-600 w-[50%] hover:bg-red-700 text-white py-3 px-6 rounded-lg transition-transform duration-300 ease transform hover:scale-105">
-                Book Now
-              </Link>
-            </div>
+
           </section>
         </figcaption>
       </section>

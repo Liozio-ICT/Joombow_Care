@@ -81,18 +81,19 @@ const ReviewSlider = () => {
   };
 
   return (
-    <div className="relative mb-10 px-4 ">
+    <div className="relative mb-10 px-4">
       <Slider {...settings}>
         {reviews.map((review, index) => (
           <div
             key={index}
-            className="review-item flex flex-col  items-center justify-center text-center border p-8  rounded-lg shadow-lg">
+            className="review-item flex flex-col items-center justify-center text-center border p-8 rounded-lg shadow-lg"
+            style={{ height: "auto" }}>
             <div className="profile-info">
               <figure className="slider-img flex justify-center mb-4">
                 <img
                   src={review.profilePic}
                   alt={review.name}
-                  className="profile-pic rounded-full w-20 h-20 mb-2"
+                  className="profile-pic rounded-full w-20 h-20 mb-2 object-cover obnter"
                 />
               </figure>
               <p className="rating flex space-x-3 justify-center">

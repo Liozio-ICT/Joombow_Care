@@ -1,8 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { FaBars } from "react-icons/fa";
-import { FaTimes } from "react-icons/fa";
-import { FaPhone } from "react-icons/fa";
+import { FaBars, FaTimes, FaPhone } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Loader from "./Loader";
 
@@ -70,11 +68,11 @@ function Navbar() {
               className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
               Review
             </a>
-            <Link to="/contactPage">
-              <a className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
+           
+              <a href ='#contact' className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
                 Contact Us
               </a>
-            </Link>
+           
             {loading && (
               <div
                 className="fixed top-0 left-0 right-0 bottom-0
@@ -179,12 +177,13 @@ function Navbar() {
                   className="block fonth py-4 border-b border-dashed border-gray-700  f text-[20px] hover:text-[#FD1014] transition">
                   Review
                 </a>
-                <Link
-                  to="/contactpage"
-                  onClick={toggle}
-                  className="block fonth py-4 border-b border-dashed border-gray-700 d text-[20px] hover:text-[#FD1014] transition">
-                  Contact Us
-                </Link>
+                
+                  <a href ='#contact'
+                    onClick={toggle}
+                    className="block fonth py-4 border-b border-dashed border-gray-700 d text-[20px] hover:text-[#FD1014] transition">
+                    Contact Us
+                  </a>
+             
                 <div className="pt-8 pb-10">
                   <Link to="/signup" className="block w-full text-center">
                     <button
