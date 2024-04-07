@@ -71,9 +71,9 @@ const YourComponent = ({ Gmail }) => {
     <>
       <div
         className="flex lg:hidden flex-col  
-     px-6 pt-8 bg-white fixed top-0 z-50 bottom-0 w-full left-0 right-0">
+     px-6 pt-8 bg-black fixed top-0 z-50 bottom-0 w-full left-0 right-0">
         <h2 className="oo text-[27px] font-clash font-bold">Enter OTP</h2>
-        <p className="mon my-4">
+        <p className="mon my-4 text-white">
           A 4 digit code has been sent to
           <span className="gg  font-semibold focus:outline-none text-[20px]">
             {" "}
@@ -89,7 +89,7 @@ const YourComponent = ({ Gmail }) => {
         {/* Display congratulatory message on successful verification */}
         {isVerificationSuccess && (
           <>
-            <div className="versucess w-full z-50 fixed bg-white top-0 left-0 right-0 bottom-0 px-6">
+            <div className="versucess w-full z-50 fixed bg-black top-0 left-0 right-0 bottom-0 px-6">
               <div className="sucImg w-[350px] m-auto">
                 <img
                   src="https://res.cloudinary.com/durbee4ln/image/upload/v1706504044/CarWASH/Frame_51087_n4jq1c.png"
@@ -97,10 +97,10 @@ const YourComponent = ({ Gmail }) => {
                 />
               </div>
 
-              <h2 className="ts font-clash text-center font-bold text-[27px]">
+              <h2 className="ts font-clash text-white text-center font-bold text-[27px]">
                 Register Successfully!
               </h2>
-              <p className="am mon my-4 text-center">
+              <p className="am mon my-4 text-white text-center">
                 Congratulation! your account already created. Please login to
                 get amazing experience.
               </p>
@@ -127,7 +127,7 @@ const YourComponent = ({ Gmail }) => {
               maxLength="1"
               value={digit}
               onChange={(e) => handleOtpChange(index, e.target.value)}
-              className="border p-2 w-16 h-16 rounded-md  focus:border-slate-600 focus:border border-gray-400 text-center outline-none"
+              className="border p-2 w-16 h-16 rounded-md font-bold text-[20px] focus:border-slate-600 focus:border border-gray-400 text-center outline-none"
             />
           ))}
         </div>
@@ -158,10 +158,10 @@ const YourComponent = ({ Gmail }) => {
         )}
       </div>
 
-      <section className="art lg:block  hidden  bg-red-500 w-full p-6">
+      <section className="art lg:block  hidden  bg-red-500 w-full p-6 ">
         <div className="fixed top-0 left-0 right-0 bottom-0 bg-gray-800 z-40">
           <img
-            src="https://res.cloudinary.com/durbee4ln/image/upload/v1707031675/rsz_car-img_dfy7bc.jpg"
+            src="https://res.cloudinary.com/durbee4ln/image/upload/v1711811511/Care_care/man-connecting-jumper-cables-to-battery_ysq6je.jpg"
             className="w-full object-cover lg:h-[900px]"
             alt=""
           />
@@ -186,20 +186,21 @@ const YourComponent = ({ Gmail }) => {
           {/* Display congratulatory message on successful verification */}
           {isVerificationSuccess && (
             <>
-              <div className="versucess w-full z-50 fixed px-4 bg-white text-slate-800 top-0 left-0 right-0 bottom-0">
-                <section className="mm flex justify-center">
+              <div className="versucess w-full z-50 fixed px-4 bg-white text-slate-800 top-0 left-0 right-0 bottom-0 bg-[url('https://res.cloudinary.com/durbee4ln/image/upload/v1711811511/Care_care/man-connecting-jumper-cables-to-battery_ysq6je.jpg')] bg-no-repeat bg-center bg-cover">
+                <div className="absolute inset-0 bg-black opacity-70  h-[49rem] w-full"></div>
+                <section className="mm flex justify-center relative z-100">
                   <div className="w-[50%]">
                     <div className="sucImg w-[350px] h-[350px] m-auto">
                       <img
                         src="https://res.cloudinary.com/durbee4ln/image/upload/v1706504044/CarWASH/Frame_51087_n4jq1c.png"
-                        alt=""
+                        alt="sucess image"
                       />
                     </div>
 
-                    <h2 className="ts font-clash text-center font-bold text-[27px] pt-6">
+                    <h2 className="ts font-clash text-center font-bold text-white text-[27px] pt-6">
                       Register Successfully
                     </h2>
-                    <p className="am mon my-5 text-center">
+                    <p className="am mon my-5 text-center text-white">
                       Congratulations! Your account has been created. Please
                       login to get an amazing experience.
                     </p>
@@ -226,7 +227,7 @@ const YourComponent = ({ Gmail }) => {
                 maxLength="1"
                 value={digit}
                 onChange={(e) => handleOtpChange(index, e.target.value)}
-                className="border p-2 w-16 h-16 rounded-md text-slate-900 focus:border-slate-600 focus:border border-gray-400 text-center outline-none"
+                className="border p-2 w-16 h-16 rounded-md text-slate-900 font-bold text-[20px] focus:border-slate-600 focus:border border-gray-400 text-center outline-none"
               />
             ))}
           </div>

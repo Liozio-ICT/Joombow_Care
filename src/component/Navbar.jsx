@@ -68,11 +68,13 @@ function Navbar() {
               className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
               Review
             </a>
-           
-              <a href ='#contact' className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
-                Contact Us
-              </a>
-           
+
+            <a
+              href="#contact"
+              className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
+              Contact Us
+            </a>
+
             {loading && (
               <div
                 className="fixed top-0 left-0 right-0 bottom-0
@@ -116,7 +118,7 @@ function Navbar() {
             </Link>
             <div>
               <img
-                className="w-full h-[100px] object-cover"
+                className="w-[150px] h-[150px] object-cover"
                 src="https://res.cloudinary.com/dnldaz7oh/image/upload/v1707161130/JOOMBOW/rpj2kpw4bbo9ngkd5zob.png"
                 alt="Logo"
               />
@@ -131,9 +133,9 @@ function Navbar() {
             className={`relative nav-container bg-black ${
               isOpen ? "active" : ""
             }`}>
-            <div className="relative w-[95%] m-auto p-2">
+            <div className="relative w-[95%] m-auto p-2 flex items-center justify-center">
               <img
-                className="w-full h-[100px] object-cover"
+                className="w-[150px] h-[150px] object-cover"
                 src="https://res.cloudinary.com/dnldaz7oh/image/upload/v1707161130/JOOMBOW/rpj2kpw4bbo9ngkd5zob.png"
                 alt="Logo"
               />
@@ -177,13 +179,14 @@ function Navbar() {
                   className="block fonth py-4 border-b border-dashed border-gray-700  f text-[20px] hover:text-[#FD1014] transition">
                   Review
                 </a>
-                
-                  <a href ='#contact'
-                    onClick={toggle}
-                    className="block fonth py-4 border-b border-dashed border-gray-700 d text-[20px] hover:text-[#FD1014] transition">
-                    Contact Us
-                  </a>
-             
+
+                <a
+                  href="#contact"
+                  onClick={toggle}
+                  className="block fonth py-4 border-b border-dashed border-gray-700 d text-[20px] hover:text-[#FD1014] transition">
+                  Contact Us
+                </a>
+
                 <div className="pt-8 pb-10">
                   <Link to="/signup" className="block w-full text-center">
                     <button

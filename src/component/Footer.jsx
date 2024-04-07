@@ -26,7 +26,7 @@ const Footer = () => {
               <MdOutlineStarHalf class="w-[20px] h-[20px]" />
               <MdOutlineStarHalf class="w-[20px] h-[20px]" />
             </div>
-            <div class="footer-container container flex flex-col justify-between md:flex-row pt-12">
+            <div class="footer-container container flex flex-col justify-between  md:flex-row pt-12">
               <div class="footer-content leading-8">
                 <h3 class="font-semibold text-center md:text-start bb">
                   Stay Connected
@@ -58,19 +58,19 @@ const Footer = () => {
                   </a>
                 </p>
               </div>
-              <div class="footer-links ">
-                <h2 class="text-center text-light-red mt-3  bb">
+              <div class="footer-links my-8 lg:my-0">
+                <h2 class="text-center text-light-red  bb">
                   <span>Our Links</span>
                 </h2>
                 <div class="flex flex-col text-center  items-center gap-2 ">
-                  <ul class="leading-8 font-normal text-[14px] flex space-x-4 md:text-[16px] text-balance">
+                  <ul class="leading-8 font-normal pt-2 text-[14px] flex space-x-4 md:text-[16px] text-balance">
                     <a href="#home">
                       <li class="md:hover:bg-transparent hover:dark:text-[#FD1014] transition">
                         <span>Home</span>
                       </li>
                     </a>
                     <a href="#about">
-                      <li class="hover:bg-transparent hover:dark:text-[#FD1014] transition">
+                      <li class="hover:bg-transparent px-6 hover:dark:text-[#FD1014] transition">
                         About Us
                       </li>
                     </a>
@@ -88,12 +88,12 @@ const Footer = () => {
                       </li>
                     </a>
                     <a href="#review">
-                      <li class="hover:bg-transparent hover:dark:text-[#FD1014] transition">
+                      <li class="hover:bg-transparent px-6 hover:dark:text-[#FD1014] transition">
                         Reviews
                       </li>
                     </a>
                     <a href="#contact">
-                      <li class="hover:bg-transparent hover:dark:text-[#FD1014] transition">
+                      <li class="hover:bg-transparent pr-6 hover:dark:text-[#FD1014] transition">
                         Contact Us
                       </li>
                     </a>

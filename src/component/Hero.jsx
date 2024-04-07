@@ -34,19 +34,22 @@ function Hero() {
               <AutoType />
             </h1>
             <section className="btnc flex w-full space-x-5 justify-center">
-  <div class="mb-6 w-full">
-    <a href="/signup" class="bg-red-600 text-[12px] px-2 hover:bg-red-700 text-white block py-3 text-center rounded-lg transition-transform duration-300 ease transform hover:scale-105">
-      Book car care
-    </a>
-  </div>
-  <div class="mb-6 w-full">
-    <a href="https://joombow-web-application.vercel.app" target="_blank" class="bg-red-600 text-[12px] hover:bg-red-700 block text-white py-3 px-6 rounded-lg transition-transform duration-300 ease transform hover:scale-105">
-       Our Car Wash
-    </a>
-  </div>
-</section>
-
-
+              <div class="mb-6 w-full">
+                <a
+                  href="/signup"
+                  class="bg-red-600 text-[12px] px-2 hover:bg-red-700 text-white block py-3 text-center rounded-lg transition-transform duration-300 ease transform hover:scale-105">
+                  Book car care
+                </a>
+              </div>
+              <div class="mb-6 w-full">
+                <a
+                  href="https://joombow-web-application.vercel.app"
+                  target="_blank"
+                  class="bg-red-600 text-[12px] hover:bg-red-700 block text-white py-3 px-6 rounded-lg transition-transform duration-300 ease transform hover:scale-105">
+                  Our Car Wash
+                </a>
+              </div>
+            </section>
           </section>
         </figcaption>
       </section>
@@ -67,7 +70,7 @@ function Hero() {
           <section className="pl-[5rem] pr-[20rem]">
             <h3 class="  text-5xl mb-2">Joombow Car Care & Repair Centre</h3>
             <h1 class="text-[35px] mb-2">Southwest Nigeria</h1>
-            <h1 class="text-[#EAB251] text-7xl mb-6">
+            <h1 class="text-[#EAB251] text-6xl mb-6">
               {" "}
               <AutoType />
             </h1>

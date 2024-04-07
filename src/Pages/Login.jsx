@@ -124,7 +124,7 @@ const Login = () => {
               id="email"
               type="text"
               placeholder="Enter Email"
-              class="apitalize  border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-300"
+              class="apitalize text-black border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-300"
             />
           </div>
 
@@ -138,7 +138,7 @@ const Login = () => {
               id="password"
               type="text"
               placeholder="Enter Password"
-              class="apitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-300 "
+              class="apitalize text-black border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-300 "
             />
           </div>
 
@@ -246,7 +246,7 @@ const Login = () => {
                     id="email"
                     type="text"
                     placeholder="Enter Email"
-                    class="apitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 my-2 bg-[#FCFBFB] focus:border focus:border-gray-400"
+                    class="apitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 my-2 bg-[#FCFBFB] focus:border text-black focus:border-gray-400"
                   />
                 </div>
 
@@ -260,7 +260,7 @@ const Login = () => {
                     id="password"
                     type="text"
                     placeholder="Enter Password"
-                    class="apitalize text-slate-900  border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] my-2 px-4 bg-[#FCFBFB] focus:border focus:border-gray-400"
+                    class="apitalize  text-slate-900  border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] my-2 px-4 bg-[#FCFBFB] focus:border focus:border-gray-400"
                   />
                 </div>
 
