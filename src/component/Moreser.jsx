@@ -67,7 +67,9 @@ function Moreser() {
           </div>
         </section>
 
-        <section data-aos="fade-up" className="abt w-full lg:w-[50%] mb-8">
+        <section
+          data-aos="fade-up"
+          className="abt w-full lg:w-[50%] lg:mt-[100px] mb-8">
           <div className="bg-black rounded-t p-6">
             <p className="text-white  text-balance text-center leading-8 font-normal text-[16px]">
               Secure your personalized service experience by booking your
@@ -89,7 +91,7 @@ function Moreser() {
             </div>
             <div className="w-full">
               <img
-                className="w-full"
+                className="w-full h-auto object-cover rounded-lg shadow-lg"
                 src="https://res.cloudinary.com/dnldaz7oh/image/upload/v1712047560/garage-serviceman-holds-mockup-device_ggdnc3.jpg"
                 alt=""
               />

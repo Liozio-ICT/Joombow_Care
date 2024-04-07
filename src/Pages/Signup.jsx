@@ -150,7 +150,7 @@ const Signup = () => {
                 onChange={(e) => setFirstName(e.target.value)}
                 id="firstName"
                 type="text"
-                className={`bg-[#FCFBFB] focus:border focus:border-gray-300 capitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] mb-1 mt-1 px-4 ${
+                className={`bg-[#FCFBFB] text-black focus:border focus:border-gray-300 capitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] mb-1 mt-1 px-4 ${
                   message && !firstName ? "border-red-500" : ""
                 }`}
               />
@@ -163,7 +163,7 @@ const Signup = () => {
                 onChange={(e) => setLastName(e.target.value)}
                 id="lastName"
                 type="text"
-                className={`bg-[#FCFBFB] focus:border focus:border-gray-300 capitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] mb-1 mt-1 px-4 ${
+                className={`bg-[#FCFBFB] text-black focus:border focus:border-gray-300 capitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] mb-1 mt-1 px-4 ${
                   message && !lastName ? "border-red-500" : ""
                 }`}
               />
@@ -176,7 +176,7 @@ const Signup = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 id="email"
                 type="text"
-                className={`bg-[#FCFBFB] focus:border focus:border-gray-300 apitalze border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] mb-1 mt-1 px-4 ${
+                className={`bg-[#FCFBFB] text-black focus:border focus:border-gray-300 apitalze border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] mb-1 mt-1 px-4 ${
                   message && !email ? "border-red-500" : ""
                 }`}
               />
@@ -189,7 +189,7 @@ const Signup = () => {
                 onChange={(e) => setPhoneNumber(e.target.value)}
                 id="phoneNumber"
                 type="text"
-                className={`bg-[#FCFBFB] focus:border focus:border-gray-300
+                className={`bg-[#FCFBFB] text-black focus:border focus:border-gray-300
                  capitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] mb-1 mt-1 px-4 ${
                    message && !phoneNumber ? "border-red-500" : ""
                  }`}
@@ -203,7 +203,7 @@ const Signup = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 id="password"
                 type="text"
-                className={`bg-[#FCFBFB] focus:border focus:border-gray-300 apitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] mb-1 mt-1 px-4 ${
+                className={`bg-[#FCFBFB] text-black focus:border focus:border-gray-300 apitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] mb-1 mt-1 px-4 ${
                   message && !password ? "border-red-500" : ""
                 }`}
               />
@@ -218,7 +218,7 @@ const Signup = () => {
                 onChange={(e) => setReferralCode(e.target.value)}
                 id="referralCode"
                 type="text"
-                className={`bg-[#FCFBFB] focus:border focus:border-gray-300 capitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] mb-1 mt-1 px-4 ${
+                className={`bg-[#FCFBFB] text-black focus:border focus:border-gray-300 capitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] mb-1 mt-1 px-4 ${
                   message && !referralCode ? "border-red-500" : ""
                 }`}
               />
@@ -325,7 +325,7 @@ const Signup = () => {
                   onChange={(e) => setFirstName(e.target.value)}
                   id="firstName"
                   type="text"
-                  className={` border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-400 mb-2 ${
+                  className={` border-[1px] border-slate-200 text-black outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-400 mb-2 ${
                     message && !firstName ? "border-red-500" : ""
                   }`}
                 />
@@ -340,7 +340,7 @@ const Signup = () => {
                   onChange={(e) => setLastName(e.target.value)}
                   id="lastName"
                   type="text"
-                  className={`border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-400 mb-2  ${
+                  className={`border-[1px] border-slate-200 text-black outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-400 mb-2  ${
                     message && !lastName ? "border-red-500" : ""
                   }`}
                 />
@@ -355,7 +355,7 @@ const Signup = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   id="email"
                   type="text"
-                  className={`border-[1px] mt-1 mb-2  border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] 
+                  className={`border-[1px] mt-1 mb-2 text-black  border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] 
                   focus:border focus:border-gray-400 ${
                     message && !email ? "border-red-500" : ""
                   }`}
@@ -371,7 +371,7 @@ const Signup = () => {
                   onChange={(e) => setPhoneNumber(e.target.value)}
                   id="phoneNumber"
                   type="text"
-                  className={`border-[1px] mb-2  border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-400 ${
+                  className={`border-[1px] mb-2 text-black border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-400 ${
                     message && !phoneNumber ? "border-red-500" : ""
                   }`}
                 />
@@ -386,7 +386,7 @@ const Signup = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   id="password"
                   type="text"
-                  className={`border-[1px] mb-2  border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border
+                  className={`border-[1px] mb-2 text-black border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border
                   focus:border-gray-400 ${
                     message && !password ? "border-red-500" : ""
                   }`}
@@ -402,7 +402,7 @@ const Signup = () => {
                   onChange={(e) => setReferralCode(e.target.value)}
                   id="referralCode"
                   type="text"
-                  className={`border-[1px] mb-2  border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-400 ${
+                  className={`border-[1px] mb-2 text-black border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-400 ${
                     message && !referralCode ? "border-red-500" : ""
                   }`}
                 />
