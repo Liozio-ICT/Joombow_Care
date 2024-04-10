@@ -153,7 +153,7 @@ function Moreser() {
           </div>
         </section>
       </main>
-      <div className="bg-[#fd1014d1] flex flex-col lg:flex-row md:flex-row items-center justify-between md:rounded-lg lg:rounded-lg px-10">
+      <div className="bg-[#fd1014d1] flex py-2 flex-col lg:flex-row md:flex-row items-center justify-between md:rounded-lg lg:rounded-lg px-10">
         <div className="  md:py-6 lg:py-6 ">
           <Link
             to="/signup"
@@ -161,7 +161,7 @@ function Moreser() {
             Book Now
           </Link>
         </div>
-        <hr className=" block md:hidden lg:hidden w-full bg-gray-900" />
+        <hr className=" block md:hidden lg:hidden w-full bg-gray-900 mt-2" />
         <div className="  md:py-6 lg:py-6">
           <button className="lg:bg-[#00000080] md:bg-[#00000080] flex items-center justify-center gap-3 fonth text-[white] border-none text-[20px] py-[14px] px-[28px] rounded transition-transform duration-300 ease hover:scale-105">
             <FaPhone
