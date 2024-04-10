@@ -26,9 +26,9 @@ const Footer = () => {
               <MdOutlineStarHalf class="w-[20px] h-[20px]" />
               <MdOutlineStarHalf class="w-[20px] h-[20px]" />
             </div>
-            <div class="footer-container container flex flex-col justify-between  md:flex-row pt-12">
+            <div class="footer-container container flex flex-col justify-between lg:flex-row pt-12">
               <div class="footer-content leading-8">
-                <h3 class="font-semibold text-center md:text-start bb">
+                <h3 class="font-semibold text-center lg:text-start bb">
                   Stay Connected
                 </h3>
                 <p class="text-[16px] flex  justify-center space-x-4 ">
@@ -70,7 +70,7 @@ const Footer = () => {
                       </li>
                     </a>
                     <a href="#about">
-                      <li class="hover:bg-transparent px-6 hover:dark:text-[#FD1014] transition">
+                      <li class="hover:bg-transparent hover:dark:text-[#FD1014] transition">
                         About Us
                       </li>
                     </a>
@@ -87,13 +87,13 @@ const Footer = () => {
                         Why Us
                       </li>
                     </a>
-                    <a href="#review">
+                    {/* <a href="#review">
                       <li class="hover:bg-transparent px-6 hover:dark:text-[#FD1014] transition">
                         Reviews
                       </li>
-                    </a>
+                    </a> */}
                     <a href="#contact">
-                      <li class="hover:bg-transparent pr-6 hover:dark:text-[#FD1014] transition">
+                      <li class="hover:bg-transparent hover:dark:text-[#FD1014] transition">
                         Contact Us
                       </li>
                     </a>
@@ -106,10 +106,10 @@ const Footer = () => {
                 </div>
               </div>
               <div class="footer-info leading-8 text-[16px] font-normal text-balance">
-                <h2 class="text-light-red text-center mt-3 md:mt-0 md:text-left bb">
+                <h2 class="text-light-red text-center mt-3 md:mt-0 lg:text-left bb">
                   <span>Contact Us</span>
                 </h2>
-                <div class="footer-contact flex items-center justify-center md:justify-start gap-2">
+                <div class="footer-contact flex items-center justify-center lg:justify-start gap-2">
                   <img src="/images/call.png" alt="" />
                   <p class="text-[14px] md:text-[16px]">
                     <span>Phone No.:</span> +234 6707653444
