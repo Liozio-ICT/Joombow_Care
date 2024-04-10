@@ -63,11 +63,11 @@ function Navbar() {
               {" "}
               Why us
             </a>
-            <a
+            {/* <a
               href="#review"
               className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
               Review
-            </a>
+            </a> */}
 
             <a
               href="#contact"

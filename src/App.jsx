@@ -4,7 +4,7 @@ import About from "./component/About";
 import Services from "./component/Services";
 import Moreser from "./component/Moreser";
 import Loader from "./component/Loader";
-import Review from "./component/Review";
+// import Review from "./component/Review";
 import Footer from "./component/Footer";
 import Work from "./component/Work";
 import "aos/dist/aos.css"; // Import AOS styles
@@ -30,9 +30,9 @@ function App() {
         <Moreser />
         <Work />
 
-        <div className=" overflow-x-hidden">
+        {/* <div className=" overflow-x-hidden">
           <Review />
-        </div>
+        </div> */}
         <Footer />
       </div>
     </>

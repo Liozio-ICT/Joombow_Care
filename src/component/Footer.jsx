@@ -111,12 +111,16 @@ const Footer = () => {
                 </h2>
                 <div class="footer-contact flex items-center justify-center md:justify-start gap-2">
                   <img src="/images/call.png" alt="" />
-                  <p class="text-[14px] md:text-[16px]">+234 6707653444</p>
+                  <p class="text-[14px] md:text-[16px]">
+                    <span>Phone No.:</span> +234 6707653444
+                  </p>
                 </div>
                 <div class="footer-contact flex items-center justify-center md:justify-items-start gap-4 text-balance">
                   {/* <img src="/images/location.png" alt="" /> */}
                   <p class="text-[14px] md:text-[16px]" id="location">
-                    27, Alara Street Ibadan Oyo State
+                    {" "}
+                    <span>Email Address: </span>
+                    business@liozio.com
                   </p>
                 </div>
               </div>

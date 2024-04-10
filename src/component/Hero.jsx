@@ -68,7 +68,9 @@ function Hero() {
 
         <figcaption class="text-container absolute inset-0 flex items-center justify-center text-white">
           <section className="pl-[5rem] pr-[20rem]">
-            <h3 class="  text-5xl mb-2">Joombow Car Care & Repair Centre</h3>
+            <h3 class=" font-clash text-6xl mb-2">
+              Joombow Car Care & Repair Centre
+            </h3>
             <h1 class="text-[35px] mb-2">Southwest Nigeria</h1>
             <h1 class="text-[#EAB251] text-6xl mb-6">
               {" "}
@@ -83,11 +85,12 @@ function Hero() {
                 </Link>
               </div>
               <div>
-                <Link
-                  to="https://joombow-web-application.vercel.app/"
+                <a
+                  href="https://joombow-web-application.vercel.app/"
+                  target="blank"
                   class="bg-red-600 hover:bg-red-700 text-white py-5 px-12 rounded-lg transition-transform duration-300 ease transform hover:scale-105">
                   Explore our Car Wash
-                </Link>
+                </a>
               </div>
             </div>
           </section>
