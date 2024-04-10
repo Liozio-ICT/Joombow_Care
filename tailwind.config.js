@@ -6,10 +6,10 @@ export default {
   ],
   theme: {
     extend: {
-      // fontFamily:{
-      //   'montserrat':  ["Montserrat", 'sans-serif'],
-      //   'clash': ['ClashDisplay-Bold']
-      // },
+      fontFamily:{
+        // 'montserrat':  ["Montserrat", 'sans-serif'],
+        'clash': ['ClashDisplay-Bold']
+      },
     },
   },
   plugins: [],

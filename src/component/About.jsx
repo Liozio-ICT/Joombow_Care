@@ -5,7 +5,7 @@ function About() {
     <>
       <main
         id="about"
-        className="abtContainer flex gap-6 flex-wrap lg:flex-nowrap py-2 md:py-6 lg:py-6 px-4 lg:px-[4rem] bg-white">
+        className="abtContainer flex gap-6 flex-wrap lg:flex-nowrap py-2 md:py-6 lg:py-6 px-4 lg:px-[4rem] bg-black">
         <div data-aos="fade-up" className="abt w-full lg:w-[40%] mb-2">
           <img
             src="https://res.cloudinary.com/durbee4ln/image/upload/v1711811528/Care_care/mechanic-examining-car_pwvuck.jpg"
@@ -23,7 +23,7 @@ function About() {
             </h1>
             <p
               data-aos="fade-up"
-              className="abtd my-2  text-[18px] leading-8">
+              className="abtd my-2 text-white text-[18px] leading-8">
                Revitalize your driving experience with Joombow Car Care & Repair
               Centre, your trusted automotive partner in the lively city of
               Ibadan, Nigeria. Nestled in a prime location, we take pride in
@@ -36,9 +36,7 @@ function About() {
           </div>
 
           <div className="abtTest w-full">
-            <h1
-             
-              className="text-[20px] md:text-[25px] lg:text-[25px] my-5 font-bold bb ">
+            <h1 className="text-[20px] text-white md:text-[25px] lg:text-[25px] my-5 font-bold bb ">
               Joombow Car Care & Repair Centre - Elevating Your Drive, Ensuring
               Reliability!
             </h1>
