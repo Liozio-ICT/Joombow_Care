@@ -14,7 +14,7 @@ function Work() {
             target="blank"
             className="text-center font-clash p-6 transition transform hover:scale-105 duration-300 ease-in-out">
             <FaUsers className="font-semibold text-[100px] lg:flex-0 flex items-center justify-center m-auto lg:text-[200px]" />
-            <span className="font-bold text-[20px] lg:text-[40px]">
+            <span className="font-bold text-[20px] block lg:text-[40px]">
               Help &amp; Support
             </span>
           </a>
@@ -29,7 +29,7 @@ function Work() {
             href="https://wa.me/message/TGFCMDCSQOTJI1"
             className="text-center font-clash p-6 transition transform hover:scale-105 duration-300 ease-in-out">
             <MdMessage className="font-semibold text-[100px] lg:flex-0 flex items-center justify-center m-auto lg:text-[150px]" />
-            <span className="font-bold text-[20px] lg:text-[40px]">
+            <span className="font-bold block text-[20px] lg:text-[40px]">
               Messaging
             </span>
           </a>
@@ -44,7 +44,7 @@ function Work() {
             href="/"
             className="text-center font-clash p-6 transition transform hover:scale-105 duration-300 ease-in-out">
             <FaCar className="font-semibold text-[100px] lg:text-[200px] lg:flex-0 flex items-center justify-center m-auto" />
-            <span className="font-bold text-[20px] lg:text-[40px]">
+            <span className="font-bold block text-[20px] lg:text-[40px]">
               Joombow Services
             </span>
           </a>
