@@ -60,15 +60,15 @@ function Services() {
         {/* Image */}
 
         {/* Text */}
-        <div className="pl-8">
+        <div className="mx-2 md:mx-4 lg:mx-6 border border-gray-800">
           <img
             src={service.imageUrl}
             alt={service.title}
             className="w-full h-[250px] object-cover rounded-[5px]"
           />
-          <div className="  fle items-center p-4 justify-center shadow-lg">
+          <div className="  fle items-center p-3 justify-center shadow-lg">
             {/* w-[450px] h-[250px] border-red-500 */}
-            <h2 className="lg:text-[35px] text-[30px] py-4 text-white font-clash font-bold text-cente">
+            <h2 className="md:text-[35px] text-[23px] py-2 text-white font-clash font-bold text-cente">
               {service.title}
             </h2>
             <p className="text-[18px] text-gray-400 font-clash leading-7 font-normal">
@@ -106,7 +106,7 @@ function Services() {
 
   return (
     <div>
-      <main id="services" className="bg-black px-4 py-14">
+      <main id="services" className="bg-black px-4 py-16">
         <h1 className="font-bold bb font-clash text-[#FD1014] text-[45px] text-center py-8">
           Our Services
         </h1>
