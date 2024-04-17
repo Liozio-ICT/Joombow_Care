@@ -23,7 +23,7 @@ function About() {
             </h1>
             <p
               data-aos="fade-up"
-              className="abtd my-2 text-white text-[18px] leading-8">
+              className="abtd my-2 text-white text-[16px] md:text-[18px] leading-8">
                Revitalize your driving experience with Joombow Car Care & Repair
               Centre, your trusted automotive partner in the lively city of
               Ibadan, Nigeria. Nestled in a prime location, we take pride in
