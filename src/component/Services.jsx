@@ -4,9 +4,52 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 function Services() {
+  const listItems = [
+    [
+      "Maintenance Service",
+      "Factory scheduled service",
+      "Oil & fluid service",
+      "Check engine light diagnostics",
+    ],
+
+    [
+      "Computer diagnostics",
+      "Air conditioning systems ",
+      "Electrical systems",
+      "Brake systems",
+      "Suspension & steering",
+    ],
+    [
+      "Engine performance diagnostics",
+      "Engine repair & replacement",
+      "Fuel System & Injection",
+      "Ignition System",
+      "Belt & hose",
+    ],
+    [
+      "Transmission services",
+      "Driveline maintenance",
+      "Axle replacement",
+      "Clutch maintenance",
+    ],
+    [
+      "Tyre change",
+      "Tyre repair",
+      "Alignment & Balancing",
+      "Tyre sip and trim",
+    ],
+    [
+      "Paint spraying",
+      "Anti-corrosion work",
+      "Scratch repair",
+      "Bumper repair",
+      "Accident damage",
+    ],
+  ];
   const services = [
     {
       title: "Service & Maintenance",
+
       content:
         "At JOOMBOW Car Care & Repair, we offer exclusive maintenance services tailored to keep your vehicle running smoothly. Our comprehensive options include maintenance service, factory scheduled service, oil & fluid service, and check engine light diagnostics. With our dedicated team and state-of-the-art equipment, you can trust us to deliver the best care for your vehicle, ensuring it performs at its peak.",
       imageUrl:
@@ -14,6 +57,7 @@ function Services() {
     },
     {
       title: "General Maintenance",
+
       content:
         "Our expert team at JOOMBOW Car Care & Repair specializes in providing comprehensive general maintenance services to ensure your vehicle's optimal performance. From computer diagnostics and air conditioning systems to electrical systems, brake systems, and suspension & steering, we've got you covered. Trust us to keep your vehicle in top condition with our meticulous attention to detail and commitment to quality service.",
       imageUrl:
@@ -21,6 +65,7 @@ function Services() {
     },
     {
       title: "Engine Maintenance",
+
       content:
         "At JOOMBOW Car Care & Repair, we are dedicated to keeping your engine running smoothly. Our engine maintenance services include engine performance diagnostics, engine repair & replacement, fuel system & injection services, ignition system maintenance, and belt & hose inspections. With our experienced technicians and advanced diagnostic tools, you can trust us to ensure the longevity and efficiency of your vehicle's engine.",
       imageUrl:
@@ -28,6 +73,7 @@ function Services() {
     },
     {
       title: "Transmission Maintenance",
+
       content:
         "At JOOMBOW Car Care & Repair, we specialize in comprehensive transmission maintenance services. Our offerings include transmission services, driveline maintenance, axle replacement, and clutch maintenance. Trust our expert technicians to keep your transmission system in optimal condition, ensuring smooth gear shifts and efficient power delivery for your vehicle.",
       imageUrl:
@@ -35,6 +81,7 @@ function Services() {
     },
     {
       title: "Tyre Maintenance",
+
       content:
         "At JOOMBOW Car Care & Repair, we provide top-notch tyre maintenance services to keep your vehicle rolling smoothly. Our services include tyre change, tyre repair, alignment & balancing, and tyre sip and trim. Whether you need a quick tyre fix or a complete alignment, our skilled technicians are equipped to handle all your tyre maintenance needs with precision and care.",
       imageUrl:
@@ -42,6 +89,7 @@ function Services() {
     },
     {
       title: "Body Work & Spraying ",
+
       content:
         "At JOOMBOW Car Care & Repair, we've got you covered with our top-notch body work and spraying services. Whether its paint spraying, anti-corrosion work, scratch or bumper repair, or even accident damage restoration, our skilled team ensures your car looks fantastic. With our attention to detail and advanced equipment, we'll have your vehicle looking brand new in no time. Trust us to bring out the best in your car's appearance and keep it protected against wear and tear!",
       imageUrl:
@@ -60,7 +108,7 @@ function Services() {
         {/* Image */}
 
         {/* Text */}
-        <div className="mx-2 md:mx-4 lg:mx-6 border border-gray-800">
+        <div className="mx-2 md:mx-4 lg:mx-6 border border-gray-800 h-auto">
           <img
             src={service.imageUrl}
             alt={service.title}
@@ -68,9 +116,22 @@ function Services() {
           />
           <div className="  fle items-center p-3 justify-center shadow-lg">
             {/* w-[450px] h-[250px] border-red-500 */}
-            <h2 className="md:text-[35px] text-[23px] py-2 text-white font-clash font-bold text-cente">
+            <h2 className="md:text-[35px] text-[23px] pt-2 text-white font-clash font-bold text-cente">
               {service.title}
             </h2>
+
+            <ul style={{ listStyleType: "square" }} className="p-4">
+              {listItems[index].map((item, idx) => {
+                
+                return (
+                  <li
+                    className="text-[18px] text-gray-400 font-clash leading-7 font-normal"
+                    key={idx}>
+                    {item}
+                  </li>
+                );
+              })}
+            </ul>
             <p className="text-[18px] text-gray-400 font-clash leading-7 font-normal">
               {service.content}
             </p>
