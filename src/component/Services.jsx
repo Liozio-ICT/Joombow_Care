@@ -122,7 +122,6 @@ function Services() {
 
             <ul style={{ listStyleType: "square" }} className="p-4">
               {listItems[index].map((item, idx) => {
-                
                 return (
                   <li
                     className="text-[18px] text-gray-400 font-clash leading-7 font-normal"
@@ -168,7 +167,9 @@ function Services() {
   return (
     <div>
       <main id="services" className="bg-black px-4 py-16">
-        <h1 className="font-bold bb font-clash text-[#FD1014] text-[45px] text-center py-8">
+        <h1
+          data-aos="fade-up"
+          className="font-bold bb font-clash text-[#FD1014] text-[45px] text-center py-8">
           Our Services
         </h1>
         <Slider {...settings}>{renderServices()}</Slider>
