@@ -96,6 +96,7 @@ const Signup = () => {
       const data = await res?.json();
       if (data?.success) {
         navigate("/user");
+       
       }
     } catch (error) {
       console.log("Could not login with Google", error);

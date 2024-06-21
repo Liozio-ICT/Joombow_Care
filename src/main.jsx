@@ -12,6 +12,7 @@ import Forgotpswd from './Pages/Forgotpswd.jsx';
 import Onboarding from './Pages/Onboarding.jsx';
 import User from './Pages/User.jsx';
 import ResetPassword from './Pages/Newpassword.jsx';
+import Launch from './Pages/Launch.jsx';
 
 
 const router = createBrowserRouter([
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
     element: <Signup />,
   },
 
+   {
+    path: "/launch",
+    element: <Launch  />
+  },
   
   {
     path: "/reset",
@@ -55,6 +60,7 @@ const router = createBrowserRouter([
     path: "/user",
     element: <User />
   },
+ 
 
 ])
 

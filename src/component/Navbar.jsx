@@ -63,6 +63,12 @@ function Navbar() {
               {" "}
               Why us
             </a>
+            <a
+              href="#carmake"
+              className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
+              {" "}
+              Car Make
+            </a>
             {/* <a
               href="#review"
               className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">

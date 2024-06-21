@@ -5,79 +5,75 @@ import "slick-carousel/slick/slick-theme.css";
 
 function Services() {
   const listItems = [
+
     [
-      "Maintenance Service",
-      "Factory scheduled service",
-      "Oil & fluid service",
-      "Check engine light diagnostics",
+      "Car Servicing", 
+      "Operational Maintenance", 
+      "Tune Ups", 
+      "Diagnosis"
     ],
 
     [
-      "Computer diagnostics",
-      "Air conditioning systems ",
-      "Electrical systems",
-      "Brake systems",
-      "Suspension & steering",
+      "Wear & Tear Repairs",
+      "Suspension Systems ",
+      "Axle Systems",
+      "Brake Systems",
     ],
+
     [
-      "Engine performance diagnostics",
-      "Engine repair & replacement",
-      "Fuel System & Injection",
-      "Ignition System",
-      "Belt & hose",
+      "Troubleshooting Electrical Faults",
+      "Starter Motor Services",
+      "Battery Testing & Replacement",
+      "Alternator Repairs",
     ],
+
     [
-      "Transmission services",
-      "Driveline maintenance",
-      "Axle replacement",
-      "Clutch maintenance",
+      "AC Servicing", 
+      "Gas Refill & Servicing", 
+      "AC System Cleaning"
     ],
+
     [
       "Tyre change",
-      "Tyre repair",
+      "Tyre Repair",
       "Alignment & Balancing",
-      "Tyre sip and trim",
+      "Tyre Sip & Trim",
     ],
-    [
-      "Paint spraying",
-      "Anti-corrosion work",
-      "Scratch repair",
-      "Bumper repair",
-      "Accident damage",
-    ],
+
+   
   ];
   const services = [
     {
       title: "Service & Maintenance",
 
       content:
-        "At JOOMBOW Car Care & Repair, we offer exclusive maintenance services tailored to keep your vehicle running smoothly. Our comprehensive options include maintenance service, factory scheduled service, oil & fluid service, and check engine light diagnostics. With our dedicated team and state-of-the-art equipment, you can trust us to deliver the best care for your vehicle, ensuring it performs at its peak.",
+        "At JOOMBOW Car Care & Repair, we offer exclusive maintenance services tailored to keep your vehicle running smoothly. Our comprehensive options include Car Servicing, Operational Maintenance, Tune Ups, and Brake Systems. With our dedicated team and state-of-the-art equipment, you can trust us to deliver the best care for your vehicle, ensuring it performs at its peak.",
       imageUrl:
         "https://media.istockphoto.com/id/1347150429/photo/professional-mechanic-working-on-the-engine-of-the-car-in-the-garage.webp?b=1&s=170667a&w=0&k=20&c=oDNgnbBqr6dQ01ZwhbLF5NA3gJRS2ISvrcnKpCSFirs=",
     },
     {
-      title: "General Maintenance",
+      title: "General Mechanical",
 
       content:
-        "Our expert team at JOOMBOW Car Care & Repair specializes in providing comprehensive general maintenance services to ensure your vehicle's optimal performance. From computer diagnostics and air conditioning systems to electrical systems, brake systems, and suspension & steering, we've got you covered. Trust us to keep your vehicle in top condition with our meticulous attention to detail and commitment to quality service.",
+        "At Joombow Car Care and Repair Center, we provide comprehensive general mechanical services to keep your vehicle running smoothly and safely. Our offerings include wear & tear repairs to address common issues like worn-out brakes and leaking fluids, suspension system maintenance for a smooth and comfortable ride, axle system inspections and repairs to ensure efficient power transmission, and brake system services to guarantee reliable stopping power under all conditions.",
       imageUrl:
         "https://media.istockphoto.com/id/1157179147/photo/checking-oil-in-car-engine.webp?b=1&s=170667a&w=0&k=20&c=zy6pdwK_hpfdedHHMwyAXjGZqKWYhM0by27d5Bf2JAA=",
     },
     {
-      title: "Engine Maintenance",
+      title: "Electrical Services",
 
       content:
-        "At JOOMBOW Car Care & Repair, we are dedicated to keeping your engine running smoothly. Our engine maintenance services include engine performance diagnostics, engine repair & replacement, fuel system & injection services, ignition system maintenance, and belt & hose inspections. With our experienced technicians and advanced diagnostic tools, you can trust us to ensure the longevity and efficiency of your vehicle's engine.",
+        "Modern vehicles rely heavily on complex electrical systems. At Joombow Car Care & Repair Center, Our electrical services include battery testing and replacement, alternator repairs, starter motor services, and troubleshooting of electrical faults. We also handle advanced diagnostics for issues related to your car's lighting, sensors, and onboard computer systems.",
       imageUrl:
-        "https://media.istockphoto.com/id/1165311626/photo/mechanic-using-a-ratchet-wrench.webp?b=1&s=170667a&w=0&k=20&c=MUSHOeiWp3U06Jir7MJDtTRF5GpRSjPFzkgU8QNhp4w=",
+        "https://res.cloudinary.com/dnldaz7oh/image/upload/v1716320436/electrical_h34xr1.jpg",
     },
     {
-      title: "Transmission Maintenance",
+      title: "A/C Maintenance",
 
       content:
-        "At JOOMBOW Car Care & Repair, we specialize in comprehensive transmission maintenance services. Our offerings include transmission services, driveline maintenance, axle replacement, and clutch maintenance. Trust our expert technicians to keep your transmission system in optimal condition, ensuring smooth gear shifts and efficient power delivery for your vehicle.",
+        "At Joombow Car Care and Repair Center, we understand the importance of maintaining your vehicle's air conditioning system for optimal performance and comfort. Our comprehensive A/C maintenance services cover essential components such as AC servicing, gas refill & servicing, and AC system cleaning. From thorough inspections to checking for leaks and ensuring proper refrigerant levels, we're dedicated to keeping your A/C system efficient and reliable. Trust us to keep you cool and comfortable on the road.",
       imageUrl:
-        "https://res.cloudinary.com/dnldaz7oh/image/upload/v1713270016/mechanic-repairing-engine-part-with-ratchet-repair-garage_1_jjsgdh.jpg",
+        "https://res.cloudinary.com/dnldaz7oh/image/upload/v1716320109/Car_AC_gelgbh.jpg",
     },
     {
       title: "Tyre Maintenance",
@@ -87,14 +83,14 @@ function Services() {
       imageUrl:
         "https://res.cloudinary.com/dnldaz7oh/image/upload/v1713270574/nitrogen-air_w0buji.jpg",
     },
-    {
-      title: "Body Work & Spraying ",
+    // {
+    //   title: "Body Work & Spraying ",
 
-      content:
-        "At JOOMBOW Car Care & Repair, we've got you covered with our top-notch body work and spraying services. Whether its paint spraying, anti-corrosion work, scratch or bumper repair, or even accident damage restoration, our skilled team ensures your car looks fantastic. With our attention to detail and advanced equipment, we'll have your vehicle looking brand new in no time. Trust us to bring out the best in your car's appearance and keep it protected against wear and tear!",
-      imageUrl:
-        "https://res.cloudinary.com/durbee4ln/image/upload/v1711811511/Care_care/pexels-khunkorn-laowisit-5233258_onjgmd.jpg",
-    },
+    //   content:
+    //     "At JOOMBOW Car Care & Repair, we've got you covered with our top-notch body work and spraying services. Whether its paint spraying, anti-corrosion work, scratch or bumper repair, or even accident damage restoration, our skilled team ensures your car looks fantastic. With our attention to detail and advanced equipment, we'll have your vehicle looking brand new in no time. Trust us to bring out the best in your car's appearance and keep it protected against wear and tear!",
+    //   imageUrl:
+    //     "https://res.cloudinary.com/durbee4ln/image/upload/v1711811511/Care_care/pexels-khunkorn-laowisit-5233258_onjgmd.jpg",
+    // },
   ];
 
   const renderServices = () => {

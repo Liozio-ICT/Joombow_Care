@@ -145,18 +145,25 @@ const Login = () => {
           <h2 className="fgpsw text-right my-2 text-sm text-sky-400 font-semibold mon hover:text-sky-500 transition">
             <Link to="/reset"> I forgot my password!</Link>
           </h2>
-          <div class="mt-[1rem]">
-            <button
+          <div class="mt-[1rem] ">
+            {/* <button
               type="button"
               onClick={handleLogin}
               class="btn text-[18px] text-white font-montserrat font-semibold cursor-pointer
              w-full rounded-md outline-none py-3 bg-[#FD1014] hover:bg-[#E3383B] transition">
               Login
-            </button>
+            </button> */}
+            <Link
+              type="button"
+              to="/launch"
+              class="btn text-[18px] text-white font-montserrat font-semibold cursor-pointer text-center
+                     w-full rounded-md outline-none py-3 bg-[#FD1014] hover:bg-[#E3383B] transition">
+              Login
+            </Link>
 
             <div className="text my-5 text-slate-200">
               <h2>
-                Already have an account?{" "}
+                I don't have an account?{" "}
                 <span className="log font-bold text-[#FD1014] hover:text-[#E3383B] transition">
                   <Link to="/signup">Signup</Link>{" "}
                 </span>{" "}
@@ -268,17 +275,24 @@ const Login = () => {
                   <Link to="/reset"> I forgot my password!</Link>
                 </h2>
                 <div class="mt-[1rem]">
-                  <button
+                  {/* <button
                     type="button"
                     onClick={handleLogin}
                     class="btn text-[18px] text-white font-montserrat font-semibold cursor-pointer
                      w-full rounded-md outline-none py-3 bg-[#FD1014] hover:bg-[#E3383B] transition">
                     Login
-                  </button>
+                  </button> */}
+                  <Link
+                    type="button"
+                    to="/launch"
+                    class="btn text-[18px] text-white text-center font-montserrat font-semibold cursor-pointer
+                     w-full rounded-md outline-none py-3 bg-[#FD1014] hover:bg-[#E3383B] transition">
+                    Login
+                  </Link>
 
                   <div className="text my-5">
                     <h2>
-                      Already have an account?{" "}
+                      I don't have an account?{" "}
                       <span className="log font-bold text-[#FD1014] hover:text-[#E3383B] transition">
                         <Link to="/signup">Signup</Link>{" "}
                       </span>{" "}
