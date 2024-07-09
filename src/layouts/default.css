@@ -1,0 +1,7 @@
+.default-bg {
+  @apply bg-dark-1 min-h-screen md:p-20 flex justify-center items-center text-white;
+
+  .page {
+    @apply bg-black *:p-3 *:md:p-5 min-h-screen md:min-h-fit md:max-h-fit w-full md:max-w-[30rem]
+  }
+}

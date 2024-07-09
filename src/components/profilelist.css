@@ -1,0 +1,19 @@
+.profile-list-item {
+  @apply grid gap-2 items-center w-full;
+
+  grid-template-columns: [icon-start] 2.5rem [icon-end label-start] auto [label-end arrow-start] .8rem [arrow-end];
+  
+
+  & > .icon {
+    @apply aspect-square size-full p-1 object-contain flex items-center justify-center *:size-full;
+    grid-column: icon;
+  }
+  & > .arrow {
+    @apply aspect-square size-full p-1 object-contain flex items-center justify-center *:size-full;
+    grid-column: arrow;
+  }
+  & > .label {
+    @apply text-base md:text-lg text-left;
+    grid-column: label;
+  }
+}

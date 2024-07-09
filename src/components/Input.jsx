@@ -1,0 +1,52 @@
+import { useState } from "react";
+
+const Input = ({
+  label,
+  error,
+  type = "text",
+  name,
+  placeholder = "",
+  value,
+  setValue,
+}) => {
+  const [show, setShow] = useState(false);
+  let type_value = type;
+
+  const toggleShow = () => {
+    setShow(!show);
+    type_value = type === "password" && show ? "text" : "password";
+  };
+
+  return (
+    <div className="grid w-full gap-2">
+      <label>{label}</label>
+      <div className="flex w-full overflow-clip rounded-md border border-current bg-white text-white md:bg-opacity-50">
+        <input
+          name={name}
+          placeholder={placeholder}
+          type={type_value}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          className="grow border-none bg-transparent p-2 px-3 outline-none"
+        />
+
+        {/* <!-- show toggle visibility button for password only  --> */}
+
+        {type === "password" && (
+          <span
+            className="password-toggle flex cursor-pointer items-center justify-center self-center p-1 pr-2"
+            onClick={toggleShow}
+          >
+            {show ? <small>hide</small> : <small>show</small>}
+          </span>
+        )}
+      </div>
+
+      <span className="m-0 h-fit p-0 leading-none">
+        {error && <span>{error}</span>}
+      </span>
+    </div>
+  );
+};
+
+export default Input;

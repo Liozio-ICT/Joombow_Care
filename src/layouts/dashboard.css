@@ -1,0 +1,12 @@
+.dashboard {
+  @apply min-h-screen flex overflow-x-clip ;
+
+  & > .sidebar {
+    @apply grow hidden md:flex flex-col bg-black min-w-[12rem] h-[100dvh] sticky top-0 text-white;
+  }
+
+  & > .page {
+    @apply grow-[999] *:p-5 *:md:p-5;
+  }
+
+}
