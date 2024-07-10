@@ -1,9 +1,9 @@
-import React from 'react'
 import {
   createBrowserRouter,
 } from "react-router-dom";
 import Default from "./layouts/Default";
 import DashboardLayout from "./layouts/DashboardLayout";
+import ProfileLayout from "./layouts/ProfileLayout";
 import App from './App.jsx'
 import './index.css'
 import Login from './Pages/Login.jsx';
@@ -18,7 +18,6 @@ import BookingIndex from "./Pages/booking/Index";
 import NewBooking from "./Pages/booking/NewBooking";
 import Invite from "./Pages/Invite";
 import Dashboard from "./Pages/Dashboard";
-import ProfileLayout from "./layouts/ProfileLayout";
 import Profile from "./Pages/profile/Index";
 import EditProfile from "./Pages/profile/EditProfile";
 import AboutUs from "./Pages/profile/AboutUs";
@@ -29,40 +28,41 @@ import ChangePassword from "./Pages/profile/ChangePassword";
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <App />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/welcome",
+    element: <Onboarding />,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
+  },
+  {
+    path: "/launch",
+    element: <Launch />
+  },
+  {
+    path: "/reset",
+    element: <Forgotpswd />
+  },
+  {
+    path: "/new",
+    element: <ResetPassword />
+  },
+  {
+    path: "/user",
+    element: <User />
+  },
+  {
+    path: "/",
     element: <Default />,
     children: [
-      {
-        path: "/",
-        element: <App />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/welcome",
-        element: <Onboarding />,
-      },
-      {
-        path: "/signup",
-        element: <Signup />,
-      },
-      {
-        path: "/launch",
-        element: <Launch />
-      },
-      {
-        path: "/reset",
-        element: <Forgotpswd />
-      },
-      {
-        path: "/new",
-        element: <ResetPassword />
-      },
-      {
-        path: "/user",
-        element: <User />
-      },
+
       {
         path: "/notifications",
         element: <Notifications />,

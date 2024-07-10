@@ -1,9 +1,9 @@
 import Card from "../components/Card";
 import { cards, extras } from "../constants/cards";
 import { user } from "../layouts/constants";
-import Notification from "../assets/notification.svg";
-import Search from "../assets/search.svg";
+
 import "./dash.css";
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBell } from "react-icons/fa6";
