@@ -19,7 +19,7 @@ const Dashboard = () => {
   return (
     <main className="page relative isolate overflow-y-auto overflow-x-clip !p-0 *:p-5 md:bg-black  *:md:my-5 *:md:p-5">
       <div className="sticky top-0 !m-0 bg-[#FD3535] md:absolute md:inset-0 md:z-[-999] md:rounded-l-md">
-        <div className="flex grid gap-5 md:hidden">
+        <div className="grid gap-5 md:hidden">
           <div className="flex w-full grow items-center justify-between gap-2">
             <h1 className="grid grow text-3xl text-white *:truncate">
               <span>Hello</span>
@@ -27,7 +27,7 @@ const Dashboard = () => {
             </h1>
 
             <Link
-              to={"/notifications"}
+              to={"/dashboard/notifications"}
               className="relative flex items-center justify-center text-white"
             >
               <FaBell size={24} />

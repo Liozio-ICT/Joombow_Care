@@ -35,7 +35,7 @@ const Index = () => {
                 <div className='grid gap-5 w-full *:w-full !px-0 text-center'>
                     <p>You’ve no booking history</p>
                     <p>You’ve not book a wash today. place order soon..... </p>
-                    <Link to="/bookings/new" className='max-w-[12rem] text-sm p-1 px-2 bg-brand-red rounded mx-auto'>Book Now</Link>
+                    <Link to="/dashboard/bookings/new" className='max-w-[12rem] text-sm p-1 px-2 bg-brand-red rounded mx-auto'>Book Now</Link>
                 </div>
             </div>
         </>

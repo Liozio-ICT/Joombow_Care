@@ -59,20 +59,30 @@ const router = createBrowserRouter([
     element: <User />
   },
   {
-    path: "/",
+    path: "/dashboard/",
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: "",
+        element: <Dashboard />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard/",
     element: <Default />,
     children: [
 
       {
-        path: "/notifications",
+        path: "notifications",
         element: <Notifications />,
       },
       {
-        path: "/invite",
+        path: "invite",
         element: <Invite />,
       },
       {
-        path: "/bookings/",
+        path: "bookings/",
         children: [
           {
             path: "",
@@ -87,17 +97,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/dashboard/",
-    element: <DashboardLayout />,
-    children: [
-      {
-        path: "",
-        element: <Dashboard />,
-      },
-    ],
-  },
-  {
-    path: "/profile/",
+    path: "/dashboard/profile/",
     element: <ProfileLayout />,
     children: [
       {

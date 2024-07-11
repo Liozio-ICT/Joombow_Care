@@ -9,18 +9,11 @@ const Input = ({
   value,
   setValue,
 }) => {
-  const [show, setShow] = useState(false);
   let type_value = type;
-
-  const toggleShow = () => {
-    setShow(!show);
-    type_value = type === "password" && show ? "text" : "password";
-  };
-
   return (
     <div className="grid w-full gap-2">
       <label>{label}</label>
-      <div className="flex w-full overflow-clip rounded-md border border-current bg-white text-white md:bg-opacity-50">
+      <div className="flex w-full overflow-clip rounded-md border border-current bg-white text-black md:text-white md:bg-opacity-50">
         <input
           name={name}
           placeholder={placeholder}
@@ -31,15 +24,6 @@ const Input = ({
         />
 
         {/* <!-- show toggle visibility button for password only  --> */}
-
-        {type === "password" && (
-          <span
-            className="password-toggle flex cursor-pointer items-center justify-center self-center p-1 pr-2"
-            onClick={toggleShow}
-          >
-            {show ? <small>hide</small> : <small>show</small>}
-          </span>
-        )}
       </div>
 
       <span className="m-0 h-fit p-0 leading-none">

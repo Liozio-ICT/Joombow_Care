@@ -31,7 +31,7 @@ const Settings = () => {
           <ProfileListItem
             label={"Change password"}
             icon={<BiLockAlt />}
-            to={"/profile/settings/change-password"}
+            to={"/dashboard/profile/settings/change-password"}
           />
         </li>
         <li>

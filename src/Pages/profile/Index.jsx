@@ -15,22 +15,22 @@ const Profile = () => {
   const list = [
     {
       label: "Edit Profile",
-      to: "/profile/edit",
+      to: "/dashboard/profile/edit",
       icon: <FaEdit />,
     },
     {
       label: "Settings",
-      to: "/profile/settings",
+      to: "/dashboard/profile/settings",
       icon: <FaGear />,
     },
     {
       label: "Help & Support",
-      to: "/profile/help-support",
+      to: "/dashboard/profile/help-support",
       icon: <FaMessage />,
     },
     {
       label: "About Us",
-      to: "/profile/about-us",
+      to: "/dashboard/profile/about-us",
       icon: <FaInfoCircle />,
     },
     {
