@@ -153,11 +153,11 @@ const Login = () => {
              w-full rounded-md outline-none py-3 bg-[#FD1014] hover:bg-[#E3383B] transition">
               Login
             </button> */}
+
             <Link
               type="button"
               to="/launch"
-              class="btn text-[18px] text-white font-montserrat font-semibold cursor-pointer text-center
-                     w-full rounded-md outline-none py-3 bg-[#FD1014] hover:bg-[#E3383B] transition">
+              className="btn text-[18px] text-white font-montserrat font-semibold cursor-pointer text-center w-full rounded-md outline-none py-3 bg-[#FD1014] hover:bg-[#E3383B] transition">
               Login
             </Link>
 

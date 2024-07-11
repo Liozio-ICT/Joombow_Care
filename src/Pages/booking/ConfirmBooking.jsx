@@ -3,11 +3,12 @@ import { configure } from "../../constants/paystack";
 import { user } from "../../layouts/constants"
 
 const ConfirmBooking = ({ data = [] }) => {
-    const name = data.find(i => i.label.toString().toLowerCase() === 'full name')
+    // const name = data.find(i => i.label.toString().toLowerCase() === 'full name')
+    const amount = data.find(i => i.label.toString().toLowerCase() === 'amount') ?? 30000
     const email = user.email;
     const config = configure({
-        name,
         email,
+        amount,
     })
 
     // you can call this function anything

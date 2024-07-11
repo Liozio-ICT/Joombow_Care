@@ -1,5 +1,6 @@
 import { nanoid } from "nanoid";
-export const PAYSTACK_PUBLIC_KEY = "pk_test_dsdfghuytfd2345678gvxxxxxxxxxx";
+export const PAYSTACK_PUBLIC_KEY =
+  "pk_test_be07a5345d7421a15dbca1b166ad61a31eaf327e";
 
 export const PAYSTACK_URL = "https://api.paystack.co";
 
