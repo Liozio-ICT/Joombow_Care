@@ -1,10 +1,18 @@
 import { Outlet } from "react-router-dom";
 import { dashboardPages, user } from "./constants";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MobileFooter from "../components/MobileFooter.jsx";
 import "./dashboard.css";
 
 const DashboardLayout = () => {
+
+  const navigate = useNavigate()
+  const logout = async () => {
+    // api logout call
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    navigate('/')
+  }
   return (
     <>
       <main className="dashboard">
@@ -23,7 +31,7 @@ const DashboardLayout = () => {
           </div>
 
           <div className="sticky bottom-0 flex flex-col p-3 px-5">
-            <button className="flex text-white/50 ">
+            <button className="flex text-white/50" type="button" onClick={logout}>
               <small>Logout</small>
             </button>
             <p>{user.name}</p>

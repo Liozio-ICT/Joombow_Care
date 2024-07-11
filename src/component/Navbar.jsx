@@ -67,7 +67,7 @@ function Navbar() {
               href="#carmake"
               className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
               {" "}
-              Car Make
+              Car Repair
             </a>
             {/* <a
               href="#review"
@@ -180,11 +180,17 @@ function Navbar() {
                   Why us
                 </a>
                 <a
+                  href="#carmake"
+                  className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
+                  {" "}
+                  Car Repair
+                </a>
+                {/* <a
                   onClick={toggle}
                   href="#review"
                   className="block fonth py-4 border-b border-dashed border-gray-700  f text-[20px] hover:text-[#FD1014] transition">
                   Review
-                </a>
+                </a> */}
 
                 <a
                   href="#contact"
