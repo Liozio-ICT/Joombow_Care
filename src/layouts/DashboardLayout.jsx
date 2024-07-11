@@ -3,6 +3,7 @@ import { dashboardPages, user } from "./constants";
 import { Link, useNavigate } from "react-router-dom";
 import MobileFooter from "../components/MobileFooter.jsx";
 import "./dashboard.css";
+import Loader from "../component/Loader.jsx";
 
 const DashboardLayout = () => {
 
@@ -15,6 +16,8 @@ const DashboardLayout = () => {
   }
   return (
     <>
+      <Loader />
+
       <main className="dashboard">
         <aside className="sidebar pt-20">
           <div className="flex grow flex-col gap-3 p-3">
