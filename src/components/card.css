@@ -1,0 +1,7 @@
+.card{
+    @apply grid overflow-clip rounded-xl bg-transparent md:bg-[#D9D9D9] text-black isolate p-0;
+
+    .image{
+        @apply overflow-clip rounded-t-xl min-h-[10rem];
+    }
+}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { GrFormPreviousLink } from "react-icons/gr";
@@ -96,7 +96,7 @@ const Signup = () => {
       const data = await res?.json();
       if (data?.success) {
         navigate("/user");
-       
+
       }
     } catch (error) {
       console.log("Could not login with Google", error);
@@ -141,9 +141,9 @@ const Signup = () => {
           <h2 className="text-[1.7rem] text-slate-200 font-clash capitalize font-bold mb-8">
             SignUp
           </h2>
-          <form class="mt-[1rem]" id="registrationForm ">
-            <div class="inputCon text-slate-200 ">
-              <label class="block  font-semibold text-[16px] ">
+          <form className="mt-[1rem]" id="registrationForm ">
+            <div className="inputCon text-slate-200 ">
+              <label className="block  font-semibold text-[16px] ">
                 First Name:
               </label>
               <input
@@ -151,67 +151,62 @@ const Signup = () => {
                 onChange={(e) => setFirstName(e.target.value)}
                 id="firstName"
                 type="text"
-                className={`bg-[#FCFBFB] text-black focus:border focus:border-gray-300 capitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] mb-1 mt-1 px-4 ${
-                  message && !firstName ? "border-red-500" : ""
-                }`}
+                className={`bg-[#FCFBFB] text-black focus:border focus:border-gray-300 capitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] mb-1 mt-1 px-4 ${message && !firstName ? "border-red-500" : ""
+                  }`}
               />
             </div>
 
-            <div class="inputCon text-slate-200 py-2">
-              <label class="block  font-semibold text-[16px]">Last Name:</label>
+            <div className="inputCon text-slate-200 py-2">
+              <label className="block  font-semibold text-[16px]">Last Name:</label>
               <input
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
                 id="lastName"
                 type="text"
-                className={`bg-[#FCFBFB] text-black focus:border focus:border-gray-300 capitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] mb-1 mt-1 px-4 ${
-                  message && !lastName ? "border-red-500" : ""
-                }`}
+                className={`bg-[#FCFBFB] text-black focus:border focus:border-gray-300 capitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] mb-1 mt-1 px-4 ${message && !lastName ? "border-red-500" : ""
+                  }`}
               />
             </div>
 
-            <div class="inputCon text-slate-200">
-              <label class="block font-semibold text-[16px]">Email:</label>
+            <div className="inputCon text-slate-200">
+              <label className="block font-semibold text-[16px]">Email:</label>
               <input
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 id="email"
                 type="text"
-                className={`bg-[#FCFBFB] text-black focus:border focus:border-gray-300 apitalze border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] mb-1 mt-1 px-4 ${
-                  message && !email ? "border-red-500" : ""
-                }`}
+                className={`bg-[#FCFBFB] text-black focus:border focus:border-gray-300 apitalze border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] mb-1 mt-1 px-4 ${message && !email ? "border-red-500" : ""
+                  }`}
               />
             </div>
 
-            <div class="inputCon text-slate-200">
-              <label class="block font-semibold text-[16px]">Phone No:</label>
+            <div className="inputCon text-slate-200">
+              <label className="block font-semibold text-[16px]">Phone No:</label>
               <input
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
                 id="phoneNumber"
                 type="text"
                 className={`bg-[#FCFBFB] text-black focus:border focus:border-gray-300
-                 capitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] mb-1 mt-1 px-4 ${
-                   message && !phoneNumber ? "border-red-500" : ""
-                 }`}
+                 capitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] mb-1 mt-1 px-4 ${message && !phoneNumber ? "border-red-500" : ""
+                  }`}
               />
             </div>
 
-            <div class="inputCon text-slate-200">
-              <label class="block font-semibold text-[16px]">Password:</label>
+            <div className="inputCon text-slate-200">
+              <label className="block font-semibold text-[16px]">Password:</label>
               <input
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 id="password"
                 type="text"
-                className={`bg-[#FCFBFB] text-black focus:border focus:border-gray-300 apitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] mb-1 mt-1 px-4 ${
-                  message && !password ? "border-red-500" : ""
-                }`}
+                className={`bg-[#FCFBFB] text-black focus:border focus:border-gray-300 apitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] mb-1 mt-1 px-4 ${message && !password ? "border-red-500" : ""
+                  }`}
               />
             </div>
 
-            <div class="inputCon text-slate-200">
-              <label class="block font-semibold text-[16px]">
+            <div className="inputCon text-slate-200">
+              <label className="block font-semibold text-[16px]">
                 Referral code:
               </label>
               <input
@@ -219,16 +214,15 @@ const Signup = () => {
                 onChange={(e) => setReferralCode(e.target.value)}
                 id="referralCode"
                 type="text"
-                className={`bg-[#FCFBFB] text-black focus:border focus:border-gray-300 capitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] mb-1 mt-1 px-4 ${
-                  message && !referralCode ? "border-red-500" : ""
-                }`}
+                className={`bg-[#FCFBFB] text-black focus:border focus:border-gray-300 capitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] mb-1 mt-1 px-4 ${message && !referralCode ? "border-red-500" : ""
+                  }`}
               />
             </div>
 
             <button
               type="button"
               onClick={handleSignup}
-              class="btn mt-6 text-[18px] font-montserrat text-white font-semibold cursor-pointer w-full rounded-md outline-none py-3 bg-[#FD1014] hover:bg-[#E3383B] transition">
+              className="btn mt-6 text-[18px] font-montserrat text-white font-semibold cursor-pointer w-full rounded-md outline-none py-3 bg-[#FD1014] hover:bg-[#E3383B] transition">
               Next
             </button>
 
@@ -244,15 +238,15 @@ const Signup = () => {
               <div
                 className="fixed top-0 left-0 right-0 bottom-0
                    bg-white w-full flex items-center justify-center">
-                <div class="dot-spinner">
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
+                <div className="dot-spinner">
+                  <div className="dot-spinner__dot"></div>
+                  <div className="dot-spinner__dot"></div>
+                  <div className="dot-spinner__dot"></div>
+                  <div className="dot-spinner__dot"></div>
+                  <div className="dot-spinner__dot"></div>
+                  <div className="dot-spinner__dot"></div>
+                  <div className="dot-spinner__dot"></div>
+                  <div className="dot-spinner__dot"></div>
                 </div>
               </div>
             )}
@@ -266,15 +260,15 @@ const Signup = () => {
 
             {loading && (
               <div className="fixed top-0 left-0 right-0 bottom-0 bg-white w-full flex items-center justify-center">
-                <div class="dot-spinner">
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
+                <div className="dot-spinner">
+                  <div className="dot-spinner__dot"></div>
+                  <div className="dot-spinner__dot"></div>
+                  <div className="dot-spinner__dot"></div>
+                  <div className="dot-spinner__dot"></div>
+                  <div className="dot-spinner__dot"></div>
+                  <div className="dot-spinner__dot"></div>
+                  <div className="dot-spinner__dot"></div>
+                  <div className="dot-spinner__dot"></div>
                 </div>
               </div>
             )}
@@ -305,7 +299,7 @@ const Signup = () => {
 
           <div className="absolute inset-0 flex  justify-center  w-full  text-white  px-6 ">
             <form
-              class=" h-[775px] w-[50%]  mt-[.3rem] px-4 rounded-lg self-start bg-[#433F3FCC]"
+              className=" h-[775px] w-[50%]  mt-[.3rem] px-4 rounded-lg self-start bg-[#433F3FCC]"
               id="registrationForm">
               <span className="prevLink px-4 block mt-8">
                 <Link to="/">
@@ -313,12 +307,12 @@ const Signup = () => {
                 </Link>
               </span>
 
-              <h2 class="text-[1.7rem] font-clash capitalize font-bold my-4">
+              <h2 className="text-[1.7rem] font-clash capitalize font-bold my-4">
                 signup
               </h2>
 
-              <div class="inputCon w-full">
-                <label class="block text-slate-100 font-semibold text-[14px] ">
+              <div className="inputCon w-full">
+                <label className="block text-slate-100 font-semibold text-[14px] ">
                   First Name:
                 </label>
                 <input
@@ -326,14 +320,13 @@ const Signup = () => {
                   onChange={(e) => setFirstName(e.target.value)}
                   id="firstName"
                   type="text"
-                  className={` border-[1px] border-slate-200 text-black outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-400 mb-2 ${
-                    message && !firstName ? "border-red-500" : ""
-                  }`}
+                  className={` border-[1px] border-slate-200 text-black outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-400 mb-2 ${message && !firstName ? "border-red-500" : ""
+                    }`}
                 />
               </div>
 
-              <div class="inputCon">
-                <label class="block text-slate-100 font-semibold text-[14px]">
+              <div className="inputCon">
+                <label className="block text-slate-100 font-semibold text-[14px]">
                   Last Name:
                 </label>
                 <input
@@ -341,14 +334,13 @@ const Signup = () => {
                   onChange={(e) => setLastName(e.target.value)}
                   id="lastName"
                   type="text"
-                  className={`border-[1px] border-slate-200 text-black outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-400 mb-2  ${
-                    message && !lastName ? "border-red-500" : ""
-                  }`}
+                  className={`border-[1px] border-slate-200 text-black outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-400 mb-2  ${message && !lastName ? "border-red-500" : ""
+                    }`}
                 />
               </div>
 
-              <div class="inputCon my-[.3rem]">
-                <label class="block text-slate-100 font-semibold text-[14px]">
+              <div className="inputCon my-[.3rem]">
+                <label className="block text-slate-100 font-semibold text-[14px]">
                   Email:
                 </label>
                 <input
@@ -357,14 +349,13 @@ const Signup = () => {
                   id="email"
                   type="text"
                   className={`border-[1px] mt-1 mb-2 text-black  border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] 
-                  focus:border focus:border-gray-400 ${
-                    message && !email ? "border-red-500" : ""
-                  }`}
+                  focus:border focus:border-gray-400 ${message && !email ? "border-red-500" : ""
+                    }`}
                 />
               </div>
 
-              <div class="inputCon my-[.3rem]">
-                <label class="block text-slate-100 font-semibold text-[14px]">
+              <div className="inputCon my-[.3rem]">
+                <label className="block text-slate-100 font-semibold text-[14px]">
                   Phone No:
                 </label>
                 <input
@@ -372,14 +363,13 @@ const Signup = () => {
                   onChange={(e) => setPhoneNumber(e.target.value)}
                   id="phoneNumber"
                   type="text"
-                  className={`border-[1px] mb-2 text-black border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-400 ${
-                    message && !phoneNumber ? "border-red-500" : ""
-                  }`}
+                  className={`border-[1px] mb-2 text-black border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-400 ${message && !phoneNumber ? "border-red-500" : ""
+                    }`}
                 />
               </div>
 
-              <div class="inputCon">
-                <label class="block text-slate-100 font-semibold text-[14px]">
+              <div className="inputCon">
+                <label className="block text-slate-100 font-semibold text-[14px]">
                   Password:
                 </label>
                 <input
@@ -388,14 +378,13 @@ const Signup = () => {
                   id="password"
                   type="text"
                   className={`border-[1px] mb-2 text-black border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border
-                  focus:border-gray-400 ${
-                    message && !password ? "border-red-500" : ""
-                  }`}
+                  focus:border-gray-400 ${message && !password ? "border-red-500" : ""
+                    }`}
                 />
               </div>
 
-              <div class="inputCon">
-                <label class="block text-slate-100 font-semibold text-[14px]">
+              <div className="inputCon">
+                <label className="block text-slate-100 font-semibold text-[14px]">
                   Referral code:
                 </label>
                 <input
@@ -403,16 +392,15 @@ const Signup = () => {
                   onChange={(e) => setReferralCode(e.target.value)}
                   id="referralCode"
                   type="text"
-                  className={`border-[1px] mb-2 text-black border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-400 ${
-                    message && !referralCode ? "border-red-500" : ""
-                  }`}
+                  className={`border-[1px] mb-2 text-black border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-400 ${message && !referralCode ? "border-red-500" : ""
+                    }`}
                 />
               </div>
 
               <button
                 type="button"
                 onClick={handleSignup}
-                class="text-[18px] text-white font-montserrat font-semibold cursor-pointer
+                className="text-[18px] text-white font-montserrat font-semibold cursor-pointer
                 w-full rounded-md outline-none py-3 bg-[#FD1014] hover:bg-[#E3383B] mt-4 transition">
                 Next
               </button>
@@ -429,15 +417,15 @@ const Signup = () => {
                 <div
                   className="fixed top-0 left-0 right-0 bottom-0 z-20
                    bg-white w-full flex items-center justify-center">
-                  <div class="dot-spinner">
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
+                  <div className="dot-spinner">
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
                   </div>
                 </div>
               )}
@@ -452,15 +440,15 @@ const Signup = () => {
 
               {loading && (
                 <div className="fixed top-0 left-0 right-0 bottom-0 bg-white w-full flex items-center justify-center">
-                  <div class="dot-spinner">
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
+                  <div className="dot-spinner">
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
                   </div>
                 </div>
               )}

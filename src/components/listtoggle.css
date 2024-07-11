@@ -1,0 +1,23 @@
+.list-toggle-item {
+  @apply grid gap-2 items-center w-full;
+  
+    grid-template-columns: [label-start] auto [label-end toggle-start] 2rem [toggle-end];
+
+  &.show-icon{
+    grid-template-columns: [icon-start] 2.5rem [icon-end label-start] auto [label-end toggle-start] 2rem [toggle-end];
+  
+    & > .icon {
+      @apply aspect-square size-full p-1 object-contain;
+      grid-column: icon;
+    }
+  }
+
+  & > .toggle {
+    @apply aspect-square size-full p-1 object-contain text-green-700;
+    grid-column: toggle;
+  }
+  & > .label {
+    @apply text-base md:text-lg text-left;
+    grid-column: label;
+  }
+}

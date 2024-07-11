@@ -1,0 +1,11 @@
+.gridded {
+    @apply grid gap-5 max-w-full md:gap-10 grid-cols-2 md:grid-cols-[repeat(auto-fill,_minmax(min(15rem,_100%),_1fr))];
+/* 
+    & > * {
+        @apply col-span-3 !grid-rows-subgrid !grid-cols-subgrid; */
+        .card {
+            @apply !grid-rows-subgrid !gap-0 row-span-2;
+        }
+    /* } */
+    
+}
