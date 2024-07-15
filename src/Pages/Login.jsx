@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
 import { app } from "../component/firebaseConfig";
 import { GrFormPreviousLink } from "react-icons/gr";
@@ -8,12 +8,16 @@ import { FcGoogle } from "react-icons/fc";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loader from "../component/Loader";
+import apiClient from "../utils/apiClient";
+import { ScrollRestoration } from "react-router-dom";
+import { useAuth } from "../provders/AuthProvider";
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const { login } = useAuth()
 
   const handleLogin = async () => {
     try {
@@ -24,29 +28,18 @@ const Login = () => {
         return;
       }
 
-      const response = await fetch("https://resp-one.vercel.app/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
+      const response = await apiClient.post("/user/login", { email, password });
 
+      const { message, token, user } = await response.json()
       if (response.ok) {
-        const data = await response.json();
-        toast.success(data.message);
-
-        if (data.token) {
-          navigate("/user");
-        } else {
-          console.error("User is not registered.");
-        }
+        toast.success(message);
+        login(token, user)
+        navigate("/launch");
       } else {
-        const errorData = await response.json();
-        toast.error(`Login failed: ${errorData.message}`);
+        toast.error(`Login failed: ${message}`);
       }
     } catch (error) {
-      console.error("Error during login:", error);
+      console.error("Error during login:", error.message);
     } finally {
       setLoading(false);
     }
@@ -61,19 +54,17 @@ const Login = () => {
       const result = await signInWithPopup(Gauth, provider);
       console.log("AUTH", result);
 
-      const res = await fetch("https://resp-one.vercel.app/save-user", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: result?.user.displayName,
-          email: result?.user.email,
-        }),
+      const response = await apiClient("/user/login/google", {
+        name: result?.user.displayName,
+        email: result?.user.email,
       });
-      const data = await res?.json();
-      if (data?.success) {
-        navigate("/user");
+
+
+      const { message, token, user } = await response.json()
+      if (response.ok) {
+        toast.success(message);
+        login(token, user)
+        navigate("/launch");
       }
     } catch (error) {
       // toast.error('Could not login with Google');
@@ -85,6 +76,8 @@ const Login = () => {
 
   return (
     <main className="loginCon bg-black">
+      <ScrollRestoration />
+
       <Loader />
       <ToastContainer
         position="top-right"
@@ -110,12 +103,12 @@ const Login = () => {
             alt="Logo"
           />
         </div>
-        <h2 class="text-[1.7rem] text-slate-200 font-clash capitalize font-bold mb-8">
+        <h2 className="text-[1.7rem] text-slate-200 font-clash capitalize font-bold mb-8">
           login
         </h2>
-        <form class="mt-[1rem]" id="registrationForm">
-          <div class="inputCon">
-            <label class="block text-[#010102] font-semibold text-[16px]">
+        <form className="mt-[1rem]" id="registrationForm">
+          <div className="inputCon">
+            <label className="block text-[#010102] font-semibold text-[16px]">
               Email:
             </label>
             <input
@@ -124,12 +117,12 @@ const Login = () => {
               id="email"
               type="text"
               placeholder="Enter Email"
-              class="apitalize text-black border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-300"
+              className="apitalize text-black border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-300"
             />
           </div>
 
-          <div class="inputCon py-2">
-            <label class="block text-[#010102] font-semibold text-[16px]">
+          <div className="inputCon py-2">
+            <label className="block text-[#010102] font-semibold text-[16px]">
               Password:
             </label>
             <input
@@ -138,28 +131,28 @@ const Login = () => {
               id="password"
               type="text"
               placeholder="Enter Password"
-              class="apitalize text-black border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-300 "
+              className="apitalize text-black border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-300 "
             />
           </div>
 
           <h2 className="fgpsw text-right my-2 text-sm text-sky-400 font-semibold mon hover:text-sky-500 transition">
             <Link to="/reset"> I forgot my password!</Link>
           </h2>
-          <div class="mt-[1rem] ">
-            {/* <button
+          <div className="mt-[1rem] ">
+            <button
               type="button"
               onClick={handleLogin}
-              class="btn text-[18px] text-white font-montserrat font-semibold cursor-pointer
+              className="btn text-[18px] text-white font-montserrat font-semibold cursor-pointer
              w-full rounded-md outline-none py-3 bg-[#FD1014] hover:bg-[#E3383B] transition">
               Login
-            </button> */}
+            </button>
 
-            <Link
+            {/* <Link
               type="button"
               to="/launch"
               className="btn text-[18px] text-white font-montserrat font-semibold cursor-pointer text-center w-full rounded-md outline-none py-3 bg-[#FD1014] hover:bg-[#E3383B] transition">
               Login
-            </Link>
+            </Link> */}
 
             <div className="text my-5 text-slate-200">
               <h2>
@@ -174,15 +167,15 @@ const Login = () => {
               <div
                 className="fixed top-0 left-0 right-0 bottom-0
                    bg-white w-full flex items-center justify-center">
-                <div class="dot-spinner">
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
+                <div className="dot-spinner">
+                  <div className="dot-spinner__dot"></div>
+                  <div className="dot-spinner__dot"></div>
+                  <div className="dot-spinner__dot"></div>
+                  <div className="dot-spinner__dot"></div>
+                  <div className="dot-spinner__dot"></div>
+                  <div className="dot-spinner__dot"></div>
+                  <div className="dot-spinner__dot"></div>
+                  <div className="dot-spinner__dot"></div>
                 </div>
               </div>
             )}
@@ -232,19 +225,19 @@ const Login = () => {
 
         <div className="absolute inset-0 flex  justify-center  w-full  text-white ">
           <form
-            class=" w-[50%]  mt-[2rem] bg-[#433F3FCC]"
+            className=" w-[50%]  mt-[2rem] bg-[#433F3FCC]"
             id="registrationForm">
-            <main class="px-[1rem] block">
+            <main className="px-[1rem] block">
               <Link to="/">
                 <GrFormPreviousLink className="text-[1.5rem] text-white border border-gray-200 rounded-3xl mt-8 mb-10" />
               </Link>
 
-              <h2 class=" text-slate-100 text-[1.7rem] font-clash capitalize font-bold mb-8">
+              <h2 className=" text-slate-100 text-[1.7rem] font-clash capitalize font-bold mb-8">
                 login
               </h2>
-              <form class="mt-[1rem]" id="registrationForm">
-                <div class="inputCon my-[1rem]">
-                  <label class="block text-slate-100 font-semibold text-[16px]">
+              <form className="mt-[1rem]" id="registrationForm">
+                <div className="inputCon my-[1rem]">
+                  <label className="block text-slate-100 font-semibold text-[16px]">
                     Email:
                   </label>
                   <input
@@ -253,12 +246,12 @@ const Login = () => {
                     id="email"
                     type="text"
                     placeholder="Enter Email"
-                    class="apitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 my-2 bg-[#FCFBFB] focus:border text-black focus:border-gray-400"
+                    className="apitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 my-2 bg-[#FCFBFB] focus:border text-black focus:border-gray-400"
                   />
                 </div>
 
-                <div class="inputCon">
-                  <label class="block text-slate-100 font-semibold text-[16px]">
+                <div className="inputCon">
+                  <label className="block text-slate-100 font-semibold text-[16px]">
                     Password:
                   </label>
                   <input
@@ -267,28 +260,27 @@ const Login = () => {
                     id="password"
                     type="text"
                     placeholder="Enter Password"
-                    class="apitalize  text-slate-900  border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] my-2 px-4 bg-[#FCFBFB] focus:border focus:border-gray-400"
+                    className="apitalize  text-slate-900  border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] my-2 px-4 bg-[#FCFBFB] focus:border focus:border-gray-400"
                   />
                 </div>
 
                 <h2 className="fgpsw text-right my-2 text-sm text-sky-400 font-semibold mon  hover:text-sky-500 transition">
                   <Link to="/reset"> I forgot my password!</Link>
                 </h2>
-                <div class="mt-[1rem]">
-                  {/* <button
+                <div className="mt-[1rem]">
+                  <button
                     type="button"
                     onClick={handleLogin}
-                    class="btn text-[18px] text-white font-montserrat font-semibold cursor-pointer
+                    className="btn text-[18px] text-white font-montserrat font-semibold cursor-pointer
                      w-full rounded-md outline-none py-3 bg-[#FD1014] hover:bg-[#E3383B] transition">
                     Login
-                  </button> */}
-                  <Link
-                    type="button"
+                  </button>
+                  {/* <Link
+                    // type="button"
                     to="/launch"
-                    class="btn text-[18px] text-white text-center font-montserrat font-semibold cursor-pointer
-                     w-full rounded-md outline-none py-3 bg-[#FD1014] hover:bg-[#E3383B] transition">
+                    className="btn mt-6 text-[18px] font-montserrat text-white font-semibold cursor-pointer rounded-md outline-none p-3 text-center block bg-[#FD1014] hover:bg-[#E3383B] transition">
                     Login
-                  </Link>
+                  </Link> */}
 
                   <div className="text my-5">
                     <h2>
@@ -303,15 +295,15 @@ const Login = () => {
                     <div
                       className="fixed top-0 left-0 right-0 bottom-0 z-20
                    bg-white w-full flex items-center justify-center">
-                      <div class="dot-spinner">
-                        <div class="dot-spinner__dot"></div>
-                        <div class="dot-spinner__dot"></div>
-                        <div class="dot-spinner__dot"></div>
-                        <div class="dot-spinner__dot"></div>
-                        <div class="dot-spinner__dot"></div>
-                        <div class="dot-spinner__dot"></div>
-                        <div class="dot-spinner__dot"></div>
-                        <div class="dot-spinner__dot"></div>
+                      <div className="dot-spinner">
+                        <div className="dot-spinner__dot"></div>
+                        <div className="dot-spinner__dot"></div>
+                        <div className="dot-spinner__dot"></div>
+                        <div className="dot-spinner__dot"></div>
+                        <div className="dot-spinner__dot"></div>
+                        <div className="dot-spinner__dot"></div>
+                        <div className="dot-spinner__dot"></div>
+                        <div className="dot-spinner__dot"></div>
                       </div>
                     </div>
                   )}

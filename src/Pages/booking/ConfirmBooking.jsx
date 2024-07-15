@@ -1,6 +1,7 @@
 import { usePaystackPayment } from "react-paystack";
 import { configure } from "../../constants/paystack";
 import { user } from "../../layouts/constants"
+import { ScrollRestoration } from "react-router-dom";
 
 const ConfirmBooking = ({ data = [] }) => {
     // const name = data.find(i => i.label.toString().toLowerCase() === 'full name')
@@ -26,6 +27,8 @@ const ConfirmBooking = ({ data = [] }) => {
     const initializePayment = usePaystackPayment(config);
     return (
         <>
+            <ScrollRestoration />
+
             <div className='mx-auto *:mx-auto md:max-w-[75%] my-5 md:my-10 flex-col flex gap-5 md:gap-10  *:rounded'>
                 <div className='bg-brand-red min-h-[4rem] w-full mx-5'>
 

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Input from "../../components/Input";
 import Select from "../../components/Select";
+import { ScrollRestoration } from "react-router-dom";
 
 const BookingForm = ({ onSubmit }) => {
   const onsubmit = (form) => {
@@ -59,6 +60,8 @@ const BookingForm = ({ onSubmit }) => {
 
   return (
     <>
+      <ScrollRestoration />
+
       <form
         onSubmit={onsubmit}
         className="mx-auto my-5 flex flex-col gap-5 *:mx-auto md:my-10 md:max-w-[75%]"

@@ -24,6 +24,9 @@ import AboutUs from "./Pages/profile/AboutUs";
 import HelpSupport from "./Pages/profile/HelpSupport";
 import Settings from "./Pages/profile/Settings";
 import ChangePassword from "./Pages/profile/ChangePassword";
+import PrivateRoute from "./PrivateRoute.jsx";
+import AuthRoute from "./AuthRoutes.jsx";
+import { Navigate } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
@@ -31,16 +34,8 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "/login",
-    element: <Login />,
-  },
-  {
     path: "/welcome",
     element: <Onboarding />,
-  },
-  {
-    path: "/signup",
-    element: <Signup />,
   },
   {
     path: "/launch",
@@ -59,73 +54,98 @@ const router = createBrowserRouter([
     element: <User />
   },
   {
-    path: "/dashboard/",
-    element: <DashboardLayout />,
-    children: [
-      {
-        path: "",
-        element: <Dashboard />,
-      },
-    ],
-  },
-  {
-    path: "/dashboard/",
-    element: <Default />,
+    path: '/',
+    element: <AuthRoute />,
     children: [
 
       {
-        path: "notifications",
-        element: <Notifications />,
+        path: "/login",
+        element: <Login />,
       },
       {
-        path: "invite",
-        element: <Invite />,
+        path: "/signup",
+        element: <Signup />,
       },
+    ]
+  },
+  {
+    path: "/",
+    element: <PrivateRoute />,
+    children: [
       {
-        path: "bookings/",
+        path: "dashboard/",
+        element: <DashboardLayout />,
         children: [
           {
             path: "",
-            element: <BookingIndex />,
-          },
-          {
-            path: "new",
-            element: <NewBooking />,
+            element: <Dashboard />,
           },
         ],
       },
-    ],
-  },
-  {
-    path: "/dashboard/profile/",
-    element: <ProfileLayout />,
-    children: [
       {
-        path: "",
-        element: <Profile />,
+        path: "dashboard/",
+        element: <Default />,
+        children: [
+          {
+            path: "",
+            element: <Navigate to={'/dashboard'} />,
+          },
+
+          {
+            path: "notifications",
+            element: <Notifications />,
+          },
+          {
+            path: "invite",
+            element: <Invite />,
+          },
+          {
+            path: "bookings/",
+            children: [
+              {
+                path: "",
+                element: <BookingIndex />,
+              },
+              {
+                path: "new",
+                element: <NewBooking />,
+              },
+            ],
+          },
+        ],
       },
       {
-        path: "edit",
-        element: <EditProfile />,
+        path: "dashboard/profile/",
+        element: <ProfileLayout />,
+        children: [
+          {
+            path: "",
+            element: <Profile />,
+          },
+          {
+            path: "edit",
+            element: <EditProfile />,
+          },
+          {
+            path: "settings",
+            element: <Settings />,
+          },
+          {
+            path: "settings/change-password",
+            element: <ChangePassword />,
+          },
+          {
+            path: "about-us",
+            element: <AboutUs />,
+          },
+          {
+            path: "help-support",
+            element: <HelpSupport />,
+          },
+        ],
       },
-      {
-        path: "settings",
-        element: <Settings />,
-      },
-      {
-        path: "settings/change-password",
-        element: <ChangePassword />,
-      },
-      {
-        path: "about-us",
-        element: <AboutUs />,
-      },
-      {
-        path: "help-support",
-        element: <HelpSupport />,
-      },
-    ],
-  },
+    ]
+  }
 ]);
 
 export default router;

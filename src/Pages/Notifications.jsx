@@ -1,10 +1,11 @@
-import React from "react";
 import TitleHeader from "../components/TitleHeader";
 import bellIcon from "../assets/gold-bell.svg";
+import { ScrollRestoration } from "react-router-dom";
 
 const Notifications = () => {
   return (
     <>
+      <ScrollRestoration />
       <div className="!bg-brand-red !pt-10 md:bg-transparent md:!pt-5">
         <TitleHeader title="Notifications" />
       </div>

@@ -4,19 +4,39 @@ import { Link, useNavigate } from "react-router-dom";
 import MobileFooter from "../components/MobileFooter.jsx";
 import "./dashboard.css";
 import Loader from "../component/Loader.jsx";
+import { useAuth } from "../provders/AuthProvider.jsx";
+import { ScrollRestoration } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 
 const DashboardLayout = () => {
+  const { logout } = useAuth()
 
   const navigate = useNavigate()
-  const logout = async () => {
-    // api logout call
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    navigate('/')
+  const handleLogout = async () => {
+    // api handleLogout call
+    const { done, message } = await logout()
+    if (done) return navigate('/')
+
+    toast.error(message)
   }
   return (
     <>
       <Loader />
+
+      <ScrollRestoration />
+
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+
 
       <main className="dashboard">
         <aside className="sidebar pt-20">
@@ -34,7 +54,7 @@ const DashboardLayout = () => {
           </div>
 
           <div className="sticky bottom-0 flex flex-col p-3 px-5">
-            <button className="flex text-white/50" type="button" onClick={logout}>
+            <button className="flex text-white/50" type="button" onClick={handleLogout}>
               <small>Logout</small>
             </button>
             <p>{user.name}</p>

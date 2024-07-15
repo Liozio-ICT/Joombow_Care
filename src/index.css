@@ -8,12 +8,12 @@
   border: none;
   cursor: pointer;
   transition: width 0.05s ease;
-  width: 100px;
+  min-width: 100px;
 }
 .btn:hover {
   /* color: yellow; */
   transition: width 0.2s ease;
-  width: 200px;
+  min-width: 200px;
 }
 
 .dot-spinner {
@@ -44,7 +44,9 @@
   border-radius: 50%;
   background-color: #ca0d0d;
   filter: drop-shadow(0 0 10px rgb(240, 241, 243));
-  box-shadow: -6px -6px 11px #c1c1c1, 6px 6px 11px #ffffff;
+  box-shadow:
+    -6px -6px 11px #c1c1c1,
+    6px 6px 11px #ffffff;
   transform: scale(0);
   opacity: 0.5;
   animation: pulse0112 calc(var(--uib-speed) * 1.111) ease-in-out infinite;
@@ -131,8 +133,6 @@
   }
 }
 
-
-
 .nav-container {
   width: 100%;
   min-height: 100vh;
@@ -151,11 +151,7 @@
 /* scroll effect  */
 .nav-header {
   transition: background-color 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.08);
 }
-
-
-
-
-
-

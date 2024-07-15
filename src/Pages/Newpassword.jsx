@@ -1,5 +1,5 @@
 // src/ResetPassword.js
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { GrFormPreviousLink } from "react-icons/gr";
@@ -7,6 +7,7 @@ import Loader from "../component/Loader";
 // import { toast } from 'react-toastify';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ScrollRestoration } from "react-router-dom";
 
 const ResetPassword = () => {
   const navigate = useNavigate();
@@ -35,6 +36,8 @@ const ResetPassword = () => {
 
   return (
     <>
+      <ScrollRestoration />
+
       <ToastContainer
         position="top-right"
         autoClose={5000}
@@ -92,15 +95,15 @@ const ResetPassword = () => {
           <div
             className="fixed top-0 left-0 right-0 bottom-0
                    bg-white w-full flex items-center justify-center">
-            <div class="dot-spinner">
-              <div class="dot-spinner__dot"></div>
-              <div class="dot-spinner__dot"></div>
-              <div class="dot-spinner__dot"></div>
-              <div class="dot-spinner__dot"></div>
-              <div class="dot-spinner__dot"></div>
-              <div class="dot-spinner__dot"></div>
-              <div class="dot-spinner__dot"></div>
-              <div class="dot-spinner__dot"></div>
+            <div className="dot-spinner">
+              <div className="dot-spinner__dot"></div>
+              <div className="dot-spinner__dot"></div>
+              <div className="dot-spinner__dot"></div>
+              <div className="dot-spinner__dot"></div>
+              <div className="dot-spinner__dot"></div>
+              <div className="dot-spinner__dot"></div>
+              <div className="dot-spinner__dot"></div>
+              <div className="dot-spinner__dot"></div>
             </div>
           </div>
         )}
@@ -166,15 +169,15 @@ const ResetPassword = () => {
                 <div
                   className="fixed top-0 left-0 right-0 bottom-0
                    bg-white w-full flex items-center justify-center">
-                  <div class="dot-spinner">
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
+                  <div className="dot-spinner">
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
                   </div>
                 </div>
               )}

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import apiClient from "../utils/apiClient";
 
 const YourComponent = ({ Gmail }) => {
   const [loading, setLoading] = useState(false);
 
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(Gmail);
   const [otp, setOtp] = useState(["", "", "", ""]); // Array to store individual digits
   const [error, setError] = useState("");
   const [isVerificationSuccess, setVerificationSuccess] = useState(false);
@@ -19,15 +19,16 @@ const YourComponent = ({ Gmail }) => {
 
     try {
       setLoading(true);
-      const response = await axios.post("https://resp-one.vercel.app/verify", {
+      console.log(otp)
+      const response = await apiClient.post("/user/verify-email", {
         email: Gmail,
         otp: otp.join(""),
       });
-      const { message, token } = response.data;
+
+      const { message } = await response.json();
 
       // Handle the success response here
       console.log(message);
-      console.log(token);
 
       // Reset error state on successful verification
       setError("");
@@ -61,7 +62,7 @@ const YourComponent = ({ Gmail }) => {
     setOtp(newOtp);
   };
 
-  const hideEmail = (email) => {
+  const hideEmail = () => {
     const atIndex = email.indexOf("@");
     const maskedPart = email.slice(1, atIndex).replace(/./g, "*");
     return email[0] + maskedPart + email.slice(atIndex);
@@ -108,9 +109,9 @@ const YourComponent = ({ Gmail }) => {
               <div className="btt">
                 <button
                   type="button"
-                  class="btn text-[18px] text-white font-semibold cursor-pointer
+                  className="btn text-[18px] text-white font-semibold cursor-pointer
                           w-full rounded-md outline-none py-3 bg-[#FD1014] hover:bg-[#E3383B] transition mt-4">
-                  <Link to="/login"> Login</Link>
+                  <Link to={'/login'}>Login</Link>
                 </button>
               </div>
             </div>
@@ -144,15 +145,15 @@ const YourComponent = ({ Gmail }) => {
           <div
             className="fixed top-0 left-0 right-0 bottom-0
                    bg-white w-full flex items-center justify-center">
-            <div class="dot-spinner">
-              <div class="dot-spinner__dot"></div>
-              <div class="dot-spinner__dot"></div>
-              <div class="dot-spinner__dot"></div>
-              <div class="dot-spinner__dot"></div>
-              <div class="dot-spinner__dot"></div>
-              <div class="dot-spinner__dot"></div>
-              <div class="dot-spinner__dot"></div>
-              <div class="dot-spinner__dot"></div>
+            <div className="dot-spinner">
+              <div className="dot-spinner__dot"></div>
+              <div className="dot-spinner__dot"></div>
+              <div className="dot-spinner__dot"></div>
+              <div className="dot-spinner__dot"></div>
+              <div className="dot-spinner__dot"></div>
+              <div className="dot-spinner__dot"></div>
+              <div className="dot-spinner__dot"></div>
+              <div className="dot-spinner__dot"></div>
             </div>
           </div>
         )}
@@ -242,15 +243,15 @@ const YourComponent = ({ Gmail }) => {
 
           {loading && (
             <div className="fixed top-0 left-0 right-0 bottom-0 bg-white w-full flex items-center justify-center">
-              <div class="dot-spinner">
-                <div class="dot-spinner__dot"></div>
-                <div class="dot-spinner__dot"></div>
-                <div class="dot-spinner__dot"></div>
-                <div class="dot-spinner__dot"></div>
-                <div class="dot-spinner__dot"></div>
-                <div class="dot-spinner__dot"></div>
-                <div class="dot-spinner__dot"></div>
-                <div class="dot-spinner__dot"></div>
+              <div className="dot-spinner">
+                <div className="dot-spinner__dot"></div>
+                <div className="dot-spinner__dot"></div>
+                <div className="dot-spinner__dot"></div>
+                <div className="dot-spinner__dot"></div>
+                <div className="dot-spinner__dot"></div>
+                <div className="dot-spinner__dot"></div>
+                <div className="dot-spinner__dot"></div>
+                <div className="dot-spinner__dot"></div>
               </div>
             </div>
           )}

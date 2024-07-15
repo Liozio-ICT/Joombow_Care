@@ -9,6 +9,7 @@ import {
   FaXTwitter,
 } from "react-icons/fa6";
 import { useState } from "react";
+import { ScrollRestoration } from "react-router-dom";
 
 const Settings = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -19,6 +20,8 @@ const Settings = () => {
   const [email, setEmail] = useState(false);
   return (
     <>
+      <ScrollRestoration />
+
       <div className="!p-0">
         <div className="profile-header *:p-3 *:md:p-5">
           <div className="wrapper !bg-brand-red md:!bg-transparent">

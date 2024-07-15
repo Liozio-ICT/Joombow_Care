@@ -1,8 +1,13 @@
 import React from 'react'
+import { ScrollRestoration } from 'react-router-dom'
 
 const Admin = () => {
   return (
-    <div>Admin</div>
+    <>
+      <ScrollRestoration />
+
+      <div>Admin</div>
+    </>
   )
 }
 

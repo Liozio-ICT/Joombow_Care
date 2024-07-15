@@ -1,6 +1,7 @@
 import TitleHeader from "../../components/TitleHeader";
 import ProfileListItem from "../../components/ProfileListItem";
 import { FaAward } from "react-icons/fa6";
+import { ScrollRestoration } from "react-router-dom";
 
 const list = [
   {
@@ -20,6 +21,8 @@ const list = [
 const AboutUs = () => {
   return (
     <>
+      <ScrollRestoration />
+
       <div className="!p-0">
         <div className="profile-header *:p-3 *:md:p-5">
           <div className="wrapper !bg-brand-red md:!bg-transparent">

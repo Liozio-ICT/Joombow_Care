@@ -13,6 +13,7 @@ import Input from "../../components/Input";
 import { useNavigate } from "react-router-dom";
 import OtpInput from "../../components/OtpInput";
 import { user } from "../../layouts/constants";
+import { ScrollRestoration } from "react-router-dom";
 
 const ChangePassword = () => {
   const navigate = useNavigate();
@@ -41,6 +42,8 @@ const ChangePassword = () => {
   };
   return (
     <>
+      <ScrollRestoration />
+
       <div className="!p-0">
         <div className="profile-header *:p-3 *:md:p-5">
           <div className="wrapper !bg-brand-red md:!bg-transparent">

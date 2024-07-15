@@ -4,6 +4,7 @@ import { user } from "../../layouts/constants";
 import TitleHeader from "../../components/TitleHeader";
 import Input from "../../components/Input";
 import { FaCamera } from "react-icons/fa6";
+import { ScrollRestoration } from "react-router-dom";
 
 const EditProfile = () => {
   const [photo, setPhoto] = useState();
@@ -37,6 +38,8 @@ const EditProfile = () => {
   };
   return (
     <>
+      <ScrollRestoration />
+
       <form className="grid gap-5 !p-0" onSubmit={submit}>
         <div className="profile-header *:p-3 *:md:p-5">
           <div className="wrapper !bg-brand-red">
