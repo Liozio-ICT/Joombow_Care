@@ -4,6 +4,9 @@ import noDelivery from "../../assets/no-delivery.svg";
 import Tabs from "../../components/Tabs";
 import { Link, useNavigate } from "react-router-dom";
 import { ScrollRestoration } from "react-router-dom";
+import { useState } from "react";
+import { useEffect } from "react";
+import apiClient from "../../utils/apiClient";
 
 const Index = () => {
   const tabs = [
@@ -13,6 +16,18 @@ const Index = () => {
   ];
 
   const navigate = useNavigate();
+  const [bookings, setBookings] = useState([]);
+
+  useEffect(() => {
+    apiClient.get("/booking/mine").then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
+          const { bookings } = data;
+          setBookings(bookings);
+        });
+      }
+    });
+  }, []);
   return (
     <>
       <ScrollRestoration />

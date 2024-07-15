@@ -8,13 +8,13 @@ const BookingForm = ({ onSubmit }) => {
     form.preventDefault();
     onSubmit([
       {
-        value: name,
-        name: "name",
+        value: fullName,
+        name: "fullName",
         label: "Full name",
       },
       {
-        value: phone,
-        name: "phone",
+        value: phoneNumber,
+        name: "phoneNumber",
         label: "Phone Number",
       },
       {
@@ -23,39 +23,38 @@ const BookingForm = ({ onSubmit }) => {
         label: "Location",
       },
       {
-        value: car_type,
-        name: "car_type",
+        value: carType,
+        name: "carType",
         label: "Car Type",
       },
       {
-        value: payment_method,
-        name: "payment_method",
+        value: paymentMethod,
+        name: "paymentMethod",
         label: "Payment method",
       },
     ]);
   };
 
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [location, setLocation] = useState("");
-  const [car_type, setCarType] = useState("");
-  const [payment_method, setPaymentMethod] = useState("");
+  const [carType, setCarType] = useState();
+  const [paymentMethod, setPaymentMethod] = useState();
 
-  const cars = [
-    "Saloon cars",
-    "Saloon cars",
-    "Saloon cars",
-    "Saloon cars",
-    "Saloon cars",
-    "Saloon cars",
-    "Saloon cars",
-  ];
+  // const cars = [
+  //   "Saloon cars",
+  //   "Saloon cars",
+  //   "Saloon cars",
+  //   "Saloon cars",
+  //   "Saloon cars",
+  //   "Saloon cars",
+  //   "Saloon cars",
+  // ];
 
   const payments = [
-    "Pay using Credit card",
-    "Pay using Credit card",
-    "Pay using Credit card",
-    "Pay using Credit card",
+    "transfer",
+    "cash",
+    "online",
   ];
 
   return (
@@ -69,17 +68,17 @@ const BookingForm = ({ onSubmit }) => {
         <Input
           label={"Full name"}
           placeholder={""}
-          name={"full_name"}
-          value={name}
-          setValue={setName}
+          name={"fullName"}
+          value={fullName}
+          setValue={setFullName}
           error={""}
         />
         <Input
           label={"Phone Number"}
           placeholder={""}
-          name={"phone"}
-          value={phone}
-          setValue={setPhone}
+          name={"phoneNumber"}
+          value={phoneNumber}
+          setValue={setPhoneNumber}
           error={""}
         />
         <Input
@@ -90,21 +89,30 @@ const BookingForm = ({ onSubmit }) => {
           setValue={setLocation}
           error={""}
         />
-        <Select
+
+        <Input
           label={"Car Type"}
-          name={"car_type"}
-          value={car_type}
+          placeholder={""}
+          name={"carType"}
+          value={location}
+          setValue={setCarType}
+          error={""}
+        />
+        {/* <Select
+          label={"Car Type"}
+          name={"carType"}
+          value={carType}
           setValue={setCarType}
           error={""}
           options={Array(10).fill("Saloon cars")}
-        />
+        /> */}
         <Select
           label={"Payment method"}
-          name={"payment_method"}
-          value={payment_method}
+          name={"paymentMethod"}
+          value={paymentMethod}
           setValue={setPaymentMethod}
           error={""}
-          options={Array(5).fill("Pay using Credit card")}
+          options={payments}
         />
 
         <div className="my-5 grid w-full gap-5 !px-0 text-center *:w-full">

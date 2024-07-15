@@ -16,6 +16,7 @@ const AuthContext = createContext({
     },
     isAuthenticated: false,
     user: {} || null,
+    updateUser: (data) => { },
     getUserData: async () => { return {} }
 })
 
@@ -62,7 +63,13 @@ export const AuthProvider = ({ children }) => {
             return data
         }
         return null
+    }
 
+    const updateUser = async (data) => {
+        localStorage.setItem('user', data ? JSON.stringify(data) : null)
+        setUser(data)
+
+        return data
     }
 
 
@@ -83,7 +90,7 @@ export const AuthProvider = ({ children }) => {
     }, [token, isAuthenticated])
 
     return (
-        <AuthContext.Provider value={{ login, logout, isAuthenticated, user, getUserData }}>
+        <AuthContext.Provider value={{ login, logout, isAuthenticated, user, getUserData, updateUser }}>
             {children}
         </AuthContext.Provider>
     )

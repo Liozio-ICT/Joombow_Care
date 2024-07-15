@@ -12,10 +12,13 @@ import apiClient from "../../utils/apiClient";
 import { toast, ToastContainer } from "react-toastify";
 
 const Profile = () => {
-  const [modalType, setModalType] = useState();
-  const [modalStep, setModalStep] = useState();
   const navigate = useNavigate();
   const { logout, user, getUserData } = useAuth()
+  const [modalType, setModalType] = useState();
+  const [modalStep, setModalStep] = useState();
+  const [profilePhoto, setProfilePhoto] = useState(
+    `https://ui-avatars.com/api/?name=${user?.firstName?.replaceAll(' ', '+') ?? 'Joombow'}+${user?.lastName?.replaceAll(' ', '+') ?? 'User'}`
+  );
 
   const list = [
     {
@@ -74,7 +77,9 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    getUserData()
+    getUserData().then((e) => {
+      setProfilePhoto(`https://ui-avatars.com/api/?name=${e?.firstName?.replaceAll(' ', '+') ?? 'Joombow'}+${e?.lastName?.replaceAll(' ', '+') ?? 'User'}`)
+    })
   }, [])
 
   return (
@@ -86,8 +91,8 @@ const Profile = () => {
           <div className="wrapper !bg-brand-red">
             <TitleHeader title={"My Profile"} />
           </div>
-          <div className="photo  aspect-square w-24 overflow-clip rounded-full border-2 border-white bg-dark-2">
-            <img className="size-full object-cover min-w-full" src={`https://ui-avatars.com/api/?color=ffffff&background=fd1014&rounded=true&ame=${user?.firstName?.replaceAll(' ', '+') ?? 'Joombow'}+${user?.lastName?.replaceAll(' ', '+') ?? 'User'}`} />
+          <div className="photo aspect-square w-24 overflow-clip rounded-full relative border-2 border-white bg-dark-2">
+            <img className="absolute inset-0 w-24 object-cover" src={profilePhoto} />
           </div>
 
           <div className="info !py-0">
