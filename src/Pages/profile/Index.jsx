@@ -9,7 +9,7 @@ import { ScrollRestoration } from "react-router-dom";
 import { useAuth } from "../../provders/AuthProvider";
 import { useEffect } from "react";
 import apiClient from "../../utils/apiClient";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 const Profile = () => {
   const navigate = useNavigate();

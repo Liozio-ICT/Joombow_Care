@@ -2,10 +2,28 @@ import { useState } from "react";
 import Input from "../../components/Input";
 import Select from "../../components/Select";
 import { ScrollRestoration } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const BookingForm = ({ onSubmit }) => {
+
+  const [fullName, setFullName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [location, setLocation] = useState("");
+  const [carType, setCarType] = useState();
+  const [paymentMethod, setPaymentMethod] = useState();
+
   const onsubmit = (form) => {
     form.preventDefault();
+
+    if (
+      !fullName?.length ||
+      !location?.length ||
+      !carType?.length ||
+      !paymentMethod?.length ||
+      !phoneNumber?.length
+    ) {
+      return toast.error("Please fill in all the required fields.");
+    }
     onSubmit([
       {
         value: fullName,
@@ -35,21 +53,18 @@ const BookingForm = ({ onSubmit }) => {
     ]);
   };
 
-  const [fullName, setFullName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [location, setLocation] = useState("");
-  const [carType, setCarType] = useState();
-  const [paymentMethod, setPaymentMethod] = useState();
-
-  // const cars = [
-  //   "Saloon cars",
-  //   "Saloon cars",
-  //   "Saloon cars",
-  //   "Saloon cars",
-  //   "Saloon cars",
-  //   "Saloon cars",
-  //   "Saloon cars",
-  // ];
+  const cars = [
+    "Honda",
+    "Kia",
+    "Hyundai",
+    "Mitsubishi",
+    "Ford",
+    "Ford truck",
+    "Toyota",
+    "Mercedes Benz",
+    "Nissan",
+    "BWW",
+  ];
 
   const payments = [
     "transfer",
@@ -90,22 +105,22 @@ const BookingForm = ({ onSubmit }) => {
           error={""}
         />
 
-        <Input
+        {/* <Input
           label={"Car Type"}
           placeholder={""}
           name={"carType"}
           value={location}
           setValue={setCarType}
           error={""}
-        />
-        {/* <Select
+        /> */}
+        <Select
           label={"Car Type"}
           name={"carType"}
           value={carType}
           setValue={setCarType}
           error={""}
-          options={Array(10).fill("Saloon cars")}
-        /> */}
+          options={cars}
+        />
         <Select
           label={"Payment method"}
           name={"paymentMethod"}

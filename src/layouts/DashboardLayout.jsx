@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { dashboardPages, user } from "./constants";
+import { dashboardPages } from "./constants";
 import { Link, useNavigate } from "react-router-dom";
 import MobileFooter from "../components/MobileFooter.jsx";
 import "./dashboard.css";
@@ -9,7 +9,7 @@ import { ScrollRestoration } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
 const DashboardLayout = () => {
-  const { logout } = useAuth()
+  const { user, logout } = useAuth()
 
   const navigate = useNavigate()
   const handleLogout = async () => {
@@ -57,7 +57,7 @@ const DashboardLayout = () => {
             <button className="flex text-white/50" type="button" onClick={handleLogout}>
               <small>Logout</small>
             </button>
-            <p>{user.name}</p>
+            <p>{user.firstName ?? user.lastName ?? user.username ?? "User"}</p>
             <small className=" text-white/50">{user.email}</small>
           </div>
         </aside>
@@ -67,6 +67,7 @@ const DashboardLayout = () => {
         </section>
       </main>
       <MobileFooter />
+
     </>
   );
 };

@@ -25,7 +25,7 @@ import HelpSupport from "./Pages/profile/HelpSupport";
 import Settings from "./Pages/profile/Settings";
 import ChangePassword from "./Pages/profile/ChangePassword";
 import PrivateRoute from "./PrivateRoute.jsx";
-import AuthRoute from "./AuthRoutes.jsx";
+// import AuthRoute from "./AuthRoutes.jsx";
 import { Navigate } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -53,21 +53,20 @@ const router = createBrowserRouter([
     path: "/user",
     element: <User />
   },
+  // {
+  //   path: '/',
+  //   element: <AuthRoute />,
+  //   children: [
   {
-    path: '/',
-    element: <AuthRoute />,
-    children: [
-
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/signup",
-        element: <Signup />,
-      },
-    ]
+    path: "/login",
+    element: <Login />,
   },
+  {
+    path: "/signup",
+    element: <Signup />,
+  },
+  //   ]
+  // },
   {
     path: "/",
     element: <PrivateRoute />,

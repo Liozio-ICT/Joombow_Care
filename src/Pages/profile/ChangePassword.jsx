@@ -4,7 +4,7 @@ import Input from "../../components/Input";
 import { useNavigate } from "react-router-dom";
 import OtpInput from "../../components/OtpInput";
 import { ScrollRestoration } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import apiClient from "../../utils/apiClient";
 import { useAuth } from "../../provders/AuthProvider";
 
@@ -120,18 +120,6 @@ const ChangePassword = () => {
           </form>
         )}
       </div>
-
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
     </>
   );
 };

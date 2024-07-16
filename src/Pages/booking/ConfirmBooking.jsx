@@ -1,10 +1,11 @@
-// import { usePaystackPayment } from "react-paystack";
-// import { configure } from "../../constants/paystack";
-// import { user } from "../../layouts/constants"
+import { usePaystackPayment } from "react-paystack";
+import { configure } from "../../constants/paystack";
 import { ScrollRestoration } from "react-router-dom";
 import apiClient from "../../utils/apiClient";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import Loader from "../../component/Loader";
+import { useState } from "react";
 
 const ConfirmBooking = ({ data = [] }) => {
     // const name = data.find(i => i.label.toString().toLowerCase() === 'full name')
@@ -14,6 +15,7 @@ const ConfirmBooking = ({ data = [] }) => {
     //     email,
     //     amount,
     // })
+    const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
 
     // you can call this function anything
@@ -31,12 +33,14 @@ const ConfirmBooking = ({ data = [] }) => {
     // const initializePayment = usePaystackPayment(config);
 
     const submitBooking = async () => {
+        setLoading(true)
         const info = {}
         data.forEach(el => {
             const { name, value } = el;
             info[name] = value
         })
         const response = await apiClient.post('/booking/book', { ...data })
+        setLoading(false)
         const { message } = await response.json()
 
         if (response.ok) {
@@ -51,6 +55,8 @@ const ConfirmBooking = ({ data = [] }) => {
     return (
         <>
             <ScrollRestoration />
+
+            {loading && <Loader />}
 
             <div className='mx-auto *:mx-auto md:max-w-[75%] my-5 md:my-10 flex-col flex gap-5 md:gap-10  *:rounded'>
                 <div className='bg-brand-red min-h-[4rem] w-full mx-5'>
@@ -71,19 +77,6 @@ const ConfirmBooking = ({ data = [] }) => {
                         className='max-w-[12rem] text-sm p-1 px-2 bg-brand-red rounded mx-auto'>Proceed</button>
                 </div>
             </div>
-
-
-            <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-            />
         </>
     )
 }

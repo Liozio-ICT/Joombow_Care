@@ -7,6 +7,8 @@ import { ScrollRestoration } from "react-router-dom";
 import { useAuth } from "../../provders/AuthProvider";
 import apiClient from "../../utils/apiClient";
 import { useEffect } from "react";
+import { toast } from "react-toastify";
+import Loader from "../../component/Loader";
 
 const EditProfile = () => {
   const { user, getUserData, updateUser } = useAuth()
@@ -15,6 +17,7 @@ const EditProfile = () => {
   const [email, setEmail] = useState(user.email);
   const [firstName, setFirstName] = useState(user.firstName);
   const [lastName, setLastName] = useState(user.lastName);
+  const [loading, setLoading] = useState(false)
 
   const navigate = useNavigate();
 
@@ -23,6 +26,7 @@ const EditProfile = () => {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(input);
       fileReader.onload = () => setPhoto(fileReader.result);
+
     } catch (error) {
       console.log({ error });
     }
@@ -30,23 +34,32 @@ const EditProfile = () => {
 
   const submit = async (form) => {
     form.preventDefault();
+    setLoading(true)
 
-    const response = await apiClient.put('/user/me/edit', {
-      // photo,
-      email,
-      firstName,
-      lastName,
-    })
+    try {
+      const response = await apiClient.put('/user/me/edit', {
+        photo,
+        email,
+        firstName,
+        lastName,
+      })
 
-    if (response.ok) {
       const data = await response.json()
-      try {
+      setLoading(false)
+      if (response.ok) {
         updateUser(data.user)
-        navigate("/dashboard/profile");
+        toast.success(data.message)
+
+        setTimeout(() => {
+          navigate("/dashboard/profile");
+        }, 1000);
       }
-      catch (error) {
-        console.error(error)
-      }
+      toast.success(data.message)
+    }
+    catch (error) {
+      setLoading(false)
+      console.error(error)
+      toast.error(error)
     }
   };
 
@@ -58,6 +71,8 @@ const EditProfile = () => {
   return (
     <>
       <ScrollRestoration />
+
+     {loading && <Loader />}
 
       <form className="grid gap-5 !p-0" onSubmit={submit}>
         <div className="profile-header *:p-3 *:md:p-5">

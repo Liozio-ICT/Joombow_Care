@@ -1,5 +1,6 @@
 import { useContext, createContext, useEffect, useState } from 'react'
 import apiClient from '../utils/apiClient'
+import { ToastContainer } from 'react-toastify'
 
 const AuthContext = createContext({
     login: (token = '', userData = {}) => {
@@ -16,7 +17,7 @@ const AuthContext = createContext({
     },
     isAuthenticated: false,
     user: {} || null,
-    updateUser: (data) => { },
+    updateUser: (data) => { return data || null },
     getUserData: async () => { return {} }
 })
 
@@ -66,10 +67,18 @@ export const AuthProvider = ({ children }) => {
     }
 
     const updateUser = async (data) => {
-        localStorage.setItem('user', data ? JSON.stringify(data) : null)
-        setUser(data)
 
-        return data
+        try {
+
+            localStorage.setItem('user', data ? JSON.stringify(data) : null)
+            setUser(data)
+
+            return data
+        } catch (error) {
+            console.error(error)
+            return null
+        }
+
     }
 
 
@@ -92,6 +101,18 @@ export const AuthProvider = ({ children }) => {
     return (
         <AuthContext.Provider value={{ login, logout, isAuthenticated, user, getUserData, updateUser }}>
             {children}
+
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         </AuthContext.Provider>
     )
 }
