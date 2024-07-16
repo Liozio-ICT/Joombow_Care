@@ -12,6 +12,7 @@ import "aos/dist/aos.css"; // Import AOS styles
 import AOS from "aos";
 
 import "./App.css";
+import { ScrollRestoration } from "react-router-dom";
 
 function App() {
   AOS.init({
@@ -21,6 +22,8 @@ function App() {
   });
   return (
     <>
+
+      <ScrollRestoration />
       <div className="">
         <Loader />
         <Header />

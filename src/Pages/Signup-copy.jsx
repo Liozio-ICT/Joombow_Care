@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { GrFormPreviousLink } from "react-icons/gr";
 import { FcGoogle } from "react-icons/fc";
@@ -10,12 +11,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import Loader from "../component/Loader";
-import apiClient from "../utils/apiClient";
-import { ScrollRestoration } from "react-router-dom";
-import { useAuth } from "../provders/AuthProvider";
 
 const Signup = () => {
-  const [showOTPForm, setShowOTPForm] = useState();
+  const [showOTPForm, setShowOTPForm] = useState(false);
   const [loading, setLoading] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -24,7 +22,6 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [referralCode, setReferralCode] = useState("");
   const [message, setMessage] = useState("");
-  const { login } = useAuth()
 
   const navigate = useNavigate();
 
@@ -57,7 +54,7 @@ const Signup = () => {
         return;
       }
 
-      const response = await apiClient.post(`/user/register`, {
+      const response = await axios.post("https://resp-one.vercel.app/signup", {
         firstName,
         lastName,
         email,
@@ -66,20 +63,12 @@ const Signup = () => {
         referralCode,
       });
 
-      const { message, token, user } = await response.json()
-
-      if (response.ok) {
-        toast.success(message);
-        // Handle additional logic based on the response if needed
-        login(token, user)
-        setShowOTPForm(true);
-      } else {
-        toast.error(message);
-      }
+      toast.success(response.data.message);
+      setShowOTPForm(true);
+      // Handle additional logic based on the response if needed
     } catch (error) {
       console.error(error);
       setMessage("Error signing up. Please try again later.");
-      toast.error(message)
     } finally {
       setLoading(false);
     }
@@ -94,20 +83,20 @@ const Signup = () => {
       const result = await signInWithPopup(Gauth, provider);
       console.log("AUTH", result);
 
-      const response = await apiClient.post("/user/register/google", {
-        name: result?.user.displayName,
-        email: result?.user.email,
+      const res = await fetch("https://resp-one.vercel.app/save-user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: result?.user.displayName,
+          email: result?.user.email,
+        }),
       });
-      const { message, token, user } = await response.json();
-      if (response.ok) {
-        toast.success(message);
-        // Handle additional logic based on the response if needed
-        login(token, user)
+      const data = await res?.json();
+      if (data?.success) {
         navigate("/user");
 
-      }
-      else {
-        toast.error(message)
       }
     } catch (error) {
       console.log("Could not login with Google", error);
@@ -119,8 +108,6 @@ const Signup = () => {
   return (
     <>
       <Loader />
-      <ScrollRestoration />
-
       <ToastContainer
         position="top-right"
         autoClose={5000}
@@ -132,7 +119,7 @@ const Signup = () => {
         draggable
         pauseOnHover
       />
-      <section className="lg:hidden bg-black">
+      <body className="lg:hidden bg-black">
         <span className="prevLink px-4 pt-4 block">
           <Link to="/">
             <GrFormPreviousLink className="text-[1.5rem] border border-gray-200 text-white rounded-3xl" />
@@ -235,7 +222,7 @@ const Signup = () => {
             <button
               type="button"
               onClick={handleSignup}
-              className="btn mt-6 text-[18px] font-montserrat text-white font-semibold cursor-pointer rounded-md outline-none py-3 bg-[#FD1014] hover:bg-[#E3383B] transition">
+              className="btn mt-6 text-[18px] font-montserrat text-white font-semibold cursor-pointer w-full rounded-md outline-none py-3 bg-[#FD1014] hover:bg-[#E3383B] transition">
               Next
             </button>
 
@@ -287,7 +274,7 @@ const Signup = () => {
             )}
           </form>
         </main>
-      </section>
+      </body>
 
       <>
         {/* desktop */}
@@ -467,7 +454,7 @@ const Signup = () => {
               )}
             </form>
 
-            <section className="">
+            <body className="">
               <main className="  ">
                 {showOTPForm ? (
                   <Otp Gmail={email} />
@@ -477,7 +464,7 @@ const Signup = () => {
 
                 {/* <h2 className="text-[2rem] capitalize font-bold">SignUp</h2> */}
               </main>
-            </section>
+            </body>
           </div>
         </div>
       </>

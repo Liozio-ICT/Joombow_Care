@@ -6,12 +6,13 @@ const OtpInput = ({ error, length = 6, setValue }) => {
 
   const handleChange = (index, value) => {
     let newArr = [...otp];
-    newArr[index] = value;
+    value = value.toString()
+    newArr[index] = value.length > 1 ? value[value.length] : value;
     setOtp(newArr);
     if (value && index < length - 1) {
       boxRef.current[index + 1]?.focus();
     }
-    setValue(otp.join(""));
+    setValue(newArr.join(""));
   };
   const handleBackSpace = (e, index) => {
     if (e?.key === "Backspace" && !e?.target?.value && index > 0) {

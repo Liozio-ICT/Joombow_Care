@@ -1,16 +1,24 @@
 import TitleHeader from "../../components/TitleHeader";
 import ProfileListItem from "../../components/ProfileListItem";
-import { user } from "../../layouts/constants";
 import { FaEdit, FaInfoCircle, FaSignOutAlt } from "react-icons/fa";
 import { FaCheck, FaGear, FaMessage, FaUserXmark, FaX } from "react-icons/fa6";
 import { useState } from "react";
 import { cn } from "../../utils/tailwind";
 import { useNavigate } from "react-router-dom";
+import { ScrollRestoration } from "react-router-dom";
+import { useAuth } from "../../provders/AuthProvider";
+import { useEffect } from "react";
+import apiClient from "../../utils/apiClient";
+import { toast } from "react-toastify";
 
 const Profile = () => {
+  const navigate = useNavigate();
+  const { logout, user, getUserData } = useAuth()
   const [modalType, setModalType] = useState();
   const [modalStep, setModalStep] = useState();
-  const navigate = useNavigate();
+  const [profilePhoto, setProfilePhoto] = useState(
+    `https://ui-avatars.com/api/?name=${user?.firstName?.replaceAll(' ', '+') ?? 'Joombow'}+${user?.lastName?.replaceAll(' ', '+') ?? 'User'}`
+  );
 
   const list = [
     {
@@ -47,28 +55,49 @@ const Profile = () => {
     },
   ];
 
-  const logout = () => {
+  const handleLogout = async () => {
     // api request logics
+    const { message, done } = await logout()
+    if (done)
+      return navigate("/");
 
-    navigate("/");
+    toast.error(message)
+    setModalType()
+    setModalStep()
+
   };
-  const deleteAccount = () => {
+  const deleteAccount = async () => {
     // api request logics
+    const response = await apiClient.delete('/user/me')
+    const { message } = await response.json()
 
-    setModalStep("success");
+    if (response.ok) { return setModalStep("success"); }
+
+    toast.error(message)
   };
+
+  useEffect(() => {
+    getUserData().then((e) => {
+      setProfilePhoto(`https://ui-avatars.com/api/?name=${e?.firstName?.replaceAll(' ', '+') ?? 'Joombow'}+${e?.lastName?.replaceAll(' ', '+') ?? 'User'}`)
+    })
+  }, [])
+
   return (
     <>
+      <ScrollRestoration />
+
       <div className="!p-0">
         <div className="profile-header *:p-3 *:md:p-5">
           <div className="wrapper !bg-brand-red">
             <TitleHeader title={"My Profile"} />
           </div>
-          <div className="photo  aspect-square w-24 rounded-full border-2 border-white bg-dark-2"></div>
+          <div className="photo aspect-square w-24 overflow-clip rounded-full relative border-2 border-white bg-dark-2">
+            <img className="absolute inset-0 w-24 object-cover" src={profilePhoto} />
+          </div>
 
           <div className="info !py-0">
-            <p className="text-xl font-semibold capitalize">{user.name} </p>
-            <small className="lowercase">{user.email} </small>
+            <p className="text-xl font-semibold capitalize">{user?.firstName ?? ''} {user?.lastName ?? ''} </p>
+            <small className="lowercase">{user?.email} </small>
           </div>
         </div>
       </div>
@@ -123,7 +152,7 @@ const Profile = () => {
                   <button
                     className="rounded-lg bg-brand-red p-2 px-3 outline-none"
                     onClick={() => {
-                      modalType === "delete" ? deleteAccount() : logout();
+                      modalType === "delete" ? deleteAccount() : handleLogout();
                     }}
                   >
                     Yes

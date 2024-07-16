@@ -1,33 +1,36 @@
-import React, { useState } from 'react'
-import TitleHeader from '../../components/TitleHeader'
-import { useNavigate } from 'react-router-dom'
-import BookingForm from './BookingForm'
-import ConfirmBooking from './ConfirmBooking'
+import React, { useState } from "react";
+import TitleHeader from "../../components/TitleHeader";
+import { useNavigate } from "react-router-dom";
+import BookingForm from "./BookingForm";
+import ConfirmBooking from "./ConfirmBooking";
 
 const NewBooking = () => {
-    const navigate = useNavigate()
-    const [data, setData] = useState([])
-    const submit = (form) => {
-        setData(form)
-        setConfirm(true)
-    }
+  const navigate = useNavigate();
+  const [data, setData] = useState([]);
+  const submit = (form) => {
+    console.log({ form });
+    setData(form);
+    setConfirm(true);
+  };
 
-    const [confirm, setConfirm] = useState(false)
+  const [confirm, setConfirm] = useState(false);
 
-    return (
+  return (
+    <>
+      <div className="!pt-10 md:bg-transparent md:!pt-5">
+        <TitleHeader
+          goBack={() => (confirm ? setConfirm(false) : navigate(-1))}
+          title={confirm ? "Confirm details" : "Bookings"}
+        />
+      </div>
 
-        <>
-            <div className="!pt-10 md:bg-transparent md:!pt-5">
-                <TitleHeader goBack={() => confirm ? setConfirm(false) : navigate(-1)} title={confirm ? 'Confirm details' : 'Bookings'} />
-            </div>
+      {confirm ? (
+        <ConfirmBooking data={data} />
+      ) : (
+        <BookingForm onSubmit={submit} />
+      )}
+    </>
+  );
+};
 
-            {
-                confirm ?
-                    <ConfirmBooking data={data} /> :
-                    <BookingForm onSubmit={submit} />
-            }
-        </>
-    )
-}
-
-export default NewBooking
+export default NewBooking;

@@ -1,15 +1,23 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { user } from "../../layouts/constants";
 import TitleHeader from "../../components/TitleHeader";
 import Input from "../../components/Input";
 import { FaCamera } from "react-icons/fa6";
+import { ScrollRestoration } from "react-router-dom";
+import { useAuth } from "../../provders/AuthProvider";
+import apiClient from "../../utils/apiClient";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
+import Loader from "../../component/Loader";
 
 const EditProfile = () => {
-  const [photo, setPhoto] = useState();
+  const { user, getUserData, updateUser } = useAuth()
+  const [photo, setPhoto] = useState(user.photo ??
+    `https://ui-avatars.com/api/?name=${user?.firstName?.replaceAll(' ', '+') ?? 'Joombow'}+${user?.lastName?.replaceAll(' ', '+') ?? 'User'}`);
   const [email, setEmail] = useState(user.email);
-  const [first_name, setFirstName] = useState(user.first_name);
-  const [last_name, setLastName] = useState(user.last_name);
+  const [firstName, setFirstName] = useState(user.firstName);
+  const [lastName, setLastName] = useState(user.lastName);
+  const [loading, setLoading] = useState(false)
 
   const navigate = useNavigate();
 
@@ -18,25 +26,54 @@ const EditProfile = () => {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(input);
       fileReader.onload = () => setPhoto(fileReader.result);
+
     } catch (error) {
       console.log({ error });
     }
   };
 
-  const submit = (form) => {
+  const submit = async (form) => {
     form.preventDefault();
+    setLoading(true)
 
-    const data = {
-      photo,
-      email,
-      first_name,
-      last_name,
-    };
+    try {
+      const response = await apiClient.put('/user/me/edit', {
+        photo,
+        email,
+        firstName,
+        lastName,
+      })
 
-    navigate("/profile");
+      const data = await response.json()
+      setLoading(false)
+      if (response.ok) {
+        updateUser(data.user)
+        toast.success(data.message)
+
+        setTimeout(() => {
+          navigate("/dashboard/profile");
+        }, 1000);
+      }
+      toast.success(data.message)
+    }
+    catch (error) {
+      setLoading(false)
+      console.error(error)
+      toast.error(error)
+    }
   };
+
+  useEffect(() => {
+    getUserData().then((e) => {
+      setPhoto(e.photo ?? `https://ui-avatars.com/api/?name=${e?.firstName?.replaceAll(' ', '+') ?? 'Joombow'}+${e?.lastName?.replaceAll(' ', '+') ?? 'User'}`)
+    })
+  }, [])
   return (
     <>
+      <ScrollRestoration />
+
+     {loading && <Loader />}
+
       <form className="grid gap-5 !p-0" onSubmit={submit}>
         <div className="profile-header *:p-3 *:md:p-5">
           <div className="wrapper !bg-brand-red">
@@ -73,17 +110,17 @@ const EditProfile = () => {
         <div className="mt-5 grid gap-5 p-5 md:gap-8 md:px-10">
           <Input
             label={"First name"}
-            placeholder={user.first_name ?? ""}
-            name={"first_name"}
-            value={first_name}
+            placeholder={user.firstName ?? ""}
+            name={"firstName"}
+            value={firstName}
             setValue={setFirstName}
             error={""}
           />
           <Input
             label={"Last name"}
-            placeholder={user.last_name ?? ""}
-            name={"last_name"}
-            value={last_name}
+            placeholder={user.lastName ?? ""}
+            name={"lastName"}
+            value={lastName}
             setValue={setLastName}
             error={""}
           />

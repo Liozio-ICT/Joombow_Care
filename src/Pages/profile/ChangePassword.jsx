@@ -1,46 +1,67 @@
 import TitleHeader from "../../components/TitleHeader";
-import ListToggleItem from "../../components/ListToggleItem";
-import ProfileListItem from "../../components/ProfileListItem";
-import { BiLockAlt } from "react-icons/bi";
-import {
-  FaEnvelope,
-  FaFacebookF,
-  FaInstagram,
-  FaXTwitter,
-} from "react-icons/fa6";
 import { useState } from "react";
 import Input from "../../components/Input";
 import { useNavigate } from "react-router-dom";
 import OtpInput from "../../components/OtpInput";
-import { user } from "../../layouts/constants";
+import { ScrollRestoration } from "react-router-dom";
+import { toast } from "react-toastify";
+import apiClient from "../../utils/apiClient";
+import { useAuth } from "../../provders/AuthProvider";
 
 const ChangePassword = () => {
   const navigate = useNavigate();
+  const { user } = useAuth()
   const [oldPassword, setOldPassword] = useState();
   const [newPassword, setNewPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
   const [otp, setOtp] = useState();
   const [step, setStep] = useState();
 
-  const requestOtp = (form) => {
+  const requestOtp = async (form) => {
     form.preventDefault();
-    setStep("otp");
+    try {
+      const response = await apiClient.post('/otp/get', {
+        reason: 'Password Change',
+        email: user.email
+      })
+      if (response.ok)
+        return setStep("otp");
+
+      const { message } = await response.json()
+      toast.error(message)
+    } catch (error) {
+      console.error(error)
+      toast.error(error)
+    }
   };
 
-  const submit = (form) => {
+  const submit = async (form) => {
     form.preventDefault();
 
-    const data = {
-      oldPassword,
-      newPassword,
-      confirmPassword,
-      otp,
-    };
+    console.log({ otp })
+    try {
+      const response = await apiClient.post('/user/change-password', {
+        oldPassword,
+        newPassword,
+        confirmPassword,
+        otp,
+      })
 
-    navigate("/profile");
+      if (response.ok)
+        return navigate("/dashboard/profile");
+
+      const { message } = await response.json()
+      toast.error(message)
+    } catch (error) {
+      console.error(error)
+      toast.error(error)
+    }
+
   };
   return (
     <>
+      <ScrollRestoration />
+
       <div className="!p-0">
         <div className="profile-header *:p-3 *:md:p-5">
           <div className="wrapper !bg-brand-red md:!bg-transparent">

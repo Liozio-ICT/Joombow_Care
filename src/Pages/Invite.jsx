@@ -1,9 +1,11 @@
-import React from "react";
 import TitleHeader from "../components/TitleHeader";
+import { ScrollRestoration } from "react-router-dom";
 
 const Invite = () => {
   return (
     <>
+      <ScrollRestoration />
+
       <div className="!pt-10 md:bg-transparent md:!pt-5">
         <TitleHeader title="REFER AND EARN WASH CREDIT" />
       </div>

@@ -1,19 +1,38 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Input from "../../components/Input";
 import Select from "../../components/Select";
+import { ScrollRestoration } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const BookingForm = ({ onSubmit }) => {
+
+  const [fullName, setFullName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [location, setLocation] = useState("");
+  const [carType, setCarType] = useState();
+  const [paymentMethod, setPaymentMethod] = useState();
+
   const onsubmit = (form) => {
     form.preventDefault();
+
+    if (
+      !fullName?.length ||
+      !location?.length ||
+      !carType?.length ||
+      !paymentMethod?.length ||
+      !phoneNumber?.length
+    ) {
+      return toast.error("Please fill in all the required fields.");
+    }
     onSubmit([
       {
-        value: name,
-        name: "name",
+        value: fullName,
+        name: "fullName",
         label: "Full name",
       },
       {
-        value: phone,
-        name: "phone",
+        value: phoneNumber,
+        name: "phoneNumber",
         label: "Phone Number",
       },
       {
@@ -22,43 +41,41 @@ const BookingForm = ({ onSubmit }) => {
         label: "Location",
       },
       {
-        value: car_type,
-        name: "car_type",
+        value: carType,
+        name: "carType",
         label: "Car Type",
       },
       {
-        value: payment_method,
-        name: "payment_method",
+        value: paymentMethod,
+        name: "paymentMethod",
         label: "Payment method",
       },
     ]);
   };
 
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [location, setLocation] = useState("");
-  const [car_type, setCarType] = useState("");
-  const [payment_method, setPaymentMethod] = useState("");
-
   const cars = [
-    "Saloon cars",
-    "Saloon cars",
-    "Saloon cars",
-    "Saloon cars",
-    "Saloon cars",
-    "Saloon cars",
-    "Saloon cars",
+    "Honda",
+    "Kia",
+    "Hyundai",
+    "Mitsubishi",
+    "Ford",
+    "Ford truck",
+    "Toyota",
+    "Mercedes Benz",
+    "Nissan",
+    "BWW",
   ];
 
   const payments = [
-    "Pay using Credit card",
-    "Pay using Credit card",
-    "Pay using Credit card",
-    "Pay using Credit card",
+    "transfer",
+    "cash",
+    "online",
   ];
 
   return (
     <>
+      <ScrollRestoration />
+
       <form
         onSubmit={onsubmit}
         className="mx-auto my-5 flex flex-col gap-5 *:mx-auto md:my-10 md:max-w-[75%]"
@@ -66,17 +83,17 @@ const BookingForm = ({ onSubmit }) => {
         <Input
           label={"Full name"}
           placeholder={""}
-          name={"full_name"}
-          value={name}
-          setValue={setName}
+          name={"fullName"}
+          value={fullName}
+          setValue={setFullName}
           error={""}
         />
         <Input
           label={"Phone Number"}
           placeholder={""}
-          name={"phone"}
-          value={phone}
-          setValue={setPhone}
+          name={"phoneNumber"}
+          value={phoneNumber}
+          setValue={setPhoneNumber}
           error={""}
         />
         <Input
@@ -87,21 +104,30 @@ const BookingForm = ({ onSubmit }) => {
           setValue={setLocation}
           error={""}
         />
-        <Select
+
+        {/* <Input
           label={"Car Type"}
-          name={"car_type"}
-          value={car_type}
+          placeholder={""}
+          name={"carType"}
+          value={location}
           setValue={setCarType}
           error={""}
-          options={Array(10).fill("Saloon cars")}
+        /> */}
+        <Select
+          label={"Car Type"}
+          name={"carType"}
+          value={carType}
+          setValue={setCarType}
+          error={""}
+          options={cars}
         />
         <Select
           label={"Payment method"}
-          name={"payment_method"}
-          value={payment_method}
+          name={"paymentMethod"}
+          value={paymentMethod}
           setValue={setPaymentMethod}
           error={""}
-          options={Array(5).fill("Pay using Credit card")}
+          options={payments}
         />
 
         <div className="my-5 grid w-full gap-5 !px-0 text-center *:w-full">
