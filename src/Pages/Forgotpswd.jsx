@@ -19,15 +19,18 @@ const Forgotpswd = () => {
         "/user/forgot-password",
         { email }
       );
-      const { message} = response.json()
+      const { message } = response.json()
       Setmessage(message);
 
       // If password reset is successful, navigate to the change password page
       if (response.ok) {
+        toast.success(message)
         navigate("/new"); // Replace '/change-password' with your desired route
       }
-      else
+      else {
         toast.error(message)
+        toast.error("enter a valid email");
+      }
     } catch (error) {
       console.error(error);
       toast.error("enter a valid email");
