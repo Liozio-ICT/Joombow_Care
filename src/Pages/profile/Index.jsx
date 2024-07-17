@@ -58,8 +58,9 @@ const Profile = () => {
   const handleLogout = async () => {
     // api request logics
     const { message, done } = await logout()
-    if (done)
-      return navigate("/");
+    if (done) {
+      return navigate("/login");
+    }
 
     toast.error(message)
     setModalType()
@@ -180,7 +181,7 @@ const Profile = () => {
                 </div>
                 <button
                   className="mx-auto w-full max-w-[15rem] rounded-lg bg-brand-red p-2 px-3 outline-none"
-                  onClick={() => navigate("/")}
+                  onClick={() => navigate("/signup")}
                 >
                   Ok
                 </button>
