@@ -21,7 +21,7 @@ const EditProfile = () => {
 
   const navigate = useNavigate();
 
-  const handlePhotoUpload = (input) => {
+  const handlePhotoUpload = async (input) => {
     try {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(input);
