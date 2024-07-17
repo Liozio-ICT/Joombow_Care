@@ -1,6 +1,6 @@
-export const API_URL = "https://car-care-backend-joombow.onrender.com";
+// export const API_URL = "https://car-care-backend-joombow.onrender.com";
 // export const API_URL = "car-care-backend-joombow.vercel.app";
-// export const API_URL = "http://127.0.0.1:3000";
+export const API_URL = "http://127.0.0.1:3000";
 
 const getToken = () => localStorage.getItem("auth_token");
 

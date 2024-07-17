@@ -6,7 +6,7 @@ import "./dashboard.css";
 import Loader from "../component/Loader.jsx";
 import { useAuth } from "../provders/AuthProvider.jsx";
 import { ScrollRestoration } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 const DashboardLayout = () => {
   const { user, logout } = useAuth()
@@ -24,19 +24,6 @@ const DashboardLayout = () => {
       <Loader />
 
       <ScrollRestoration />
-
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
-
 
       <main className="dashboard">
         <aside className="sidebar pt-20">
@@ -57,8 +44,8 @@ const DashboardLayout = () => {
             <button className="flex text-white/50" type="button" onClick={handleLogout}>
               <small>Logout</small>
             </button>
-            <p>{user.firstName ?? user.lastName ?? user.username ?? "User"}</p>
-            <small className=" text-white/50">{user.email}</small>
+            <p>{user?.firstName ?? user?.lastName ?? user?.username ?? "User"}</p>
+            <small className=" text-white/50">{user?.email}</small>
           </div>
         </aside>
 

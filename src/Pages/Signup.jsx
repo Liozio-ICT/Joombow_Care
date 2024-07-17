@@ -6,7 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
 import { app } from "../component/firebaseConfig";
 import Otp from "../component/Otp";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import Loader from "../component/Loader";
@@ -103,7 +103,7 @@ const Signup = () => {
         toast.success(message);
         // Handle additional logic based on the response if needed
         login(token, user)
-        navigate("/user");
+        navigate("/dashboard");
 
       }
       else {
@@ -121,17 +121,6 @@ const Signup = () => {
       <Loader />
       <ScrollRestoration />
 
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
       <section className="lg:hidden bg-black">
         <span className="prevLink px-4 pt-4 block">
           <Link to="/">
@@ -247,22 +236,6 @@ const Signup = () => {
                 </span>{" "}
               </h2>
             </div>
-            {loading && (
-              <div
-                className="fixed top-0 left-0 right-0 bottom-0
-                   bg-white w-full flex items-center justify-center">
-                <div className="dot-spinner">
-                  <div className="dot-spinner__dot"></div>
-                  <div className="dot-spinner__dot"></div>
-                  <div className="dot-spinner__dot"></div>
-                  <div className="dot-spinner__dot"></div>
-                  <div className="dot-spinner__dot"></div>
-                  <div className="dot-spinner__dot"></div>
-                  <div className="dot-spinner__dot"></div>
-                  <div className="dot-spinner__dot"></div>
-                </div>
-              </div>
-            )}
             <button
               type="button"
               onClick={handleOAuth}
@@ -270,24 +243,26 @@ const Signup = () => {
               <FcGoogle className="mr-2 text-[28px]" />
               Login with Google
             </button>
-
-            {loading && (
-              <div className="fixed top-0 left-0 right-0 bottom-0 bg-white w-full flex items-center justify-center">
-                <div className="dot-spinner">
-                  <div className="dot-spinner__dot"></div>
-                  <div className="dot-spinner__dot"></div>
-                  <div className="dot-spinner__dot"></div>
-                  <div className="dot-spinner__dot"></div>
-                  <div className="dot-spinner__dot"></div>
-                  <div className="dot-spinner__dot"></div>
-                  <div className="dot-spinner__dot"></div>
-                  <div className="dot-spinner__dot"></div>
-                </div>
-              </div>
-            )}
           </form>
         </main>
       </section>
+
+      {loading && (
+        <div
+          className="fixed top-0 left-0 right-0 bottom-0
+                   bg-white w-full flex items-center justify-center">
+          <div className="dot-spinner">
+            <div className="dot-spinner__dot"></div>
+            <div className="dot-spinner__dot"></div>
+            <div className="dot-spinner__dot"></div>
+            <div className="dot-spinner__dot"></div>
+            <div className="dot-spinner__dot"></div>
+            <div className="dot-spinner__dot"></div>
+            <div className="dot-spinner__dot"></div>
+            <div className="dot-spinner__dot"></div>
+          </div>
+        </div>
+      )}
 
       <>
         {/* desktop */}
@@ -426,22 +401,7 @@ const Signup = () => {
                   </span>{" "}
                 </h2>
               </div>
-              {loading && (
-                <div
-                  className="fixed top-0 left-0 right-0 bottom-0 z-20
-                   bg-white w-full flex items-center justify-center">
-                  <div className="dot-spinner">
-                    <div className="dot-spinner__dot"></div>
-                    <div className="dot-spinner__dot"></div>
-                    <div className="dot-spinner__dot"></div>
-                    <div className="dot-spinner__dot"></div>
-                    <div className="dot-spinner__dot"></div>
-                    <div className="dot-spinner__dot"></div>
-                    <div className="dot-spinner__dot"></div>
-                    <div className="dot-spinner__dot"></div>
-                  </div>
-                </div>
-              )}
+
               <button
                 type="button"
                 onClick={handleOAuth}
@@ -451,20 +411,7 @@ const Signup = () => {
                 Login with Google
               </button>
 
-              {loading && (
-                <div className="fixed top-0 left-0 right-0 bottom-0 bg-white w-full flex items-center justify-center">
-                  <div className="dot-spinner">
-                    <div className="dot-spinner__dot"></div>
-                    <div className="dot-spinner__dot"></div>
-                    <div className="dot-spinner__dot"></div>
-                    <div className="dot-spinner__dot"></div>
-                    <div className="dot-spinner__dot"></div>
-                    <div className="dot-spinner__dot"></div>
-                    <div className="dot-spinner__dot"></div>
-                    <div className="dot-spinner__dot"></div>
-                  </div>
-                </div>
-              )}
+
             </form>
 
             <section className="">

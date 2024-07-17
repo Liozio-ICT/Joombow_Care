@@ -35,15 +35,20 @@ export const AuthProvider = ({ children }) => {
         setUser(userData)
     }
 
+    const clearData = () => {
+
+        localStorage.removeItem('auth_token')
+        localStorage.removeItem('user')
+        setIsAuthenticated(false)
+        setToken()
+        setUser()
+    }
+
     const logout = async () => {
         // api request to logout
         const response = await apiClient.get('/user/logout')
         if (response.ok || response.status === 401) {
-            localStorage.removeItem('auth_token')
-            localStorage.removeItem('user')
-            setIsAuthenticated(false)
-            setToken()
-            setUser()
+            clearData()
         }
         const { errors, message } = await response.json()
 
@@ -63,6 +68,7 @@ export const AuthProvider = ({ children }) => {
 
             return data
         }
+        clearData()
         return null
     }
 
@@ -93,9 +99,10 @@ export const AuthProvider = ({ children }) => {
         } catch (error) {
             console.error(error)
         }
+        if (token && t !== token)
+            getUserData()
         setIsAuthenticated(!!token)
 
-        console.log({ isAuthenticated })
     }, [token, isAuthenticated])
 
     return (
