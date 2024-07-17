@@ -1,5 +1,5 @@
-import { usePaystackPayment } from "react-paystack";
-import { configure } from "../../constants/paystack";
+// import { usePaystackPayment } from "react-paystack";
+// import { configure } from "../../constants/paystack";
 import { ScrollRestoration } from "react-router-dom";
 import apiClient from "../../utils/apiClient";
 import { toast } from "react-toastify";
@@ -39,13 +39,16 @@ const ConfirmBooking = ({ data = [] }) => {
             const { name, value } = el;
             info[name] = value
         })
-        const response = await apiClient.post('/booking/book', { ...data })
+
+        const response = await apiClient.post('/booking/book', { ...info })
         setLoading(false)
         const { message } = await response.json()
 
         if (response.ok) {
             toast.success(message)
-            navigate('/dashboard/bookings')
+            setTimeout(() => {
+                navigate('/dashboard/bookings')
+            }, 1000)
         }
         else toast.error(message)
         // initializePayment({
@@ -73,7 +76,7 @@ const ConfirmBooking = ({ data = [] }) => {
 
                 <div className='grid gap-5 w-full *:w-full !px-0 text-center'>
                     <button type="button"
-                        onClick={() => submitBooking}
+                        onClick={submitBooking}
                         className='max-w-[12rem] text-sm p-1 px-2 bg-brand-red rounded mx-auto'>Proceed</button>
                 </div>
             </div>

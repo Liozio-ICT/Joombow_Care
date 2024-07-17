@@ -78,7 +78,8 @@ const Profile = () => {
 
   useEffect(() => {
     getUserData().then((e) => {
-      setProfilePhoto(`https://ui-avatars.com/api/?name=${e?.firstName?.replaceAll(' ', '+') ?? 'Joombow'}+${e?.lastName?.replaceAll(' ', '+') ?? 'User'}`)
+      // console.log(e)
+      setProfilePhoto(e?.photo ?? `https://ui-avatars.com/api/?name=${e?.firstName?.replaceAll(' ', '+') ?? 'Joombow'}+${e?.lastName?.replaceAll(' ', '+') ?? 'User'}`)
     })
   }, [])
 

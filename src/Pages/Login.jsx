@@ -5,7 +5,7 @@ import { GrFormPreviousLink } from "react-icons/gr";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loader from "../component/Loader";
 import apiClient from "../utils/apiClient";
@@ -34,7 +34,7 @@ const Login = () => {
       if (response.ok) {
         toast.success(message);
         login(token, user)
-        navigate("/launch");
+        navigate("/dashboard");
       } else {
         toast.error(`Login failed: ${message}`);
       }
@@ -54,7 +54,7 @@ const Login = () => {
       const result = await signInWithPopup(Gauth, provider);
       console.log("AUTH", result);
 
-      const response = await apiClient("/user/login/google", {
+      const response = await apiClient.post("/user/login/google", {
         name: result?.user.displayName,
         email: result?.user.email,
       });
@@ -64,7 +64,7 @@ const Login = () => {
       if (response.ok) {
         toast.success(message);
         login(token, user)
-        navigate("/launch");
+        navigate("/dashboard");
       }
     } catch (error) {
       // toast.error('Could not login with Google');
@@ -79,17 +79,6 @@ const Login = () => {
       <ScrollRestoration />
 
       <Loader />
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
       <span className="prevLink lg:hidden px-4 pt-4 block">
         <Link to="/">
           <GrFormPreviousLink className="text-[1.5rem] border border-slate-200 text-white rounded-3xl" />

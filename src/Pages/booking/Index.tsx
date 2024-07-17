@@ -33,7 +33,7 @@ const Index = () => {
       <ScrollRestoration />
 
       <div className="bg-[#FD1014] !pt-10 md:bg-transparent md:!pt-5">
-        <TitleHeader title="My Bookings" goBack={navigate(-1)} />
+        <TitleHeader title="My Bookings" />
       </div>
 
       <div className="mx-auto my-5 flex flex-col gap-5 *:mx-auto md:my-10 md:max-w-[75%] md:gap-10">

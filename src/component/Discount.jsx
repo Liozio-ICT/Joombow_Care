@@ -1,5 +1,4 @@
-import React from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 
 function Discount() {
@@ -19,7 +18,6 @@ function Discount() {
 
   return (
     <div>
-      <ToastContainer />
       <div className="discount bg-[black] text-[#fd1014d1]">
         <div className="container bg-[#D14B46] m-auto p-6 md:p-10 lg:p-10 w-[95%] relative left-0 right-0 bottom-[30px] md:bottom-[60px]  lg:bottom-[60px] shadow-lg rounded-sm">
           <div className="bg-[#D9D9D9] text-[#fd1014d1] font-clash font-bold text-[20px] md:text-[35x px] lg:text-[35px] text-center">

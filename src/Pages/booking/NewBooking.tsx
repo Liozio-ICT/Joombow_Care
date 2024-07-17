@@ -3,12 +3,12 @@ import TitleHeader from "../../components/TitleHeader";
 import { useNavigate } from "react-router-dom";
 import BookingForm from "./BookingForm";
 import ConfirmBooking from "./ConfirmBooking";
+import { useEffect } from "react";
 
 const NewBooking = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const submit = (form) => {
-    console.log({ form });
     setData(form);
     setConfirm(true);
   };
