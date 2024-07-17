@@ -26,9 +26,23 @@ const EditProfile = () => {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(input);
       fileReader.onload = () => setPhoto(fileReader.result);
+      const response = await apiClent.post("/upload/file",{
+        file: input
+      }, {
+        content_type: "multipart/formdata"
+      })
+      const {message,error, url}=await response.json()
+      if(response.ok){
+        setPhoto(url)
+       return toast.success(message)
+      }
+      toast.error(message)
+      setPhoto(`https://ui-avatars.com/api/?name=${e?.firstName?.replaceAll(' ', '+') ?? 'Joombow'}+${e?.lastName?.replaceAll(' ', '+') ?? 'User'}`)
 
     } catch (error) {
       console.log({ error });
+      setPhoto(`https://ui-avatars.com/api/?name=${e?.firstName?.replaceAll(' ', '+') ?? 'Joombow'}+${e?.lastName?.replaceAll(' ', '+') ?? 'User'}`)
+      toast.error(error?.message)
     }
   };
 
@@ -72,7 +86,7 @@ const EditProfile = () => {
     <>
       <ScrollRestoration />
 
-     {loading && <Loader />}
+      {loading && <Loader />}
 
       <form className="grid gap-5 !p-0" onSubmit={submit}>
         <div className="profile-header *:p-3 *:md:p-5">
