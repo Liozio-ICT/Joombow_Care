@@ -1,10 +1,10 @@
 import { useState } from "react";
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { GrFormPreviousLink } from "react-icons/gr";
 import Loader from "../component/Loader";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import apiClient from "../utils/apiClient";
 
 const Forgotpswd = () => {
   const [loading, setLoading] = useState(false);
@@ -15,15 +15,21 @@ const Forgotpswd = () => {
   const handleForgotPassword = async () => {
     try {
       setLoading(true);
-      const response = await axios.post(
-        "https://resp-one.vercel.app/forgot-password",
+      const response = await apiClient.post(
+        "/user/forgot-password",
         { email }
       );
-      Setmessage(response.data.message);
+      const { message } = response.json()
+      Setmessage(message);
 
       // If password reset is successful, navigate to the change password page
-      if (response) {
+      if (response.ok) {
+        toast.success(message)
         navigate("/new"); // Replace '/change-password' with your desired route
+      }
+      else {
+        toast.error(message)
+        toast.error("enter a valid email");
       }
     } catch (error) {
       console.error(error);
@@ -34,17 +40,6 @@ const Forgotpswd = () => {
   };
   return (
     <>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
       <div className="container px-6 lg:hidden bg-black h-screen ">
         <Loader />
         <span className="prevLink py-4 block mb-8">

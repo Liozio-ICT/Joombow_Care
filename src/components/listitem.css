@@ -1,0 +1,14 @@
+.list-item {
+  @apply grid w-full items-center gap-2;
+
+  grid-template-columns: [icon-start] 2.5rem [icon-end label-start] 1fr [label-end arrow-start];
+
+  & > .icon {
+    @apply flex aspect-square size-full items-center justify-center object-contain p-1 *:size-full;
+    grid-column: icon;
+  }
+  & > .label {
+    @apply text-left text-base md:text-lg;
+    grid-column: label;
+  }
+}

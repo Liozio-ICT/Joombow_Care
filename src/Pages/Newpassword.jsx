@@ -1,13 +1,13 @@
 // src/ResetPassword.js
 import { useState } from "react";
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { GrFormPreviousLink } from "react-icons/gr";
 import Loader from "../component/Loader";
 // import { toast } from 'react-toastify';
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ScrollRestoration } from "react-router-dom";
+import apiClient from "../utils/apiClient";
 
 const ResetPassword = () => {
   const navigate = useNavigate();
@@ -20,12 +20,20 @@ const ResetPassword = () => {
   const handleResetPassword = async () => {
     try {
       setLoading(true);
-      const response = await axios.post(
-        "https://resp-one.vercel.app/reset-password",
+      const response = await apiClient.post(
+        "/user/reset-password",
         { email, otp, newPassword }
       );
-      toast.success(response.data.message);
-      navigate("/login");
+      const { message } = response.json()
+      if (response.ok) {
+        toast.success(message);
+
+        navigate("/login");
+      }
+      else {
+        toast.error(message)
+        toast.error("Error resetting password. Please try again later.");
+      }
     } catch (error) {
       console.error(error);
       toast.error("Error resetting password. Please try again later.");
@@ -38,17 +46,6 @@ const ResetPassword = () => {
     <>
       <ScrollRestoration />
 
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
       <div className="container mx-auto px-6 lg:hidden h-screen bg-black">
         <span className="prevLink block py-8">
           <Link to="/reset">

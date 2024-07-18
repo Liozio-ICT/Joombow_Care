@@ -58,8 +58,9 @@ const Profile = () => {
   const handleLogout = async () => {
     // api request logics
     const { message, done } = await logout()
-    if (done)
-      return navigate("/");
+    if (done) {
+      return navigate("/login");
+    }
 
     toast.error(message)
     setModalType()
@@ -78,7 +79,8 @@ const Profile = () => {
 
   useEffect(() => {
     getUserData().then((e) => {
-      setProfilePhoto(`https://ui-avatars.com/api/?name=${e?.firstName?.replaceAll(' ', '+') ?? 'Joombow'}+${e?.lastName?.replaceAll(' ', '+') ?? 'User'}`)
+      // console.log(e)
+      setProfilePhoto(e?.photo ?? `https://ui-avatars.com/api/?name=${e?.firstName?.replaceAll(' ', '+') ?? 'Joombow'}+${e?.lastName?.replaceAll(' ', '+') ?? 'User'}`)
     })
   }, [])
 
@@ -179,7 +181,7 @@ const Profile = () => {
                 </div>
                 <button
                   className="mx-auto w-full max-w-[15rem] rounded-lg bg-brand-red p-2 px-3 outline-none"
-                  onClick={() => navigate("/")}
+                  onClick={() => navigate("/signup")}
                 >
                   Ok
                 </button>
