@@ -72,7 +72,7 @@ const Dashboard = () => {
                 20% OFF All Car Care For First 100 Registered Users
               </h3>
               <div className="bg-[#DAC5C5] py-5 pt-8">
-                <div className="gridded ">
+                <div className="gridded px-5">
                   {extras.map((card, idx) => (
                     <Card {...card} key={idx} />
                   ))}

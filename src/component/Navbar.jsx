@@ -67,7 +67,7 @@ function Navbar() {
               href="#carmake"
               className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
               {" "}
-              Car Repair
+              Car Make
             </a>
             {/* <a
               href="#review"
@@ -183,7 +183,7 @@ function Navbar() {
                   href="#carmake"
                   className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
                   {" "}
-                  Car Repair
+                  Car Make
                 </a>
                 {/* <a
                   onClick={toggle}

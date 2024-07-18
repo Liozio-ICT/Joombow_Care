@@ -9,16 +9,16 @@ import { ScrollRestoration } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const DashboardLayout = () => {
-  const { user, logout } = useAuth()
+  const { user, logout } = useAuth();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleLogout = async () => {
     // api handleLogout call
-    const { done, message } = await logout()
-    if (done) return navigate('/')
+    const { done, message } = await logout();
+    if (done) return navigate("/");
 
-    toast.error(message)
-  }
+    toast.error(message);
+  };
   return (
     <>
       <Loader />
@@ -41,11 +41,17 @@ const DashboardLayout = () => {
           </div>
 
           <div className="sticky bottom-0 flex flex-col p-3 px-5">
-            <button className="flex text-white/50" type="button" onClick={handleLogout}>
+            <button
+              className="flex text-white/50"
+              type="button"
+              onClick={handleLogout}
+            >
               <small>Logout</small>
             </button>
-            <p>{user?.firstName ?? user?.lastName ?? user?.username ?? "User"}</p>
-            <small className=" text-white/50">{user?.email}</small>
+            <p>
+              {user?.firstName ?? user?.lastName ?? user?.username ?? "User"}
+            </p>
+            <small className="truncate text-white/50">{user?.email}</small>
           </div>
         </aside>
 
@@ -54,7 +60,6 @@ const DashboardLayout = () => {
         </section>
       </main>
       <MobileFooter />
-
     </>
   );
 };
