@@ -41,8 +41,11 @@ const Signup = () => {
 
       // Password validation using regular expression
       const passwordRegex =
-        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*?&^#.])[A-Za-z\d$@$!%*?&^#.]{8,}$/;
 
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*?&^#.])[A-Za-z\d$@$!%*?&^#.]{8,}$/;
+
+        // /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/;
+        
       if (!passwordRegex.test(password)) {
         toast.error(
           "Password must be at least 8 characters long and contain at least one letter, one number, and one special character."
@@ -177,7 +180,7 @@ const Signup = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 id="email"
                 type="text"
-                className={`bg-[#FCFBFB] text-black focus:border focus:border-gray-300 apitalze border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] mb-1 mt-1 px-4 ${message && !email ? "border-red-500" : ""
+                className={`bg-[#FCFBFB] text-black focus:border focus:border-gray-300 border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] mb-1 mt-1 px-4 ${message && !email ? "border-red-500" : ""
                   }`}
               />
             </div>
@@ -201,7 +204,7 @@ const Signup = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 id="password"
-                type="text"
+                type="password"
                 className={`bg-[#FCFBFB] text-black focus:border focus:border-gray-300 apitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] mb-1 mt-1 px-4 ${message && !password ? "border-red-500" : ""
                   }`}
               />
@@ -364,7 +367,7 @@ const Signup = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   id="password"
-                  type="text"
+                  type="password"
                   className={`border-[1px] mb-2 text-black border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border
                   focus:border-gray-400 ${message && !password ? "border-red-500" : ""
                     }`}

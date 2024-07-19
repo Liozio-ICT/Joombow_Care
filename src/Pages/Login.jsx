@@ -17,7 +17,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth()
+  const { login } = useAuth();
 
   const handleLogin = async () => {
     try {
@@ -30,11 +30,11 @@ const Login = () => {
 
       const response = await apiClient.post("/user/login", { email, password });
 
-      const { message, token, user } = await response.json()
+      const { message, token, user } = await response.json();
       if (response.ok) {
         toast.success(message);
-        login(token, user)
-        navigate("/dashboard")
+        login(token, user);
+        navigate("/dashboard");
         // navigate("/dashboard");
       } else {
         toast.error(`Login failed: ${message}`);
@@ -60,11 +60,10 @@ const Login = () => {
         email: result?.user.email,
       });
 
-
-      const { message, token, user } = await response.json()
+      const { message, token, user } = await response.json();
       if (response.ok) {
         toast.success(message);
-        login(token, user)
+        login(token, user);
         navigate("/launch");
       }
     } catch (error) {
@@ -80,25 +79,25 @@ const Login = () => {
       <ScrollRestoration />
 
       <Loader />
-      <span className="prevLink lg:hidden px-4 pt-4 block">
+      <span className="prevLink block px-4 pt-4 lg:hidden">
         <Link to="/">
-          <GrFormPreviousLink className="text-[1.5rem] border border-slate-200 text-white rounded-3xl" />
+          <GrFormPreviousLink className="rounded-3xl border border-slate-200 text-[1.5rem] text-white" />
         </Link>
       </span>
-      <main className="px-6 min-h-[100vh] lg:hidden">
-        <div className="logo w-[200px] h-[200px] object-cover m-auto">
+      <main className="min-h-[100vh] px-6 lg:hidden">
+        <div className="logo m-auto h-[200px] w-[200px] object-cover">
           <img
             src="https://res.cloudinary.com/dnldaz7oh/image/upload/v1707161130/JOOMBOW/rpj2kpw4bbo9ngkd5zob.png"
             className="logo"
             alt="Logo"
           />
         </div>
-        <h2 className="text-[1.7rem] text-slate-200 font-clash capitalize font-bold mb-8">
+        <h2 className="mb-8 font-clash text-[1.7rem] font-bold capitalize text-slate-200">
           login
         </h2>
         <form className="mt-[1rem]" id="registrationForm">
           <div className="inputCon">
-            <label className="block text-[#010102] font-semibold text-[16px]">
+            <label className="block text-[16px] font-semibold text-[#010102]">
               Email:
             </label>
             <input
@@ -107,12 +106,12 @@ const Login = () => {
               id="email"
               type="text"
               placeholder="Enter Email"
-              className="apitalize text-black border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-300"
+              className="apitalize w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-300"
             />
           </div>
 
           <div className="inputCon py-2">
-            <label className="block text-[#010102] font-semibold text-[16px]">
+            <label className="block text-[16px] font-semibold text-[#010102]">
               Password:
             </label>
             <input
@@ -121,19 +120,19 @@ const Login = () => {
               id="password"
               type="text"
               placeholder="Enter Password"
-              className="apitalize text-black border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 bg-[#FCFBFB] focus:border focus:border-gray-300 "
+              className="apitalize w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-300"
             />
           </div>
 
-          <h2 className="fgpsw text-right my-2 text-sm text-sky-400 font-semibold mon hover:text-sky-500 transition">
+          <h2 className="fgpsw mon my-2 text-right text-sm font-semibold text-sky-400 transition hover:text-sky-500">
             <Link to="/reset"> I forgot my password!</Link>
           </h2>
-          <div className="mt-[1rem] ">
+          <div className="mt-[1rem]">
             <button
               type="button"
               onClick={handleLogin}
-              className="btn text-[18px] text-white font-montserrat font-semibold cursor-pointer
-             w-full rounded-md outline-none py-3 bg-[#FD1014] hover:bg-[#E3383B] transition">
+              className="btn font-montserrat w-full cursor-pointer rounded-md bg-[#FD1014] py-3 text-[18px] font-semibold text-white outline-none transition hover:bg-[#E3383B]"
+            >
               Login
             </button>
 
@@ -147,16 +146,14 @@ const Login = () => {
             <div className="text my-5 text-slate-200">
               <h2>
                 I don't have an account?{" "}
-                <span className="log font-bold text-[#FD1014] hover:text-[#E3383B] transition">
+                <span className="log font-bold text-[#FD1014] transition hover:text-[#E3383B]">
                   <Link to="/signup">Signup</Link>{" "}
                 </span>{" "}
               </h2>
             </div>
 
             {loading && (
-              <div
-                className="fixed top-0 left-0 right-0 bottom-0
-                   bg-white w-full flex items-center justify-center">
+              <div className="fixed bottom-0 left-0 right-0 top-0 flex w-full items-center justify-center bg-white">
                 <div className="dot-spinner">
                   <div className="dot-spinner__dot"></div>
                   <div className="dot-spinner__dot"></div>
@@ -173,8 +170,8 @@ const Login = () => {
             <button
               type="button"
               onClick={handleOAuth}
-              className="  w-full border-red-500 border
-         py-3 px-4 rounded-[10px] flex items-center text-[18px] font-semibold mon justify-center hover:bg-[#E3383B] text-[#FCFBFB] ease-in-out duration-300 transition">
+              className="mon flex w-full items-center justify-center rounded-[10px] border border-red-500 px-4 py-3 text-[18px] font-semibold text-[#FCFBFB] transition duration-300 ease-in-out hover:bg-[#E3383B]"
+            >
               <FcGoogle className="mr-2 text-[28px]" />
               Login with google
             </button>
@@ -186,7 +183,8 @@ const Login = () => {
                 display: "flex",
                 alignItems: "center ",
                 justifyContent: "center",
-              }}>
+              }}
+            >
               <div className="authContent">
                 <p className="authText hidden text-slate-200"> Google</p>
               </div>
@@ -197,37 +195,35 @@ const Login = () => {
 
       {/* desktop */}
 
-      <div className="r w-full hidden lg:block">
-        <span className="prevLink z-[2] absolute block">
+      <div className="r hidden w-full lg:block">
+        <span className="prevLink absolute z-[2] block">
           <img
             src="https://res.cloudinary.com/dnldaz7oh/image/upload/v1707161130/JOOMBOW/rpj2kpw4bbo9ngkd5zob.png"
-            className="w-[250px] h-[250px] object-cover"
+            className="h-[250px] w-[250px] object-cover"
             alt="Logo"
           />
         </span>
         <img
           src="https://res.cloudinary.com/durbee4ln/image/upload/v1711811511/Care_care/man-connecting-jumper-cables-to-battery_ysq6je.jpg"
-          className="w-full object-cover h-[780px]"
+          className="h-[780px] w-full object-cover"
           alt=""
         />
 
-        <div className="absolute inset-0 bg-black opacity-70 h-[49rem] w-full"></div>
+        <div className="absolute inset-0 h-[48.9rem] w-full bg-black opacity-70"></div>
 
-        <div className="absolute inset-0 flex  justify-center  w-full  text-white ">
-          <form
-            className=" w-[50%]  mt-[2rem] bg-[#433F3FCC]"
-            id="registrationForm">
-            <main className="px-[1rem] block">
+        <div className="absolute inset-0 flex w-full justify-center text-white">
+          <form className="mt-2 w-[50%] bg-[#433F3FCC]" id="registrationForm">
+            <main className="block px-[1rem]">
               <Link to="/">
-                <GrFormPreviousLink className="text-[1.5rem] text-white border border-gray-200 rounded-3xl mt-8 mb-10" />
+                <GrFormPreviousLink className="mb-10 mt-8 rounded-3xl border border-gray-200 text-[1.5rem] text-white" />
               </Link>
 
-              <h2 className=" text-slate-100 text-[1.7rem] font-clash capitalize font-bold mb-8">
+              <h2 className="mb-8 font-clash text-[1.7rem] font-bold capitalize text-slate-100">
                 login
               </h2>
               <form className="mt-[1rem]" id="registrationForm">
                 <div className="inputCon my-[1rem]">
-                  <label className="block text-slate-100 font-semibold text-[16px]">
+                  <label className="block text-[16px] font-semibold text-slate-100">
                     Email:
                   </label>
                   <input
@@ -236,33 +232,33 @@ const Login = () => {
                     id="email"
                     type="text"
                     placeholder="Enter Email"
-                    className="apitalize border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] px-4 my-2 bg-[#FCFBFB] focus:border text-black focus:border-gray-400"
+                    className="apitalize my-2 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-400"
                   />
                 </div>
 
                 <div className="inputCon">
-                  <label className="block text-slate-100 font-semibold text-[16px]">
+                  <label className="block text-[16px] font-semibold text-slate-100">
                     Password:
                   </label>
                   <input
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     id="password"
-                    type="text"
+                    type="password"
                     placeholder="Enter Password"
-                    className="apitalize  text-slate-900  border-[1px] border-slate-200 outline-none w-full py-[.6rem] rounded-[5px] my-2 px-4 bg-[#FCFBFB] focus:border focus:border-gray-400"
+                    className="my-2 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-slate-900 outline-none focus:border focus:border-gray-400"
                   />
                 </div>
 
-                <h2 className="fgpsw text-right my-2 text-sm text-sky-400 font-semibold mon  hover:text-sky-500 transition">
+                <h2 className="fgpsw mon my-2 text-right text-sm font-semibold text-sky-400 transition hover:text-sky-500">
                   <Link to="/reset"> I forgot my password!</Link>
                 </h2>
                 <div className="mt-[1rem]">
                   <button
                     type="button"
                     onClick={handleLogin}
-                    className="btn text-[18px] text-white font-montserrat font-semibold cursor-pointer
-                     w-full rounded-md outline-none py-3 bg-[#FD1014] hover:bg-[#E3383B] transition">
+                    className="btn font-montserrat w-full cursor-pointer rounded-md bg-[#FD1014] py-3 text-[18px] font-semibold text-white outline-none transition hover:bg-[#E3383B]"
+                  >
                     Login
                   </button>
                   {/* <Link
@@ -275,16 +271,14 @@ const Login = () => {
                   <div className="text my-5">
                     <h2>
                       I don't have an account?{" "}
-                      <span className="log font-bold text-[#FD1014] hover:text-[#E3383B] transition">
+                      <span className="log font-bold text-[#FD1014] transition hover:text-[#E3383B]">
                         <Link to="/signup">Signup</Link>{" "}
                       </span>{" "}
                     </h2>
                   </div>
 
                   {loading && (
-                    <div
-                      className="fixed top-0 left-0 right-0 bottom-0 z-20
-                   bg-white w-full flex items-center justify-center">
+                    <div className="fixed bottom-0 left-0 right-0 top-0 z-20 flex w-full items-center justify-center bg-white">
                       <div className="dot-spinner">
                         <div className="dot-spinner__dot"></div>
                         <div className="dot-spinner__dot"></div>
@@ -301,8 +295,8 @@ const Login = () => {
                   <button
                     type="button"
                     onClick={handleOAuth}
-                    className="  w-full border-red-500 border
-                    py-3 px-4 rounded-[10px] flex items-center text-[18px] font-semibold mon justify-center hover:bg-[#E3383B] transition">
+                    className="mon flex w-full items-center justify-center rounded-[10px] border border-red-500 px-4 py-3 text-[18px] font-semibold transition hover:bg-[#E3383B]"
+                  >
                     <FcGoogle className="mr-2 text-[28px]" />
                     Login with google
                   </button>
@@ -314,7 +308,8 @@ const Login = () => {
                       display: "flex",
                       alignItems: "center ",
                       justifyContent: "center",
-                    }}>
+                    }}
+                  >
                     <div className="authContent">
                       <p className="authText hidden"> Google</p>
                     </div>
