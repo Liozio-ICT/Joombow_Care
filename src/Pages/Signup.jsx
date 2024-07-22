@@ -41,7 +41,7 @@ const Signup = () => {
 
       // Password validation using regular expression
       const passwordRegex =
-        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*?&^#.])[A-Za-z\d$@$!%*?&^#.]{8,}$/;
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\d)(?=.*[\W]).{8,}$/;
 
       // /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/;
 
@@ -261,7 +261,7 @@ const Signup = () => {
       </section>
 
       {loading && (
-        <div className="fixed bottom-0 left-0 right-0 top-0 flex w-full items-center justify-center bg-white">
+        <div className="fixed inset-0 z-50 flex w-full items-center justify-center bg-white">
           <div className="dot-spinner">
             <div className="dot-spinner__dot"></div>
             <div className="dot-spinner__dot"></div>

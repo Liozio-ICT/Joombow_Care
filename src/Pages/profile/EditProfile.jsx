@@ -11,13 +11,15 @@ import { toast } from "react-toastify";
 import Loader from "../../component/Loader";
 
 const EditProfile = () => {
-  const { user, getUserData, updateUser } = useAuth()
-  const [photo, setPhoto] = useState(user.photo ??
-    `https://ui-avatars.com/api/?name=${user?.firstName?.replaceAll(' ', '+') ?? 'Joombow'}+${user?.lastName?.replaceAll(' ', '+') ?? 'User'}`);
+  const { user, getUserData, updateUser } = useAuth();
+  const [photo, setPhoto] = useState(
+    user.photo ??
+      `https://ui-avatars.com/api/?name=${user?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${user?.lastName?.replaceAll(" ", "+") ?? "User"}`,
+  );
   const [email, setEmail] = useState(user.email);
   const [firstName, setFirstName] = useState(user.firstName);
   const [lastName, setLastName] = useState(user.lastName);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -26,62 +28,71 @@ const EditProfile = () => {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(input);
       fileReader.onload = () => setPhoto(fileReader.result);
-      const response = await apiClent.post("/upload/file",{
-        file: input
-      }, {
-        content_type: "multipart/formdata"
-      })
-      const {message,error, url}=await response.json()
-      if(response.ok){
-        setPhoto(url)
-       return toast.success(message)
+      const response = await apiClient.post(
+        "/upload/file",
+        {
+          file: input,
+        },
+        {
+          content_type: "multipart/formdata",
+        },
+      );
+      const { message, error, url } = await response.json();
+      if (response.ok) {
+        setPhoto(url);
+        return toast.success(message);
       }
-      toast.error(message)
-      setPhoto(`https://ui-avatars.com/api/?name=${e?.firstName?.replaceAll(' ', '+') ?? 'Joombow'}+${e?.lastName?.replaceAll(' ', '+') ?? 'User'}`)
-
+      toast.error(message);
+      setPhoto(
+        `https://ui-avatars.com/api/?name=${e?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${e?.lastName?.replaceAll(" ", "+") ?? "User"}`,
+      );
     } catch (error) {
       console.log({ error });
-      setPhoto(`https://ui-avatars.com/api/?name=${e?.firstName?.replaceAll(' ', '+') ?? 'Joombow'}+${e?.lastName?.replaceAll(' ', '+') ?? 'User'}`)
-      toast.error(error?.message)
+      setPhoto(
+        `https://ui-avatars.com/api/?name=${e?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${e?.lastName?.replaceAll(" ", "+") ?? "User"}`,
+      );
+      toast.error(error?.message);
     }
   };
 
   const submit = async (form) => {
     form.preventDefault();
-    setLoading(true)
+    setLoading(true);
 
     try {
-      const response = await apiClient.put('/user/me/edit', {
+      const response = await apiClient.put("/user/me/edit", {
         photo,
         email,
         firstName,
         lastName,
-      })
+      });
 
-      const data = await response.json()
-      setLoading(false)
+      const data = await response.json();
+      setLoading(false);
       if (response.ok) {
-        updateUser(data.user)
-        toast.success(data.message)
+        updateUser(data.user);
+        toast.success(data.message);
 
         setTimeout(() => {
           navigate("/dashboard/profile");
         }, 1000);
       }
-      toast.success(data.message)
-    }
-    catch (error) {
-      setLoading(false)
-      console.error(error)
-      toast.error(error)
+      toast.success(data.message);
+    } catch (error) {
+      setLoading(false);
+      console.error(error);
+      toast.error(error);
     }
   };
 
   useEffect(() => {
     getUserData().then((e) => {
-      setPhoto(e.photo ?? `https://ui-avatars.com/api/?name=${e?.firstName?.replaceAll(' ', '+') ?? 'Joombow'}+${e?.lastName?.replaceAll(' ', '+') ?? 'User'}`)
-    })
-  }, [])
+      setPhoto(
+        e.photo ??
+          `https://ui-avatars.com/api/?name=${e?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${e?.lastName?.replaceAll(" ", "+") ?? "User"}`,
+      );
+    });
+  }, []);
   return (
     <>
       <ScrollRestoration />

@@ -1,28 +1,30 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import apiClient from "../utils/apiClient";
+import OtpInput from "../components/OtpInput";
 
 const YourComponent = ({ Gmail }) => {
   const [loading, setLoading] = useState(false);
 
   const [email, setEmail] = useState(Gmail);
-  const [otp, setOtp] = useState(["", "", "", ""]); // Array to store individual digits
+  const [otp, setOtp] = useState(); // Array to store individual digits
+  // const [otp, setOtp] = useState(["", "", "", ""]); // Array to store individual digits
   const [error, setError] = useState("");
   const [isVerificationSuccess, setVerificationSuccess] = useState(false);
 
   const handleVerification = async () => {
     // Basic input validation
-    if (!Gmail || otp.some((digit) => !digit)) {
+    if (!Gmail || otp.length < 4) {
       setError("Please fill in the OTP fields.");
       return;
     }
 
     try {
       setLoading(true);
-      console.log(otp)
+      console.log(otp);
       const response = await apiClient.post("/user/verify-email", {
         email: Gmail,
-        otp: otp.join(""),
+        otp,
       });
 
       const { message } = await response.json();
@@ -40,7 +42,7 @@ const YourComponent = ({ Gmail }) => {
       setError(error.response ? error.response.data.message : error.message);
       console.error(
         "Error verifying OTP:",
-        error.response ? error.response.data.message : error.message
+        error.response ? error.response.data.message : error.message,
       );
 
       // Reset verification success state on error
@@ -50,17 +52,17 @@ const YourComponent = ({ Gmail }) => {
     }
   };
 
-  const handleOtpChange = (index, value) => {
-    const newOtp = [...otp];
-    newOtp[index] = value;
+  // const handleOtpChange = (index, value) => {
+  //   const newOtp = [...otp];
+  //   newOtp[index] = value;
 
-    // Move focus to the next input when a digit is entered
-    if (index < 3 && value !== "") {
-      document.getElementById(`otp-input-${index + 1}`).focus();
-    }
+  //   // Move focus to the next input when a digit is entered
+  //   if (index < 3 && value !== "") {
+  //     document.getElementById(`otp-input-${index + 1}`).focus();
+  //   }
 
-    setOtp(newOtp);
-  };
+  //   setOtp(newOtp);
+  // };
 
   const hideEmail = () => {
     const atIndex = email.indexOf("@");
@@ -70,13 +72,11 @@ const YourComponent = ({ Gmail }) => {
 
   return (
     <>
-      <div
-        className="flex lg:hidden flex-col  
-     px-6 pt-8 bg-black fixed top-0 z-50 bottom-0 w-full left-0 right-0">
-        <h2 className="oo text-[27px] font-clash font-bold">Enter OTP</h2>
+      <div className="fixed bottom-0 left-0 right-0 top-0 z-50 flex w-full flex-col bg-black px-6 pt-8 lg:hidden">
+        <h2 className="oo font-clash text-[27px] font-bold">Enter OTP</h2>
         <p className="mon my-4 text-white">
           A 4 digit code has been sent to
-          <span className="gg  font-semibold focus:outline-none text-[20px]">
+          <span className="gg text-[20px] font-semibold focus:outline-none">
             {" "}
             {hideEmail(Gmail)}{" "}
           </span>
@@ -85,23 +85,23 @@ const YourComponent = ({ Gmail }) => {
         <div></div>
 
         {/*} Display error message if there is any */}
-        {error && <p className="text-red-500 mb-4 font-bold mon">{error}</p>}
+        {error && <p className="mon mb-4 font-bold text-red-500">{error}</p>}
 
         {/* Display congratulatory message on successful verification */}
         {isVerificationSuccess && (
           <>
-            <div className="versucess w-full z-50 fixed bg-black top-0 left-0 right-0 bottom-0 px-6">
-              <div className="sucImg w-[350px] m-auto">
+            <div className="versucess fixed bottom-0 left-0 right-0 top-0 z-50 w-full bg-black px-6">
+              <div className="sucImg m-auto w-[350px]">
                 <img
                   src="https://res.cloudinary.com/durbee4ln/image/upload/v1706504044/CarWASH/Frame_51087_n4jq1c.png"
                   alt=""
                 />
               </div>
 
-              <h2 className="ts font-clash text-white text-center font-bold text-[27px]">
+              <h2 className="ts text-center font-clash text-[27px] font-bold text-white">
                 Register Successfully!
               </h2>
-              <p className="am mon my-4 text-white text-center">
+              <p className="am mon my-4 text-center text-white">
                 Congratulation! your account already created. Please login to
                 get amazing experience.
               </p>
@@ -109,9 +109,9 @@ const YourComponent = ({ Gmail }) => {
               <div className="btt">
                 <button
                   type="button"
-                  className="btn text-[18px] text-white font-semibold cursor-pointer
-                          w-full rounded-md outline-none py-3 bg-[#FD1014] hover:bg-[#E3383B] transition mt-4">
-                  <Link to={'/login'}>Login</Link>
+                  className="btn mt-4 w-full cursor-pointer rounded-md bg-[#FD1014] py-3 text-[18px] font-semibold text-white outline-none transition hover:bg-[#E3383B]"
+                >
+                  <Link to={"/login"}>Login</Link>
                 </button>
               </div>
             </div>
@@ -119,7 +119,10 @@ const YourComponent = ({ Gmail }) => {
         )}
 
         {/* OTP input fields */}
-        <div className="flex space-x-4">
+
+        <OtpInput length={4} setValue={setOtp} />
+
+        {/* <div className="flex space-x-4">
           {otp.map((digit, index) => (
             <input
               key={index}
@@ -131,20 +134,19 @@ const YourComponent = ({ Gmail }) => {
               className="border p-2 w-16 h-16 rounded-md font-bold text-[20px] focus:border-slate-600 focus:border border-gray-400 text-center outline-none"
             />
           ))}
-        </div>
+        </div> */}
 
         <div className="ver mt-[2rem] w-full">
           <button
             onClick={handleVerification}
-            className=" w-full  mon text-white py-4 px-4 rounded mt-4 bg-[#FD1014] hover:bg-[#E3383B] transition">
+            className="mon mt-4 w-full rounded bg-[#FD1014] px-4 py-4 text-white transition hover:bg-[#E3383B]"
+          >
             Verify OTP
           </button>
         </div>
 
         {loading && (
-          <div
-            className="fixed top-0 left-0 right-0 bottom-0
-                   bg-white w-full flex items-center justify-center">
+          <div className="fixed bottom-0 left-0 right-0 top-0 flex w-full items-center justify-center bg-white">
             <div className="dot-spinner">
               <div className="dot-spinner__dot"></div>
               <div className="dot-spinner__dot"></div>
@@ -159,22 +161,22 @@ const YourComponent = ({ Gmail }) => {
         )}
       </div>
 
-      <section className="art lg:block  hidden  bg-red-500 w-full p-6 ">
-        <div className="fixed top-0 left-0 right-0 bottom-0 bg-gray-800 z-40">
+      <section className="art hidden w-full bg-red-500 p-6 lg:block">
+        <div className="fixed bottom-0 left-0 right-0 top-0 z-40 bg-gray-800">
           <img
             src="https://res.cloudinary.com/durbee4ln/image/upload/v1711811511/Care_care/man-connecting-jumper-cables-to-battery_ysq6je.jpg"
             className="w-full object-cover lg:h-[900px]"
             alt=""
           />
-          <div className="absolute inset-0 bg-black opacity-70  h-[50rem] w-full"></div>
+          <div className="absolute inset-0 h-[50rem] w-full bg-black opacity-70"></div>
         </div>
-        <div className="flex flex-col overlay fixed bg-[#433F3FCC]  top-[10rem] z-50 bottom-0 h-[30rem] w-full left-0 right-0 md:w-1/3 mx-auto px-6">
-          <h2 className="oo font-clash text-[20px] font-bold text-slate-100 pt-8">
+        <div className="overlay fixed bottom-0 left-0 right-0 top-[10rem] z-50 mx-auto flex h-[30rem] w-full flex-col bg-[#433F3FCC] px-6 md:w-1/3">
+          <h2 className="oo pt-8 font-clash text-[20px] font-bold text-slate-100">
             Enter OTP
           </h2>
-          <p className="mon my-4 text-slate-100 pb-2">
+          <p className="mon my-4 pb-2 text-slate-100">
             A 4 digit code has been sent to
-            <span className="gg font-semibold text-[20px] text-slate-100">
+            <span className="gg text-[20px] font-semibold text-slate-100">
               {" "}
               {hideEmail(Gmail)}{" "}
             </span>
@@ -182,23 +184,23 @@ const YourComponent = ({ Gmail }) => {
           </p>
 
           {/* Display error message if there is any */}
-          {error && <p className="text-red-500 mb-4 font-bold mon">{error}</p>}
+          {error && <p className="mon mb-4 font-bold text-red-500">{error}</p>}
 
           {/* Display congratulatory message on successful verification */}
           {isVerificationSuccess && (
             <>
-              <div className="versucess w-full z-50 fixed px-4 bg-white text-slate-800 top-0 left-0 right-0 bottom-0 bg-[url('https://res.cloudinary.com/durbee4ln/image/upload/v1711811511/Care_care/man-connecting-jumper-cables-to-battery_ysq6je.jpg')] bg-no-repeat bg-center bg-cover">
-                <div className="absolute inset-0 bg-black opacity-70  h-[49rem] w-full"></div>
-                <section className="mm flex justify-center relative z-100">
+              <div className="versucess fixed bottom-0 left-0 right-0 top-0 z-50 w-full bg-white bg-[url('https://res.cloudinary.com/durbee4ln/image/upload/v1711811511/Care_care/man-connecting-jumper-cables-to-battery_ysq6je.jpg')] bg-cover bg-center bg-no-repeat px-4 text-slate-800">
+                <div className="absolute inset-0 h-[49rem] w-full bg-black opacity-70"></div>
+                <section className="mm z-100 relative flex justify-center">
                   <div className="w-[50%]">
-                    <div className="sucImg w-[350px] h-[350px] m-auto">
+                    <div className="sucImg m-auto h-[350px] w-[350px]">
                       <img
                         src="https://res.cloudinary.com/durbee4ln/image/upload/v1706504044/CarWASH/Frame_51087_n4jq1c.png"
                         alt="sucess image"
                       />
                     </div>
 
-                    <h2 className="ts font-clash text-center font-bold text-white text-[27px] pt-6">
+                    <h2 className="ts pt-6 text-center font-clash text-[27px] font-bold text-white">
                       Register Successfully
                     </h2>
                     <p className="am mon my-5 text-center text-white">
@@ -208,7 +210,8 @@ const YourComponent = ({ Gmail }) => {
                     <div className="btt">
                       <button
                         type="button"
-                        className="btn text-[18px] text-white font-semibold cursor-pointer w-full rounded-md outline-none py-3 bg-[#FD1014] hover:bg-[#E3383B] mt-4 transition">
+                        className="btn mt-4 w-full cursor-pointer rounded-md bg-[#FD1014] py-3 text-[18px] font-semibold text-white outline-none transition hover:bg-[#E3383B]"
+                      >
                         <Link to="/login">Login</Link>
                       </button>
                     </div>
@@ -219,7 +222,9 @@ const YourComponent = ({ Gmail }) => {
           )}
 
           {/* OTP input fields */}
-          <div className="flex space-x-4">
+          <OtpInput length={4} setValue={setOtp} />
+
+          {/* <div className="flex space-x-4">
             {otp.map((digit, index) => (
               <input
                 key={index}
@@ -228,21 +233,22 @@ const YourComponent = ({ Gmail }) => {
                 maxLength="1"
                 value={digit}
                 onChange={(e) => handleOtpChange(index, e.target.value)}
-                className="border p-2 w-16 h-16 rounded-md text-slate-900 font-bold text-[20px] focus:border-slate-600 focus:border border-gray-400 text-center outline-none"
+                className="h-16 w-16 rounded-md border border-gray-400 p-2 text-center text-[20px] font-bold text-slate-900 outline-none focus:border focus:border-slate-600"
               />
             ))}
-          </div>
+          </div> */}
 
           <div className="ver mt-[2rem] w-full">
             <button
               onClick={handleVerification}
-              className="w-full mon text-white py-4 px-4 rounded mt-4 bg-[#FD1014] hover:bg-[#E3383B] transition">
+              className="mon mt-4 w-full rounded bg-[#FD1014] px-4 py-4 text-white transition hover:bg-[#E3383B]"
+            >
               Verify OTP
             </button>
           </div>
 
           {loading && (
-            <div className="fixed top-0 left-0 right-0 bottom-0 bg-white w-full flex items-center justify-center">
+            <div className="fixed bottom-0 left-0 right-0 top-0 flex w-full items-center justify-center bg-white">
               <div className="dot-spinner">
                 <div className="dot-spinner__dot"></div>
                 <div className="dot-spinner__dot"></div>

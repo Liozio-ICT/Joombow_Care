@@ -6,7 +6,7 @@ const OtpInput = ({ error, length = 6, setValue }) => {
 
   const handleChange = (index, value) => {
     let newArr = [...otp];
-    value = value.toString()
+    value = value.toString();
     newArr[index] = value.length > 1 ? value[value.length] : value;
     setOtp(newArr);
     if (value && index < length - 1) {
@@ -24,7 +24,7 @@ const OtpInput = ({ error, length = 6, setValue }) => {
   };
   return (
     <div className="grid w-full gap-2">
-      <div className="flex gap-2 ">
+      <div className="flex gap-2">
         {otp.map((value, index) => (
           <input
             value={value}
@@ -33,7 +33,7 @@ const OtpInput = ({ error, length = 6, setValue }) => {
             ref={(el) => (boxRef.current[index] = el)}
             onChange={(e) => handleChange(index, e.target.value)}
             onKeyDown={(e) => handleBackSpace(e, index)}
-            className="flex w-1 grow items-center justify-center rounded-md border border-none border-none border-current bg-white p-2 px-3 text-center text-black outline-none md:bg-[#D9D9D980] md:text-white"
+            className="flex aspect-square min-h-12 w-1 grow items-center justify-center rounded-md border border-current bg-white p-2 px-3 text-center text-black outline-none"
           />
         ))}
       </div>
