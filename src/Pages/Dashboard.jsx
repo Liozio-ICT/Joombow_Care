@@ -28,7 +28,13 @@ const Dashboard = () => {
             <div className="flex w-full grow items-center justify-between gap-2">
               <h1 className="grid grow text-3xl text-white *:truncate">
                 <span>Hello</span>
-                <span>{user.firstName}</span>
+                <span>
+                  {" "}
+                  {user?.firstName ??
+                    user?.lastName ??
+                    user?.username ??
+                    "User"}
+                </span>
               </h1>
 
               <Link
@@ -55,7 +61,8 @@ const Dashboard = () => {
         </div>
         <h1 className="hidden text-5xl text-white md:grid">
           <span className="text-3xl text-white *:truncate">
-            Hello {user.firstName ?? user.lastName ?? user.username ?? "User"}
+            Hello{" "}
+            {user?.firstName ?? user?.lastName ?? user?.username ?? "User"}
           </span>
           <span>Welcome to Joombow</span>
         </h1>
