@@ -169,7 +169,7 @@ const Login = () => {
 
             <button
               type="button"
-              onClick={() => handleOAuth}
+              onClick={handleOAuth}
               className="mon flex w-full items-center justify-center rounded-[10px] border border-red-500 px-4 py-3 text-[18px] font-semibold text-[#FCFBFB] transition duration-300 ease-in-out hover:bg-[#E3383B]"
             >
               <FcGoogle className="mr-2 text-[28px]" />
@@ -177,7 +177,7 @@ const Login = () => {
             </button>
             <button
               type="button"
-              onClick={() => handleOAuth}
+              onClick={handleOAuth}
               className="oAuthBtn hidden"
               style={{
                 display: "flex",
@@ -294,7 +294,7 @@ const Login = () => {
 
                   <button
                     type="button"
-                    onClick={() => handleOAuth}
+                    onClick={handleOAuth}
                     className="mon flex w-full items-center justify-center rounded-[10px] border border-red-500 px-4 py-3 text-[18px] font-semibold transition hover:bg-[#E3383B]"
                   >
                     <FcGoogle className="mr-2 text-[28px]" />
@@ -302,7 +302,7 @@ const Login = () => {
                   </button>
                   <button
                     type="button"
-                    onClick={() => handleOAuth}
+                    onClick={handleOAuth}
                     className="oAuthBtn hidden"
                     style={{
                       display: "flex",
