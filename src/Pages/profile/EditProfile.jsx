@@ -5,16 +5,16 @@ import Input from "../../components/Input";
 import { FaCamera } from "react-icons/fa6";
 import { ScrollRestoration } from "react-router-dom";
 import { useAuth } from "../../provders/AuthProvider";
-import apiClient from "../../utils/apiClient";
+import apiClient, { API_URL } from "../../utils/apiClient";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import Loader from "../../component/Loader";
 
 const EditProfile = () => {
-  const { user, getUserData, updateUser } = useAuth();
+  const { user, getUserData, updateUser, token } = useAuth();
   const [photo, setPhoto] = useState(
     user.photo ??
-      `https://ui-avatars.com/api/?name=${user?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${user?.lastName?.replaceAll(" ", "+") ?? "User"}`,
+    `https://ui-avatars.com/api/?name=${user?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${user?.lastName?.replaceAll(" ", "+") ?? "User"}`,
   );
   const [email, setEmail] = useState(user.email);
   const [firstName, setFirstName] = useState(user.firstName);
@@ -28,28 +28,30 @@ const EditProfile = () => {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(input);
       fileReader.onload = () => setPhoto(fileReader.result);
-      const response = await apiClient.post(
-        "/upload/file",
-        {
-          file: input,
-        },
-        {
-          content_type: "multipart/formdata",
-        },
-      );
-      const { message, error, url } = await response.json();
-      if (response.ok) {
-        setPhoto(url);
-        return toast.success(message);
-      }
-      toast.error(message);
-      setPhoto(
-        `https://ui-avatars.com/api/?name=${e?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${e?.lastName?.replaceAll(" ", "+") ?? "User"}`,
-      );
+      // let body = new FormData();
+      // body.append("file", input);
+      // const response = await fetch(`${API_URL}/upload/file`, {
+      //   method: "POST",
+      //   headers: {
+      //     Accept: "application/json",
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      //   body,
+      // }
+      // );
+      // const { message, error, url } = await response.json();
+      // if (response.ok) {
+      //   setPhoto(url);
+      //   return toast.success(message);
+      // }
+      // toast.error(message);
+      // setPhoto(
+      //   `https://ui-avatars.com/api/?name=${firstName?.replaceAll(" ", "+") ?? "Joombow"}+${lastName?.replaceAll(" ", "+") ?? "User"}`,
+      // );
     } catch (error) {
       console.log({ error });
       setPhoto(
-        `https://ui-avatars.com/api/?name=${e?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${e?.lastName?.replaceAll(" ", "+") ?? "User"}`,
+        `https://ui-avatars.com/api/?name=${firstName?.replaceAll(" ", "+") ?? "Joombow"}+${lastName?.replaceAll(" ", "+") ?? "User"}`,
       );
       toast.error(error?.message);
     }
@@ -61,7 +63,7 @@ const EditProfile = () => {
 
     try {
       const response = await apiClient.put("/user/me/edit", {
-        photo,
+        // photo,
         email,
         firstName,
         lastName,
@@ -87,9 +89,12 @@ const EditProfile = () => {
 
   useEffect(() => {
     getUserData().then((e) => {
+      setEmail(e.email)
+      setFirstName(e.firstName)
+      setLastName(e.lastName)
       setPhoto(
         e.photo ??
-          `https://ui-avatars.com/api/?name=${e?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${e?.lastName?.replaceAll(" ", "+") ?? "User"}`,
+        `https://ui-avatars.com/api/?name=${e?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${e?.lastName?.replaceAll(" ", "+") ?? "User"}`,
       );
     });
   }, []);

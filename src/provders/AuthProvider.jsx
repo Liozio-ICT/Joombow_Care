@@ -17,6 +17,7 @@ const AuthContext = createContext({
     },
     isAuthenticated: false,
     user: {} || null,
+    token: '' || null,
     updateUser: (data) => { return data || null },
     getUserData: async () => { return {} }
 })
@@ -106,7 +107,7 @@ export const AuthProvider = ({ children }) => {
     }, [token, isAuthenticated])
 
     return (
-        <AuthContext.Provider value={{ login, logout, isAuthenticated, user, getUserData, updateUser }}>
+        <AuthContext.Provider value={{ login, logout, isAuthenticated, user, token, getUserData, updateUser }}>
             {children}
 
             <ToastContainer
