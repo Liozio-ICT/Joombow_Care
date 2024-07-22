@@ -64,7 +64,7 @@ const Login = () => {
       if (response.ok) {
         toast.success(message);
         login(token, user);
-        navigate("/launch");
+        navigate("/dashboard");
       }
     } catch (error) {
       // toast.error('Could not login with Google');

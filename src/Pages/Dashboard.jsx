@@ -1,6 +1,5 @@
 import Card from "../components/Card";
 import { cards, extras } from "../constants/cards";
-import { user } from "../layouts/constants";
 
 import "./dash.css";
 
@@ -9,9 +8,11 @@ import { Link } from "react-router-dom";
 import { FaBell } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
 import { ScrollRestoration } from "react-router-dom";
+import { useAuth } from "../provders/AuthProvider";
 
 const Dashboard = () => {
   const [search, setSearch] = useState("");
+  const { user } = useAuth();
 
   const submit = (form) => {
     form.preventDefault();
@@ -21,13 +22,13 @@ const Dashboard = () => {
     <>
       <ScrollRestoration />
 
-      <main className="page relative isolate overflow-y-auto overflow-x-clip !p-0 *:p-5 md:bg-black  *:md:my-5 *:md:p-5">
+      <main className="page relative isolate overflow-y-auto overflow-x-clip !p-0 *:p-5 md:bg-black *:md:my-5 *:md:p-5">
         <div className="sticky top-0 !m-0 bg-[#FD3535] md:absolute md:inset-0 md:z-[-999] md:rounded-l-md">
           <div className="grid gap-5 md:hidden">
             <div className="flex w-full grow items-center justify-between gap-2">
               <h1 className="grid grow text-3xl text-white *:truncate">
                 <span>Hello</span>
-                <span>{user.name.split(" ")[0]}</span>
+                <span>{user.firstName}</span>
               </h1>
 
               <Link
@@ -52,8 +53,11 @@ const Dashboard = () => {
             </form>
           </div>
         </div>
-        <h1 className=" hidden text-5xl text-white md:block">
-          Welcome to Joombow
+        <h1 className="hidden text-5xl text-white md:grid">
+          <span className="text-3xl text-white *:truncate">
+            Hello {user.firstName ?? user.lastName ?? user.username ?? "User"}
+          </span>
+          <span>Welcome to Joombow</span>
         </h1>
 
         <div className="*:my-5">
