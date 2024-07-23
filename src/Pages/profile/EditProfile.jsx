@@ -26,28 +26,28 @@ const EditProfile = () => {
   const handlePhotoUpload = async (input) => {
     try {
       const fileReader = new FileReader();
-      fileReader.readAsDataURL(input);
-      fileReader.onload = () => setPhoto(fileReader.result);
-      // let body = new FormData();
-      // body.append("file", input);
-      // const response = await fetch(`${API_URL}/upload/file`, {
-      //   method: "POST",
-      //   headers: {
-      //     Accept: "application/json",
-      //     Authorization: `Bearer ${token}`,
-      //   },
-      //   body,
-      // }
-      // );
-      // const { message, error, url } = await response.json();
-      // if (response.ok) {
-      //   setPhoto(url);
-      //   return toast.success(message);
-      // }
-      // toast.error(message);
-      // setPhoto(
-      //   `https://ui-avatars.com/api/?name=${firstName?.replaceAll(" ", "+") ?? "Joombow"}+${lastName?.replaceAll(" ", "+") ?? "User"}`,
-      // );
+      // fileReader.readAsDataURL(input);
+      // fileReader.onload = () => setPhoto(fileReader.result);
+      let body = new FormData();
+      body.append("file", input);
+      const response = await fetch(`${API_URL}/upload/file`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body,
+      });
+
+      const { message, error, url } = await response.json();
+      if (response.ok) {
+        setPhoto(url);
+        return toast.success(message);
+      }
+      toast.error(message);
+      setPhoto(
+        `https://ui-avatars.com/api/?name=${firstName?.replaceAll(" ", "+") ?? "Joombow"}+${lastName?.replaceAll(" ", "+") ?? "User"}`,
+      );
     } catch (error) {
       console.log({ error });
       setPhoto(
@@ -63,7 +63,7 @@ const EditProfile = () => {
 
     try {
       const response = await apiClient.put("/user/me/edit", {
-        // photo,
+        photo,
         email,
         firstName,
         lastName,

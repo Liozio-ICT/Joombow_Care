@@ -16,9 +16,6 @@ const Profile = () => {
   const { logout, user, getUserData } = useAuth()
   const [modalType, setModalType] = useState();
   const [modalStep, setModalStep] = useState();
-  const [profilePhoto, setProfilePhoto] = useState(
-    `https://ui-avatars.com/api/?name=${user?.firstName?.replaceAll(' ', '+') ?? 'Joombow'}+${user?.lastName?.replaceAll(' ', '+') ?? 'User'}`
-  );
 
   const list = [
     {
@@ -94,7 +91,14 @@ const Profile = () => {
             <TitleHeader title={"My Profile"} />
           </div>
           <div className="photo aspect-square w-24 overflow-clip rounded-full relative border-2 border-white bg-dark-2">
-            <img className="absolute inset-0 w-24 object-cover" src={profilePhoto} />
+            <img
+              src={
+                user?.photo ??
+                `https://ui-avatars.com/api/?name=${user?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${user?.lastName?.replaceAll(" ", "+") ?? "User"}`
+              }
+              alt={`${user?.firstName ?? ''} ${user?.lastName ?? ''}`}
+              className="size-full w-24 object-cover absolute inset-0"
+            />
           </div>
 
           <div className="info !py-0">
