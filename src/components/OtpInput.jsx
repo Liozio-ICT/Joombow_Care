@@ -24,7 +24,7 @@ const OtpInput = ({ error, length = 6, setValue }) => {
   };
   return (
     <div className="grid w-full gap-2">
-      <div className="flex gap-2">
+      <div className="flex flex-wrap justify-center gap-2">
         {otp.map((value, index) => (
           <input
             value={value}
@@ -33,7 +33,7 @@ const OtpInput = ({ error, length = 6, setValue }) => {
             ref={(el) => (boxRef.current[index] = el)}
             onChange={(e) => handleChange(index, e.target.value)}
             onKeyDown={(e) => handleBackSpace(e, index)}
-            className="flex aspect-square min-h-12 w-1 grow items-center justify-center rounded-md border border-current bg-white p-2 px-3 text-center text-black outline-none"
+            className="flex aspect-square size-14 shrink items-center justify-center rounded-md border border-current bg-white p-2 px-3 text-center text-black outline-none"
           />
         ))}
       </div>
