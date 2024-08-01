@@ -91,7 +91,7 @@ const Header = () => {
 
             <div
                 className={cn(
-                    "fixed inset-0 -z-[99999] opacity-0 flex items-center justify-center bg-slate-950/25 transition-all",
+                    "fixed inset-0 -z-[99999] opacity-0 flex items-center justify-center bg-slate-950/25 transition-all p-3",
                     { "z-[999999] opacity-100": modalShown },
                 )}
             >
