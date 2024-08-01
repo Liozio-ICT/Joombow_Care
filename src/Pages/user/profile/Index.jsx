@@ -108,8 +108,7 @@ const Profile = () => {
 
     if (response.ok) {
       setModalStep("success");
-      return navigate('/register')
-
+      return toast.success(message)
     }
 
     toast.error(message)
@@ -211,7 +210,7 @@ const Profile = () => {
 
       <div
         className={cn(
-          "fixed inset-0 -z-[99999] opacity-0 flex items-center justify-center bg-slate-950/25 transition-all",
+          "fixed inset-0 -z-[99999] opacity-0 flex p-3 items-center justify-center bg-slate-950/25 transition-all",
           { "z-[999999] opacity-100": modalType },
         )}
       >
