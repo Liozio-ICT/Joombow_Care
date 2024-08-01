@@ -55,23 +55,15 @@ const Profile = () => {
       const { message, error, user } = await response.json();
       console.log({ photoInput, error, user, message })
       if (response.ok) {
-        updateUser(user)
-        setPhoto(useAuth().user?.photo);
-        toast.success(message);
-        setTimeout(() => {
-          navigate("/user/profile");
-        }, 1000);
+        setPhotoInput()
+        return toast.success(message);
       }
       toast.error(message);
-      setPhoto(
-        `https://ui-avatars.com/api/?name=${firstName?.replaceAll(" ", "+") ?? "Joombow"}+${lastName?.replaceAll(" ", "+") ?? "User"}`,
-      );
-      setPhotoInput()
     } catch (error) {
       console.log({ error });
       toast.error(error?.message);
     } finally {
-      getUserData()
+      getUserData().then((data) => setPhoto(data.photo));
     }
   };
 
@@ -112,6 +104,7 @@ const Profile = () => {
     }
 
     toast.error(message)
+    logout()
   };
 
   useEffect(() => {
@@ -271,7 +264,10 @@ const Profile = () => {
                 </div>
                 <button
                   className="mx-auto w-full max-w-[15rem] rounded-lg bg-brand-red p-2 px-3 outline-none"
-                  onClick={() => navigate("/signup")}
+                  onClick={() => {
+                    logout()
+                    navigate("/signup")
+                  }}
                 >
                   Ok
                 </button>

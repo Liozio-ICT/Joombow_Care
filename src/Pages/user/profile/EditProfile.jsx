@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Input from "../../../components/Input";
 import { useAuth } from "../../../provders/AuthProvider";
@@ -8,9 +8,9 @@ import Loader from "../../../component/Loader";
 
 const EditProfile = () => {
   const { updateUser, getUserData } = useAuth();
-  const [email, setEmail] = useState(useAuth().user?.email);
-  const [firstName, setFirstName] = useState(useAuth().user?.firstName);
-  const [lastName, setLastName] = useState(useAuth().user?.lastName);
+  const [email, setEmail] = useState();
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -40,6 +40,14 @@ const EditProfile = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    getUserData().then(data => {
+      setEmail(data?.email);
+      setFirstName(data?.firstName);
+      setLastName(data?.lastName);
+    })
+  }, [])
 
   return (
     <>

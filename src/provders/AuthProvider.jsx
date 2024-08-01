@@ -37,7 +37,6 @@ export const AuthProvider = ({ children }) => {
     }
 
     const clearData = () => {
-
         localStorage.removeItem('auth_token')
         localStorage.removeItem('user')
         setIsAuthenticated(false)
@@ -46,27 +45,32 @@ export const AuthProvider = ({ children }) => {
     }
 
     const logout = async () => {
-        // api request to logout
-        const response = await apiClient.get('/user/logout')
-        if (response.ok || response.status === 401) {
-            clearData()
-        }
-        const { errors, message } = await response.json()
+        try {
+            // api request to logout
+            const response = await apiClient.get('/user/logout')
+            const { errors, message } = await response.json()
 
-        return {
-            errors, message, done: response.ok
+        } catch (error) {
+            console.error(error)
+        }
+        finally {
+            clearData()
         }
     }
 
     const getUserData = async () => {
-        // api request to get current user
-        const response = await apiClient.get('/user/me')
+        try {
+            // api request to get current user
+            const response = await apiClient.get('/user/me')
 
-        if (response.ok) {
-            const data = await response.json()
-            updateUser(data)
+            if (response.ok) {
+                const data = await response.json()
+                updateUser(data)
+                return data
+            }
 
-            return data
+        } catch (error) {
+            console.error(error)
         }
         clearData()
         return null

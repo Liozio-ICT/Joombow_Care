@@ -22,68 +22,60 @@ const Settings = () => {
     <>
       <ScrollRestoration />
 
-      <div className="!p-0">
-        <div className="profile-header *:p-3 *:md:p-5">
-          <div className="wrapper !bg-brand-red md:!bg-transparent">
-            <TitleHeader title={"Settings"} />
-          </div>
+      <div className="mx-auto grid max-w-screen-sm overflow-clip rounded-lg shadow *:p-3 *:md:p-5">
+        <div className="bg-brand-red text-white">
+          <TitleHeader title={"Settings"} />
         </div>
-      </div>
-      <ul className="mt-5 grid gap-5">
-        <li>
-          <ProfileListItem
-            label={"Change password"}
-            icon={<BiLockAlt />}
-            to={"/dashboard/profile/settings/change-password"}
-          />
-        </li>
-        <li>
-          <ListToggleItem
-            label={"Light Mode"}
-            toggle={darkMode}
-            setToggle={setDarkMode}
-          />
-        </li>
-        <li>
-          <ListToggleItem
-            label={"System Default"}
-            toggle={systemDefault}
-            setToggle={setSystemDefault}
-          />
-        </li>
-      </ul>
 
-      <p>Connected Accounts</p>
-      <ul className="grid gap-5 border-white *:border-b">
-        <li>
-          <ListToggleItem
-            icon={<FaXTwitter size={24} />}
-            toggle={twitter}
-            setToggle={setTwitter}
-          />
-        </li>
-        <li>
-          <ListToggleItem
-            icon={<FaEnvelope size={24} />}
-            toggle={email}
-            setToggle={setEmail}
-          />
-        </li>
-        <li>
-          <ListToggleItem
-            icon={<FaInstagram size={24} />}
-            toggle={instagram}
-            setToggle={setInstagram}
-          />
-        </li>
-        <li>
-          <ListToggleItem
-            icon={<FaFacebookF size={24} />}
-            toggle={facebook}
-            setToggle={setFacebook}
-          />
-        </li>
-      </ul>
+        <ul className="mt-5 grid gap-5">
+          {/* <li>
+            <ListToggleItem
+              label={"Light Mode"}
+              toggle={darkMode}
+              setToggle={setDarkMode}
+            />
+          </li>
+          <li>
+            <ListToggleItem
+              label={"System Default"}
+              toggle={systemDefault}
+              setToggle={setSystemDefault}
+            />
+          </li> */}
+        </ul>
+
+        <p>Connected Accounts</p>
+        <ul className="grid gap-5 border-white *:border-b">
+          <li>
+            <ListToggleItem
+              icon={<FaXTwitter size={24} />}
+              toggle={twitter}
+              setToggle={setTwitter}
+            />
+          </li>
+          <li>
+            <ListToggleItem
+              icon={<FaEnvelope size={24} />}
+              toggle={email}
+              setToggle={setEmail}
+            />
+          </li>
+          <li>
+            <ListToggleItem
+              icon={<FaInstagram size={24} />}
+              toggle={instagram}
+              setToggle={setInstagram}
+            />
+          </li>
+          <li>
+            <ListToggleItem
+              icon={<FaFacebookF size={24} />}
+              toggle={facebook}
+              setToggle={setFacebook}
+            />
+          </li>
+        </ul>
+      </div>
     </>
   );
 };
