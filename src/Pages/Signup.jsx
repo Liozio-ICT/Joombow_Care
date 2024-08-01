@@ -68,12 +68,11 @@ const Signup = () => {
         referralCode,
       });
 
-      const { message, token, user } = await response.json();
+      const { message } = await response.json();
 
       if (response.ok) {
         toast.success(message);
         // Handle additional logic based on the response if needed
-        login(token, user);
         setShowOTPForm(true);
       } else {
         toast.error(message);
