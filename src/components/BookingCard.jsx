@@ -1,4 +1,4 @@
-import { FaCalendar, FaCar, FaMap, FaUser } from "react-icons/fa";
+import { BiCalendarEvent, BiCar, BiMapPin, BiUser } from "react-icons/bi";
 import ListItem from "./ListItem";
 
 const BookingCard = ({
@@ -15,11 +15,11 @@ const BookingCard = ({
 }) => {
 
   return (
-    <div className="rounded-xl bg-white p-3 bg-opacity-5 shadow-md grid gap-2 list-none">
-      <ListItem icon={<FaUser />} label={fullName} />
-      <ListItem icon={<FaCar />} label={carType} />
-      <ListItem icon={<FaMap />} label={location} />
-      <ListItem icon={<FaCalendar />} label={date} />
+    <div className="rounded-xl bg-white p-3 md:px-5 shadow-md grid gap-2 list-none  relative *:items-start border-brand-red border-t">
+      <ListItem icon={<BiUser className="text-brand-red" size={24} />} label={fullName} />
+      <ListItem icon={<BiCar className="text-brand-red" size={24} />} label={carType} />
+      <ListItem icon={<BiMapPin className="text-brand-red" size={24} />} label={location} />
+      <ListItem icon={<BiCalendarEvent className="text-brand-red" size={24} />} label={new Intl.DateTimeFormat('en').format(new Date(date))} />
     </div>
   )
 }

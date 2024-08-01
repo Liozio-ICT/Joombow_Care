@@ -34,8 +34,8 @@ const Login = () => {
       if (response.ok) {
         toast.success(message);
         login(token, user);
-        navigate("/dashboard");
-        // navigate("/dashboard");
+        navigate("/user");
+        // navigate("/user");
       } else {
         toast.error(`Login failed: ${message}`);
       }
@@ -64,7 +64,7 @@ const Login = () => {
       if (response.ok) {
         toast.success(message);
         login(token, user);
-        navigate("/dashboard");
+        navigate("/user");
       }
     } catch (error) {
       // toast.error('Could not login with Google');
@@ -118,7 +118,7 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               id="password"
-              type="text"
+              type="password"
               placeholder="Enter Password"
               className="apitalize w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-300"
             />
