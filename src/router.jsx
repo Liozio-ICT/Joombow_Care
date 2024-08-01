@@ -21,7 +21,7 @@ import AboutUs from "./Pages/user/AboutUs";
 import HelpSupport from "./Pages/user/HelpSupport";
 import PrivateRoute from "./PrivateRoute.jsx";
 import Services from "./Pages/user/Services.jsx";
-// import AuthRoute from "./AuthRoutes.jsx";
+import AuthRoute from "./AuthRoutes.jsx";
 
 const router = createBrowserRouter([
   {
