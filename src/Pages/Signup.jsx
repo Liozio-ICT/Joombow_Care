@@ -105,7 +105,7 @@ const Signup = () => {
         toast.success(message);
         // Handle additional logic based on the response if needed
         login(token, user);
-        navigate("/dashboard");
+        navigate("/user");
       } else {
         toast.error(message);
       }
@@ -153,9 +153,8 @@ const Signup = () => {
                 onChange={(e) => setFirstName(e.target.value)}
                 id="firstName"
                 type="text"
-                className={`mb-1 mt-1 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] capitalize text-black outline-none focus:border focus:border-gray-300 ${
-                  message && !firstName ? "border-red-500" : ""
-                }`}
+                className={`mb-1 mt-1 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] capitalize text-black outline-none focus:border focus:border-gray-300 ${message && !firstName ? "border-red-500" : ""
+                  }`}
               />
             </div>
 
@@ -168,9 +167,8 @@ const Signup = () => {
                 onChange={(e) => setLastName(e.target.value)}
                 id="lastName"
                 type="text"
-                className={`mb-1 mt-1 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] capitalize text-black outline-none focus:border focus:border-gray-300 ${
-                  message && !lastName ? "border-red-500" : ""
-                }`}
+                className={`mb-1 mt-1 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] capitalize text-black outline-none focus:border focus:border-gray-300 ${message && !lastName ? "border-red-500" : ""
+                  }`}
               />
             </div>
 
@@ -181,9 +179,8 @@ const Signup = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 id="email"
                 type="text"
-                className={`mb-1 mt-1 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-300 ${
-                  message && !email ? "border-red-500" : ""
-                }`}
+                className={`mb-1 mt-1 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-300 ${message && !email ? "border-red-500" : ""
+                  }`}
               />
             </div>
 
@@ -196,9 +193,8 @@ const Signup = () => {
                 onChange={(e) => setPhoneNumber(e.target.value)}
                 id="phoneNumber"
                 type="text"
-                className={`mb-1 mt-1 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] capitalize text-black outline-none focus:border focus:border-gray-300 ${
-                  message && !phoneNumber ? "border-red-500" : ""
-                }`}
+                className={`mb-1 mt-1 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] capitalize text-black outline-none focus:border focus:border-gray-300 ${message && !phoneNumber ? "border-red-500" : ""
+                  }`}
               />
             </div>
 
@@ -211,9 +207,8 @@ const Signup = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 id="password"
                 type="password"
-                className={`apitalize mb-1 mt-1 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-300 ${
-                  message && !password ? "border-red-500" : ""
-                }`}
+                className={`apitalize mb-1 mt-1 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-300 ${message && !password ? "border-red-500" : ""
+                  }`}
               />
             </div>
 
@@ -226,9 +221,8 @@ const Signup = () => {
                 onChange={(e) => setReferralCode(e.target.value)}
                 id="referralCode"
                 type="text"
-                className={`mb-1 mt-1 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] capitalize text-black outline-none focus:border focus:border-gray-300 ${
-                  message && !referralCode ? "border-red-500" : ""
-                }`}
+                className={`mb-1 mt-1 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] capitalize text-black outline-none focus:border focus:border-gray-300 ${message && !referralCode ? "border-red-500" : ""
+                  }`}
               />
             </div>
 
@@ -320,9 +314,8 @@ const Signup = () => {
                   onChange={(e) => setFirstName(e.target.value)}
                   id="firstName"
                   type="text"
-                  className={`mb-2 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-400 ${
-                    message && !firstName ? "border-red-500" : ""
-                  }`}
+                  className={`mb-2 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-400 ${message && !firstName ? "border-red-500" : ""
+                    }`}
                 />
               </div>
 
@@ -335,9 +328,8 @@ const Signup = () => {
                   onChange={(e) => setLastName(e.target.value)}
                   id="lastName"
                   type="text"
-                  className={`mb-2 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-400 ${
-                    message && !lastName ? "border-red-500" : ""
-                  }`}
+                  className={`mb-2 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-400 ${message && !lastName ? "border-red-500" : ""
+                    }`}
                 />
               </div>
 
@@ -350,9 +342,8 @@ const Signup = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   id="email"
                   type="text"
-                  className={`mb-2 mt-1 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-400 ${
-                    message && !email ? "border-red-500" : ""
-                  }`}
+                  className={`mb-2 mt-1 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-400 ${message && !email ? "border-red-500" : ""
+                    }`}
                 />
               </div>
 
@@ -365,9 +356,8 @@ const Signup = () => {
                   onChange={(e) => setPhoneNumber(e.target.value)}
                   id="phoneNumber"
                   type="text"
-                  className={`mb-2 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-400 ${
-                    message && !phoneNumber ? "border-red-500" : ""
-                  }`}
+                  className={`mb-2 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-400 ${message && !phoneNumber ? "border-red-500" : ""
+                    }`}
                 />
               </div>
 
@@ -380,9 +370,8 @@ const Signup = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   id="password"
                   type="password"
-                  className={`mb-2 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-400 ${
-                    message && !password ? "border-red-500" : ""
-                  }`}
+                  className={`mb-2 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-400 ${message && !password ? "border-red-500" : ""
+                    }`}
                 />
               </div>
 
@@ -395,9 +384,8 @@ const Signup = () => {
                   onChange={(e) => setReferralCode(e.target.value)}
                   id="referralCode"
                   type="text"
-                  className={`mb-2 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-400 ${
-                    message && !referralCode ? "border-red-500" : ""
-                  }`}
+                  className={`mb-2 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-400 ${message && !referralCode ? "border-red-500" : ""
+                    }`}
                 />
               </div>
 

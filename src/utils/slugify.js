@@ -1,4 +1,4 @@
-export const slugify = (text) =>
+export const slugify = (text = "") =>
   text
     .normalize("NFD") // split an accented letter in the base letter and the acent
     .replace(/[\u0300-\u036f]/g, "") // remove all previously split accents

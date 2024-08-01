@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  scroll-behavior: smooth;
+}
+
 .btn {
   background-color: #fd1014d1;
   color: white;
@@ -10,6 +14,12 @@
   transition: width 0.05s ease;
   min-width: 100px;
 }
+
+.container {
+  @apply mx-auto !w-full max-w-screen-xl;
+  padding: 2rem 1rem;
+}
+
 .btn:hover {
   /* color: yellow; */
   transition: width 0.2s ease;

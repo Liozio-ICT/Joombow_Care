@@ -13,7 +13,7 @@ const Input = ({
   return (
     <div className="grid w-full gap-2">
       <label>{label}</label>
-      <div className="flex w-full overflow-clip rounded-md border border-current bg-white text-black md:text-white md:bg-opacity-50">
+      <div className="input flex w-full overflow-clip rounded-md border border-current bg-transparent md:bg-opacity-50">
         <input
           name={name}
           placeholder={placeholder}
