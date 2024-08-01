@@ -47,17 +47,17 @@ const Dashboard = () => {
     <>
       <ScrollRestoration />
       <h1>
-        Hi, Welcome, {user.lastName ?? user.firstName ?? user.username ?? 'User'} <span className="wave">👋</span>
+        Hi, Welcome, {user?.lastName ?? user?.firstName ?? user?.username ?? 'User'} <span className="wave">👋</span>
       </h1>
-      <div className="grid grid-cols-[1.5rem_1fr] gap-2 my-5" >
+      <div className="grid grid-cols-[1.5rem_1fr] gap-2 mt-5 mb-10" >
         <BsMegaphoneFill className="text-brand-red size-full" />
         <marquee>
-          <span className="px-10" >🚗 Get your car sparkling clean without leaving your home! Book our online car wash service now and enjoy a 20% discount on your first wash! 🚗</span>
-          <span className="px-10" >🌟 Convenient, fast, and professional car wash services at your fingertips! Visit our website to book your appointment today! 🌟</span>
-          <span className="px-10" >📅 Schedule your car wash online and choose a time that fits your busy schedule. We come to you! 📅</span>
-          <span className="px-10" >💧 Our eco-friendly car wash ensures a clean vehicle and a cleaner environment. Book now and support sustainability! 💧</span>
-          <span className="px-10" >🔧 Need more than just a wash? Explore our detailing services for a thorough cleaning inside and out! 🔧</span>
-          <span className="px-10" >🏠 Serving your neighborhood with reliable car wash services. Join hundreds of satisfied customers today! 🏠</span>
+          <span className="px-10" >🚗 Get your car sparkling clean without leaving your home! Book our online car care service now and enjoy a 20% discount on your first care! 🚗</span>
+          <span className="px-10" >🌟 Convenient, fast, and professional car care services at your fingertips! Visit our website to book your appointment today! 🌟</span>
+          <span className="px-10" >📅 Schedule your car care online and choose a time that fits your busy schedule. We come to you! 📅</span>
+          <span className="px-10" >💧 Our eco-friendly car care ensures a clean vehicle and a cleaner environment. Book now and support sustainability! 💧</span>
+          <span className="px-10" >🔧 Need more than just a care? Explore our detailing services for a thorough cleaning inside and out! 🔧</span>
+          <span className="px-10" >🏠 Serving your neighborhood with reliable car care services. Join hundreds of satisfied customers today! 🏠</span>
         </marquee>
       </div>
 

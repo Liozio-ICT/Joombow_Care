@@ -10,7 +10,7 @@ import { useAuth } from "../../../provders/AuthProvider";
 
 const ChangePassword = () => {
   const navigate = useNavigate();
-  const { user } = useAuth()
+  const { getUserData } = useAuth()
   const [oldPassword, setOldPassword] = useState();
   const [newPassword, setNewPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
@@ -22,7 +22,7 @@ const ChangePassword = () => {
     try {
       const response = await apiClient.post('/otp/get', {
         reason: 'Password Change',
-        email: user.email
+        email: useAuth().user?.email
       })
       if (response.ok)
         return setStep("otp");
@@ -37,8 +37,6 @@ const ChangePassword = () => {
 
   const submit = async (form) => {
     form.preventDefault();
-
-    console.log({ otp })
     try {
       const response = await apiClient.post('/user/change-password', {
         oldPassword,
@@ -48,7 +46,8 @@ const ChangePassword = () => {
       })
 
       if (response.ok)
-        return navigate("/dashboard/profile");
+        getUserData()
+      return navigate("/user/profile");
 
       const { message } = await response.json()
       toast.error(message)
@@ -88,7 +87,7 @@ const ChangePassword = () => {
           <>
             <div className="mb-5 text-center md:mb-10">
               <p>Please input the code sent to your mail address </p>
-              <span> {user.email} </span>
+              <span> {useAuth().user?.email} </span>
             </div>
             <OtpInput length={6} setValue={setOtp} />
           </>
@@ -98,6 +97,7 @@ const ChangePassword = () => {
         <div className="my-5 w-full gap-5 !px-0 text-center">
           <button
             type={step === 'opt' ? 'submit' : 'button'}
+            onClick={step !== 'otp' ? requestOtp : submit}
             className="mx-auto rounded bg-brand-red p-2 px-4 text-white"
           >
             {step === 'otp' ? 'Save Changes' : 'Continue'}

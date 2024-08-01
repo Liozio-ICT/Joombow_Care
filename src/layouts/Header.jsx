@@ -10,7 +10,7 @@ import { FaX } from 'react-icons/fa6'
 import { useState } from 'react'
 
 const Header = () => {
-    const { user, logout } = useAuth();
+    const { logout } = useAuth();
     const [modalShown, setModalShown] = useState(false)
 
     const navigate = useNavigate();
@@ -29,7 +29,7 @@ const Header = () => {
                     <Link to={'/'} className='text-brand-red font-bold text-[1.5rem]'>
                         JOOMBOW
                     </Link>
-                    <div className='flex justify-end grow gap-5'>
+                    <div className='flex justify-end grow gap-10'>
                         {/* navs */}
                         <div className='gap-5 hidden md:flex'>
 
@@ -50,23 +50,23 @@ const Header = () => {
                         </div>
                         {/* profile */}
                         <Dropdown justify='right' label={<div className='rounded-full aspect-square w-[2.5rem] overflow-clip border-2 border-brand-red/25'>
-                            <img src={user.photo ??
-                                `https://ui-avatars.com/api/?name=${user?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${user?.lastName?.replaceAll(" ", "+") ?? "User"}`
-                            } alt={`${user?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${user?.lastName?.replaceAll(" ", "+") ?? "User"}`} />
+                            <img src={useAuth().user?.photo ??
+                                `https://ui-avatars.com/api/?name=${useAuth().user?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${useAuth().user?.lastName?.replaceAll(" ", "+") ?? "User"}`
+                            } alt={`${useAuth().user?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${useAuth().user?.lastName?.replaceAll(" ", "+") ?? "User"}`} />
                         </div>}
                             childrenClass="*:p-2 *:px-3 *:md:px-5 *:gap-2"
                         >
                             <div className=' hover:bg-brand-red/5 grid grid-cols-[2.5rem_1fr] items-center min-w-[10rem] md:min-w-[15rem]'>
                                 <span className='rounded-full aspect-square min-w-[2.5rem] overflow-clip border-2 border-brand-red/25'>
-                                    <img src={user.photo ??
-                                        `https://ui-avatars.com/api/?name=${user?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${user?.lastName?.replaceAll(" ", "+") ?? "User"}`
-                                    } alt={`${user?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${user?.lastName?.replaceAll(" ", "+") ?? "User"}`} />
+                                    <img src={useAuth().user?.photo ??
+                                        `https://ui-avatars.com/api/?name=${useAuth().user?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${useAuth().user?.lastName?.replaceAll(" ", "+") ?? "User"}`
+                                    } alt={`${useAuth().user?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${useAuth().user?.lastName?.replaceAll(" ", "+") ?? "User"}`} />
                                 </span>
                                 <span className="truncate">
-                                    <strong>{user?.lastName ?? "User"}</strong> <br />
-                                    {user?.firstName ?? "Joombow"}
+                                    <strong>{useAuth().user?.lastName ?? "User"}</strong> <br />
+                                    {useAuth().user?.firstName ?? "Joombow"}
                                     {' '}
-                                    {user?.lastName ?? "User"}
+                                    {useAuth().user?.lastName ?? "User"}
                                 </span>
                             </div>
                             {

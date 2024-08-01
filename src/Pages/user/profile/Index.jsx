@@ -14,10 +14,10 @@ import ChangePassword from "./ChangePassword";
 
 const Profile = () => {
   const navigate = useNavigate();
-  const { logout, user, getUserData, updateUser, token } = useAuth()
+  const { logout, getUserData, updateUser, token } = useAuth()
   const [photo, setPhoto] = useState(
-    user.photo ??
-    `https://ui-avatars.com/api/?name=${user?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${user?.lastName?.replaceAll(" ", "+") ?? "User"}`,
+    useAuth().user?.photo ??
+    `https://ui-avatars.com/api/?name=${useAuth().user?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${useAuth().user?.lastName?.replaceAll(" ", "+") ?? "User"}`,
   );
   const [photoInput, setPhotoInput] = useState()
   const [modalType, setModalType] = useState();
@@ -56,8 +56,11 @@ const Profile = () => {
       console.log({ photoInput, error, user, message })
       if (response.ok) {
         updateUser(user)
-        setPhoto(user.photo);
-        return toast.success(message);
+        setPhoto(useAuth().user?.photo);
+        toast.success(message);
+        setTimeout(() => {
+          navigate("/user/profile");
+        }, 1000);
       }
       toast.error(message);
       setPhoto(
@@ -66,10 +69,9 @@ const Profile = () => {
       setPhotoInput()
     } catch (error) {
       console.log({ error });
-      setPhoto(
-        `https://ui-avatars.com/api/?name=${firstName?.replaceAll(" ", "+") ?? "Joombow"}+${lastName?.replaceAll(" ", "+") ?? "User"}`,
-      );
       toast.error(error?.message);
+    } finally {
+      getUserData()
     }
   };
 
@@ -104,7 +106,11 @@ const Profile = () => {
     const response = await apiClient.delete('/user/me')
     const { message } = await response.json()
 
-    if (response.ok) { return setModalStep("success"); }
+    if (response.ok) {
+      setModalStep("success");
+      return navigate('/register')
+
+    }
 
     toast.error(message)
   };
@@ -134,18 +140,18 @@ const Profile = () => {
             <div className="absolute inset-0 overflow-clip rounded-full">
               <img
                 src={photo}
-                alt={user.name}
+                alt={useAuth().user?.name}
                 className="size-full object-cover"
               />
             </div>
             <label
-              htmlFor={`${user.email}_photo`}
+              htmlFor={`${useAuth().user?.email}_photo`}
               className="absolute bottom-0 translate-y-[50%] left-[50%] -translate-x-[50%] flex size-8 cursor-pointer items-center justify-center rounded-full bg-black text-white p-1.5"
             >
               <input
                 type="file"
                 name="photo"
-                id={`${user.email}_photo`}
+                id={`${useAuth().user?.email}_photo`}
                 hidden
                 onChange={(e) => {
                   handlePhotoChange(e.target.files[0])
@@ -157,8 +163,8 @@ const Profile = () => {
           </div>
 
           <div className="">
-            <p className="text-xl font-semibold capitalize">{user?.firstName ?? ''} {user?.lastName ?? ''} </p>
-            <small className="lowercase">{user?.email} </small>
+            <p className="text-xl font-semibold capitalize">{useAuth().user?.firstName ?? ''} {useAuth().user?.lastName ?? ''} </p>
+            <small className="lowercase">{useAuth().user?.email} </small>
           </div>
 
           <div className="!pt-0 pb-5">

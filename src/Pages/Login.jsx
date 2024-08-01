@@ -64,10 +64,11 @@ const Login = () => {
       if (response.ok) {
         toast.success(message);
         login(token, user);
-        navigate("/user");
+        return navigate("/user");
       }
+      toast.error(message);
     } catch (error) {
-      // toast.error('Could not login with Google');
+      toast.error('Could not login with Google');
       console.log("Could not login with Google", error);
     } finally {
       setLoading(false);

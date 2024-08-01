@@ -64,8 +64,7 @@ export const AuthProvider = ({ children }) => {
 
         if (response.ok) {
             const data = await response.json()
-            localStorage.setItem('user', data ? JSON.stringify(data) : null)
-            setUser(data)
+            updateUser(data)
 
             return data
         }
@@ -73,19 +72,15 @@ export const AuthProvider = ({ children }) => {
         return null
     }
 
-    const updateUser = async (data) => {
-
+    const updateUser = (data) => {
         try {
-
             localStorage.setItem('user', data ? JSON.stringify(data) : null)
             setUser(data)
-
             return data
         } catch (error) {
             console.error(error)
             return null
         }
-
     }
 
 
