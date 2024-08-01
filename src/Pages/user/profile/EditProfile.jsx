@@ -7,10 +7,10 @@ import { toast } from "react-toastify";
 import Loader from "../../../component/Loader";
 
 const EditProfile = () => {
-  const { user, updateUser } = useAuth();
-  const [email, setEmail] = useState(user.email);
-  const [firstName, setFirstName] = useState(user.firstName);
-  const [lastName, setLastName] = useState(user.lastName);
+  const { updateUser, getUserData } = useAuth();
+  const [email, setEmail] = useState(useAuth().user?.email);
+  const [firstName, setFirstName] = useState(useAuth().user?.firstName);
+  const [lastName, setLastName] = useState(useAuth().user?.lastName);
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -25,15 +25,9 @@ const EditProfile = () => {
         firstName,
         lastName,
       });
-
       const data = await response.json();
-      setLoading(false);
       if (response.ok) {
-        updateUser(data.user);
-
-        setTimeout(() => {
-          navigate("/dashboard/profile");
-        }, 1000);
+        console.log({ data })
         return toast.success(data.message);
       }
       toast.error(data.message);
@@ -41,8 +35,12 @@ const EditProfile = () => {
       setLoading(false);
       console.error(error);
       toast.error(error);
+    } finally {
+      getUserData()
+      setLoading(false);
     }
   };
+
   return (
     <>
       {loading && <Loader />}
@@ -55,7 +53,6 @@ const EditProfile = () => {
         <div className="mt-5 grid gap-5 p-5 md:gap-8 md:px-10">
           <Input
             label={"First name"}
-            placeholder={user.firstName ?? ""}
             name={"firstName"}
             value={firstName}
             setValue={setFirstName}
@@ -63,7 +60,6 @@ const EditProfile = () => {
           />
           <Input
             label={"Last name"}
-            placeholder={user.lastName ?? ""}
             name={"lastName"}
             value={lastName}
             setValue={setLastName}
@@ -71,7 +67,6 @@ const EditProfile = () => {
           />
           <Input
             label={"Email"}
-            placeholder={user.email ?? ""}
             name={"email"}
             value={email}
             setValue={setEmail}

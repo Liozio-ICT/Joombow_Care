@@ -92,7 +92,7 @@ const Index = () => {
           </div>
         </section>
       )}
-      <div className="grid w-full grid-cols-[repeat(auto-fill,_minmax(min(20rem,_100%),_1fr))] gap-5">
+      <div className="grid w-full grid-cols-[repeat(auto-fill,_minmax(min(15rem,_100%),_1fr))] gap-5">
         {bookings?.map((booking, idx) => (
           <BookingCard {...booking} key={idx} />
         ))}
