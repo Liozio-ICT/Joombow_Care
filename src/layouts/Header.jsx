@@ -29,7 +29,7 @@ const Header = () => {
                     <Link to={'/'} className='text-brand-red font-bold text-[1.5rem]'>
                         JOOMBOW
                     </Link>
-                    <div className='flex justify-end grow gap-10'>
+                    <div className='flex justify-end grow gap-20'>
                         {/* navs */}
                         <div className='gap-5 hidden md:flex'>
 
@@ -57,17 +57,17 @@ const Header = () => {
                             childrenClass="*:p-2 *:px-3 *:md:px-5 *:gap-2"
                         >
                             <div className=' hover:bg-brand-red/5 grid grid-cols-[2.5rem_1fr] items-center min-w-[10rem] md:min-w-[15rem]'>
-                                <span className='rounded-full aspect-square min-w-[2.5rem] overflow-clip border-2 border-brand-red/25 relative'>
+                                <div className='rounded-full aspect-square w-[2.5rem] overflow-clip border-2 border-brand-red/25 relative'>
                                     <img src={useAuth().user?.photo ??
                                         `https://ui-avatars.com/api/?name=${useAuth().user?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${useAuth().user?.lastName?.replaceAll(" ", "+") ?? "User"}`
-                                    } alt={`${useAuth().user?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${useAuth().user?.lastName?.replaceAll(" ", "+") ?? "User"}`} className='absolute inset-0' />
-                                </span>
-                                <span className="truncate">
+                                    } alt={`${useAuth().user?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${useAuth().user?.lastName?.replaceAll(" ", "+") ?? "User"}`} className='size-full object-cover' />
+                                </div>
+                                <div className="truncate">
                                     <strong>{useAuth().user?.lastName ?? "User"}</strong> <br />
                                     {useAuth().user?.firstName ?? "Joombow"}
                                     {' '}
                                     {useAuth().user?.lastName ?? "User"}
-                                </span>
+                                </div>
                             </div>
                             {
                                 profileDrops.map(({ icon, href, label }, idx) =>

@@ -13,6 +13,8 @@ import Loader from "../component/Loader";
 import apiClient from "../utils/apiClient";
 import { ScrollRestoration } from "react-router-dom";
 import { useAuth } from "../provders/AuthProvider";
+import Input from "../components/Input";
+import './auth.css'
 
 const Signup = () => {
   const [showOTPForm, setShowOTPForm] = useState();
@@ -144,84 +146,70 @@ const Signup = () => {
           </h2>
           <form className="mt-[1rem]" id="registrationForm ">
             <div className="inputCon text-slate-200">
-              <label className="block text-[16px] font-semibold">
-                First Name:
-              </label>
-              <input
+              <Input
+                label={"First Name:"}
+                name={"firstName"}
                 value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                id="firstName"
-                type="text"
-                className={`mb-1 mt-1 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] capitalize text-black outline-none focus:border focus:border-gray-300 ${message && !firstName ? "border-red-500" : ""
-                  }`}
+                setValue={setFirstName}
+                placeholder="Enter First Name"
+                error={""}
               />
             </div>
 
             <div className="inputCon py-2 text-slate-200">
-              <label className="block text-[16px] font-semibold">
-                Last Name:
-              </label>
-              <input
+              <Input
+                label={"Last Name:"}
+                name={"lastName"}
                 value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                id="lastName"
-                type="text"
-                className={`mb-1 mt-1 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] capitalize text-black outline-none focus:border focus:border-gray-300 ${message && !lastName ? "border-red-500" : ""
-                  }`}
+                setValue={setLastName}
+                placeholder="Enter Last Name"
+                error={""}
               />
             </div>
 
             <div className="inputCon text-slate-200">
-              <label className="block text-[16px] font-semibold">Email:</label>
-              <input
+              <Input
+                label={"Email:"}
+                name={"email"}
+                type={"email"}
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                id="email"
-                type="text"
-                className={`mb-1 mt-1 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-300 ${message && !email ? "border-red-500" : ""
-                  }`}
+                setValue={setEmail}
+                placeholder="Enter Email"
+                error={""}
               />
             </div>
 
             <div className="inputCon text-slate-200">
-              <label className="block text-[16px] font-semibold">
-                Phone No:
-              </label>
-              <input
+              <Input
+                label={"Phone No:"}
+                name={"phoneNumber"}
                 value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-                id="phoneNumber"
-                type="text"
-                className={`mb-1 mt-1 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] capitalize text-black outline-none focus:border focus:border-gray-300 ${message && !phoneNumber ? "border-red-500" : ""
-                  }`}
+                setValue={setPhoneNumber}
+                placeholder="Enter phoneNumber"
+                error={""}
               />
             </div>
 
             <div className="inputCon text-slate-200">
-              <label className="block text-[16px] font-semibold">
-                Password:
-              </label>
-              <input
+              <Input
+                label={"Password:"}
+                name={"password"}
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                id="password"
+                setValue={setPassword}
                 type="password"
-                className={`apitalize mb-1 mt-1 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-300 ${message && !password ? "border-red-500" : ""
-                  }`}
+                placeholder="Enter Password"
+                error={""}
               />
             </div>
 
             <div className="inputCon text-slate-200">
-              <label className="block text-[16px] font-semibold">
-                Referral code:
-              </label>
-              <input
+              <Input
+                label={"Referral code:"}
+                name={"referralCode"}
                 value={referralCode}
-                onChange={(e) => setReferralCode(e.target.value)}
-                id="referralCode"
-                type="text"
-                className={`mb-1 mt-1 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] capitalize text-black outline-none focus:border focus:border-gray-300 ${message && !referralCode ? "border-red-500" : ""
-                  }`}
+                setValue={setReferralCode}
+                placeholder="Enter Referral code"
+                error={""}
               />
             </div>
 
@@ -272,160 +260,134 @@ const Signup = () => {
         {/* desktop */}
         <Loader />
 
-        <div className="r hidden w-full lg:block">
-          <span className="prevLink absolute z-[2] block">
-            <div className="logo m-auto h-[250px] w-[250px] object-cover">
-              <img
-                src="https://res.cloudinary.com/dnldaz7oh/image/upload/v1707161130/JOOMBOW/rpj2kpw4bbo9ngkd5zob.png"
-                className="Logo"
-                alt="Logo"
-              />
-            </div>
-          </span>
-          <div className="absolute inset-0 h-[49rem] w-full bg-black opacity-70"></div>
-
+        <div className="hidden w-full lg:block">
           <img
             src="https://res.cloudinary.com/durbee4ln/image/upload/v1711811511/Care_care/man-connecting-jumper-cables-to-battery_ysq6je.jpg"
-            className="h-[780px] w-full object-cover"
+            className="fixed min-h-[100dvh] w-full object-cover z-[-1]"
             alt="bh image"
           />
-          <div className="absolute inset-0 flex w-full justify-center px-6 text-white">
-            <form
-              className="mt-[.3rem] h-[775px] w-[50%] self-start rounded-lg bg-[#433F3FCC] px-4"
-              id="registrationForm"
-            >
-              <span className="prevLink mt-8 block px-4">
-                <Link to="/">
-                  <GrFormPreviousLink className="rounded-3xl border border-gray-200 text-[1.5rem] text-white" />
-                </Link>
-              </span>
+          <div className="fixed inset-0 h-[100dvh] w-full bg-black opacity-70 z-[0]"></div>
 
-              <h2 className="my-4 font-clash text-[1.7rem] font-bold capitalize">
-                signup
-              </h2>
-
-              <div className="inputCon w-full">
-                <label className="block text-[14px] font-semibold text-slate-100">
-                  First Name:
-                </label>
-                <input
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                  id="firstName"
-                  type="text"
-                  className={`mb-2 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-400 ${message && !firstName ? "border-red-500" : ""
-                    }`}
+          <div className="flex relative">
+            <span className="prevLink absolute block z-50">
+              <div className="logo m-auto h-[250px] w-[250px] object-cover">
+                <img
+                  src="https://res.cloudinary.com/dnldaz7oh/image/upload/v1707161130/JOOMBOW/rpj2kpw4bbo9ngkd5zob.png"
+                  className="Logo"
+                  alt="Logo"
                 />
               </div>
-
-              <div className="inputCon">
-                <label className="block text-[14px] font-semibold text-slate-100">
-                  Last Name:
-                </label>
-                <input
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                  id="lastName"
-                  type="text"
-                  className={`mb-2 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-400 ${message && !lastName ? "border-red-500" : ""
-                    }`}
-                />
-              </div>
-
-              <div className="inputCon my-[.3rem]">
-                <label className="block text-[14px] font-semibold text-slate-100">
-                  Email:
-                </label>
-                <input
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  id="email"
-                  type="text"
-                  className={`mb-2 mt-1 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-400 ${message && !email ? "border-red-500" : ""
-                    }`}
-                />
-              </div>
-
-              <div className="inputCon my-[.3rem]">
-                <label className="block text-[14px] font-semibold text-slate-100">
-                  Phone No:
-                </label>
-                <input
-                  value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
-                  id="phoneNumber"
-                  type="text"
-                  className={`mb-2 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-400 ${message && !phoneNumber ? "border-red-500" : ""
-                    }`}
-                />
-              </div>
-
-              <div className="inputCon">
-                <label className="block text-[14px] font-semibold text-slate-100">
-                  Password:
-                </label>
-                <input
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  id="password"
-                  type="password"
-                  className={`mb-2 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-400 ${message && !password ? "border-red-500" : ""
-                    }`}
-                />
-              </div>
-
-              <div className="inputCon">
-                <label className="block text-[14px] font-semibold text-slate-100">
-                  Referral code:
-                </label>
-                <input
-                  value={referralCode}
-                  onChange={(e) => setReferralCode(e.target.value)}
-                  id="referralCode"
-                  type="text"
-                  className={`mb-2 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-400 ${message && !referralCode ? "border-red-500" : ""
-                    }`}
-                />
-              </div>
-
-              <button
-                type="button"
-                onClick={handleSignup}
-                className="font-montserrat mt-4 w-full cursor-pointer rounded-md bg-[#FD1014] py-3 text-[18px] font-semibold text-white outline-none transition hover:bg-[#E3383B]"
+            </span>
+            <div className="z-50 flex w-full justify-center p-6 pb-20 text-white grow">
+              <form
+                className="mt-[.3rem] h-fit grow max-w-[50%] self-start rounded-lg bg-[#433F3FCC] px-4"
+                id="registrationForm"
               >
-                Next
-              </button>
-
-              <div className="text my-3">
-                <h2>
-                  Already have an account?{" "}
-                  <span className="log font-bold text-[#FD1014] hover:text-[#E3383B]">
-                    <Link to="/login">Login</Link>{" "}
-                  </span>{" "}
+                <span className="prevLink mt-8 block px-4">
+                  <Link to="/">
+                    <GrFormPreviousLink className="rounded-3xl border border-gray-200 text-[1.5rem] text-white" />
+                  </Link>
+                </span>
+                <h2 className="my-4 font-clash text-[1.7rem] font-bold capitalize">
+                  signup
                 </h2>
-              </div>
-
-              <button
-                type="button"
-                onClick={handleOAuth}
-                className="mon flex w-full items-center justify-center rounded-[10px] border border-red-500 px-4 py-3 text-[18px] font-semibold transition hover:bg-[#E3383B]"
-              >
-                <FcGoogle className="mr-2 text-[18px]" />
-                Login with Google
-              </button>
-            </form>
-
-            <section className="">
-              <main className=" ">
-                {showOTPForm ? (
-                  <Otp Gmail={email} />
-                ) : (
-                  <div className="logo pt-[4rem]"></div>
-                )}
-
-                {/* <h2 className="text-[2rem] capitalize font-bold">SignUp</h2> */}
-              </main>
-            </section>
+                <div className="inputCon w-full">
+                  <Input
+                    label={"First Name:"}
+                    name={"firstName"}
+                    value={firstName}
+                    setValue={setFirstName}
+                    placeholder="Enter First Name"
+                    error={""}
+                  />
+                </div>
+                <div className="inputCon">
+                  <Input
+                    label={"Last Name:"}
+                    name={"lastName"}
+                    value={lastName}
+                    setValue={setLastName}
+                    placeholder="Enter Last Name"
+                    error={""}
+                  />
+                </div>
+                <div className="inputCon my-[.3rem]">
+                  <Input
+                    label={"Email:"}
+                    name={"email"}
+                    type={"email"}
+                    value={email}
+                    setValue={setEmail}
+                    placeholder="Enter Email"
+                    error={""}
+                  />
+                </div>
+                <div className="inputCon my-[.3rem]">
+                  <Input
+                    label={"Phone No:"}
+                    name={"phoneNumber"}
+                    value={phoneNumber}
+                    setValue={setPhoneNumber}
+                    placeholder="Enter phoneNumber"
+                    error={""}
+                  />
+                </div>
+                <div className="inputCon">
+                  <Input
+                    label={"Password:"}
+                    name={"password"}
+                    value={password}
+                    setValue={setPassword}
+                    type="password"
+                    placeholder="Enter Password"
+                    error={""}
+                  />
+                </div>
+                <div className="inputCon">
+                  <Input
+                    label={"Referral code:"}
+                    name={"referralCode"}
+                    value={referralCode}
+                    setValue={setReferralCode}
+                    placeholder="Enter Referral code"
+                    error={""}
+                  />
+                </div>
+                <button
+                  type="button"
+                  onClick={handleSignup}
+                  className="font-montserrat mt-4 w-full cursor-pointer rounded-md bg-[#FD1014] py-3 text-[18px] font-semibold text-white outline-none transition hover:bg-[#E3383B]"
+                >
+                  Next
+                </button>
+                <div className="text my-3">
+                  <h2>
+                    Already have an account?{" "}
+                    <span className="log font-bold text-[#FD1014] hover:text-[#E3383B]">
+                      <Link to="/login">Login</Link>{" "}
+                    </span>{" "}
+                  </h2>
+                </div>
+                <button
+                  type="button"
+                  onClick={handleOAuth}
+                  className="my-5 flex w-full items-center justify-center rounded-[10px] border border-red-500 px-4 py-3 text-[18px] font-semibold transition hover:bg-[#E3383B]"
+                >
+                  <FcGoogle className="mr-2 text-[18px]" />
+                  Login with Google
+                </button>
+              </form>
+              <section className="">
+                <main className=" ">
+                  {showOTPForm ? (
+                    <Otp Gmail={email} />
+                  ) : (
+                    <div className="logo pt-[4rem]"></div>
+                  )}
+                  {/* <h2 className="text-[2rem] capitalize font-bold">SignUp</h2> */}
+                </main>
+              </section>
+            </div>
           </div>
         </div>
       </>

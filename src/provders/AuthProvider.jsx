@@ -72,7 +72,6 @@ export const AuthProvider = ({ children }) => {
         } catch (error) {
             console.error(error)
         }
-        clearData()
         return null
     }
 
