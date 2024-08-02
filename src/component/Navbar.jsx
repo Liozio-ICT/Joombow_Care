@@ -33,11 +33,10 @@ function Navbar() {
       {/* desktop  */}
       <Loader />
       <nav
-        className={`nav-header bg-[black] border-b border-gray-500 ${
-          isScrolled
+        className={`nav-header bg-[black] border-b border-gray-500 ${isScrolled
             ? "fixed top-0 left-0 right-0 z-[100] w-full shadow-sm"
             : ""
-        } `}>
+          } `}>
         <div class="navLinks text-[#0C0C0C] hidden lg:flex items-center py-4 justify-between w-[85%] m-auto">
           <ul className="flex gap-16 text-white">
             <a
@@ -110,9 +109,8 @@ function Navbar() {
       {/* mobile  */}
 
       <nav
-        className={`bg-[#c44141] border-b border-gray-500 ${
-          isScrolled ? "fixed top-0 left-0 right-0 z-[100]" : ""
-        }`}>
+        className={`bg-[#c44141] border-b border-gray-500 ${isScrolled ? "fixed top-0 left-0 right-0 z-[100]" : ""
+          }`}>
         <div class="navLink text-[#0C0C0C] lg:hidden">
           <section
             className={`flex items-center h-[3.5rem] px-4  justify-between w-full bg-black`}>
@@ -136,9 +134,8 @@ function Navbar() {
           </section>
 
           <div
-            className={`relative nav-container bg-black ${
-              isOpen ? "active" : ""
-            }`}>
+            className={`relative nav-container bg-black ${isOpen ? "active" : ""
+              }`}>
             <div className="relative w-[95%] m-auto p-2 flex items-center justify-center">
               <img
                 className="w-[150px] h-[150px] object-cover"
@@ -181,7 +178,7 @@ function Navbar() {
                 </a>
                 <a
                   href="#carmake"
-                  className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
+                  className="block fonth py-4 border-b border-dashed border-gray-700     font-semibold text-[20px] hover:text-[#FD1014] transition">
                   {" "}
                   Car Make
                 </a>
