@@ -1,6 +1,6 @@
 // src/Loader.js
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const Loader = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -15,7 +15,9 @@ const Loader = () => {
   }, []);
 
   return (
-    <div className={`flex items-center bottom-0 bg-slate-100 left-0 right-0 fixed overflow-x-hidden top-0 w-full  justify-center z-50 h-screen ${isLoading ? 'block' : 'hidden'}`}>
+    <div
+      className={`fixed bottom-0 left-0 right-0 top-0 z-[999999] flex h-screen w-full items-center justify-center overflow-x-hidden bg-slate-100 ${isLoading ? "block" : "hidden"}`}
+    >
       {/* <div className="animate-spin rounded-full border-t-4 border-blue-500 border-solid h-16 w-16"></div> */}
 
       <div className="dot-spinner">
