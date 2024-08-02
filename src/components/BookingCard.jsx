@@ -32,7 +32,7 @@ const BookingCard = ({
 
   return (
     <div className="rounded-xl bg-white p-3 md:px-5 shadow-md grid gap-2 list-none  relative *:items-start border-brand-red border-t">
-      <Dropdown label={<BiDotsHorizontal />} className={'ms-auto'} justify="right" >
+      {/* <Dropdown label={<BiDotsHorizontal />} className={'ms-auto'} justify="right" >
         <div className="grid">
           <button className="text-slate-800 hover:bg-slate-950/5 !text-xs *:pr-2">
             <ListItem icon={<FaEye size={16} />} label={'View'} to={`/bookings/${_id}`} />
@@ -44,7 +44,7 @@ const BookingCard = ({
             <ListItem icon={<BiTaskX size={16} />} label={'Cancel'} onClick={() => cancelBooking} />
           </button>
         </div>
-      </Dropdown>
+      </Dropdown> */}
       <ListItem icon={<BiUser className="text-brand-red" size={24} />} label={fullName} />
       <ListItem icon={<BiCar className="text-brand-red" size={24} />} label={carType} />
       <ListItem icon={<BiMapPin className="text-brand-red" size={24} />} label={location} />
