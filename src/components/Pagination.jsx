@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import { FaBackward, FaBackwardFast, FaForward, FaForwardFast } from "react-icons/fa6";
 import { cn } from "../utils/tailwind";
 
-const Pagination = ({ totalPages = 0, activePage = 1, activeClass = '', onchange = (data) => { } }) => {
+const Pagination = ({ className, totalPages = 0, activePage = 1, activeClass = '', onchange = (data) => { } }) => {
   const [active, setActive] = useState(Number(activePage));
   const [searchParams, setSearchParams] = useSearchParams()
 
@@ -18,7 +18,7 @@ const Pagination = ({ totalPages = 0, activePage = 1, activeClass = '', onchange
     onchange(active)
   }, [active])
   return (
-    <div className="overfow-clip flex flex-wrap justify-center w-full *:p-1 *:px-2 *:rounded gap-1">
+    <div className={cn(["overfow-clip flex flex-wrap justify-center w-full *:p-1 *:px-2 *:rounded gap-1", className])}>
       {active > 1 &&
         <>
           <button type="button" className="hover:scale-105 hover:bg-brand-red/10 hover:text-brand-red" onClick={() =>

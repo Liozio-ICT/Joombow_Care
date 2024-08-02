@@ -61,7 +61,7 @@ const Dashboard = () => {
         </marquee>
       </div>
 
-      <section className="text-white grid grid-cols-2 gap-5 md:grid-cols-[repeat(auto-fit,_minmax(min(5rem,_100%),_1fr))] my-5 *:md:min-h-[12rem]">
+      <section className="text-white max-w-full grid grid-cols-2 gap-5 md:grid-cols-[repeat(auto-fit,_minmax(min(15rem,_100%),_1fr))] my-5 *:md:min-h-[12rem]">
         <SummaryCard className="hover:scale-105 transition-all duration-200" href={'/user/bookings?tab=all'} caption="Total Bookings" icon={<FaCoins />} value={summary.all} />
         <SummaryCard className="bg-green-500 hover:scale-105 transition-all duration-200" href={'/user/bookings?tab=completed'} caption="Total Bookings Completed" icon={<FaWrench />} value={summary.completed} />
         <SummaryCard className="bg-blue-700 hover:scale-105 transition-all duration-200" href={'/user/bookings?tab=pending'} caption="Total Bookings Pending" icon={<FaTableList />} value={summary.pending} />
@@ -69,8 +69,8 @@ const Dashboard = () => {
       </section>
 
       <h2 className="font-semibold text-[150%]">Transactions</h2>
-      <section className="my-5 overflow-clip  rounded w-full">
-        <div className="overflow-x-auto shadow-md">
+      <section className="my-5 shadow-md overflow-clip  rounded max-w-full grid gap-5">
+        <div className="overflow-x-auto">
           <table className="min-w-full">
             <thead className="capitalize text-left whitespace-nowrap bg-slate-950/5">
               <tr className="*:p-2 px-3 *:border">
@@ -104,16 +104,11 @@ const Dashboard = () => {
           </table>
         </div>
 
-        <div className="my-5">
-          <Pagination
-            activeClass="border-b border-current rounded-none text-brand-red"
-            totalPages={10}
-          />
-          {/* <Pagination
-            activeClass="border-b border-current rounded-none text-brand-red"
-            totalPages={transactions?.length ? Math.ceil(transactions.length / 20) : 0}
-          /> */}
-        </div>
+        {!!transactions?.length && <Pagination
+          className='my-5'
+          activeClass="border-b border-current rounded-none text-brand-red"
+          totalPages={transactions?.length ? Math.ceil(transactions.length / 20) : 0}
+        />}
       </section>
     </>
   );

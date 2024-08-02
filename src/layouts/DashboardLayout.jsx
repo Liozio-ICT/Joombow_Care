@@ -12,9 +12,9 @@ const DashboardLayout = () => {
       <Loader />
 
       <ScrollRestoration />
-      <div className="grid grid-rows-[auto_1fr_auto]">
+      <div className="grid grid-rows-[auto_1fr_auto] max-w-full min-h-[100dvh]">
         <Header />
-        <main className="mx-auto !w-full max-w-screen-2xl container">
+        <main className="container">
           <Outlet />
         </main>
         <Footer />
