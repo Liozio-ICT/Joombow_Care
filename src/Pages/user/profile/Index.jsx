@@ -160,7 +160,7 @@ const Profile = () => {
           </div>
 
           <div className="!pt-0 pb-5">
-            <button type="submit" className="mx-auto rounded bg-brand-red text-white p-2 px-4">
+            <button type="submit" className="mx-auto rounded  hover:scale-105 transition-all duration-200 hover:bg-opacity-75 bg-brand-red text-white p-2 px-4">
               Save changes
             </button>
           </div>

@@ -12,12 +12,13 @@ const DashboardLayout = () => {
       <Loader />
 
       <ScrollRestoration />
-
-      <Header />
-      <main className="mx-auto !w-full max-w-screen-2xl container min-h-[100dvh]">
-        <Outlet />
-      </main>
-      <Footer />
+      <div className="grid grid-rows-[auto_1fr_auto]">
+        <Header />
+        <main className="mx-auto !w-full max-w-screen-2xl container">
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
     </>
   );
 };

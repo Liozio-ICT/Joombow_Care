@@ -11,6 +11,8 @@ import Loader from "../component/Loader";
 import apiClient from "../utils/apiClient";
 import { ScrollRestoration } from "react-router-dom";
 import { useAuth } from "../provders/AuthProvider";
+import Input from "../components/Input";
+import './auth.css'
 
 const Login = () => {
   const navigate = useNavigate();
@@ -96,32 +98,29 @@ const Login = () => {
         <h2 className="mb-8 font-clash text-[1.7rem] font-bold capitalize text-slate-200">
           login
         </h2>
-        <form className="mt-[1rem]" id="registrationForm">
+        <form className="mt-[1rem] text-white" id="registrationForm">
           <div className="inputCon">
-            <label className="block text-[16px] font-semibold text-[#010102]">
-              Email:
-            </label>
-            <input
+            <Input
+              label={"Email:"}
+              name={"email"}
+              type={"email"}
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              id="email"
-              type="text"
+              setValue={setEmail}
               placeholder="Enter Email"
-              className="apitalize w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-300"
+              error={""}
             />
           </div>
 
           <div className="inputCon py-2">
-            <label className="block text-[16px] font-semibold text-[#010102]">
-              Password:
-            </label>
-            <input
+
+            <Input
+              label={"Password:"}
+              name={"password"}
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              id="password"
+              setValue={setPassword}
               type="password"
               placeholder="Enter Password"
-              className="apitalize w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-300"
+              error={""}
             />
           </div>
 
@@ -224,30 +223,26 @@ const Login = () => {
               </h2>
               <form className="mt-[1rem]" id="registrationForm">
                 <div className="inputCon my-[1rem]">
-                  <label className="block text-[16px] font-semibold text-slate-100">
-                    Email:
-                  </label>
-                  <input
+                  <Input
+                    label={"Email:"}
+                    name={"email"}
+                    type={"email"}
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    id="email"
-                    type="text"
+                    setValue={setEmail}
                     placeholder="Enter Email"
-                    className="apitalize my-2 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-black outline-none focus:border focus:border-gray-400"
+                    error={""}
                   />
                 </div>
 
                 <div className="inputCon">
-                  <label className="block text-[16px] font-semibold text-slate-100">
-                    Password:
-                  </label>
-                  <input
+                  <Input
+                    label={"Password:"}
+                    name={"password"}
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    id="password"
+                    setValue={setPassword}
                     type="password"
                     placeholder="Enter Password"
-                    className="my-2 w-full rounded-[5px] border-[1px] border-slate-200 bg-[#FCFBFB] px-4 py-[.6rem] text-slate-900 outline-none focus:border focus:border-gray-400"
+                    error={""}
                   />
                 </div>
 

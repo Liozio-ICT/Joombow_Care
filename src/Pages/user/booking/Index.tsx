@@ -7,6 +7,7 @@ import apiClient from "../../../utils/apiClient";
 import { slugify } from "../../../utils/slugify";
 import BookingCard from "../../../components/BookingCard";
 import { toast } from "react-toastify";
+import { FaPlus } from "react-icons/fa6";
 
 const Index = () => {
   const tabs = [
@@ -92,10 +93,21 @@ const Index = () => {
           </div>
         </section>
       )}
-      <div className="grid w-full grid-cols-[repeat(auto-fill,_minmax(min(15rem,_100%),_1fr))] gap-5">
-        {bookings?.map((booking, idx) => (
-          <BookingCard {...booking} key={idx} />
-        ))}
+      <div className="relative grid min-h-[70dvh] grid-rows-[1fr_auto]">
+        <div className="my-5 grid w-full grow grid-cols-[repeat(auto-fit,_minmax(min(15rem,_100%),_1fr))] gap-5 *:h-fit">
+          {bookings?.map((booking, idx) => (
+            <BookingCard {...booking} key={idx} />
+          ))}
+        </div>
+        {!!bookings?.length && (
+          <Link
+            to="/user/bookings/new"
+            className="sticky bottom-[5rem] right-0 ms-auto flex w-fit items-center justify-center gap-2 text-nowrap rounded-full bg-brand-red p-3 text-sm text-white shadow-lg md:bottom-[2rem]"
+          >
+            <span className="hidden md:block">Book Again</span>
+            <FaPlus />
+          </Link>
+        )}
       </div>
     </>
   );

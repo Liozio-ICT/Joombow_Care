@@ -82,7 +82,7 @@ const EditProfile = () => {
           />
 
           <div className="my-5 w-full gap-5 !px-0 text-center">
-            <button type="submit" className="mx-auto rounded bg-brand-red p-2 px-4 text-white">
+            <button type="submit" className="mx-auto rounded hover:scale-105 transition-all duration-200 hover:bg-opacity-75 bg-brand-red p-2 px-4 text-white">
               Save changes
             </button>
           </div>

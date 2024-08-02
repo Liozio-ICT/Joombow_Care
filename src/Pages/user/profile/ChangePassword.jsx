@@ -98,7 +98,7 @@ const ChangePassword = () => {
           <button
             type={step === 'opt' ? 'submit' : 'button'}
             onClick={step !== 'otp' ? requestOtp : submit}
-            className="mx-auto rounded bg-brand-red p-2 px-4 text-white"
+            className="mx-auto rounded bg-brand-red  hover:scale-105 transition-all duration-200 hover:bg-opacity-75 p-2 px-4 text-white"
           >
             {step === 'otp' ? 'Save Changes' : 'Continue'}
           </button>
