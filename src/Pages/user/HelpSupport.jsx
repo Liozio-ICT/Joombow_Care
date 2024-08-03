@@ -10,7 +10,7 @@ const list = [
   },
   {
     label: "Reach out on Instagram",
-    to: "https://x.com/Liozio_Joombow/status/1817858442683396459?t=dvdV-ldWHW0HRavST3wKyw&s=19",
+    to: "https://www.instagram.com/liozio_joombow?igsh=MWRsZW90enAzZGZleQ==",
     icon: <FaInstagram />,
   },
   {
