@@ -11,33 +11,34 @@ function Hero() {
     <div>
       <Navbar />
 
-      <section className="heroContainer relative lg:hidden over">
-        <div className="overlay inset-0 bg-black opacity-65 absolute"></div>
+      <section className="heroContainer over relative lg:hidden">
+        <div className="overlay absolute inset-0 bg-black opacity-65"></div>
         <figure className="heroimgcontainer">
           <img
             src="https://res.cloudinary.com/durbee4ln/image/upload/v1711811511/Care_care/man-connecting-jumper-cables-to-battery_ysq6je.jpg"
-            className="w-full h-[350px] lg:h-[600px] object-cover"
+            className="h-[350px] w-full object-cover lg:h-[600px]"
             alt="car care image"
           />
         </figure>
 
-        <figcaption class="text-container absolute inset-0 flex items-center px-8 jusify-center">
-          <section class="text-white t">
-            <h3 class="text-3xl md:text-4xl lg:text-5xl mb-2">
+        <figcaption class="text-container jusify-center absolute inset-0 flex items-center px-8">
+          <section class="t text-white">
+            <h3 class="mb-2 text-3xl md:text-4xl lg:text-5xl">
               Joombow Car Care <br /> & Repair Centre
             </h3>
-            <h1 class="text-xl md:text-2xl lg:text-3xl mb-2">
+            <h1 class="mb-2 text-xl md:text-2xl lg:text-3xl">
               Southwest Nigeria
             </h1>
-            <h1 class="text-[#EAB251]  text-3xl mb-6">
+            <h1 class="mb-6 text-3xl text-[#EAB251]">
               {" "}
               <AutoType />
             </h1>
-            <section className="btnc flex w-full space-x-5 justify-center">
+            <section className="btnc flex w-full justify-center space-x-5">
               <div class="mb-6 w-full">
                 <a
                   href="/signup"
-                  class="bg-red-600 text-[12px] px-2 hover:bg-red-700 text-white block py-3 text-center rounded-lg transition-transform duration-300 ease transform hover:scale-105">
+                  class="ease block transform rounded-lg bg-red-600 px-2 py-3 text-center text-[12px] text-white transition-transform duration-300 hover:scale-105 hover:bg-red-700"
+                >
                   Book car care
                 </a>
               </div>
@@ -45,7 +46,8 @@ function Hero() {
                 <a
                   href="https://joombow-web-application.vercel.app"
                   target="_blank"
-                  class="bg-red-600 text-[12px] hover:bg-red-700 block text-white py-3 px-6 rounded-lg transition-transform duration-300 ease transform hover:scale-105">
+                  class="ease block transform rounded-lg bg-red-600 px-6 py-3 text-[12px] text-white transition-transform duration-300 hover:scale-105 hover:bg-red-700"
+                >
                   Our Car Wash
                 </a>
               </div>
@@ -56,39 +58,41 @@ function Hero() {
 
       {/*destop */}
 
-      <section className="heroContainer hidden lg:block relative over">
-        <div className="overlay inset-0 bg-black opacity-75 absolute"></div>
+      <section className="heroContainer over relative hidden lg:block">
+        <div className="overlay absolute inset-0 bg-black opacity-75"></div>
         <figure className="heroimgcontainer w-full">
           <img
             src="https://media.istockphoto.com/id/1469656819/photo/automobile-mechanic-repairman-hands-repairing-a-car-engine-automotive-workshop-with-a-wrench.jpg?s=612x612&w=0&k=20&c=K6ieJylvjUwYusGYOcUHOVcu6HO9Xrb2GcVmrh9tcAY="
-            className="w-full lg:h-[500px] object-cover"
+            className="w-full object-cover lg:h-[500px]"
             alt=""
           />
         </figure>
 
         <figcaption class="text-container absolute inset-0 flex items-center justify-center text-white">
           <section className="pl-[5rem] pr-[20rem]">
-            <h3 class=" font-clash text-6xl mb-2">
+            <h3 class="mb-2 font-clash text-6xl">
               Joombow Car Care & Repair Centre
             </h3>
-            <h1 class="text-[35px] mb-2">Southwest Nigeria</h1>
-            <h1 class="text-[#EAB251] text-6xl mb-6">
+            <h1 class="mb-2 text-[35px]">Southwest Nigeria</h1>
+            <h1 class="mb-6 text-6xl text-[#EAB251]">
               {" "}
               <AutoType />
             </h1>
-            <div className="py-6 flex items-center gap-[80px]">
+            <div className="flex items-center gap-[80px] py-6">
               <div>
                 <Link
                   to="/signup"
-                  class="bg-red-600 hover:bg-red-700 text-white py-5 px-12 rounded-lg transition-transform duration-300 ease transform hover:scale-105">
+                  class="ease transform rounded-lg bg-red-600 px-12 py-5 text-white transition-transform duration-300 hover:scale-105 hover:bg-red-700"
+                >
                   Book Car Care
                 </Link>
               </div>
               <div>
                 <a
-                  href="https://joombow-web-application.vercel.app/"
+                  href="https://joombow-web-application.vercel.app"
                   target="_blank"
-                  class="bg-red-600 hover:bg-red-700 text-white py-5 px-12 rounded-lg transition-transform duration-300 ease transform hover:scale-105">
+                  class="ease transform rounded-lg bg-red-600 px-12 py-5 text-white transition-transform duration-300 hover:scale-105 hover:bg-red-700"
+                >
                   Explore our Car Wash
                 </a>
               </div>
