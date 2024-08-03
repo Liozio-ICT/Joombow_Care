@@ -14,7 +14,7 @@ import apiClient from "../utils/apiClient";
 import { ScrollRestoration } from "react-router-dom";
 import { useAuth } from "../provders/AuthProvider";
 import Input from "../components/Input";
-import './auth.css'
+import "./auth.css";
 
 const Signup = () => {
   const [showOTPForm, setShowOTPForm] = useState();
@@ -242,7 +242,7 @@ const Signup = () => {
       </section>
 
       {loading && (
-        <div className="fixed inset-0 z-50 flex w-full items-center justify-center bg-white">
+        <div className="fixed inset-0 z-[99999] flex w-full items-center justify-center bg-white">
           <div className="dot-spinner">
             <div className="dot-spinner__dot"></div>
             <div className="dot-spinner__dot"></div>
@@ -263,13 +263,13 @@ const Signup = () => {
         <div className="hidden w-full lg:block">
           <img
             src="https://res.cloudinary.com/durbee4ln/image/upload/v1711811511/Care_care/man-connecting-jumper-cables-to-battery_ysq6je.jpg"
-            className="fixed min-h-[100dvh] w-full object-cover z-[-1]"
+            className="fixed -z-20 min-h-[100dvh] w-full object-cover"
             alt="bh image"
           />
-          <div className="fixed inset-0 h-[100dvh] w-full bg-black opacity-70 z-[0]"></div>
+          <div className="fixed inset-0 -z-10 h-[100dvh] w-full bg-black opacity-70"></div>
 
-          <div className="flex relative">
-            <span className="prevLink absolute block z-50">
+          <div className="relative flex">
+            <span className="prevLink absolute z-50 block">
               <div className="logo m-auto h-[250px] w-[250px] object-cover">
                 <img
                   src="https://res.cloudinary.com/dnldaz7oh/image/upload/v1707161130/JOOMBOW/rpj2kpw4bbo9ngkd5zob.png"
@@ -278,9 +278,9 @@ const Signup = () => {
                 />
               </div>
             </span>
-            <div className="z-50 flex w-full justify-center p-6 pb-20 text-white grow">
+            <div className="z-50 flex w-full grow justify-center p-6 pb-20 text-white">
               <form
-                className="mt-[.3rem] h-fit grow max-w-[50%] self-start rounded-lg bg-[#433F3FCC] px-4"
+                className="mt-[.3rem] h-fit max-w-[50%] grow self-start rounded-lg bg-[#433F3FCC] px-4"
                 id="registrationForm"
               >
                 <span className="prevLink mt-8 block px-4">
