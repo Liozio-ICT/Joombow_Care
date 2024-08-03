@@ -17,6 +17,7 @@ const AuthContext = createContext({
     },
     isAuthenticated: false,
     user: {} || null,
+    useUser: () => ({} || null),
     token: '' || null,
     updateUser: (data) => { return data || null },
     getUserData: async () => { return {} }
@@ -86,6 +87,7 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
+    const useUser = () => user
 
     useEffect(() => {
         const t = localStorage.getItem("auth_token")
@@ -105,7 +107,7 @@ export const AuthProvider = ({ children }) => {
     }, [token, isAuthenticated])
 
     return (
-        <AuthContext.Provider value={{ login, logout, isAuthenticated, user, token, getUserData, updateUser }}>
+        <AuthContext.Provider value={{ login, logout, isAuthenticated, user, token, getUserData, updateUser, useUser }}>
             {children}
 
             <ToastContainer
