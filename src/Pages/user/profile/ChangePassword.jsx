@@ -53,6 +53,7 @@ const ChangePassword = () => {
       if (response.ok) {
         toast.success(message)
         setStep();
+        form.reset();
         setOldPassword();
         setNewPassword();
         setConfirmPassword();
