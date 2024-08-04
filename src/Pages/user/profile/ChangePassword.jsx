@@ -52,7 +52,11 @@ const ChangePassword = () => {
 
       if (response.ok) {
         toast.success(message)
-        getUserData()
+        setStep();
+        setOldPassword();
+        setNewPassword();
+        setConfirmPassword();
+        getUserData();
         return navigate("/user/profile");
       }
 
