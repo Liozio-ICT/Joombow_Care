@@ -5,13 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 function Services() {
   const listItems = [
-
-    [
-      "Car Servicing", 
-      "Operational Maintenance", 
-      "Tune Ups", 
-      "Diagnosis"
-    ],
+    ["Car Servicing", "Operational Maintenance", "Tune Ups", "Diagnosis"],
 
     [
       "Wear & Tear Repairs",
@@ -27,20 +21,9 @@ function Services() {
       "Alternator Repairs",
     ],
 
-    [
-      "AC Servicing", 
-      "Gas Refill & Servicing", 
-      "AC System Cleaning"
-    ],
+    ["AC Servicing", "Gas Refill & Servicing", "AC System Cleaning"],
 
-    [
-      "Tyre change",
-      "Tyre Repair",
-      "Alignment & Balancing",
-      "Tyre Sip & Trim",
-    ],
-
-   
+    ["Tyre change", "Tyre Repair", "Alignment & Balancing", "Tyre Sip & Trim"],
   ];
   const services = [
     {
@@ -97,22 +80,23 @@ function Services() {
     return services.map((service, index) => (
       <figure
         key={index}
-        className="relative transition-all duration-300   transform hover:scale-105 object-contain">
+        className="relative transform object-contain transition-all duration-300 hover:scale-105"
+      >
         {/* Overlay */}
         {/* <div className="absolute inset-0 bg-black opacity-80 rounded-[5px]"></div> */}
 
         {/* Image */}
 
         {/* Text */}
-        <div className="mx-2 md:mx-4 lg:mx-6 border border-gray-800 h-auto">
+        <div className="mx-2 h-auto border border-gray-800 md:mx-4 lg:mx-6">
           <img
             src={service.imageUrl}
             alt={service.title}
-            className="w-full h-[250px] object-cover rounded-[5px]"
+            className="h-[250px] w-full rounded-[5px] object-cover"
           />
-          <div className="  fle items-center p-3 justify-center shadow-lg">
+          <div className="fle items-center justify-center p-3 shadow-lg">
             {/* w-[450px] h-[250px] border-red-500 */}
-            <h2 className="md:text-[35px] text-[23px] pt-2 text-white font-clash font-bold text-cente">
+            <h2 className="text-cente pt-2 font-clash text-[23px] font-bold text-white md:text-[35px]">
               {service.title}
             </h2>
 
@@ -120,14 +104,15 @@ function Services() {
               {listItems[index].map((item, idx) => {
                 return (
                   <li
-                    className="text-[18px] text-gray-400 font-clash leading-7 font-normal"
-                    key={idx}>
+                    className="font-clash text-[18px] font-normal leading-7 text-gray-400"
+                    key={idx}
+                  >
                     {item}
                   </li>
                 );
               })}
             </ul>
-            <p className="text-[18px] text-gray-400 font-clash leading-7 font-normal">
+            <p className="font-clash text-[18px] font-normal leading-7 text-gray-400">
               {service.content}
             </p>
           </div>
@@ -162,10 +147,11 @@ function Services() {
 
   return (
     <div>
-      <main id="services" className="bg-black px-4 py-16">
+      <main id="services" className="bg-black px-4 py-1">
         <h1
           data-aos="fade-up"
-          className="font-bold bb font-clash text-[#FD1014] text-[45px] text-center py-8">
+          className="bb py-8 text-center font-clash text-[45px] font-bold text-[#FD1014]"
+        >
           Our Services
         </h1>
         <Slider {...settings}>{renderServices()}</Slider>

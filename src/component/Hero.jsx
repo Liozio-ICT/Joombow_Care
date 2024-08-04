@@ -21,20 +21,20 @@ function Hero() {
           />
         </figure>
 
-        <figcaption class="text-container jusify-center absolute inset-0 flex items-center px-8">
-          <section class="t text-white">
-            <h3 class="mb-2 text-3xl md:text-4xl lg:text-5xl">
+        <figcaption className="text-container jusify-center absolute inset-0 flex items-center px-8">
+          <section id="home" className="t text-white">
+            <h3 className="mb-2 text-3xl md:text-4xl lg:text-5xl">
               Joombow Car Care <br /> & Repair Centre
             </h3>
             <h1 class="mb-2 text-xl md:text-2xl lg:text-3xl">
               Southwest Nigeria
             </h1>
-            <h1 class="mb-6 text-3xl text-[#EAB251]">
+            <h1 className="mb-6 text-3xl text-[#EAB251]">
               {" "}
               <AutoType />
             </h1>
             <section className="btnc flex w-full justify-center space-x-5">
-              <div class="mb-6 w-full">
+              <div className="mb-6 w-full">
                 <a
                   href="/signup"
                   class="ease block transform rounded-lg bg-red-600 px-2 py-3 text-center text-[12px] text-white transition-transform duration-300 hover:scale-105 hover:bg-red-700"
@@ -42,11 +42,11 @@ function Hero() {
                   Book car care
                 </a>
               </div>
-              <div class="mb-6 w-full">
+              <div className="mb-6 w-full">
                 <a
                   href="https://joombow-web-application.vercel.app"
                   target="_blank"
-                  class="ease block transform rounded-lg bg-red-600 px-6 py-3 text-[12px] text-white transition-transform duration-300 hover:scale-105 hover:bg-red-700"
+                  className="ease block transform rounded-lg bg-red-600 px-6 py-3 text-[11px] text-white transition-transform duration-300 hover:scale-105 hover:bg-red-700"
                 >
                   Our Car Wash
                 </a>
@@ -64,17 +64,17 @@ function Hero() {
           <img
             src="https://media.istockphoto.com/id/1469656819/photo/automobile-mechanic-repairman-hands-repairing-a-car-engine-automotive-workshop-with-a-wrench.jpg?s=612x612&w=0&k=20&c=K6ieJylvjUwYusGYOcUHOVcu6HO9Xrb2GcVmrh9tcAY="
             className="w-full object-cover lg:h-[500px]"
-            alt=""
+            alt="image"
           />
         </figure>
 
-        <figcaption class="text-container absolute inset-0 flex items-center justify-center text-white">
-          <section className="pl-[5rem] pr-[20rem]">
-            <h3 class="mb-2 font-clash text-6xl">
+        <figcaption className="text-container absolute inset-0 flex items-center justify-center text-white">
+          <section id="home" className="pl-[5rem] pr-[20rem]">
+            <h3 className="mb-2 font-clash text-6xl">
               Joombow Car Care & Repair Centre
             </h3>
-            <h1 class="mb-2 text-[35px]">Southwest Nigeria</h1>
-            <h1 class="mb-6 text-6xl text-[#EAB251]">
+            <h1 className="mb-2 text-[35px]">Southwest Nigeria</h1>
+            <h1 className="mb-6 text-6xl text-[#EAB251]">
               {" "}
               <AutoType />
             </h1>
@@ -82,7 +82,7 @@ function Hero() {
               <div>
                 <Link
                   to="/signup"
-                  class="ease transform rounded-lg bg-red-600 px-12 py-5 text-white transition-transform duration-300 hover:scale-105 hover:bg-red-700"
+                  className="ease transform rounded-lg bg-red-600 px-12 py-5 text-white transition-transform duration-300 hover:scale-105 hover:bg-red-700"
                 >
                   Book Car Care
                 </Link>
@@ -91,7 +91,7 @@ function Hero() {
                 <a
                   href="https://joombow-web-application.vercel.app"
                   target="_blank"
-                  class="ease transform rounded-lg bg-red-600 px-12 py-5 text-white transition-transform duration-300 hover:scale-105 hover:bg-red-700"
+                  className="ease transform rounded-lg bg-red-600 px-12 py-5 text-white transition-transform duration-300 hover:scale-105 hover:bg-red-700"
                 >
                   Explore our Car Wash
                 </a>

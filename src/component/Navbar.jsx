@@ -33,57 +33,58 @@ function Navbar() {
       {/* desktop  */}
       <Loader />
       <nav
-        className={`nav-header bg-[black] border-b border-gray-500 ${isScrolled
-            ? "fixed top-0 left-0 right-0 z-[100] w-full shadow-sm"
+        className={`nav-header border-b border-gray-500 bg-[black] ${
+          isScrolled
+            ? "fixed left-0 right-0 top-0 z-[100] w-full shadow-sm"
             : ""
-          } `}>
-        <div class="navLinks text-[#0C0C0C] hidden lg:flex items-center py-4 justify-between w-[85%] m-auto">
+        } `}
+      >
+        <div class="navLinks m-auto hidden w-[85%] items-center justify-between py-4 text-[#0C0C0C] lg:flex">
           <ul className="flex gap-16 text-white">
             <a
               href="#home"
-              className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
+              className="fonth block text-[20px] font-semibold transition hover:text-[#FD1014]"
+            >
               Home
             </a>
 
             <a
               href="#about"
-              className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
+              className="fonth block text-[20px] font-semibold transition hover:text-[#FD1014]"
+            >
               About
             </a>
             <a
               href="#services"
-              className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
+              className="fonth block text-[20px] font-semibold transition hover:text-[#FD1014]"
+            >
               Our Services
             </a>
 
             <a
               href="#why"
-              className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
+              className="fonth block text-[20px] font-semibold transition hover:text-[#FD1014]"
+            >
               {" "}
               Why us
             </a>
             <a
               href="#carmake"
-              className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
+              className="fonth block text-[20px] font-semibold transition hover:text-[#FD1014]"
+            >
               {" "}
               Car Make
             </a>
-            {/* <a
-              href="#review"
-              className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
-              Review
-            </a> */}
 
             <a
               href="#contact"
-              className="block fonth  font-semibold text-[20px] hover:text-[#FD1014] transition">
+              className="fonth block text-[20px] font-semibold transition hover:text-[#FD1014]"
+            >
               Contact Us
             </a>
 
             {loading && (
-              <div
-                className="fixed top-0 left-0 right-0 bottom-0
-                   bg-white w-full flex items-center justify-center">
+              <div className="fixed bottom-0 left-0 right-0 top-0 flex w-full items-center justify-center bg-white">
                 <div class="dot-spinner">
                   <div class="dot-spinner__dot"></div>
                   <div class="dot-spinner__dot"></div>
@@ -99,8 +100,8 @@ function Navbar() {
           </ul>
           <Link
             to="/signup"
-            className="bg-[#fd1014d1]  text-[white] border-none text-[16px] 
-          py-4 px-6 w-[15%] rounded-[20px] text-center block transition-transform duration-300 ease hover:bg-[#CA0007]">
+            className="ease block w-[15%] rounded-[20px] border-none bg-[#fd1014d1] px-6 py-4 text-center text-[16px] text-[white] transition-transform duration-300 hover:bg-[#CA0007]"
+          >
             Sign Up
           </Link>
         </div>
@@ -109,98 +110,102 @@ function Navbar() {
       {/* mobile  */}
 
       <nav
-        className={`bg-[#c44141] border-b border-gray-500 ${isScrolled ? "fixed top-0 left-0 right-0 z-[100]" : ""
-          }`}>
+        className={`border-b border-gray-500 bg-[#c44141] ${
+          isScrolled ? "fixed left-0 right-0 top-0 z-[100]" : ""
+        }`}
+      >
         <div class="navLink text-[#0C0C0C] lg:hidden">
           <section
-            className={`flex items-center h-[3.5rem] px-4  justify-between w-full bg-black`}>
-            <Link to="/">
+            className={`flex h-[3.5rem] w-full items-center justify-between bg-black px-4`}
+          >
+            <Link to="tel:+234 0904 444 4765">
               <FaPhone
                 style={{ transform: "rotate(90deg)" }}
-                className="text-white cursor-pointer font-bold text-[1.6rem]"
+                className="cursor-pointer text-[1.6rem] font-bold text-white"
               />
             </Link>
             <div>
               <img
-                className="w-[150px] h-[150px] object-cover"
+                className="h-[150px] w-[150px] object-cover"
                 src="https://res.cloudinary.com/dnldaz7oh/image/upload/v1707161130/JOOMBOW/rpj2kpw4bbo9ngkd5zob.png"
                 alt="Logo"
               />
             </div>
 
             <div onClick={toggle}>
-              <FaBars className="text-white text-[1.6rem] cursor-pointer" />
+              <FaBars className="cursor-pointer text-[1.6rem] text-white" />
             </div>
           </section>
 
           <div
-            className={`relative nav-container bg-black ${isOpen ? "active" : ""
-              }`}>
-            <div className="relative w-[95%] m-auto p-2 flex items-center justify-center">
+            className={`nav-container relative bg-black ${
+              isOpen ? "active" : ""
+            }`}
+          >
+            <div className="relative m-auto flex w-[95%] items-center justify-center p-2">
               <img
-                className="w-[150px] h-[150px] object-cover"
+                className="h-[150px] w-[150px] object-cover"
                 src="https://res.cloudinary.com/dnldaz7oh/image/upload/v1707161130/JOOMBOW/rpj2kpw4bbo9ngkd5zob.png"
                 alt="Logo"
               />
               <FaTimes
                 onClick={toggle}
-                className=" text-white cursor-pointer text-[2rem] absolute top-10 right-0"
+                className="absolute right-0 top-10 cursor-pointer text-[2rem] text-white"
               />
             </div>
             <div>
-              <ul className=" text-white text-center px-2">
+              <ul className="px-2 text-center text-white">
                 <a
                   onClick={toggle}
                   href="#home"
-                  className="block fonth py-4 border-b border-dashed border-gray-700   text-[20px] hover:text-[#FD1014] transition">
+                  className="fonth block border-b border-dashed border-gray-700 py-4 text-[20px] transition hover:text-[#FD1014]"
+                >
                   Home
                 </a>
 
                 <a
                   onClick={toggle}
                   href="#about"
-                  className="block fonth py-4 border-b border-dashed border-gray-700  font-s text-[20px] hover:text-[#FD1014] transition">
+                  className="fonth font-s block border-b border-dashed border-gray-700 py-4 text-[20px] transition hover:text-[#FD1014]"
+                >
                   About
                 </a>
                 <a
                   onClick={toggle}
                   href="#services"
-                  className="block fonth py-4 border-b border-dashed border-gray-700   text-[20px] hover:text-[#FD1014] transition">
+                  className="fonth block border-b border-dashed border-gray-700 py-4 text-[20px] transition hover:text-[#FD1014]"
+                >
                   Our Services
                 </a>
 
                 <a
                   onClick={toggle}
                   href="#why"
-                  className="block fonth py-4 border-b border-dashed border-gray-700   text-[20px] hover:text-[#FD1014] transition">
+                  className="fonth block border-b border-dashed border-gray-700 py-4 text-[20px] transition hover:text-[#FD1014]"
+                >
                   {" "}
                   Why us
                 </a>
                 <a
+                  onClick={toggle}
                   href="#carmake"
-                  className="block fonth py-4 border-b border-dashed border-gray-700     font-semibold text-[20px] hover:text-[#FD1014] transition">
+                  className="fonth block border-b border-dashed border-gray-700 py-4 text-[20px] font-semibold transition hover:text-[#FD1014]"
+                >
                   {" "}
                   Car Make
                 </a>
-                {/* <a
-                  onClick={toggle}
-                  href="#review"
-                  className="block fonth py-4 border-b border-dashed border-gray-700  f text-[20px] hover:text-[#FD1014] transition">
-                  Review
-                </a> */}
 
                 <a
                   href="#contact"
                   onClick={toggle}
-                  className="block fonth py-4 border-b border-dashed border-gray-700 d text-[20px] hover:text-[#FD1014] transition">
+                  className="fonth d block border-b border-dashed border-gray-700 py-4 text-[20px] transition hover:text-[#FD1014]"
+                >
                   Contact Us
                 </a>
 
-                <div className="pt-8 pb-10">
+                <div className="pb-10 pt-8">
                   <Link to="/signup" className="block w-full text-center">
-                    <button
-                      className="bg-[#EAB251] text-white text-[16px]
-     py-[14px] px-[28px] w-[80%] rounded-[30px] border-none transition-transform duration-300 ease-in-out transform hover:scale-105">
+                    <button className="w-[80%] transform rounded-[30px] border-none bg-[#EAB251] px-[28px] py-[14px] text-[16px] text-white transition-transform duration-300 ease-in-out hover:scale-105">
                       Sign Up
                     </button>
                   </Link>

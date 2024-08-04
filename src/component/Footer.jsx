@@ -63,7 +63,7 @@ const Footer = () => {
                 </p>
               </div>
               <div class="footer-links my-8 lg:my-0">
-                <h2 class="text-light-red text-[18px] bb py-3 text-center font-bold text-[#FD1014]">
+                <h2 class="text-light-red bb py-3 text-center text-[18px] font-bold text-[#FD1014]">
                   <span>Our Links</span>
                 </h2>
                 <div class="flex flex-col items-center gap-2 text-center">
@@ -106,7 +106,7 @@ const Footer = () => {
                 </div>
               </div>
               <div class="footer-info text-balance text-[16px] font-normal leading-8">
-                <h2 class="text-light-red text-[18px] bb py-3 text-center font-bold text-[#FD1014] md:mt-0 lg:text-left">
+                <h2 class="text-light-red bb py-3 text-center text-[18px] font-bold text-[#FD1014] md:mt-0 lg:text-left">
                   <span>Contact Us</span>
                 </h2>
                 <div class="footer-contact flex flex-col items-center justify-center gap-2 md:justify-start lg:block">
@@ -145,22 +145,18 @@ const Footer = () => {
             </div>
             <div class="footer-end text-balance pb-4 pt-12 text-center text-[12px] font-normal lg:text-[14px]">
               <p>copyright &copy; JOOMBOW {currentYear}.all rights reserved</p>
-              <button
+              <a
+                // onClick={scrollToTop}
                 // data-aos="fade-up"
-                className="ite ml-auto flex w-[30px] transform animate-bounce justify-center scroll-smooth rounded-full bg-red-500 bg-gradient-to-r from-[#0F042F] to-[#FD1014] py-2 text-center capitalize drop-shadow-md transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-100 lg:w-[150px] lg:py-3"
-                to="#"
+                className="ite ml-auto flex w-[50px] transform animate-bounce cursor-pointer justify-center scroll-smooth rounded-full bg-red-500 bg-gradient-to-r from-[#0F042F] to-[#FD1014] py-2 text-center capitalize drop-shadow-md transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-100 lg:w-[150px] lg:py-3"
+                href="#home"
               >
                 {" "}
-                <div id="home">
-                  <a
-                    href="#home"
-                    className="flex items-center justify-center gap-2"
-                  >
-                    <FaArrowAltCircleUp />
-                    <h3 className="hidden font-clash lg:block">Back To Top</h3>
-                  </a>
+                <div className="flex items-center justify-center gap-2">
+                  <FaArrowAltCircleUp />
+                  <h3 className="hidden font-clash lg:block">Back To Top</h3>
                 </div>
-              </button>
+              </a>
             </div>
           </div>
         </footer>
