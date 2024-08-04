@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import React from "react";
+import { Link } from "react-router-dom";
 import { MdOutlineStarHalf } from "react-icons/md";
 import { FaArrowAltCircleUp } from "react-icons/fa";
+import { FaPhone, FaEnvelope, FaLocationDot } from "react-icons/fa6";
 // import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -14,76 +16,78 @@ const Footer = () => {
       <main id="contact" className="footerCont">
         <footer
           id="contact"
-          class="bg-[#1D1D1D] text-light-gray font-montserrat text-white">
+          class="text-light-gray font-montserrat bg-[#1D1D1D] text-white"
+        >
           <div
             data-aos="fade-up"
             id="section9"
-            class="ninth-section footer-container w-[90%] m-auto pt-8">
+            class="ninth-section footer-container m-auto w-[90%] pt-8"
+          >
             <div class="footer-star flex items-center justify-center">
-              <MdOutlineStarHalf class="w-[20px] h-[20px]" />
-              <MdOutlineStarHalf class="w-[20px] h-[20px]" />
-              <MdOutlineStarHalf class="w-[20px] h-[20px]" />
-              <MdOutlineStarHalf class="w-[20px] h-[20px]" />
-              <MdOutlineStarHalf class="w-[20px] h-[20px]" />
+              <MdOutlineStarHalf class="h-[20px] w-[20px]" />
+              <MdOutlineStarHalf class="h-[20px] w-[20px]" />
+              <MdOutlineStarHalf class="h-[20px] w-[20px]" />
+              <MdOutlineStarHalf class="h-[20px] w-[20px]" />
+              <MdOutlineStarHalf class="h-[20px] w-[20px]" />
             </div>
-            <div class="footer-container container flex flex-col justify-between lg:flex-row pt-12">
+            <div class="footer-container container flex flex-col justify-between pt-12 lg:flex-row">
               <div class="footer-content leading-8">
-                <h3 class="font-semibold text-center lg:text-start bb">
+                <h3 class="bb py-3 text-center text-[18px] font-bold text-[#FD1014] lg:text-start">
                   Stay Connected
                 </h3>
-                <p class="text-[16px] flex  justify-center space-x-4 ">
+                <p class="flex justify-center space-x-4 text-[16px]">
                   <a
-                    class="hover:bg-transparent hover:dark:text-[#FD1014] transition"
-                    href="#">
+                    target="_blank"
+                    class="transition hover:bg-transparent hover:dark:text-[#FD1014]"
+                    href="https://www.facebook.com/share/pNNwjpkqrtggdzvW/?mibextid=qi2Omg"
+                  >
                     {" "}
                     Facebook{" "}
                   </a>
                   <a
-                    class="hover:bg-transparent hover:dark:text-[#FD1014] transition"
-                    href="#">
+                    target="_blank"
+                    class="transition hover:bg-transparent hover:dark:text-[#FD1014]"
+                    href="https://x.com/Liozio_Joombow/status/1817858442683396459?t=dvdV-ldWHW0HRavST3wKyw&s=19"
+                  >
                     {" "}
                     Twitter{" "}
                   </a>
                   <a
-                    class="hover:bg-transparent hover:dark:text-[#FD1014] transition"
-                    href="#">
+                    target="_blank"
+                    class="transition hover:bg-transparent hover:dark:text-[#FD1014]"
+                    href="https://www.instagram.com/liozio_joombow?igsh=MWRsZW90enAzZGZleQ=="
+                  >
                     {" "}
                     Instagram{" "}
-                  </a>
-                  <a
-                    class="hover:bg-transparent hover:dark:text-[#FD1014] transition"
-                    href="#">
-                    {" "}
-                    Linkedin{" "}
                   </a>
                 </p>
               </div>
               <div class="footer-links my-8 lg:my-0">
-                <h2 class="text-center text-light-red  bb">
+                <h2 class="text-light-red text-[18px] bb py-3 text-center font-bold text-[#FD1014]">
                   <span>Our Links</span>
                 </h2>
-                <div class="flex flex-col text-center  items-center gap-2 ">
-                  <ul class="leading-8 font-normal pt-2 text-[14px] flex space-x-4 md:text-[16px] text-balance">
+                <div class="flex flex-col items-center gap-2 text-center">
+                  <ul class="flex space-x-4 text-balance pt-2 text-[14px] font-normal leading-8 md:text-[16px]">
                     <a href="#home">
-                      <li class="md:hover:bg-transparent hover:dark:text-[#FD1014] transition">
+                      <li class="transition md:hover:bg-transparent hover:dark:text-[#FD1014]">
                         <span>Home</span>
                       </li>
                     </a>
                     <a href="#about">
-                      <li class="hover:bg-transparent hover:dark:text-[#FD1014] transition">
+                      <li class="transition hover:bg-transparent hover:dark:text-[#FD1014]">
                         About Us
                       </li>
                     </a>
                     {/* <a href="#"><li class="hover:bg-transparent hover:dark:text-[#FD1014] transition">Timeline</li></a> */}
                     <a href="#services">
-                      <li class="hover:bg-transparent hover:dark:text-[#FD1014] transition">
+                      <li class="transition hover:bg-transparent hover:dark:text-[#FD1014]">
                         Our Services
                       </li>
                     </a>
                   </ul>
-                  <ul class="leading-8 flex  space-x-4 font-normal text-[14px] md:text-[16px] text-balance">
+                  <ul class="flex space-x-4 text-balance text-[14px] font-normal leading-8 md:text-[16px]">
                     <a href="#why">
-                      <li class="hover:bg-transparent hover:dark:text-[#FD1014] transition">
+                      <li class="transition hover:bg-transparent hover:dark:text-[#FD1014]">
                         Why Us
                       </li>
                     </a>
@@ -92,52 +96,68 @@ const Footer = () => {
                         Reviews
                       </li>
                     </a> */}
-                    <a href="#contact">
-                      <li class="hover:bg-transparent hover:dark:text-[#FD1014] transition">
-                        Contact Us
-                      </li>
-                    </a>
-                    <a href="#sign">
-                      <li class="hover:bg-transparent hover:dark:text-[#FD1014] transition">
+
+                    <Link to="/signup">
+                      <li class="transition hover:bg-transparent hover:dark:text-[#FD1014]">
                         Sign Up
                       </li>
-                    </a>
+                    </Link>
                   </ul>
                 </div>
               </div>
-              <div class="footer-info leading-8 text-[16px] font-normal text-balance">
-                <h2 class="text-light-red text-center mt-3 md:mt-0 lg:text-left bb">
+              <div class="footer-info text-balance text-[16px] font-normal leading-8">
+                <h2 class="text-light-red text-[18px] bb py-3 text-center font-bold text-[#FD1014] md:mt-0 lg:text-left">
                   <span>Contact Us</span>
                 </h2>
-                <div class="footer-contact flex items-center justify-center lg:justify-start gap-2">
-                  <img src="/images/call.png" alt="" />
-                  <p class="text-[14px] md:text-[16px]">
-                    <span>Phone No.:</span> +234 6707653444
-                  </p>
-                </div>
-                <div class="footer-contact flex items-center justify-center md:justify-items-start gap-4 text-balance">
-                  {/* <img src="/images/location.png" alt="" /> */}
-                  <p class="text-[14px] md:text-[16px]" id="location">
-                    {" "}
-                    <span>Email Address: </span>
-                    business@liozio.com
-                  </p>
+                <div class="footer-contact flex flex-col items-center justify-center gap-2 md:justify-start lg:block">
+                  {/* <img src="/images/call.png" alt="" /> */}
+                  <a
+                    href="tel:+234 0904 444 4765"
+                    class="flex items-center gap-4 text-[14px] md:text-[16px] hover:dark:text-[#FD1014]"
+                  >
+                    <span>
+                      <FaPhone />
+                    </span>
+                    +234 0904 444 4765
+                  </a>
+                  <a
+                    href="mailto:TLS@liozio.com"
+                    class="flex items-center gap-4 text-[14px] md:text-[16px] hover:dark:text-[#FD1014]"
+                  >
+                    <span>
+                      <FaEnvelope />
+                    </span>
+                    TLS@liozio.com
+                  </a>
+                  <div class="footer-contact flex items-center gap-4 text-balance md:justify-items-start">
+                    <FaLocationDot />
+
+                    <p
+                      class="text-balance text-[14px] md:text-[16px]"
+                      id="location"
+                    >
+                      No 3, Chief Wole Olanipekun Crescent, <br /> State
+                      Secretariat, Agodi, Ibadan, Oyo State, Nigeria.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="footer-end text-center pb-4 pt-12 font-normal lg:text-[14px] text-[12px] text-balance">
+            <div class="footer-end text-balance pb-4 pt-12 text-center text-[12px] font-normal lg:text-[14px]">
               <p>copyright &copy; JOOMBOW {currentYear}.all rights reserved</p>
               <button
                 // data-aos="fade-up"
-                className=" bg-red-500 animate-bounce lg:w-[150px] w-[30px] rounded-full drop-shadow-md ml-auto transition-all duration-300 transform hover:scale-105 flex ite  justify-center py-2 lg:py-3 capitalize bg-gradient-to-r  text-center from-[#0F042F] to-[#FD1014] focus:ring-4 focus:ring-gray-100 focus:outline-none scroll-smooth"
-                to="#">
+                className="ite ml-auto flex w-[30px] transform animate-bounce justify-center scroll-smooth rounded-full bg-red-500 bg-gradient-to-r from-[#0F042F] to-[#FD1014] py-2 text-center capitalize drop-shadow-md transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-100 lg:w-[150px] lg:py-3"
+                to="#"
+              >
                 {" "}
                 <div id="home">
                   <a
                     href="#home"
-                    className="flex items-center justify-center gap-2">
+                    className="flex items-center justify-center gap-2"
+                  >
                     <FaArrowAltCircleUp />
-                    <h3 className="font-clash hidden lg:block ">Back To Top</h3>
+                    <h3 className="hidden font-clash lg:block">Back To Top</h3>
                   </a>
                 </div>
               </button>
