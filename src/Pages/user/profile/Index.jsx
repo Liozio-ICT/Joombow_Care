@@ -171,6 +171,9 @@ const Profile = () => {
           <EditProfile />
         </div>
 
+        {/* verify email */}
+
+
         {/* update password */}
         <div className="rounded-lg shadow overflow-clip">
           <ChangePassword />
