@@ -52,17 +52,26 @@ const YourComponent = ({ Gmail }) => {
     }
   };
 
-  // const handleOtpChange = (index, value) => {
-  //   const newOtp = [...otp];
-  //   newOtp[index] = value;
+  const requestOtp = async (form) => {
+    form.preventDefault();
+    try {
+      const response = await apiClient.post('/otp/get', {
+        reason: 'Email Verification',
+        email,
+        size: 4
+      })
 
-  //   // Move focus to the next input when a digit is entered
-  //   if (index < 3 && value !== "") {
-  //     document.getElementById(`otp-input-${index + 1}`).focus();
-  //   }
+      const { message } = await response.json()
 
-  //   setOtp(newOtp);
-  // };
+      if (response.ok) {
+        return toast.success(message)
+      }
+      toast.error(message)
+    } catch (error) {
+      console.error(error)
+      toast.error(error)
+    }
+  };
 
   const hideEmail = () => {
     const atIndex = email.indexOf("@");
@@ -122,21 +131,16 @@ const YourComponent = ({ Gmail }) => {
 
         <OtpInput length={4} setValue={setOtp} />
 
-        {/* <div className="flex space-x-4">
-          {otp.map((digit, index) => (
-            <input
-              key={index}
-              type="text"
-              id={`otp-input-${index}`}
-              maxLength="1"
-              value={digit}
-              onChange={(e) => handleOtpChange(index, e.target.value)}
-              className="border p-2 w-16 h-16 rounded-md font-bold text-[20px] focus:border-slate-600 focus:border border-gray-400 text-center outline-none"
-            />
-          ))}
-        </div> */}
+        <div className="flex justify-end my-3 w-full">
+          <button
+            onClick={requestOtp}
+            className="rounded text-brand-red p-2 transition hover:text-[#E3383B]"
+          >
+            Resend OTP
+          </button>
+        </div>
 
-        <div className="ver mt-[2rem] w-full">
+        <div className="mt-[2rem] w-full">
           <button
             onClick={handleVerification}
             className="mon mt-4 w-full rounded bg-[#FD1014] px-4 py-4 text-white transition hover:bg-[#E3383B]"
@@ -224,19 +228,14 @@ const YourComponent = ({ Gmail }) => {
           {/* OTP input fields */}
           <OtpInput length={4} setValue={setOtp} />
 
-          {/* <div className="flex space-x-4">
-            {otp.map((digit, index) => (
-              <input
-                key={index}
-                type="text"
-                id={`otp-input-${index}`}
-                maxLength="1"
-                value={digit}
-                onChange={(e) => handleOtpChange(index, e.target.value)}
-                className="h-16 w-16 rounded-md border border-gray-400 p-2 text-center text-[20px] font-bold text-slate-900 outline-none focus:border focus:border-slate-600"
-              />
-            ))}
-          </div> */}
+          <div className="flex justify-end my-3 w-full">
+            <button
+              onClick={requestOtp}
+              className="rounded text-brand-red p-2 transition hover:text-[#E3383B]"
+            >
+              Resend OTP
+            </button>
+          </div>
 
           <div className="ver mt-[2rem] w-full">
             <button

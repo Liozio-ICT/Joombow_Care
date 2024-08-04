@@ -20,7 +20,9 @@ const ChangePassword = () => {
     try {
       const response = await apiClient.post('/otp/get', {
         reason: 'Password Change',
-        email: useUser()?.email
+        email: useUser()?.email,
+        size: 6
+
       })
 
       const { message } = await response.json()
@@ -96,6 +98,15 @@ const ChangePassword = () => {
               <span> {useAuth().user?.email} </span>
             </div>
             <OtpInput length={6} setValue={setOtp} />
+
+            <div className="flex justify-end my-3 w-full">
+              <button
+                onClick={requestOtp}
+                className="rounded text-brand-red p-2 transition hover:text-[#E3383B]"
+              >
+                Resend OTP
+              </button>
+            </div>
           </>
         }
 
