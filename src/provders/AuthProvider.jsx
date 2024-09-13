@@ -1,6 +1,7 @@
 import { useContext, createContext, useEffect, useState } from 'react'
 import apiClient from '../utils/apiClient'
 import { ToastContainer } from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css";
 
 const AuthContext = createContext({
     login: (token = '', userData = {}) => {

@@ -14,9 +14,16 @@ const Select = ({ label, error, options = [], name, value, setValue, defaultValu
           {defaultValue}
         </option>
         {options.map((op, idx) => (
-          <option value={op} key={idx}>
-            {op}
-          </option>
+          typeof op === 'string' || typeof op === 'number' || typeof op === 'boolean' ? (
+            <option value={op} key={idx}>
+              {op}
+            </option>
+          ) : (
+            <option value={op.value} key={idx}>
+              {op.label}
+            </option>
+          )
+
         ))}
       </select>
 

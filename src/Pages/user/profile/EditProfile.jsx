@@ -36,7 +36,6 @@ const EditProfile = () => {
       console.error(error);
       toast.error(error);
     } finally {
-      getUserData()
       setLoading(false);
     }
   };

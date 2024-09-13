@@ -23,10 +23,10 @@ const Dashboard = () => {
     const data = await response.json()
 
     if (response.ok) {
-      const all = data;
-      const pending = data.filter(({ status }) => status.toLowerCase().includes('pending'));
-      const completed = data.filter(({ status }) => status.toLowerCase().includes('completed'));
-      const cancelled = data.filter(({ status }) => status.toLowerCase().includes('cancelled'));
+      const all = data?.bookings;
+      const pending = data?.bookings.filter(({ status }) => status.toLowerCase().includes('pending'));
+      const completed = data?.bookings.filter(({ status }) => status.toLowerCase().includes('completed'));
+      const cancelled = data?.bookings.filter(({ status }) => status.toLowerCase().includes('cancelled'));
 
       setSummary({
         all: all.length,
@@ -84,7 +84,7 @@ const Dashboard = () => {
             </thead>
             <tbody>
               {
-                transactions?.map(({ carType, _id, location, paymentMethod, status, amount, date }, idx) =>
+                transactions?.bookings?.map(({ carType, _id, location, paymentMethod, status, amount, date }, idx) =>
                   <tr className="*:p-2 px-3 *:border" key={idx}>
                     <td>{carType} </td>
                     <td>{location} </td>
@@ -104,10 +104,10 @@ const Dashboard = () => {
           </table>
         </div>
 
-        {!!transactions?.length && <Pagination
+        {!!transactions?.total_items && <Pagination
           className='my-5'
           activeClass="border-b border-current rounded-none text-brand-red"
-          totalPages={transactions?.length ? Math.ceil(transactions.length / 20) : 0}
+          totalPages={transactions?.total_page ?? 0}
         />}
       </section>
     </>

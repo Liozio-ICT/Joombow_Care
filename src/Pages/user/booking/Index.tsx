@@ -64,7 +64,7 @@ const Index = () => {
         </div>
       </div>
 
-      {!bookings?.length && (
+      {!bookings?.bookings?.length && (
         <section className="flex min-h-[70dvh] items-center justify-center">
           <div className="mx-auto my-10 max-w-screen-sm grow rounded p-5 shadow md:p-10">
             <div className="mx-auto flex max-w-[75%] items-center justify-center !rounded-full">
@@ -94,12 +94,12 @@ const Index = () => {
         </section>
       )}
       <div className="relative grid min-h-[70dvh] grid-rows-[1fr_auto]">
-        <div className="my-5 grid w-full grow grid-cols-[repeat(auto-fit,_minmax(min(15rem,_100%),_1fr))] gap-5 *:h-fit">
-          {bookings?.map((booking, idx) => (
+        <div className="my-5 grid w-full grow grid-cols-[repeat(auto-fill,_minmax(min(20rem,_100%),_1fr))] gap-5 *:h-fit">
+          {bookings?.bookings?.map((booking, idx) => (
             <BookingCard {...booking} key={idx} />
           ))}
         </div>
-        {!!bookings?.length && (
+        {!!bookings?.bookings?.length && (
           <Link
             to="/user/bookings/new"
             className="sticky bottom-[5rem] right-0 ms-auto flex w-fit items-center justify-center gap-2 text-nowrap rounded-full bg-brand-red p-3 text-sm text-white shadow-lg md:bottom-[2rem]"
