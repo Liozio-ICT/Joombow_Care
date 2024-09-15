@@ -205,13 +205,13 @@ const Login = () => {
         </span>
         <img
           src="https://res.cloudinary.com/durbee4ln/image/upload/v1711811511/Care_care/man-connecting-jumper-cables-to-battery_ysq6je.jpg"
-          className="h-[780px] w-full object-cover"
+          className="fixed inset-0 object-cover size-full"
           alt=""
         />
 
-        <div className="absolute inset-0 h-[48.9rem] w-full bg-black opacity-70"></div>
+        <div className="fixed inset-0 bg-black opacity-70"></div>
 
-        <div className="absolute inset-0 flex w-full justify-center text-white">
+        <div className="absolute inset-0 flex w-full justify-center text-white my-5">
           <form className="mt-2 w-[50%] bg-[#433F3FCC]" id="registrationForm">
             <main className="block px-[1rem]">
               <Link to="/">

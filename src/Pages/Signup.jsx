@@ -263,10 +263,10 @@ const Signup = () => {
         <div className="hidden w-full lg:block">
           <img
             src="https://res.cloudinary.com/durbee4ln/image/upload/v1711811511/Care_care/man-connecting-jumper-cables-to-battery_ysq6je.jpg"
-            className="fixed -z-20 min-h-[100dvh] w-full object-cover"
+            className="fixed -z-20 size-full inset-0 object-cover"
             alt="bh image"
           />
-          <div className="fixed inset-0 -z-10 h-[100dvh] w-full bg-black opacity-70"></div>
+          <div className="fixed inset-0 -z-10 bg-black opacity-70"></div>
 
           <div className="relative flex">
             <span className="prevLink absolute z-50 block">
