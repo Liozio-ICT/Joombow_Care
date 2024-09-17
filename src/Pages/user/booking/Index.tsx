@@ -32,12 +32,12 @@ const Index = () => {
   const [bookings, setBookings] = useState();
 
   const getBookings = async (type = "all") => {
-    const response = await apiClient.get(`/booking/mine?type=${type}`);
-    const data = await response.json();
-    if (response.ok) {
-      return setBookings(data);
+    try {
+      const data = await apiClient.get(`booking/mine?type=${type}`).json();
+      setBookings(data);
+    } catch (error) {
+      toast.error(error.message);
     }
-    toast.error(data.message);
   };
   const [activeTab, setActiveTab] = useState(
     tabs.find(

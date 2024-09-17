@@ -21,9 +21,8 @@ const BookingCard = ({
 
   const cancelBooking = async () => {
     // api call to cancel booking
-    const response = await apiClient.post(`/bookings/${_id}/cancel`);
-    const { booking } = response.json();
-    if (response.ok && booking) {
+    const { booking } = await apiClient.post(`bookings/${_id}/cancel`).json();
+    if (booking) {
       return toast.success('Booking cancelled successfully');
     }
 

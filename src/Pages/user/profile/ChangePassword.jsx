@@ -18,37 +18,35 @@ const ChangePassword = () => {
   const requestOtp = async (form) => {
     form.preventDefault();
     try {
-      const response = await apiClient.post('/otp/get', {
-        reason: 'Password Change',
-        email: useUser()?.email,
-        size: 6
+      const { message } = await apiClient.post('otp/get', {
+        json: {
+          reason: 'Password Change',
+          email: useUser()?.email,
+          size: 6
 
-      })
+        }
+      }).json()
 
-      const { message } = await response.json()
-
-      if (response.ok) {
-        toast.success(message)
-        return setStep("otp");
-      }
-      toast.error(message)
+      toast.success(message)
+      return setStep("otp");
     } catch (error) {
       console.error(error)
       toast.error(error)
+      toast.error(error.message)
     }
   };
 
   const submit = async (form) => {
     form.preventDefault();
     try {
-      const response = await apiClient.post('/user/change-password', {
-        oldPassword,
-        newPassword,
-        confirmPassword,
-        otp,
-      })
-
-      const { message } = await response.json()
+      const { message } = await apiClient.post('user/change-password', {
+        json: {
+          oldPassword,
+          newPassword,
+          confirmPassword,
+          otp,
+        }
+      }).json()
 
       if (response.ok) {
         toast.success(message)
@@ -61,9 +59,9 @@ const ChangePassword = () => {
         return navigate("/user/profile");
       }
 
-      toast.error(message)
     } catch (error) {
       console.error(error)
+      toast.error(error.message)
       toast.error(error)
     }
   };

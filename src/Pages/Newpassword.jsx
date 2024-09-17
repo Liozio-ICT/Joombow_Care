@@ -20,22 +20,17 @@ const ResetPassword = () => {
   const handleResetPassword = async () => {
     try {
       setLoading(true);
-      const response = await apiClient.post(
-        "/user/reset-password",
-        { email, otp, newPassword }
-      );
-      const { message } = response.json()
-      if (response.ok) {
-        toast.success(message);
+      const { message } = await apiClient.post(
+        "user/reset-password",
+        { json: { email, otp, newPassword } }
+      ).json()
 
-        navigate("/login");
-      }
-      else {
-        toast.error(message)
-        toast.error("Error resetting password. Please try again later.");
-      }
+      toast.success(message);
+
+      navigate("/login");
     } catch (error) {
       console.error(error);
+      toast.error(error.message)
       toast.error("Error resetting password. Please try again later.");
     } finally {
       setLoading(false);

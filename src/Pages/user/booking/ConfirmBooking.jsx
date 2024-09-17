@@ -38,21 +38,20 @@ const ConfirmBooking = ({ data = [] }) => {
             const { name, value } = el;
             info[name] = value
         })
+        try {
 
-        const response = await apiClient.post('/booking/book', { ...info })
-        setLoading(false)
-        const { message } = await response.json()
-
-        if (response.ok) {
+            const { message } = await apiClient.post('booking/book', { json: { ...info } }).json()
+            setLoading(false)
             toast.success(message)
             setTimeout(() => {
                 navigate('/user/bookings')
             }, 1000)
+
+        } catch (error) {
+
+            toast.error(error.message)
         }
-        else toast.error(message)
-        // initializePayment({
-        //     onClose, onSuccess
-        // })
+
     }
     return (
         <>

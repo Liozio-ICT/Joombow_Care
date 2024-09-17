@@ -20,19 +20,18 @@ const EditProfile = () => {
     setLoading(true);
 
     try {
-      const response = await apiClient.put("/user/me", {
-        email,
-        firstName,
-        lastName,
-      });
-      const data = await response.json();
-      if (response.ok) {
-        await getUserData()
-        return toast.success(data.message);
-      }
-      toast.error(data.message);
+      const { message } = await apiClient.put("user/me", {
+        json: {
+          email,
+          firstName,
+          lastName,
+        }
+      }).json()
+      await getUserData()
+      return toast.success(message);
     } catch (error) {
       console.error(error);
+      toast.error(error.message);
       toast.error(error);
     } finally {
       setLoading(false);

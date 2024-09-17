@@ -18,9 +18,7 @@ const Dashboard = () => {
   const [transactions, setTransactions] = useState()
 
   const getTrxs = async () => {
-    const response = await apiClient.get('/booking/mine')
-
-    const data = await response.json()
+    const data = await apiClient.get('booking/mine').json()
 
     if (response.ok) {
       const all = data?.bookings;

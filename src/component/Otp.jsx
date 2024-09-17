@@ -22,12 +22,13 @@ const YourComponent = ({ Gmail }) => {
     try {
       setLoading(true);
       console.log(otp);
-      const response = await apiClient.post("/user/verify-email", {
-        email: Gmail,
-        otp,
-      });
+      const { message } = await apiClient.post("user/verify-email", {
+        json: {
+          email: Gmail,
+          otp,
+        }
+      }).json();
 
-      const { message } = await response.json();
 
       // Handle the success response here
       console.log(message);
@@ -55,21 +56,18 @@ const YourComponent = ({ Gmail }) => {
   const requestOtp = async (form) => {
     form.preventDefault();
     try {
-      const response = await apiClient.post('/otp/get', {
-        reason: 'Email Verification',
-        email,
-        size: 4
-      })
+      const { message } = await apiClient.post('otp/get', {
+        json: {
+          reason: 'Email Verification',
+          email,
+          size: 4
+        }
+      }).json()
 
-      const { message } = await response.json()
-
-      if (response.ok) {
-        return toast.success(message)
-      }
-      toast.error(message)
+      return toast.success(message)
     } catch (error) {
       console.error(error)
-      toast.error(error)
+      toast.error(error.message)
     }
   };
 

@@ -95,17 +95,20 @@ const Profile = () => {
   };
   const deleteAccount = async () => {
     // api request logics
-    const response = await apiClient.delete('/user/me')
-    const { message } = await response.json()
 
-    if (response.ok) {
+    try {
+      const { message } = await apiClient.delete('user/me').json()
+
       setModalStep("success");
-      return toast.success(message)
+      toast.success(message)
+
+      logout()
+    } catch (error) {
+      toast.error(error.message)
     }
 
-    toast.error(message)
-    logout()
-  };
+  }
+
 
   useEffect(() => {
     getUserData().then((e) => {

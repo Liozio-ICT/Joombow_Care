@@ -49,8 +49,7 @@ export const AuthProvider = ({ children }) => {
     const logout = async () => {
         try {
             // api request to logout
-            const response = await apiClient.get('/user/logout')
-            const { errors, message } = await response.json()
+            const { message, error } = await apiClient.get('user/logout').json()
 
         } catch (error) {
             console.error(error)
@@ -63,13 +62,10 @@ export const AuthProvider = ({ children }) => {
     const getUserData = async () => {
         try {
             // api request to get current user
-            const response = await apiClient.get('/user/me')
+            const data = await apiClient.get('user/me').json()
 
-            if (response.ok) {
-                const data = await response.json()
-                updateUser(data)
-                return data
-            }
+            updateUser(data)
+            return data
 
         } catch (error) {
             console.error(error)

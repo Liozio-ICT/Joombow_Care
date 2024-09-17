@@ -30,18 +30,14 @@ const Login = () => {
         return;
       }
 
-      const response = await apiClient.post("/user/login", { email, password });
+      const { message, token, user } = await apiClient.post("user/login", { json: { email, password } }).json();
 
-      const { message, token, user } = await response.json();
-      if (response.ok) {
-        toast.success(message);
-        login(token, user);
-        navigate("/user");
-        // navigate("/user");
-      } else {
-        toast.error(`Login failed: ${message}`);
-      }
+      toast.success(message);
+      login(token, user);
+      navigate("/user");
+
     } catch (error) {
+      toast.error("Error during login:", error.message);
       console.error("Error during login:", error.message);
     } finally {
       setLoading(false);
@@ -57,19 +53,18 @@ const Login = () => {
       const result = await signInWithPopup(Gauth, provider);
       console.log("AUTH", result);
 
-      const response = await apiClient.post("/user/login/google", {
-        name: result?.user.displayName,
-        email: result?.user.email,
-      });
+      const { message, token, user } = await apiClient.post("user/login/google", {
+        json: {
+          name: result?.user.displayName,
+          email: result?.user.email,
+        }
+      }).json();
 
-      const { message, token, user } = await response.json();
-      if (response.ok) {
-        toast.success(message);
-        login(token, user);
-        return navigate("/user");
-      }
-      toast.error(message);
+      toast.success(message);
+      login(token, user);
+      return navigate("/user");
     } catch (error) {
+      toast.error(error.message);
       toast.error('Could not login with Google');
       console.log("Could not login with Google", error);
     } finally {

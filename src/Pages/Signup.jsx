@@ -61,24 +61,20 @@ const Signup = () => {
         return;
       }
 
-      const response = await apiClient.post(`/user/register`, {
-        firstName,
-        lastName,
-        email,
-        password,
-        phoneNumber,
-        referralCode,
-      });
+      const { message } = await apiClient.post(`user/register`, {
+        json: {
+          firstName,
+          lastName,
+          email,
+          password,
+          phoneNumber,
+          referralCode,
+        }
+      }).json();
 
-      const { message } = await response.json();
-
-      if (response.ok) {
-        toast.success(message);
-        // Handle additional logic based on the response if needed
-        setShowOTPForm(true);
-      } else {
-        toast.error(message);
-      }
+      toast.success(message);
+      // Handle additional logic based on the response if needed
+      setShowOTPForm(true);
     } catch (error) {
       console.error(error);
       setMessage("Error signing up. Please try again later.");
@@ -97,20 +93,18 @@ const Signup = () => {
       const result = await signInWithPopup(Gauth, provider);
       console.log("AUTH", result);
 
-      const response = await apiClient.post("/user/register/google", {
-        name: result?.user.displayName,
-        email: result?.user.email,
-      });
-      const { message, token, user } = await response.json();
-      if (response.ok) {
-        toast.success(message);
-        // Handle additional logic based on the response if needed
-        login(token, user);
-        navigate("/user");
-      } else {
-        toast.error(message);
-      }
+      const { message, token, user } = await apiClient.post("user/register/google", {
+        json: {
+          name: result?.user.displayName,
+          email: result?.user.email,
+        }
+      }).json();
+
+      toast.success(message);
+      // Handle additional logic based on the response if needed
+      login(token, user);
     } catch (error) {
+      toast.error(error.message);
       console.log("Could not login with Google", error);
     } finally {
       setLoading(false);
