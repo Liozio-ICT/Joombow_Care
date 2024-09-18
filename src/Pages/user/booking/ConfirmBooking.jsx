@@ -1,43 +1,34 @@
-// import { usePaystackPayment } from "react-paystack";
-// import { configure } from "../../constants/paystack";
 import apiClient from "../../../utils/apiClient";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../../component/Loader";
 import { useState } from "react";
 
-const ConfirmBooking = ({ data = [] }) => {
-    // const name = data.find(i => i.label.toString().toLowerCase() === 'full name')
-    // const amount = data.find(i => i.label.toString().toLowerCase() === 'amount') ?? 30000
-    // const email = user.email;
-    // const config = configure({
-    //     email,
-    //     amount,
-    // })
+const ConfirmBooking = ({ data = [], id }) => {
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
+    const info = {}
+    data.forEach(el => {
+        const { name, value } = el;
+        info[name] = value
+    })
+
 
     // you can call this function anything
-    // const onSuccess = (reference) => {
-    //     // Implementation for whatever you want to do with reference and after success call.
-    //     console.log(reference);
-    // };
+    const onSuccess = async (reference) => {
+        // Implementation for whatever you want to do with reference and after success call.
+        console.log(reference);
+    };
 
     // you can call this function anything
-    // const onClose = () => {
-    //     // implementation for  whatever you want to do when the Paystack dialog closed.
-    //     console.log('closed')
-    // }
+    const onClose = () => {
+        // implementation for  whatever you want to do when the Paystack dialog closed.
+        console.log("closed");
+    };
 
-    // const initializePayment = usePaystackPayment(config);
 
     const submitBooking = async () => {
         setLoading(true)
-        const info = {}
-        data.forEach(el => {
-            const { name, value } = el;
-            info[name] = value
-        })
         try {
 
             const { message } = await apiClient.post('booking/book', { json: { ...info } }).json()
@@ -46,6 +37,7 @@ const ConfirmBooking = ({ data = [] }) => {
             setTimeout(() => {
                 navigate('/user/bookings')
             }, 1000)
+
 
         } catch (error) {
 

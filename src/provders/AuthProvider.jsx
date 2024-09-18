@@ -21,7 +21,7 @@ const AuthContext = createContext({
     useUser: () => ({} || null),
     token: '' || null,
     updateUser: (data) => { return data || null },
-    getUserData: async () => { return {} }
+    getUserData: async () => { return {} },
 })
 
 export const AuthProvider = ({ children }) => {
@@ -86,7 +86,9 @@ export const AuthProvider = ({ children }) => {
 
     const useUser = () => user
 
+
     useEffect(() => {
+        const k = sessionStorage.getItem('pay_keys')
         const t = localStorage.getItem("auth_token")
         if (t !== token) {
             setToken(t)
@@ -100,6 +102,11 @@ export const AuthProvider = ({ children }) => {
         if (token && t !== token)
             getUserData()
         setIsAuthenticated(!!token)
+
+        if (!k) {
+            apiClient.get('payment/all').json().then(e => sessionStorage.setItem('pay_keys', JSON.stringify(e)))
+        }
+
 
     }, [token, isAuthenticated])
 

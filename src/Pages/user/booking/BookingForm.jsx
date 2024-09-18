@@ -14,7 +14,7 @@ const BookingForm = ({ onSubmit, booking }) => {
   const [fullName, setFullName] = useState(booking?.fullName ?? '');
   const [phoneNumber, setPhoneNumber] = useState(booking?.phoneNumber ?? booking?.user?.phoneNumber ?? "");
   const [amount, setAmount] = useState(booking?.amount ?? "");
-  const [location, setLocation] = useState(booking?.location ?? "");
+  const [location, setLocation] = useState(booking?.location?._id ?? "");
   const [email, setEmail] = useState(booking?.email ?? booking?.user?.email ?? "");
   const [status, setStatus] = useState(booking?.status ?? "");
   const [brand, setBrand] = useState(booking?.vehicle?.brand ?? '');
@@ -25,6 +25,7 @@ const BookingForm = ({ onSubmit, booking }) => {
   const [paymentStatus, setPaymentStatus] = useState(booking?.paymentStatus);
   const [loading, setLoading] = useState(false);
 
+
   const [vehicles, setVehicles] = useState(brands?.find(b => b._id === brand)?.vehicles?.map(({ model, _id }) => ({
     label: model,
     value: _id
@@ -34,12 +35,46 @@ const BookingForm = ({ onSubmit, booking }) => {
     value: _id
   })))
 
+  const getServices = async () => {
+    const [ser, b] = await Promise.all([
+      apiClient.get('service/all').json(),
+      apiClient.get(`vehicle/brands/all`).json(),
+    ])
+    setBrands(b)
+    setServices(ser)
+  }
+
   useEffect(() => {
-    setVehicles(brands?.find(b => b._id === brand)?.vehicles?.map(({ model, _id }) => ({
+    console.log(brands?.find(b => b._id === brand)?.vehicles)
+    setVehicles(brands?.find(b => b._id === (brand ?? booking?.vehicle?.brand))?.vehicles?.map(({ model, _id }) => ({
       label: model,
       value: _id
     })))
   }, [brand])
+
+  useEffect(() => {
+    setFullName(booking?.fullName ?? '')
+    setEmail(booking?.email ?? booking?.user?.email ?? '')
+    setPhoneNumber(booking?.phoneNumber ?? booking?.user?.phoneNumber ?? '')
+    setStatus(booking?.status ?? '')
+    setLocation(booking?.location ?? '')
+    setAmount(booking?.amount ?? '')
+    setService(booking?.service?._id ?? '')
+    setCarType(booking?.carType ?? '')
+    setBrand(booking?.vehicle?.brand ?? '')
+    setVehicle(booking?.vehicle?._id ?? '')
+    setPaymentMethod(booking?.paymentMethod ?? '')
+    setPaymentStatus(booking?.paymentStatus ?? '')
+    setLoading(false);
+    setVehicles(brands?.find(b => b._id === (brand ?? booking?.vehicle?.brand))?.models?.map(({ model, _id }) => ({
+      label: model,
+      value: _id
+    })))
+    setLocations(services?.find(b => b._id === (service ?? booking?.service?._id))?.locations?.map(({ name, _id }) => ({
+      label: name,
+      value: _id
+    })))
+  }, [booking]);
 
   useEffect(() => {
     const selectedService = services?.find(s => s._id === service)
@@ -72,18 +107,31 @@ const BookingForm = ({ onSubmit, booking }) => {
     })))
   }, [service])
 
-  const getServices = async () => {
-    const [ser, b] = await Promise.all([
-      apiClient.get('service/all').json(),
-      apiClient.get(`vehicle/brands/all`).json(),
-    ])
-    setServices(ser)
-    setBrands(b)
-  }
 
   useEffect(() => {
     getServices()
-  }, [booking, booking])
+    setFullName(booking?.fullName ?? '')
+    setEmail(booking?.email ?? booking?.user?.email ?? '')
+    setPhoneNumber(booking?.phoneNumber ?? booking?.user?.phoneNumber ?? '')
+    setStatus(booking?.status ?? '')
+    setLocation(booking?.location?._id ?? '')
+    setAmount(booking?.amount ?? '')
+    setService(booking?.service?._id ?? '')
+    setCarType(booking?.carType ?? '')
+    setBrand(booking?.vehicle?.brand ?? '')
+    setVehicle(booking?.vehicle?._id ?? '')
+    setPaymentMethod(booking?.paymentMethod ?? '')
+    setPaymentStatus(booking?.paymentStatus ?? '')
+    setLoading(false);
+    setVehicles(brands?.find(b => b._id === (brand ?? booking?.vehicle?.brand))?.models?.map(({ model, _id }) => ({
+      label: model,
+      value: _id
+    })))
+    setLocations(services?.find(b => b._id === (service ?? booking?.service?._id))?.locations?.map(({ name, _id }) => ({
+      label: name,
+      value: _id
+    })))
+  }, [booking])
 
 
   const onsubmit = (form) => {
@@ -120,7 +168,6 @@ const BookingForm = ({ onSubmit, booking }) => {
   return (
     <>
 
-
       <form className="grid gap-5 !p-0 w-full" onSubmit={onsubmit}>
         <Input
           label={"Full Name"}
@@ -148,14 +195,20 @@ const BookingForm = ({ onSubmit, booking }) => {
           />
         </div>
 
-        <Input
-          label={"Amount ₦"}
-          name={"amount"}
-          value={amount}
-          setValue={setAmount}
-          error={""}
-          type='amount'
-        />
+        <div className="grid">
+          <small>
+            The amount Here is Subject to change based on your Vehicle Model and Year
+          </small>
+          <Input
+            label={"Amount ₦"}
+            name={"amount"}
+            value={amount}
+            setValue={setAmount}
+            error={""}
+            type='amount'
+            disabled={true}
+          />
+        </div>
 
         <div className="flex flex-wrap md:flex-nowrap gap-x-2 gap-y-5">
           <Select
@@ -209,28 +262,29 @@ const BookingForm = ({ onSubmit, booking }) => {
             options={
               [
                 "cancelled",
-                "pending-cancelled",
+                // "pending-cancelled",
                 "pending",
                 "confirmed",
                 "in-progress",
                 "completed",
-                "paid",
-                "pending-payment",
+                // "paid",
+                // "pending-payment",
               ].map(stat => (
                 {
                   label: stat.replace('-', ' ').toUpperCase(),
                   value: stat,
                 }))
             }
+            disabled={status === 'in-progress'}
           />
-          <Select
+          {/* <Select
             label={"Payment Status"}
             name={"paymentStatus"}
             value={paymentStatus}
             setValue={setPaymentStatus}
             error={""}
             options={["pending", "completed", "failed", "refunded"]}
-          />
+          /> */}
           <Select
             label={"Payment Method"}
             name={"paymentMethod"}

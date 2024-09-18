@@ -105,6 +105,10 @@ const router = createBrowserRouter([
                 path: "new",
                 element: <NewBooking />,
               },
+              {
+                path: ":id",
+                element: <NewBooking />,
+              },
             ],
           },
         ],

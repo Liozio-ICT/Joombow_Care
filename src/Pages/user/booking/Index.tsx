@@ -8,6 +8,7 @@ import { slugify } from "../../../utils/slugify";
 import BookingCard from "../../../components/BookingCard";
 import { toast } from "react-toastify";
 import { FaPlus } from "react-icons/fa6";
+import { getPayKey } from "../../../utils/paykey";
 
 const Index = () => {
   const tabs = [
@@ -30,11 +31,16 @@ const Index = () => {
   ];
 
   const [bookings, setBookings] = useState();
+  const [key, setKey] = useState();
 
   const getBookings = async (type = "all") => {
     try {
-      const data = await apiClient.get(`booking/mine?type=${type}`).json();
+      const [data, k] = await Promise.all([
+        apiClient.get(`booking/mine?type=${type}`).json(),
+        getPayKey(),
+      ]);
       setBookings(data);
+      setKey(k);
     } catch (error) {
       toast.error(error.message);
     }
@@ -96,7 +102,7 @@ const Index = () => {
       <div className="relative grid min-h-[70dvh] grid-rows-[1fr_auto]">
         <div className="my-5 grid w-full grow grid-cols-[repeat(auto-fill,_minmax(min(20rem,_100%),_1fr))] gap-5 *:h-fit">
           {bookings?.bookings?.map((booking, idx) => (
-            <BookingCard {...booking} key={idx} />
+            <BookingCard {...booking} key={idx} paykey={key} />
           ))}
         </div>
         {!!bookings?.bookings?.length && (
