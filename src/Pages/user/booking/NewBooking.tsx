@@ -28,6 +28,7 @@ const NewBooking = () => {
     } catch (error) {
       console.error(error);
       toast.error(error.message);
+      toast.error(error.response.json().message);
     }
   };
 

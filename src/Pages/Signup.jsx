@@ -105,6 +105,7 @@ const Signup = () => {
       login(token, user);
     } catch (error) {
       toast.error(error.message);
+      toast.error(error.response.json().message)
       console.log("Could not login with Google", error);
     } finally {
       setLoading(false);

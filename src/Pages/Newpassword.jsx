@@ -31,6 +31,7 @@ const ResetPassword = () => {
     } catch (error) {
       console.error(error);
       toast.error(error.message)
+      toast.error(error.response.json().message)
       toast.error("Error resetting password. Please try again later.");
     } finally {
       setLoading(false);

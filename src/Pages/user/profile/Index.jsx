@@ -62,6 +62,7 @@ const Profile = () => {
     } catch (error) {
       console.log({ error });
       toast.error(error?.message);
+      toast.error(error.response.json().message)
     } finally {
       getUserData().then((data) => setPhoto(data.photo));
     }
@@ -78,6 +79,7 @@ const Profile = () => {
         `https://ui-avatars.com/api/?name=${firstName?.replaceAll(" ", "+") ?? "Joombow"}+${lastName?.replaceAll(" ", "+") ?? "User"}`,
       );
       toast.error(error?.message);
+      toast.error(error.response.json().message)
     }
   };
 
@@ -105,6 +107,7 @@ const Profile = () => {
       logout()
     } catch (error) {
       toast.error(error.message)
+      toast.error(error.response.json().message)
     }
 
   }

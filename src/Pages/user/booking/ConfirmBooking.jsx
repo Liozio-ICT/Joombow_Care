@@ -42,6 +42,7 @@ const ConfirmBooking = ({ data = [], id }) => {
         } catch (error) {
 
             toast.error(error.message)
+            toast.error(error.response.json().message)
         }
 
     }

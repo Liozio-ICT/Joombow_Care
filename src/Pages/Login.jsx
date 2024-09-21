@@ -65,8 +65,9 @@ const Login = () => {
       return navigate("/user");
     } catch (error) {
       toast.error(error.message);
-      toast.error('Could not login with Google');
       console.log("Could not login with Google", error);
+      toast.error(error.response.json().message)
+      toast.error('Could not login with Google');
     } finally {
       setLoading(false);
     }

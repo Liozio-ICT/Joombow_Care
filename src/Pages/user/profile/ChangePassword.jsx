@@ -31,8 +31,8 @@ const ChangePassword = () => {
       return setStep("otp");
     } catch (error) {
       console.error(error)
-      toast.error(error)
       toast.error(error.message)
+      toast.error(error.response.json().message)
     }
   };
 
@@ -62,7 +62,7 @@ const ChangePassword = () => {
     } catch (error) {
       console.error(error)
       toast.error(error.message)
-      toast.error(error)
+      toast.error(error.response.json().message)
     }
   };
   return (

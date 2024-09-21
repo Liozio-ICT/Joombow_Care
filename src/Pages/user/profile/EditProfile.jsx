@@ -32,7 +32,7 @@ const EditProfile = () => {
     } catch (error) {
       console.error(error);
       toast.error(error.message);
-      toast.error(error);
+      toast.error(error.response.json().message)
     } finally {
       setLoading(false);
     }

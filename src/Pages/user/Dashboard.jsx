@@ -37,6 +37,7 @@ const Dashboard = () => {
       setTransactions(data)
     } catch (error) {
       toast.error(error.message)
+      toast.error(error.response.json().message)
     }
   }
 
