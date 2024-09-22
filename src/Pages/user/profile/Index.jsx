@@ -1,6 +1,7 @@
 import ProfileListItem from "../../../components/ProfileListItem";
 import { FaSignOutAlt } from "react-icons/fa";
 import { FaCheck, FaCamera, FaUserXmark, FaX } from "react-icons/fa6";
+import ShareOnSocial from "react-share-on-social";
 import { useState } from "react";
 import { cn } from "../../../utils/tailwind";
 import { useNavigate } from "react-router-dom";
@@ -163,6 +164,20 @@ const Profile = () => {
           <div className="">
             <p className="text-xl font-semibold capitalize">{useAuth().user?.firstName ?? ''} {useAuth().user?.lastName ?? ''} </p>
             <small className="lowercase">{useAuth().user?.email} </small>
+          </div>
+
+          <div className="">
+            <p className="text-xl font-semibold capitalize">{useAuth().user?.referralLink ?? ''}  </p>
+            <ShareOnSocial
+              textToShare="Check out Our Car Care Services"
+              link={useAuth().user?.referralLink}
+              linkTitle="JOOMBOW Care Care"
+              linkMetaDesc="Stop going through the agony of car care and maintenance."
+              linkFavicon="https://joombow-web-application.vercel.app/assets/favicon-j6gN90ti.png"
+              noReferer
+            >
+              <button type='button' className="capitalize text-sm"> Invite A Friend </button>
+            </ShareOnSocial>
           </div>
 
           <div className="!pt-0 pb-5">
