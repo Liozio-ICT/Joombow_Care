@@ -6,7 +6,7 @@ export const PAYSTACK_URL = "https://api.paystack.co";
 
 export const configure = ({ amount, email, key = PAYSTACK_PUBLIC_KEY }) => {
   const config = {
-    reference: nanoid(),
+    reference: `${Date.now().toString(16)}-${nanoid()}`,
     email: email,
     amount: amount, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
     publicKey: key,

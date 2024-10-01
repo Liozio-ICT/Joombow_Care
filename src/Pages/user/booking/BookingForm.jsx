@@ -45,7 +45,6 @@ const BookingForm = ({ onSubmit, booking }) => {
   }
 
   useEffect(() => {
-    console.log(brands?.find(b => b._id === brand)?.vehicles)
     setVehicles(brands?.find(b => b._id === (brand ?? booking?.vehicle?.brand))?.vehicles?.map(({ model, _id }) => ({
       label: model,
       value: _id
@@ -78,12 +77,12 @@ const BookingForm = ({ onSubmit, booking }) => {
 
   useEffect(() => {
     const selectedService = services?.find(s => s._id === service)
-    const selectedVehicle = brands?.find(b => b._id === brand)?.vehicles?.find(v => v._id === vehicle)
 
-    if (selectedService && selectedVehicle) {
+    if (selectedService) {
+      console.log({ selectedService, vehicle })
       const defaultPrice = selectedService.vehicles?.find(v =>
-        v.vehicleType === selectedVehicle.type && v.isDefault
-      )?.price
+        v.vehicle === vehicle
+      )?.price ?? selectedService.vehicles?.find(v => v.isDefault)
 
       if (defaultPrice) {
         setAmount(defaultPrice.toString())
@@ -223,7 +222,7 @@ const BookingForm = ({ onSubmit, booking }) => {
             }))}
           />
           <Select
-            label={"Vehicle Brand"}
+            label={"Vehicle"}
             name={"vehicle"}
             value={vehicle}
             setValue={setVehicle}
@@ -253,7 +252,7 @@ const BookingForm = ({ onSubmit, booking }) => {
         />
 
         <div className="flex flex-wrap md:flex-nowrap gap-x-3 gap-y-5">
-          <Select
+          {/* <Select
             label={"Status"}
             name={"status"}
             value={status}
@@ -276,7 +275,7 @@ const BookingForm = ({ onSubmit, booking }) => {
                 }))
             }
             disabled={status === 'in-progress'}
-          />
+          /> */}
           {/* <Select
             label={"Payment Status"}
             name={"paymentStatus"}

@@ -3,9 +3,14 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../../component/Loader";
 import { useState } from "react";
+import { configure } from "../../../utils/paystack";
+import { PaystackButton } from "react-paystack";
+import { FaX } from "react-icons/fa6";
+import { useRef } from "react";
 
 const ConfirmBooking = ({ data = [], id }) => {
     const [loading, setLoading] = useState(false)
+    const pay_form = useRef()
     const navigate = useNavigate()
     const info = {}
     data.forEach(el => {
@@ -18,6 +23,10 @@ const ConfirmBooking = ({ data = [], id }) => {
     const onSuccess = async (reference) => {
         // Implementation for whatever you want to do with reference and after success call.
         console.log(reference);
+
+        setTimeout(() => {
+            navigate('/user/bookings')
+        }, 1000)
     };
 
     // you can call this function anything
@@ -34,11 +43,7 @@ const ConfirmBooking = ({ data = [], id }) => {
             const { message } = await apiClient.post('booking/book', { json: { ...info } }).json()
             setLoading(false)
             toast.success(message)
-            setTimeout(() => {
-                navigate('/user/bookings')
-            }, 1000)
-
-
+            pay_form.current?.openModal()
         } catch (error) {
 
             toast.error(error.message)
@@ -46,6 +51,9 @@ const ConfirmBooking = ({ data = [], id }) => {
         }
 
     }
+
+
+    const config = configure({ name: info.fullName, email, amount: amount * 100, key: paykey, onClose, onSuccess })
     return (
         <>
             {loading && <Loader />}
@@ -63,9 +71,36 @@ const ConfirmBooking = ({ data = [], id }) => {
                 <div className='grid gap-5 w-full *:w-full !px-0 text-center'>
                     <button type="button"
                         onClick={submitBooking}
-                        className='max-w-[12rem] text-sm p-2 px-4 bg-brand-red text-white rounded mx-auto'>Proceed</button>
+                        className='max-w-[12rem] text-sm p-2 px-4 bg-brand-red text-white rounded mx-auto'>
+                        Proceed
+                    </button>
                 </div>
             </div>
+
+
+            <dialog
+                id='pay_form'
+                popover={true}
+                ref={pay_form}
+                className='rounded-xl overflow-clip overflow-y-auto'
+            >
+                <div
+                    className={
+                        cn([
+                            "p-10 rounded-xl shadow bg-white w-[90dvw] md:max-w-screen-sm relative transition-all duration-500",
+                        ])
+                    }
+                >
+                    <button onClick={() => { pay_form?.current?.close() }} className='absolute top-2 right-2 bg-transparent p-2 rounded'>
+                        <FaX />
+                    </button>
+
+                    <h3>Pay Now</h3>
+                    <PaystackButton className="max-w-[12rem] text-sm p-2 px-4 bg-brand-red text-white rounded mx-auto" {...config}>
+                        Pay
+                    </PaystackButton>
+                </div>
+            </dialog>
         </>
     )
 }

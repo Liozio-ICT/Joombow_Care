@@ -30,8 +30,6 @@ const BookingCard = ({
   useEffect(() => { }, [])
   const cancelBooking = async () => {
     // api call to cancel booking
-
-    console.log({ _id })
     try {
       const { message } = await apiClient.put(`booking/${_id}/update-status`, {
         json: {
@@ -46,8 +44,6 @@ const BookingCard = ({
     } catch (error) {
       toast.error('Something went wrong');
     }
-
-
   };
 
 
