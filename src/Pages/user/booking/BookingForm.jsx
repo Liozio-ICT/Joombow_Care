@@ -4,27 +4,34 @@ import Select from "../../../components/Select";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
 import apiClient from "../../../utils/apiClient";
+import { useAuth } from "../../../provders/AuthProvider";
 
 const BookingForm = ({ onSubmit, booking }) => {
-
-
+  const { useUser } = useAuth()
   const [services, setServices] = useState()
   const [brands, setBrands] = useState()
-
   const [fullName, setFullName] = useState(booking?.fullName ?? '');
-  const [phoneNumber, setPhoneNumber] = useState(booking?.phoneNumber ?? booking?.user?.phoneNumber ?? "");
+  const [phoneNumber, setPhoneNumber] = useState(booking?.phoneNumber ?? "");
   const [amount, setAmount] = useState(booking?.amount ?? "");
-  const [location, setLocation] = useState(booking?.location?._id ?? "");
-  const [email, setEmail] = useState(booking?.email ?? booking?.user?.email ?? "");
-  const [status, setStatus] = useState(booking?.status ?? "");
+  const [location, setLocation] = useState(typeof booking?.location === 'string' ? booking?.location : booking?.location?._id ?? "");
   const [brand, setBrand] = useState(booking?.vehicle?.brand ?? '');
   const [vehicle, setVehicle] = useState(booking?.vehicle?._id ?? '');
   const [service, setService] = useState(booking?.service?._id ?? '');
   const [carType, setCarType] = useState(booking?.carType);
-  const [paymentMethod, setPaymentMethod] = useState(booking?.paymentMethod);
-  const [paymentStatus, setPaymentStatus] = useState(booking?.paymentStatus);
+  const [paymentMethod, setPaymentMethod] = useState(booking?.paymentMethod ?? 'online');
   const [loading, setLoading] = useState(false);
+  const [mode, setMode] = useState(booking?.mode ?? 'drive-in')
 
+  const modes = [
+    {
+      label: 'Drive in',
+      value: 'drive-in'
+    },
+    {
+      label: 'Pick up',
+      value: 'pick-up'
+    },
+  ]
 
   const [vehicles, setVehicles] = useState(brands?.find(b => b._id === brand)?.vehicles?.map(({ model, _id }) => ({
     label: model,
@@ -45,44 +52,46 @@ const BookingForm = ({ onSubmit, booking }) => {
   }
 
   useEffect(() => {
-    setVehicles(brands?.find(b => b._id === (brand ?? booking?.vehicle?.brand))?.vehicles?.map(({ model, _id }) => ({
+    setVehicles(brands?.find(b => b._id === (brand ?? booking?.vehicle?.brand))?.vehicles?.map(({ model, _id, year }) => ({
       label: model,
-      value: _id
+      value: _id,
+      year
     })))
   }, [brand])
 
   useEffect(() => {
-    setFullName(booking?.fullName ?? '')
-    setEmail(booking?.email ?? booking?.user?.email ?? '')
-    setPhoneNumber(booking?.phoneNumber ?? booking?.user?.phoneNumber ?? '')
-    setStatus(booking?.status ?? '')
-    setLocation(booking?.location ?? '')
+    setLocations(services?.find(b => b._id === (service ?? booking?.service))?.locations?.map(({ model, _id, year }) => ({
+      label: model,
+      value: _id,
+      year
+    })))
+  }, [service])
+
+  useEffect(() => {
+    const user = useUser()
+    getServices()
+    setFullName(
+      booking?.fullName ??
+      `${booking?.user?.firstName ?? user.firstName ?? ''} ${booking?.user?.lastName ?? user.lastName ?? ''}`
+    )
+    setPhoneNumber(booking?.phoneNumber)
     setAmount(booking?.amount ?? '')
     setService(booking?.service?._id ?? '')
-    setCarType(booking?.carType ?? '')
+    setLocation(typeof booking?.location === 'string' ? booking?.location : booking?.location?._id ?? "")
     setBrand(booking?.vehicle?.brand ?? '')
     setVehicle(booking?.vehicle?._id ?? '')
-    setPaymentMethod(booking?.paymentMethod ?? '')
-    setPaymentStatus(booking?.paymentStatus ?? '')
+    setPaymentMethod(booking?.paymentMethod ?? 'online')
+    setMode(booking?.mode ?? 'drive-in')
     setLoading(false);
-    setVehicles(brands?.find(b => b._id === (brand ?? booking?.vehicle?.brand))?.models?.map(({ model, _id }) => ({
-      label: model,
-      value: _id
-    })))
-    setLocations(services?.find(b => b._id === (service ?? booking?.service?._id))?.locations?.map(({ name, _id }) => ({
-      label: name,
-      value: _id
-    })))
   }, [booking]);
 
   useEffect(() => {
     const selectedService = services?.find(s => s._id === service)
 
     if (selectedService) {
-      console.log({ selectedService, vehicle })
       const defaultPrice = selectedService.vehicles?.find(v =>
         v.vehicle === vehicle
-      )?.price ?? selectedService.vehicles?.find(v => v.isDefault)
+      )?.price ?? selectedService.vehicles?.find(v => v.isDefault)?.price
 
       if (defaultPrice) {
         setAmount(defaultPrice.toString())
@@ -92,8 +101,8 @@ const BookingForm = ({ onSubmit, booking }) => {
 
   useEffect(() => {
     const b = brands?.find(a => a._id === brand)
-    const v = vehicles?.find(c => c._id === vehicle)
-    let name = `${b?.name ?? ''} ${v?.model ?? ''} ${v?.year ?? ''}`;
+    const v = vehicles?.find(c => c.value === vehicle)
+    let name = `${b?.name ?? ''} ${v?.label ?? ''} ${v?.year ?? ''}`;
     name = name.replace('undefined', '').trim()
 
     setCarType(name)
@@ -106,39 +115,11 @@ const BookingForm = ({ onSubmit, booking }) => {
     })))
   }, [service])
 
-
-  useEffect(() => {
-    getServices()
-    setFullName(booking?.fullName ?? '')
-    setEmail(booking?.email ?? booking?.user?.email ?? '')
-    setPhoneNumber(booking?.phoneNumber ?? booking?.user?.phoneNumber ?? '')
-    setStatus(booking?.status ?? '')
-    setLocation(booking?.location?._id ?? '')
-    setAmount(booking?.amount ?? '')
-    setService(booking?.service?._id ?? '')
-    setCarType(booking?.carType ?? '')
-    setBrand(booking?.vehicle?.brand ?? '')
-    setVehicle(booking?.vehicle?._id ?? '')
-    setPaymentMethod(booking?.paymentMethod ?? '')
-    setPaymentStatus(booking?.paymentStatus ?? '')
-    setLoading(false);
-    setVehicles(brands?.find(b => b._id === (brand ?? booking?.vehicle?.brand))?.models?.map(({ model, _id }) => ({
-      label: model,
-      value: _id
-    })))
-    setLocations(services?.find(b => b._id === (service ?? booking?.service?._id))?.locations?.map(({ name, _id }) => ({
-      label: name,
-      value: _id
-    })))
-  }, [booking])
-
-
   const onsubmit = (form) => {
     form.preventDefault();
 
     if (
       !fullName?.length ||
-      !location?.length ||
       !carType?.length ||
       !paymentMethod?.length ||
       !phoneNumber?.length
@@ -151,38 +132,28 @@ const BookingForm = ({ onSubmit, booking }) => {
         { name: "fullName", label: "Full Name", value: fullName },
         { name: "phoneNumber", label: "Phone Number", value: phoneNumber },
         { name: "amount", label: "Amount", value: amount },
-        { name: "location", label: "Location", value: location },
-        { name: "email", label: "Email", value: email },
-        { name: "status", label: "Status", value: status },
+        { name: "location", label: "Location", value: mode === 'pick-up' ? location : undefined },
         { name: "brand", label: "Brand", value: brand },
         { name: "vehicle", label: "Vehicle", value: vehicle },
         { name: "service", label: "Service", value: service },
         { name: "carType", label: "Car Type", value: carType },
         { name: "paymentMethod", label: "Payment Method", value: paymentMethod },
-        { name: "paymentStatus", label: "Payment Status", value: paymentStatus }
+        { name: "mode", label: "Mode of Delivery", value: mode },
       ]
     );
   };
 
   return (
     <>
-
       <form className="grid gap-5 !p-0 w-full" onSubmit={onsubmit}>
-        <Input
-          label={"Full Name"}
-          name={"fullName"}
-          value={fullName}
-          setValue={setFullName}
-          error={""}
-        />
         <div className="flex flex-wrap md:flex-nowrap gap-x-2 gap-y-5">
           <Input
-            label={"Email"}
-            name={"email"}
-            value={email}
-            setValue={setEmail}
+            label={"Full Name"}
+            name={"fullName"}
+            value={fullName}
+            setValue={setFullName}
             error={""}
-            type='email'
+            required={true}
           />
           <Input
             label={"Phone Number"}
@@ -191,6 +162,7 @@ const BookingForm = ({ onSubmit, booking }) => {
             setValue={setPhoneNumber}
             error={""}
             type='tel'
+            required={true}
           />
         </div>
 
@@ -206,28 +178,7 @@ const BookingForm = ({ onSubmit, booking }) => {
             error={""}
             type='amount'
             disabled={true}
-          />
-        </div>
-
-        <div className="flex flex-wrap md:flex-nowrap gap-x-2 gap-y-5">
-          <Select
-            label={"Vehicle Brand"}
-            name={"brand"}
-            value={brand}
-            setValue={setBrand}
-            error={""}
-            options={brands?.map(({ name, _id }) => ({
-              label: name,
-              value: _id
-            }))}
-          />
-          <Select
-            label={"Vehicle"}
-            name={"vehicle"}
-            value={vehicle}
-            setValue={setVehicle}
-            error={""}
-            options={vehicles}
+            required={true}
           />
         </div>
 
@@ -241,49 +192,44 @@ const BookingForm = ({ onSubmit, booking }) => {
             label: name,
             value: _id
           }))}
-        />
-        <Select
-          label={"Location"}
-          name={"location"}
-          value={location}
-          setValue={setLocation}
-          error={""}
-          options={locations}
+          required={true}
         />
 
+        <div className="flex flex-wrap md:flex-nowrap gap-x-2 gap-y-5">
+          <Select
+            label={"Vehicle Brand"}
+            name={"brand"}
+            value={brand}
+            setValue={setBrand}
+            error={""}
+            options={brands?.map(({ name, _id }) => ({
+              label: name,
+              value: _id
+            }))}
+            required={true}
+          />
+          <Select
+            label={"Vehicle"}
+            name={"vehicle"}
+            value={vehicle}
+            setValue={setVehicle}
+            error={""}
+            options={vehicles}
+            required={true}
+          />
+        </div>
+
+
         <div className="flex flex-wrap md:flex-nowrap gap-x-3 gap-y-5">
-          {/* <Select
-            label={"Status"}
-            name={"status"}
-            value={status}
-            setValue={setStatus}
+          <Select
+            label={"Mode Of Delivery"}
+            name={"mode"}
+            value={mode}
+            setValue={setMode}
             error={""}
-            options={
-              [
-                "cancelled",
-                // "pending-cancelled",
-                "pending",
-                "confirmed",
-                "in-progress",
-                "completed",
-                // "paid",
-                // "pending-payment",
-              ].map(stat => (
-                {
-                  label: stat.replace('-', ' ').toUpperCase(),
-                  value: stat,
-                }))
-            }
-            disabled={status === 'in-progress'}
-          /> */}
-          {/* <Select
-            label={"Payment Status"}
-            name={"paymentStatus"}
-            value={paymentStatus}
-            setValue={setPaymentStatus}
-            error={""}
-            options={["pending", "completed", "failed", "refunded"]}
-          /> */}
+            options={modes}
+            required={true}
+          />
           <Select
             label={"Payment Method"}
             name={"paymentMethod"}
@@ -291,8 +237,19 @@ const BookingForm = ({ onSubmit, booking }) => {
             setValue={setPaymentMethod}
             error={""}
             options={["cash", "online", "transfer"]}
+            required={true}
           />
         </div>
+        {
+          mode === 'pick-up' && <Input
+            label={"Location"}
+            name={"location"}
+            value={location}
+            setValue={setLocation}
+            error={""}
+            options={locations}
+            required={true}
+          />}
 
         <div className="my-5 w-full gap-5 !px-0 text-center">
           <button type="submit" disabled={loading} className="mx-auto rounded hover:scale-105 transition-all duration-200 hover:bg-opacity-75 bg-brand-red p-2 px-4 text-white w-full max-w-[15rem]">

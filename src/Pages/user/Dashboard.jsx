@@ -17,15 +17,21 @@ const Dashboard = () => {
     cancelled: 0,
   })
   const [transactions, setTransactions] = useState()
+  const [messages, setMessages] = useState()
+  const [announcements, setAnnouncements] = useState()
 
   const getTrxs = async () => {
     try {
-      const data = await apiClient.get('booking/mine').json()
+      const [trx, msg, ann] = await Promise.all([
+        apiClient.get('booking/mine').json(),
+        apiClient.get('message/me/message').json(),
+        apiClient.get('message/me/broadcast').json(),
+      ])
 
-      const all = data?.bookings;
-      const pending = data?.bookings.filter(({ status }) => status.toLowerCase().includes('pending'));
-      const completed = data?.bookings.filter(({ status }) => status.toLowerCase().includes('completed'));
-      const cancelled = data?.bookings.filter(({ status }) => status.toLowerCase().includes('cancelled'));
+      const all = trx?.bookings;
+      const pending = trx?.bookings.filter(({ status }) => status.toLowerCase().includes('pending'));
+      const completed = trx?.bookings.filter(({ status }) => status.toLowerCase().includes('completed'));
+      const cancelled = trx?.bookings.filter(({ status }) => status.toLowerCase().includes('cancelled'));
 
       setSummary({
         all: all.length,
@@ -34,7 +40,9 @@ const Dashboard = () => {
         completed: completed.length,
       })
 
-      setTransactions(data)
+      setTransactions(trx)
+      setMessages(msg)
+      setAnnouncements(ann)
     } catch (error) {
       toast.error(error.message)
       toast.error(error.response.json().message)
@@ -54,12 +62,17 @@ const Dashboard = () => {
       <div className="grid grid-cols-[1.5rem_1fr] gap-2 mt-5 mb-10" >
         <BsMegaphoneFill className="text-brand-red size-full" />
         <marquee>
-          <span className="px-10" >🚗 Get your car sparkling clean without leaving your home! Book our online car care service now and enjoy a 20% discount on your first care! 🚗</span>
-          <span className="px-10" >🌟 Convenient, fast, and professional car care services at your fingertips! Visit our website to book your appointment today! 🌟</span>
-          <span className="px-10" >📅 Schedule your car care online and choose a time that fits your busy schedule. We come to you! 📅</span>
-          <span className="px-10" >💧 Our eco-friendly car care ensures a clean vehicle and a cleaner environment. Book now and support sustainability! 💧</span>
-          <span className="px-10" >🔧 Need more than just a care? Explore our detailing services for a thorough cleaning inside and out! 🔧</span>
-          <span className="px-10" >🏠 Serving your neighborhood with reliable car care services. Join hundreds of satisfied customers today! 🏠</span>
+          {
+            announcements?.messages?.length > 0 ?
+              announcements?.messages?.map(({ message }, i) => <span key={i} className="px-10" >{message}</span>) :
+              <>
+                <span className="px-10" >🚗 Get your car sparkling clean without leaving your home! Book our online car care service now and enjoy a 20% discount on your first care! 🚗</span>
+                <span className="px-10" >🌟 Convenient, fast, and professional car care services at your fingertips! Visit our website to book your appointment today! 🌟</span>
+                <span className="px-10" >📅 Schedule your car care online and choose a time that fits your busy schedule. We come to you! 📅</span>
+                <span className="px-10" >💧 Our eco-friendly car care ensures a clean vehicle and a cleaner environment. Book now and support sustainability! 💧</span>
+                <span className="px-10" >🔧 Need more than just a care? Explore our detailing services for a thorough cleaning inside and out! 🔧</span>
+                <span className="px-10" >🏠 Serving your neighborhood with reliable car care services. Join hundreds of satisfied customers today! 🏠</span>
+              </>}
         </marquee>
       </div>
 
@@ -89,7 +102,7 @@ const Dashboard = () => {
                 transactions?.bookings?.map(({ carType, _id, location, paymentMethod, status, amount, date }, idx) =>
                   <tr className="*:p-2 px-3 *:border" key={idx}>
                     <td>{carType} </td>
-                    <td>{location?.name} </td>
+                    <td>{typeof location === 'string' ? location : location?.name ?? "Drive In"} </td>
                     <td className="capitalize">{paymentMethod} </td>
                     <td>₦ {amount ? new Intl.NumberFormat('en', {
                       style: 'decimal',

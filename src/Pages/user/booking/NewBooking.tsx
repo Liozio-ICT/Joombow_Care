@@ -11,8 +11,8 @@ import { toast } from "react-toastify";
 
 const NewBooking = () => {
   const navigate = useNavigate();
-  const { id } = useParams();
   const [booking, setBooking] = useState();
+  const { id } = useParams();
   const [data, setData] = useState([]);
   const submit = (form) => {
     setData(form);
