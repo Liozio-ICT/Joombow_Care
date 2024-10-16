@@ -21,7 +21,6 @@ const BookingForm = ({ onSubmit, booking }) => {
   const [paymentMethod, setPaymentMethod] = useState(booking?.paymentMethod ?? 'online');
   const [loading, setLoading] = useState(false);
   const [mode, setMode] = useState(booking?.mode ?? 'drive-in')
-
   const modes = [
     {
       label: 'Drive in',
