@@ -21,6 +21,7 @@ const BookingCard = ({
   email,
   carType,
   location,
+  vehicle,
   paymentMethod,
   paymentStatus,
   status,
@@ -109,8 +110,12 @@ const BookingCard = ({
         <strong>{_id} </strong>
       </span>
       <ListItem icon={<BiUser className="text-brand-red" size={24} />} label={fullName} />
-      <ListItem icon={<BiCar className="text-brand-red" size={24} />} label={carType} />
-      <ListItem icon={<BiMapPin className="text-brand-red" size={24} />} label={location?.name ?? location?.city ?? location?.state ?? location ?? 'Drive In'} />
+      <ListItem icon={<BiCar className="text-brand-red" size={24} />} label={
+        vehicle ?
+          (`${vehicle?.brand.name} ${vehicle.model}`) :
+          carType
+      } />
+      <ListItem icon={<BiMapPin className="text-brand-red" size={24} />} label={location?.name ?? location?.city ?? location?.state ?? location.length ? location : 'Drive In'} />
       <ListItem icon={<BiCalendarEvent className="text-brand-red" size={24} />} label={new Intl.DateTimeFormat('en').format(new Date(date))} />
     </div>
   )

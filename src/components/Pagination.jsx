@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { FaBackward, FaForward } from "react-icons/fa6";
 import { cn } from "../utils/tailwind";
 
-const Pagination = ({ className, totalPages = 0, activePage = 1, activeClass = 'border text-brand-red', onchange = (data) => { } }) => {
+const Pagination = ({ className, totalPages = 1, activePage = 1, activeClass = 'border text-brand-red', onchange = (data) => { } }) => {
   const [active, setActive] = useState(parseInt(activePage));
   const [searchParams, setSearchParams] = useSearchParams()
 

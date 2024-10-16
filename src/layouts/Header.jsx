@@ -6,7 +6,7 @@ import { dashboardPages, profileDrops } from './constants'
 import { FaSignOutAlt } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import { cn } from '../utils/tailwind'
-import { FaX } from 'react-icons/fa6'
+import { FaBell, FaEnvelope, FaX } from 'react-icons/fa6'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -77,6 +77,13 @@ const Header = () => {
                                     </Link>
                                 )
                             }
+
+
+                            {/* messages */}
+                            <Link to={'/user/messages'} className="grid grid-cols-[1.2rem_1fr] items-center hover:bg-brand-red/5 text-sm min-w-max" > <FaEnvelope /> Messages</Link>
+
+                            {/* notification */}
+                            <Link to={'/user/notifications'} className="grid grid-cols-[1.2rem_1fr] items-center hover:bg-brand-red/5 text-sm min-w-max" > <FaBell /> Notifications</Link>
                             <button type='button' className='grid grid-cols-[1.2rem_1fr] items-center hover:bg-brand-red/5 text-sm min-w-max text-left' onClick={() => setModalShown(true)}>
                                 <FaSignOutAlt />
                                 <span>Logout </span>

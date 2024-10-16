@@ -11,9 +11,9 @@ const BookingForm = ({ onSubmit, booking }) => {
   const [services, setServices] = useState()
   const [brands, setBrands] = useState()
   const [fullName, setFullName] = useState(booking?.fullName ?? '');
-  const [phoneNumber, setPhoneNumber] = useState(booking?.phoneNumber ?? "");
+  const [phoneNumber, setPhoneNumber] = useState(booking?.phoneNumber ?? useUser().phoneNumber ?? "");
   const [amount, setAmount] = useState(booking?.amount ?? "");
-  const [location, setLocation] = useState(typeof booking?.location === 'string' ? booking?.location : booking?.location?._id ?? "");
+  const [location, setLocation] = useState(typeof booking?.location === 'string' ? booking?.location : "" ?? "");
   const [brand, setBrand] = useState(booking?.vehicle?.brand ?? '');
   const [vehicle, setVehicle] = useState(booking?.vehicle?._id ?? '');
   const [service, setService] = useState(booking?.service?._id ?? '');
@@ -32,13 +32,10 @@ const BookingForm = ({ onSubmit, booking }) => {
     },
   ]
 
-  const [vehicles, setVehicles] = useState(brands?.find(b => b._id === brand)?.vehicles?.map(({ model, _id }) => ({
+  const [vehicles, setVehicles] = useState(brands?.find(b => b._id === brand)?.vehicles?.map(({ model, _id, year }) => ({
     label: model,
-    value: _id
-  })))
-  const [locations, setLocations] = useState(services?.find(b => b._id === service)?.locations?.map(({ name, _id }) => ({
-    label: name,
-    value: _id
+    value: _id,
+    year
   })))
 
   const getServices = async () => {
@@ -59,24 +56,16 @@ const BookingForm = ({ onSubmit, booking }) => {
   }, [brand])
 
   useEffect(() => {
-    setLocations(services?.find(b => b._id === (service ?? booking?.service))?.locations?.map(({ model, _id, year }) => ({
-      label: model,
-      value: _id,
-      year
-    })))
-  }, [service])
-
-  useEffect(() => {
     const user = useUser()
     getServices()
     setFullName(
       booking?.fullName ??
       `${booking?.user?.firstName ?? user.firstName ?? ''} ${booking?.user?.lastName ?? user.lastName ?? ''}`
     )
-    setPhoneNumber(booking?.phoneNumber)
+    setPhoneNumber(booking?.phoneNumber ?? useUser().phoneNumber ?? "")
     setAmount(booking?.amount ?? '')
     setService(booking?.service?._id ?? '')
-    setLocation(typeof booking?.location === 'string' ? booking?.location : booking?.location?._id ?? "")
+    setLocation(typeof booking?.location === 'string' ? booking?.location : "" ?? "")
     setBrand(booking?.vehicle?.brand ?? '')
     setVehicle(booking?.vehicle?._id ?? '')
     setPaymentMethod(booking?.paymentMethod ?? 'online')
@@ -101,18 +90,12 @@ const BookingForm = ({ onSubmit, booking }) => {
   useEffect(() => {
     const b = brands?.find(a => a._id === brand)
     const v = vehicles?.find(c => c.value === vehicle)
+    console.log({ v, b, brand, vehicle, vehicles, brands })
     let name = `${b?.name ?? ''} ${v?.label ?? ''} ${v?.year ?? ''}`;
     name = name.replace('undefined', '').trim()
 
     setCarType(name)
   }, [brand, vehicle])
-
-  useEffect(() => {
-    setLocations(services?.find(s => s._id === service)?.locations?.map(({ name, _id }) => ({
-      label: name,
-      value: _id
-    })))
-  }, [service])
 
   const onsubmit = (form) => {
     form.preventDefault();
@@ -246,13 +229,12 @@ const BookingForm = ({ onSubmit, booking }) => {
             value={location}
             setValue={setLocation}
             error={""}
-            options={locations}
             required={true}
           />}
 
         <div className="my-5 w-full gap-5 !px-0 text-center">
           <button type="submit" disabled={loading} className="mx-auto rounded hover:scale-105 transition-all duration-200 hover:bg-opacity-75 bg-brand-red p-2 px-4 text-white w-full max-w-[15rem]">
-            Book Now
+            {booking?._id ? 'Continue' : "Book Now"}
           </button>
         </div>
       </form>

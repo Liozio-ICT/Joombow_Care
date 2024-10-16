@@ -11,6 +11,7 @@ const EditProfile = () => {
   const [email, setEmail] = useState();
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
+  const [phoneNumber, setPhoneNumber] = useState();
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -43,6 +44,7 @@ const EditProfile = () => {
       setEmail(data?.email);
       setFirstName(data?.firstName);
       setLastName(data?.lastName);
+      setPhoneNumber(data?.phoneNumber);
     })
   }, [])
 
@@ -74,7 +76,16 @@ const EditProfile = () => {
             label={"Email"}
             name={"email"}
             value={email}
+            type="email"
             setValue={setEmail}
+            error={""}
+          />
+          <Input
+            label={"Phone Number"}
+            name={"phoneNumber"}
+            value={phoneNumber}
+            type="tel"
+            setValue={setPhoneNumber}
             error={""}
           />
 

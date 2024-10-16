@@ -11,7 +11,8 @@ import Onboarding from './Pages/Onboarding.jsx';
 // import User from './Pages/User.jsx';
 import ResetPassword from './Pages/Newpassword.jsx';
 import Launch from './Pages/Launch.jsx';
-import Notifications from "./Pages/user/Notifications.jsx";
+import Notifications from "./Pages/user/message/notification.jsx";
+import Messages from "./Pages/user/message/message.jsx";
 import BookingIndex from "./Pages/user/booking/Index";
 import NewBooking from "./Pages/user/booking/NewBooking";
 import Invite from "./Pages/user/Invite.jsx";
@@ -77,6 +78,10 @@ const router = createBrowserRouter([
           {
             path: "notifications",
             element: <Notifications />,
+          },
+          {
+            path: "messages",
+            element: <Messages />,
           },
           {
             path: "help-support",

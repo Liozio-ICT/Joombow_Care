@@ -104,7 +104,7 @@ const ConfirmBooking = ({ data = [], id }) => {
                     <button type="button"
                         onClick={submitBooking}
                         className='max-w-[12rem] text-sm p-2 px-4 bg-brand-red text-white rounded mx-auto'>
-                        Proceed
+                        Save
                     </button>
                 </div>
             </div>
