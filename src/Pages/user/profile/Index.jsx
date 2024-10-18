@@ -23,6 +23,7 @@ const Profile = () => {
   const [photoInput, setPhotoInput] = useState()
   const [modalType, setModalType] = useState();
   const [modalStep, setModalStep] = useState();
+  const [referralLink, setReferralLink] = useState()
 
   const list = [
     {
@@ -118,6 +119,7 @@ const Profile = () => {
     getUserData().then((e) => {
       // console.log(e)
       updateUser(e)
+      setReferralLink(e?.referralLink)
       setPhoto(e?.photo ?? `https://ui-avatars.com/api/?name=${e?.firstName?.replaceAll(' ', '+') ?? 'Joombow'}+${e?.lastName?.replaceAll(' ', '+') ?? 'User'}`)
     }).catch(err =>
       toast.error(err.message)
@@ -167,10 +169,14 @@ const Profile = () => {
           </div>
 
           <div className="">
-            <p className="text-xl font-semibold capitalize">{useAuth().user?.referralLink ?? ''}  </p>
+            <p className="text-xl font-semibold">{useAuth().user?.referralLink ?? ''}  </p>
             <ShareOnSocial
               textToShare="Check out Our Car Care Services"
-              link={useAuth().user?.referralLink}
+              link={
+                referralLink && !referralLink.startsWith('http') ?
+                  `http://${referralLink}` :
+                  referralLink
+              }
               linkTitle="JOOMBOW Care Care"
               linkMetaDesc="Stop going through the agony of car care and maintenance."
               linkFavicon="https://joombow-web-application.vercel.app/assets/favicon-j6gN90ti.png"

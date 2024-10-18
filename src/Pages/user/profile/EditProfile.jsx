@@ -21,14 +21,15 @@ const EditProfile = () => {
     setLoading(true);
 
     try {
-      const { message } = await apiClient.put("user/me", {
+      const { message, user } = await apiClient.put("user/me", {
         json: {
           email,
           firstName,
           lastName,
+          phoneNumber,
         }
       }).json()
-      await getUserData()
+      updateUser(user);
       return toast.success(message);
     } catch (error) {
       console.error(error);

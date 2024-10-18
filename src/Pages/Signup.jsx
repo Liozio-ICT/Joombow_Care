@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { GrFormPreviousLink } from "react-icons/gr";
 import { FcGoogle } from "react-icons/fc";
@@ -11,13 +11,14 @@ import "react-toastify/dist/ReactToastify.css";
 
 import Loader from "../component/Loader";
 import apiClient from "../utils/apiClient";
-import { ScrollRestoration } from "react-router-dom";
+import { ScrollRestoration, useSearchParams } from "react-router-dom";
 import { useAuth } from "../provders/AuthProvider";
 import Input from "../components/Input";
 import "./auth.css";
 
 const Signup = () => {
   const [showOTPForm, setShowOTPForm] = useState();
+  const [searchParams, setSearchParams] = useSearchParams()
   const [loading, setLoading] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -111,6 +112,10 @@ const Signup = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    setReferralCode(searchParams.get("ref"));
+  }, [])
 
   return (
     <>
