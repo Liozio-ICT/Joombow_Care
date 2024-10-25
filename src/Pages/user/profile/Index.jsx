@@ -45,25 +45,18 @@ const Profile = () => {
     try {
       let body = new FormData();
       body.append("photo", photoInput);
-      const response = await fetch(`${API_URL}/user/me/update-photo`, {
-        method: "PUT",
-        headers: {
-          Accept: "application/json",
-          Authorization: `Bearer ${token}`,
-        },
+      const { message, error, user } = await apiClient.put(`user/me/update-photo`, {
         body,
-      });
+      }).json();
 
-      const { message, error, user } = await response.json();
-      console.log({ photoInput, error, user, message })
       if (response.ok) {
         setPhotoInput()
         return toast.success(message);
       }
       toast.error(message);
     } catch (error) {
-      console.log({ error });
-      toast.error(error?.message);
+      // console.log({ error });
+      // toast.error(error?.message);
       toast.error(error.response.json().message)
     } finally {
       getUserData().then((data) => setPhoto(data.photo));
