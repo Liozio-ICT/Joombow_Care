@@ -1,8 +1,8 @@
 import ky from "ky";
 
-export const API_URL =
-  import.meta.env.VITE_SERVER_URL ??
-  "https://car-care-backend-joombow.onrender.com/";
+export const API_URL = import.meta.env.VITE_SERVER_URL;
+// import.meta.env.VITE_SERVER_URL ??
+// "localhost:3000";
 
 // Create a function to handle API requests using fetch
 const apiClient = ky.create({

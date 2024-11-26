@@ -44,7 +44,8 @@ function Hero() {
               </div>
               <div className="mb-6 w-full">
                 <a
-                  href="https://joombow-web-application.vercel.app"
+                  // href={import.meta.env.VITE_CAR_WASH_URL ?? "https://joombow-web-application.vercel.app"}
+                  href={import.meta.env.VITE_CAR_WASH_URL}
                   target="_blank"
                   className="ease block transform rounded-lg bg-red-600 px-6 py-3 text-[11px] text-white transition-transform duration-300 hover:scale-105 hover:bg-red-700"
                 >
