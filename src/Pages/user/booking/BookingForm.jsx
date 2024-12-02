@@ -60,7 +60,7 @@ const BookingForm = ({ onSubmit, booking }) => {
     getServices()
     setFullName(
       booking?.fullName ??
-      `${booking?.user?.firstName ?? user.firstName ?? ''} ${booking?.user?.lastName ?? user.lastName ?? ''}`
+      `${booking?.user?.fullName ?? user.fullName ?? ''}`
     )
     setPhoneNumber(booking?.phoneNumber ?? useUser().phoneNumber ?? "")
     setAmount(booking?.amount ?? '')

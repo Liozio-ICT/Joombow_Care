@@ -195,11 +195,11 @@ const NotificationInfo = ({ title, message, to, receivers, type, isBooking, user
                 {createdAt && <span> {`${formatDistanceToNowStrict(new Date(createdAt))} ${!isFuture(new Date(createdAt)) ? 'ago' : ''}`} </span>}
             </span>
             <span>
-                From: {user ? user.firstName : admin?.name ?? 'Admin'} {admin && <em class="font-semibold">({admin?.type?.replace('_', ' ')})</em>}
+                From: {user ? user.fullName : admin?.name ?? 'Admin'} {admin && <em class="font-semibold">({admin?.type?.replace('_', ' ')})</em>}
             </span>
             <span className='grid capitalize'>
                 To: {to?.replace('_', ' ')}
-                <span>{receivers?.map(r => r?.user?.firstName ?? r?.admin?.name ?? 'Admin').join(', ')}</span>
+                <span>{receivers?.map(r => r?.user?.fullName ?? r?.admin?.name ?? 'Admin').join(', ')}</span>
             </span>
         </small>
         <div className=' whitespace-pre-wrap max-h-[30rem] overflow-y-auto'>

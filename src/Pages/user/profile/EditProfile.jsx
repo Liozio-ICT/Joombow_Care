@@ -9,8 +9,7 @@ import Loader from "../../../component/Loader";
 const EditProfile = () => {
   const { updateUser, getUserData } = useAuth();
   const [email, setEmail] = useState();
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
+  const [fullName, setFullName] = useState();
   const [phoneNumber, setPhoneNumber] = useState();
   const [loading, setLoading] = useState(false);
 
@@ -24,8 +23,7 @@ const EditProfile = () => {
       const { message, user } = await apiClient.put("user/me", {
         json: {
           email,
-          firstName,
-          lastName,
+          fullName,
           phoneNumber,
         }
       }).json()
@@ -43,8 +41,7 @@ const EditProfile = () => {
   useEffect(() => {
     getUserData().then(data => {
       setEmail(data?.email);
-      setFirstName(data?.firstName);
-      setLastName(data?.lastName);
+      setFullName(data?.fullName);
       setPhoneNumber(data?.phoneNumber);
     })
   }, [])
@@ -61,16 +58,9 @@ const EditProfile = () => {
         <div className="mt-5 grid gap-5 p-5 md:gap-8 md:px-10">
           <Input
             label={"First name"}
-            name={"firstName"}
-            value={firstName}
-            setValue={setFirstName}
-            error={""}
-          />
-          <Input
-            label={"Last name"}
-            name={"lastName"}
-            value={lastName}
-            setValue={setLastName}
+            name={"fullName"}
+            value={fullName}
+            setValue={setFullName}
             error={""}
           />
           <Input

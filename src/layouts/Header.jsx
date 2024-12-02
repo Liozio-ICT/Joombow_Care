@@ -51,20 +51,20 @@ const Header = () => {
                         {/* profile */}
                         <Dropdown justify='right' label={<div className='rounded-full aspect-square w-[2.5rem] overflow-clip border-2 border-brand-red/25 relative'>
                             <img src={useAuth().user?.photo ??
-                                `https://ui-avatars.com/api/?name=${useAuth().user?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${useAuth().user?.lastName?.replaceAll(" ", "+") ?? "User"}`
-                            } alt={`${useAuth().user?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${useAuth().user?.lastName?.replaceAll(" ", "+") ?? "User"}`} className='size-full object-cover' />
+                                `https://ui-avatars.com/api/?name=${useAuth().user?.fullName?.replaceAll(" ", "+") ?? "User"}`
+                            } alt={`${useAuth().user?.fullName?.replaceAll(" ", "+") ?? "User"}`} className='size-full object-cover' />
                         </div>}
                             childrenClass="*:p-2 *:px-3 *:md:px-5 *:gap-2"
                         >
                             <div className=' hover:bg-brand-red/5 grid grid-cols-[2.5rem_1fr] items-center min-w-[10rem] md:min-w-[15rem]'>
                                 <div className='rounded-full aspect-square w-[2.5rem] overflow-clip border-2 border-brand-red/25 relative'>
                                     <img src={useAuth().user?.photo ??
-                                        `https://ui-avatars.com/api/?name=${useAuth().user?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${useAuth().user?.lastName?.replaceAll(" ", "+") ?? "User"}`
-                                    } alt={`${useAuth().user?.firstName?.replaceAll(" ", "+") ?? "Joombow"}+${useAuth().user?.lastName?.replaceAll(" ", "+") ?? "User"}`} className='size-full object-cover' />
+                                        `https://ui-avatars.com/api/?name=${useAuth().user?.fullName?.replaceAll(" ", "+") ?? "User"}`
+                                    } alt={`${useAuth().user?.fullName?.replaceAll(" ", "+") ?? "User"}`} className='size-full object-cover' />
                                 </div>
                                 <div className="truncate">
                                     <strong>{useAuth().user?.lastName ?? "User"}</strong> <br />
-                                    {useAuth().user?.firstName ?? "Joombow"}
+                                    {useAuth().user?.fullName ?? "Joombow"}
                                     {' '}
                                     {useAuth().user?.lastName ?? "User"}
                                 </div>

@@ -20,9 +20,7 @@ const Signup = () => {
   const [showOTPForm, setShowOTPForm] = useState();
   const [searchParams, setSearchParams] = useSearchParams()
   const [loading, setLoading] = useState(false);
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [referralCode, setReferralCode] = useState("");
@@ -35,7 +33,7 @@ const Signup = () => {
     try {
       setLoading(true);
 
-      if (!firstName || !lastName || !email || !phoneNumber || !password) {
+      if (!fullName || !email || !password) {
         setMessage("Please fill in all the required fields.");
         toast.error("Please fill in all the required fields.");
 
@@ -64,11 +62,9 @@ const Signup = () => {
 
       const { message } = await apiClient.post(`user/register`, {
         json: {
-          firstName,
-          lastName,
+          fullName,
           email,
           password,
-          phoneNumber,
           referralCode,
         }
       }).json();
@@ -147,22 +143,11 @@ const Signup = () => {
           <form className="mt-[1rem]" id="registrationForm ">
             <div className="inputCon text-slate-200">
               <Input
-                label={"First Name:"}
-                name={"firstName"}
-                value={firstName}
-                setValue={setFirstName}
-                placeholder="Enter First Name"
-                error={""}
-              />
-            </div>
-
-            <div className="inputCon py-2 text-slate-200">
-              <Input
-                label={"Last Name:"}
-                name={"lastName"}
-                value={lastName}
-                setValue={setLastName}
-                placeholder="Enter Last Name"
+                label={"Full Name:"}
+                name={"fullName"}
+                value={fullName}
+                setValue={setFullName}
+                placeholder="Enter Full Name"
                 error={""}
               />
             </div>
@@ -175,17 +160,6 @@ const Signup = () => {
                 value={email}
                 setValue={setEmail}
                 placeholder="Enter Email"
-                error={""}
-              />
-            </div>
-
-            <div className="inputCon text-slate-200">
-              <Input
-                label={"Phone No:"}
-                name={"phoneNumber"}
-                value={phoneNumber}
-                setValue={setPhoneNumber}
-                placeholder="Enter phoneNumber"
                 error={""}
               />
             </div>
@@ -293,21 +267,11 @@ const Signup = () => {
                 </h2>
                 <div className="inputCon w-full">
                   <Input
-                    label={"First Name:"}
-                    name={"firstName"}
-                    value={firstName}
-                    setValue={setFirstName}
-                    placeholder="Enter First Name"
-                    error={""}
-                  />
-                </div>
-                <div className="inputCon">
-                  <Input
-                    label={"Last Name:"}
-                    name={"lastName"}
-                    value={lastName}
-                    setValue={setLastName}
-                    placeholder="Enter Last Name"
+                    label={"Full Name:"}
+                    name={"fullName"}
+                    value={fullName}
+                    setValue={setFullName}
+                    placeholder="Enter Full Name"
                     error={""}
                   />
                 </div>
@@ -319,16 +283,6 @@ const Signup = () => {
                     value={email}
                     setValue={setEmail}
                     placeholder="Enter Email"
-                    error={""}
-                  />
-                </div>
-                <div className="inputCon my-[.3rem]">
-                  <Input
-                    label={"Phone No:"}
-                    name={"phoneNumber"}
-                    value={phoneNumber}
-                    setValue={setPhoneNumber}
-                    placeholder="Enter phoneNumber"
                     error={""}
                   />
                 </div>
