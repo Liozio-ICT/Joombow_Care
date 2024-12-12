@@ -3,10 +3,22 @@ import { Link } from "react-router-dom";
 import apiClient from "../utils/apiClient";
 import OtpInput from "../components/OtpInput";
 
-const YourComponent = ({ Gmail }) => {
+/**
+ * @typedef {Object} OtpInfo
+ * @property {string} to - The recipient's email address or phone number
+ * @property {string} reason - The purpose of sending OTP (e.g., 'verification', 'password-reset')
+ * @property {number} size - The length of the OTP code
+ * @property {('email'|'sms'|'whatsapp')} channel - The delivery channel for the OTP
+ */
+
+/**
+ * @param {OtpInfo} Info
+ * @returns
+ */
+const Otp = ({ to, channel = 'sms', size = 6 }) => {
   const [loading, setLoading] = useState(false);
 
-  const [email, setEmail] = useState(Gmail);
+  const [email, setEmail] = useState(to);
   const [otp, setOtp] = useState(); // Array to store individual digits
   // const [otp, setOtp] = useState(["", "", "", ""]); // Array to store individual digits
   const [error, setError] = useState("");
@@ -14,7 +26,7 @@ const YourComponent = ({ Gmail }) => {
 
   const handleVerification = async () => {
     // Basic input validation
-    if (!Gmail || otp.length < 4) {
+    if (!to || otp.length < 4) {
       setError("Please fill in the OTP fields.");
       return;
     }
@@ -24,7 +36,7 @@ const YourComponent = ({ Gmail }) => {
       console.log(otp);
       const { message } = await apiClient.post("user/verify-email", {
         json: {
-          email: Gmail,
+          email: to,
           otp,
         }
       }).json();
@@ -58,9 +70,8 @@ const YourComponent = ({ Gmail }) => {
     try {
       const { message } = await apiClient.post('otp/get', {
         json: {
-          reason: 'Email Verification',
-          email,
-          size: 4
+          reason: 'Verification',
+          to: to,
         }
       }).json()
 
@@ -86,7 +97,7 @@ const YourComponent = ({ Gmail }) => {
           A 4 digit code has been sent to
           <span className="gg text-[20px] font-semibold focus:outline-none">
             {" "}
-            {hideEmail(Gmail)}{" "}
+            {hideEmail(to)}{" "}
           </span>
           Please enter it below to verify your account.
         </p>
@@ -128,7 +139,7 @@ const YourComponent = ({ Gmail }) => {
 
         {/* OTP input fields */}
 
-        <OtpInput length={4} setValue={setOtp} />
+        <OtpInput length={size} setValue={setOtp} />
 
         <div className="flex justify-end my-3 w-full">
           <button
@@ -181,7 +192,7 @@ const YourComponent = ({ Gmail }) => {
             A 4 digit code has been sent to
             <span className="gg text-[20px] font-semibold text-slate-100">
               {" "}
-              {hideEmail(Gmail)}{" "}
+              {hideEmail(to)}{" "}
             </span>
             Please enter it below to verify your account.
           </p>
@@ -225,7 +236,7 @@ const YourComponent = ({ Gmail }) => {
           )}
 
           {/* OTP input fields */}
-          <OtpInput length={4} setValue={setOtp} />
+          <OtpInput length={size} setValue={setOtp} />
 
           <div className="flex justify-end my-3 w-full">
             <button
@@ -265,4 +276,4 @@ const YourComponent = ({ Gmail }) => {
   );
 };
 
-export default YourComponent;
+export default Otp;

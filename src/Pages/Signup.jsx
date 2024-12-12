@@ -33,7 +33,7 @@ const Signup = () => {
     try {
       setLoading(true);
 
-      if (!fullName || !email || !password) {
+      if (!fullName || !phoneNumber) {
         setMessage("Please fill in all the required fields.");
         toast.error("Please fill in all the required fields.");
 
@@ -41,22 +41,20 @@ const Signup = () => {
       }
 
       // Password validation using regular expression
-      const passwordRegex =
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\d)(?=.*[\W]).{8,}$/;
+      // const passwordRegex =
+      //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\d)(?=.*[\W]).{8,}$/;
 
-      // /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/;
+      // // /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/;
 
-      if (!passwordRegex.test(password)) {
-        toast.error(
-          "Password must be at least 8 characters long and contain at least one letter, one number, and one special character.",
-        );
-        return; // Prevent signup process from proceeding
-      }
+      // if (!passwordRegex.test(password)) {
+      //   toast.error(
+      //     "Password must be at least 8 characters long and contain at least one letter, one number, and one special character.",
+      //   );
+      //   return; // Prevent signup process from proceeding
+      // }
 
-      // Email validation using regular expression
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        toast.error("Invalid email address.");
+      if (!phoneNumber) {
+        toast.error("Invalid phone Number.");
         return;
       }
 
@@ -130,7 +128,7 @@ const Signup = () => {
         </span>
         <main className="min-h-[100vh] px-6 pb-[2rem]">
           {showOTPForm ? (
-            <Otp Gmail={email} />
+            <Otp Gmail={phoneNumber} />
           ) : (
             <div className="logo">
               <img
@@ -158,11 +156,11 @@ const Signup = () => {
 
             <div className="inputCon text-slate-200">
               <Input
-                label={"PhoneNumber:"}
-                name={"PhoneNumber"}
-                type={"PhoneNumber"}
+                label={"Phone Number:"}
+                name={"phoneNumber"}
+                type={"tel"}
                 value={phoneNumber}
-                setValue={phoneNumber}
+                setValue={setPhoneNumber}
                 placeholder="Enter Phone Number"
                 error={""}
               />
@@ -282,10 +280,10 @@ const Signup = () => {
                 <div className="inputCon my-[.3rem]">
                   <Input
                     label={"Phone Number:"}
-                    name={"PhoneNumber"}
-                    type={"number"}
+                    name={"phoneNumber"}
+                    type={"tel"}
                     value={phoneNumber}
-                    setValue={phoneNumber}
+                    setValue={setPhoneNumber}
                     placeholder="Enter Phone Number"
                     error={""}
                   />
@@ -338,7 +336,7 @@ const Signup = () => {
               <section className="">
                 {/* <main className=" ">
                   {showOTPForm ? (
-                    <Otp Gmail={email} />
+                    <Otp Gmail={phoneNumber} />
                   ) : (
                     <div className="logo pt-[4rem]"></div>
                   )}
