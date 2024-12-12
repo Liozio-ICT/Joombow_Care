@@ -18,10 +18,10 @@ import "./auth.css";
 
 const Signup = () => {
   const [showOTPForm, setShowOTPForm] = useState();
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams();
   const [loading, setLoading] = useState(false);
   const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [referralCode, setReferralCode] = useState("");
   const [message, setMessage] = useState("");
@@ -60,14 +60,16 @@ const Signup = () => {
         return;
       }
 
-      const { message } = await apiClient.post(`user/register`, {
-        json: {
-          fullName,
-          email,
-          password,
-          referralCode,
-        }
-      }).json();
+      const { message } = await apiClient
+        .post(`user/register`, {
+          json: {
+            fullName,
+            phoneNumber,
+            password,
+            referralCode,
+          },
+        })
+        .json();
 
       toast.success(message);
       // Handle additional logic based on the response if needed
@@ -90,19 +92,21 @@ const Signup = () => {
       const result = await signInWithPopup(Gauth, provider);
       console.log("AUTH", result);
 
-      const { message, token, user } = await apiClient.post("user/register/google", {
-        json: {
-          name: result?.user.displayName,
-          email: result?.user.email,
-        }
-      }).json();
+      const { message, token, user } = await apiClient
+        .post("user/register/google", {
+          json: {
+            name: result?.user.displayName,
+            email: result?.user.email,
+          },
+        })
+        .json();
 
       toast.success(message);
       // Handle additional logic based on the response if needed
       login(token, user);
     } catch (error) {
       toast.error(error.message);
-      toast.error(error.response.json().message)
+      toast.error(error.response.json().message);
       console.log("Could not login with Google", error);
     } finally {
       setLoading(false);
@@ -111,7 +115,7 @@ const Signup = () => {
 
   useEffect(() => {
     setReferralCode(searchParams.get("ref"));
-  }, [])
+  }, []);
 
   return (
     <>
@@ -154,17 +158,17 @@ const Signup = () => {
 
             <div className="inputCon text-slate-200">
               <Input
-                label={"Email:"}
-                name={"email"}
-                type={"email"}
-                value={email}
-                setValue={setEmail}
-                placeholder="Enter Email"
+                label={"PhoneNumber:"}
+                name={"PhoneNumber"}
+                type={"PhoneNumber"}
+                value={phoneNumber}
+                setValue={phoneNumber}
+                placeholder="Enter Phone Number"
                 error={""}
               />
             </div>
 
-            <div className="inputCon text-slate-200">
+            {/* <div className="inputCon text-slate-200">
               <Input
                 label={"Password:"}
                 name={"password"}
@@ -174,9 +178,9 @@ const Signup = () => {
                 placeholder="Enter Password"
                 error={""}
               />
-            </div>
+            </div> */}
 
-            <div className="inputCon text-slate-200">
+            {/* <div className="inputCon text-slate-200">
               <Input
                 label={"Referral code:"}
                 name={"referralCode"}
@@ -185,7 +189,7 @@ const Signup = () => {
                 placeholder="Enter Referral code"
                 error={""}
               />
-            </div>
+            </div> */}
 
             <button
               type="button"
@@ -237,7 +241,7 @@ const Signup = () => {
         <div className="hidden w-full lg:block">
           <img
             src="https://res.cloudinary.com/durbee4ln/image/upload/v1711811511/Care_care/man-connecting-jumper-cables-to-battery_ysq6je.jpg"
-            className="fixed -z-20 size-full inset-0 object-cover"
+            className="fixed inset-0 -z-20 size-full object-cover"
             alt="bh image"
           />
           <div className="fixed inset-0 -z-10 bg-black opacity-70"></div>
@@ -277,16 +281,16 @@ const Signup = () => {
                 </div>
                 <div className="inputCon my-[.3rem]">
                   <Input
-                    label={"Email:"}
-                    name={"email"}
-                    type={"email"}
-                    value={email}
-                    setValue={setEmail}
-                    placeholder="Enter Email"
+                    label={"Phone Number:"}
+                    name={"PhoneNumber"}
+                    type={"number"}
+                    value={phoneNumber}
+                    setValue={phoneNumber}
+                    placeholder="Enter Phone Number"
                     error={""}
                   />
                 </div>
-                <div className="inputCon">
+                {/* <div className="inputCon">
                   <Input
                     label={"Password:"}
                     name={"password"}
@@ -296,8 +300,8 @@ const Signup = () => {
                     placeholder="Enter Password"
                     error={""}
                   />
-                </div>
-                <div className="inputCon">
+                </div> */}
+                {/* <div className="inputCon">
                   <Input
                     label={"Referral code:"}
                     name={"referralCode"}
@@ -306,7 +310,7 @@ const Signup = () => {
                     placeholder="Enter Referral code"
                     error={""}
                   />
-                </div>
+                </div> */}
                 <button
                   type="button"
                   onClick={handleSignup}
@@ -332,14 +336,14 @@ const Signup = () => {
                 </button>
               </form>
               <section className="">
-                <main className=" ">
+                {/* <main className=" ">
                   {showOTPForm ? (
                     <Otp Gmail={email} />
                   ) : (
                     <div className="logo pt-[4rem]"></div>
                   )}
-                  {/* <h2 className="text-[2rem] capitalize font-bold">SignUp</h2> */}
-                </main>
+                  <h2 className="text-[2rem] capitalize font-bold">SignUp</h2>
+                </main> */}
               </section>
             </div>
           </div>
