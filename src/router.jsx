@@ -1,16 +1,14 @@
-import {
-  createBrowserRouter,
-} from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "./layouts/DashboardLayout";
-import App from './App.jsx'
-import './index.css'
-import Login from './Pages/Login.jsx';
-import Signup from './Pages/Signup.jsx';
-import Forgotpswd from './Pages/Forgotpswd.jsx';
-import Onboarding from './Pages/Onboarding.jsx';
+import App from "./App.jsx";
+import "./index.css";
+import Login from "./Pages/Login.jsx";
+import Signup from "./Pages/Signup.jsx";
+import Forgotpswd from "./Pages/Forgotpswd.jsx";
+import Onboarding from "./Pages/Onboarding.jsx";
 // import User from './Pages/User.jsx';
-import ResetPassword from './Pages/Newpassword.jsx';
-import Launch from './Pages/Launch.jsx';
+import ResetPassword from "./Pages/Newpassword.jsx";
+import Launch from "./Pages/Launch.jsx";
 import Notifications from "./Pages/user/message/notification.jsx";
 import Messages from "./Pages/user/message/message.jsx";
 import BookingIndex from "./Pages/user/booking/Index";
@@ -35,18 +33,18 @@ const router = createBrowserRouter([
   },
   {
     path: "/launch",
-    element: <Launch />
+    element: <Launch />,
   },
   {
     path: "/reset",
-    element: <Forgotpswd />
+    element: <Forgotpswd />,
   },
   {
     path: "/new",
-    element: <ResetPassword />
+    element: <ResetPassword />,
   },
   {
-    path: '/',
+    path: "/",
     element: <AuthRoute />,
     children: [
       {
@@ -57,7 +55,7 @@ const router = createBrowserRouter([
         path: "/signup",
         element: <Signup />,
       },
-    ]
+    ],
   },
   {
     path: "/",
@@ -118,9 +116,8 @@ const router = createBrowserRouter([
           },
         ],
       },
-
-    ]
-  }
+    ],
+  },
 ]);
 
 export default router;

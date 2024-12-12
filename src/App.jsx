@@ -10,6 +10,7 @@ import Footer from "./component/Footer";
 import Work from "./component/Work";
 import "aos/dist/aos.css"; // Import AOS styles
 import AOS from "aos";
+import WaitlistModal from './component/WaitlistModal'
 
 import "./App.css";
 import { ScrollRestoration } from "react-router-dom";
@@ -36,8 +37,9 @@ function App() {
 
         {/* <div className=" overflow-x-hidden">
           <Review />
-        </div> */}
+          </div> */}
         <Footer />
+          <WaitlistModal />
       </div>
     </>
   );
