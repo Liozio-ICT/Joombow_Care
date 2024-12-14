@@ -68,10 +68,10 @@ const ShowWaitlist = () => {
           ></div>
 
           {/* Modal */}
-          <main className="fixed inset-0 z-50 flex scale-100 items-center justify-center opacity-100 transition-all duration-500">
+          <main className="fixed inset-0 z-50 flex scale-100 items-center justify-center opacity-100 transition-all duration-300">
             <div className="relative w-[90%] max-w-6xl rounded-md bg-white shadow-lg">
               <FaTimes
-                size={20}
+                size={24}
                 className="absolute right-4 top-4 cursor-pointer text-red-500 duration-300 hover:text-red-400"
                 onClick={closeModal}
               />
@@ -79,21 +79,21 @@ const ShowWaitlist = () => {
               {/* Combined Container */}
               <div className="flex flex-col items-center p-4 lg:flex-row">
                 {/* Image Section */}
-                <div className="h-[400px] w-full lg:h-auto lg:w-1/2">
+                <div className="hidden h-[400px] w-full lg:block lg:h-auto lg:w-1/2">
                   <img
                     src="https://res.cloudinary.com/dnldaz7oh/image/upload/v1716320436/electrical_h34xr1.jpg"
                     alt="Mechanic"
-                    className="h-full w-full rounded-md object-cover lg:rounded-l-md lg:rounded-none"
+                    className="h-full w-full rounded-md object-cover lg:rounded-none lg:rounded-l-md"
                   />
                 </div>
 
                 {/* Form Section */}
-                <div className="w-full px-6 py-8 lg:w-1/2">
-                  <h1 className="text-center text-[25px] font-bold text-gray-800">
+                <div className="w-full px-2 py-8 lg:w-1/2 lg:px-6">
+                  <h1 className="text-20px text-center font-bold text-gray-800 lg:text-[25px]">
                     We are opening soon! Join our waitlist
                   </h1>
 
-                  <p className="py-4 text-center text-[18px] text-gray-600">
+                  <p className="py-4 text-center font-clash text-[18px] font-normal text-gray-600">
                     Register Now!
                   </p>
 
@@ -111,7 +111,7 @@ const ShowWaitlist = () => {
                         placeholder="Enter your name here"
                         value={formData.fullName}
                         onChange={handleInputChange}
-                        className="rounded-md border bg-gray-50 p-2 px-3 focus:outline-none focus:ring-2 focus:ring-red-500"
+                        className="rounded-md border bg-gray-50 p-2 px-3 focus:duration-200 focus:outline-none focus:ring-2 focus:ring-red-500"
                       />
                       {errors.fullName && (
                         <span className="mt-1 text-sm text-red-500">
@@ -130,10 +130,10 @@ const ShowWaitlist = () => {
                       <input
                         type="number"
                         id="contact"
-                        placeholder="Enter your Phone number"
+                        placeholder="Enter your Phone number here"
                         value={formData.contact}
                         onChange={handleInputChange}
-                        className="rounded-md border bg-gray-50 p-2 px-3 focus:outline-none focus:ring-2 focus:ring-red-500"
+                        className="rounded-md border bg-gray-50 p-2 px-3 focus:outline-none focus:ring-2 focus:ring-red-500 focus:duration-200"
                       />
                       {errors.contact && (
                         <span className="mt-1 text-sm text-red-500">
