@@ -35,25 +35,39 @@ const ShowWaitlist = () => {
     return newErrors;
   };
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
     } else {
-      toast.success("🎉 Thank you for registering!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      // Redirect to the Google Form link
+      window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSdiwgEAMgKuKcZstJumlTj8I-26Fw8mwGtR-LEblR6i7AcKNA/viewform";
       setErrors({});
       closeModal();
     }
   };
+  
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const validationErrors = validateForm();
+  //   if (Object.keys(validationErrors).length > 0) {
+  //     setErrors(validationErrors);
+  //   } else {
+  //     toast.success("🎉 Thank you for registering!", {
+  //       position: "top-right",
+  //       autoClose: 3000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //       draggable: true,
+  //       progress: undefined,
+  //     });
+  //     setErrors({});
+  //     closeModal();
+  //   }
+  // };
 
   return (
     <>
