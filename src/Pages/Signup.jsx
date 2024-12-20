@@ -158,7 +158,7 @@ const Signup = () => {
               <Input
                 label={"Phone Number:"}
                 name={"phoneNumber"}
-                type={"tel"}
+
                 value={phoneNumber}
                 setValue={setPhoneNumber}
                 placeholder="Enter Phone Number"
@@ -281,7 +281,7 @@ const Signup = () => {
                   <Input
                     label={"Phone Number:"}
                     name={"phoneNumber"}
-                    type={"tel"}
+                  
                     value={phoneNumber}
                     setValue={setPhoneNumber}
                     placeholder="Enter Phone Number"
