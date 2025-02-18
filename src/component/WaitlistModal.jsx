@@ -69,6 +69,7 @@ const ShowWaitlist = () => {
       localStorage.setItem("hasJoinedWaitlist", "true");
       closeModal();
     } catch (error) {
+      console.error(error);
       const errorMessage =
         error.response?.data?.message ||
         "Error joining waitlist. Please try again later.";
