@@ -71,7 +71,7 @@ const ShowWaitlist = () => {
     } catch (error) {
       const errorMessage =
         error.response?.data?.message ||
-        "Error signing up. Please try again later.";
+        "Error joining waitlist. Please try again later.";
       setMessage(errorMessage);
       toast.error(errorMessage);
     } finally {
@@ -118,7 +118,7 @@ const ShowWaitlist = () => {
                   </h1>
 
                   <p className="py-4 text-center font-clash text-[18px] font-normal text-gray-600">
-                    Register Now!
+                    Join Waitlist Now!
                   </p>
 
                   <form onSubmit={handleSubmit} className="space-y-6">
