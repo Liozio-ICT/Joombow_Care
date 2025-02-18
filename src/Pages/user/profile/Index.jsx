@@ -18,7 +18,7 @@ const Profile = () => {
   const { logout, getUserData, updateUser, token } = useAuth()
   const [photo, setPhoto] = useState(
     useAuth().user?.photo ??
-    `https://ui-avatars.com/api/?name=${useAuth().user?.fullName?.replaceAll(" ", "+") ?? "User"}`,
+    `https://ui-avatars.com/api/?name=${useAuth().user?.firstName?.replaceAll(" ", "+") ?? "User"}`,
   );
   const [photoInput, setPhotoInput] = useState()
   const [modalType, setModalType] = useState();
@@ -71,7 +71,7 @@ const Profile = () => {
     } catch (error) {
       console.log({ error });
       setPhoto(photo ??
-        `https://ui-avatars.com/api/?name=${fullName?.replaceAll(" ", "+") ?? "Joombow"}`,
+        `https://ui-avatars.com/api/?name=${firstName?.replaceAll(" ", "+") ?? "Joombow"}`,
       );
       toast.error(error?.message);
       toast.error(error.response.json().message)
@@ -113,7 +113,7 @@ const Profile = () => {
       // console.log(e)
       updateUser(e)
       setReferralLink(e?.referralLink)
-      setPhoto(e?.photo ?? `https://ui-avatars.com/api/?name=${e?.fullName?.replaceAll(' ', '+') ?? 'User'}`)
+      setPhoto(e?.photo ?? `https://ui-avatars.com/api/?name=${e?.firstName?.replaceAll(' ', '+') ?? 'User'}`)
     }).catch(err =>
       toast.error(err.message)
     )
@@ -134,7 +134,7 @@ const Profile = () => {
             <div className="absolute inset-0 overflow-clip rounded-full">
               <img
                 src={photo}
-                alt={useAuth().user?.name}
+                alt={useAuth().user?.firstName}
                 className="size-full object-cover"
               />
             </div>
@@ -157,7 +157,7 @@ const Profile = () => {
           </div>
 
           <div className="">
-            <p className="text-xl font-semibold capitalize">{useAuth().user?.fullName ?? ''} </p>
+            <p className="text-xl font-semibold capitalize">{useAuth().user?.firstName ?? ''} </p>
             <small className="lowercase">{useAuth().user?.email} </small>
           </div>
 

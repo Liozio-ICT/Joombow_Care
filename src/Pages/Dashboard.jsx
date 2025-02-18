@@ -30,9 +30,9 @@ const Dashboard = () => {
                 <span>Hello</span>
                 <span>
                   {" "}
-                  {user?.fullName ??
+                  {user?.firstName ??
 
-                    user?.username ??
+                    user?.lastName ??
                     "User"}
                 </span>
               </h1>
@@ -62,7 +62,7 @@ const Dashboard = () => {
         <h1 className="hidden text-5xl text-white md:grid">
           <span className="text-3xl text-white *:truncate">
             Hello{" "}
-            {user?.fullName ?? user?.username ?? "User"}
+            {user?.firstName ?? user?.username ?? "User"}
           </span>
           <span>Welcome to Joombow</span>
         </h1>

@@ -20,8 +20,11 @@ const Signup = () => {
   const [showOTPForm, setShowOTPForm] = useState();
   const [searchParams, setSearchParams] = useSearchParams();
   const [loading, setLoading] = useState(false);
-  const [fullName, setFullName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  // const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [referralCode, setReferralCode] = useState("");
   const [message, setMessage] = useState("");
@@ -29,53 +32,105 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
+  // const handleSignup = async () => {
+  //   try {
+  //     setLoading(true);
+
+  //     if (!firstName || !email || !phoneNumber || !password) {
+  //       setMessage("Please fill in all the required fields.");
+  //       toast.error("Please fill in all the required fields.");
+
+  //       return;
+  //     }
+
+  //     // Password validation using regular expression
+  //     // const passwordRegex =
+  //     //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\d)(?=.*[\W]).{8,}$/;
+
+  //     // // /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/;
+
+  //     // if (!passwordRegex.test(password)) {
+  //     //   toast.error(
+  //     //     "Password must be at least 8 characters long and contain at least one letter, one number, and one special character.",
+  //     //   );
+  //     //   return; // Prevent signup process from proceeding
+  //     // }
+
+  //     if (!phoneNumber) {
+  //       toast.error("Invalid phone Number.");
+  //       return;
+  //     }
+
+  //     const { message } = await apiClient
+  //       .post(`user/register`, {
+  //         json: {
+  //           firstName,
+  //           lastName,
+  //           email,
+  //           phoneNumber,
+  //           password,
+  //           referralCode,
+  //         },
+  //       })
+  //       .json();
+
+  //     toast.success(message);
+  //     // Handle additional logic based on the response if needed
+  //     setShowOTPForm(true);
+  //   } catch (error) {
+  //     console.log(error);
+  //     setMessage("Error signing up. Please try again later.");
+  //     toast.error(error.message || "Error signing up. Please try again later.");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
   const handleSignup = async () => {
     try {
       setLoading(true);
 
-      if (!fullName || !phoneNumber) {
+      if (!firstName || !lastName || !email || !phoneNumber || !password) {
         setMessage("Please fill in all the required fields.");
         toast.error("Please fill in all the required fields.");
-
         return;
       }
 
-      // Password validation using regular expression
-      // const passwordRegex =
-      //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\d)(?=.*[\W]).{8,}$/;
+      const response = await apiClient.post(`user/register`, {
+        json: {
+          firstName,
+          lastName,
+          email,
+          phoneNumber,
+          password,
+          referralCode,
+        },
+      });
 
-      // // /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/;
-
-      // if (!passwordRegex.test(password)) {
-      //   toast.error(
-      //     "Password must be at least 8 characters long and contain at least one letter, one number, and one special character.",
-      //   );
-      //   return; // Prevent signup process from proceeding
-      // }
-
-      if (!phoneNumber) {
-        toast.error("Invalid phone Number.");
-        return;
-      }
-
-      const { message } = await apiClient
-        .post(`user/register`, {
-          json: {
-            fullName,
-            phoneNumber,
-            password,
-            referralCode,
-          },
-        })
-        .json();
+      const { message } = await response.json();
 
       toast.success(message);
-      // Handle additional logic based on the response if needed
       setShowOTPForm(true);
+      navigate(
+        `/otp/${encodeURIComponent(email)}/${encodeURIComponent("sms")}/${encodeURIComponent(6)}`,
+      );
     } catch (error) {
-      console.error(error);
-      setMessage("Error signing up. Please try again later.");
-      toast.error(message);
+      console.error("Signup error:", error);
+
+      let errorMessage = "Error signing up. Please try again later.";
+
+      // Check if the error response has a JSON body
+      if (error.response) {
+        try {
+          const errorData = await error.response.json();
+          errorMessage = errorData.message || errorMessage;
+        } catch (jsonError) {
+          console.error("Error parsing error response:", jsonError);
+        }
+      }
+
+      setMessage(errorMessage);
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -128,7 +183,8 @@ const Signup = () => {
         </span>
         <main className="min-h-[100vh] px-6 pb-[2rem]">
           {showOTPForm ? (
-            <Otp Gmail={phoneNumber} />
+            // <Otp Gmail={phoneNumber} />
+            <Otp to={email} />
           ) : (
             <div className="logo">
               <img
@@ -145,23 +201,62 @@ const Signup = () => {
           <form className="mt-[1rem]" id="registrationForm ">
             <div className="inputCon text-slate-200">
               <Input
-                label={"Full Name:"}
-                name={"fullName"}
-                value={fullName}
-                setValue={setFullName}
-                placeholder="Enter Full Name"
+                label={"First Name:"}
+                name={"firstName"}
+                value={firstName}
+                setValue={setFirstName}
+                placeholder="Enter First Name"
                 error={""}
               />
             </div>
-
+            <div className="inputCon text-slate-200">
+              <Input
+                label={"Last Name:"}
+                name={"lastName"}
+                value={lastName}
+                setValue={setLastName}
+                placeholder="Enter Last Name"
+                error={""}
+              />
+            </div>
+            <div className="inputCon text-slate-200">
+              <Input
+                label={"Email:"}
+                name={"email"}
+                value={email}
+                setValue={setEmail}
+                placeholder="Enter Email"
+                error={""}
+              />
+            </div>
             <div className="inputCon text-slate-200">
               <Input
                 label={"Phone Number:"}
                 name={"phoneNumber"}
-
                 value={phoneNumber}
                 setValue={setPhoneNumber}
                 placeholder="Enter Phone Number"
+                error={""}
+              />
+            </div>
+            <div className="inputCon text-slate-200">
+              <Input
+                label={"Password:"}
+                name={"password"}
+                value={password}
+                setValue={setPassword}
+                type="password"
+                placeholder="Enter Password"
+                error={""}
+              />
+            </div>
+            <div className="inputCon text-slate-200">
+              <Input
+                label={"Referral Code (Optional):"}
+                name={"referralCode"}
+                value={referralCode}
+                setValue={setReferralCode}
+                placeholder="Enter Referral Code"
                 error={""}
               />
             </div>
@@ -269,22 +364,80 @@ const Signup = () => {
                 </h2>
                 <div className="inputCon w-full">
                   <Input
+                    label={"First Name:"}
+                    name={"firstName"}
+                    value={firstName}
+                    setValue={setFirstName}
+                    placeholder="Enter First Name"
+                    error={""}
+                  />
+                  {/* <Input
                     label={"Full Name:"}
                     name={"fullName"}
                     value={fullName}
                     setValue={setFullName}
                     placeholder="Enter Full Name"
                     error={""}
-                  />
+                  /> */}
                 </div>
-                <div className="inputCon my-[.3rem]">
+                {/* <div className="inputCon my-[.3rem]">
                   <Input
                     label={"Phone Number:"}
                     name={"phoneNumber"}
-                  
                     value={phoneNumber}
                     setValue={setPhoneNumber}
                     placeholder="Enter Phone Number"
+                    error={""}
+                  />
+                </div> */}
+                <div className="inputCon text-slate-200">
+                  <Input
+                    label={"Last Name:"}
+                    name={"lastName"}
+                    value={lastName}
+                    setValue={setLastName}
+                    placeholder="Enter Last Name"
+                    error={""}
+                  />
+                </div>
+                <div className="inputCon text-slate-200">
+                  <Input
+                    label={"Email:"}
+                    name={"email"}
+                    value={email}
+                    setValue={setEmail}
+                    placeholder="Enter Email"
+                    error={""}
+                  />
+                </div>
+                <div className="inputCon text-slate-200">
+                  <Input
+                    label={"Phone Number:"}
+                    name={"phoneNumber"}
+                    value={phoneNumber}
+                    setValue={setPhoneNumber}
+                    placeholder="Enter Phone Number"
+                    error={""}
+                  />
+                </div>
+                <div className="inputCon text-slate-200">
+                  <Input
+                    label={"Password:"}
+                    name={"password"}
+                    value={password}
+                    setValue={setPassword}
+                    type="password"
+                    placeholder="Enter Password"
+                    error={""}
+                  />
+                </div>
+                <div className="inputCon text-slate-200">
+                  <Input
+                    label={"Referral Code (Optional):"}
+                    name={"referralCode"}
+                    value={referralCode}
+                    setValue={setReferralCode}
+                    placeholder="Enter Referral Code"
                     error={""}
                   />
                 </div>

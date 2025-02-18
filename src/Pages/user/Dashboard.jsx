@@ -57,7 +57,7 @@ const Dashboard = () => {
     <>
       <ScrollRestoration />
       <h1>
-        Hi, Welcome, {user?.fullname ?? user?.username ?? 'User'} <span className="wave">👋</span>
+        Hi, Welcome, {user?.firstName ?? user?.username ?? 'User'} <span className="wave">👋</span>
       </h1>
       <div className="grid grid-cols-[1.5rem_1fr] gap-2 mt-5 mb-10" >
         <BsMegaphoneFill className="text-brand-red size-full" />

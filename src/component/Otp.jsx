@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import apiClient from "../utils/apiClient";
 import OtpInput from "../components/OtpInput";
 
@@ -15,8 +15,9 @@ import OtpInput from "../components/OtpInput";
  * @param {OtpInfo} Info
  * @returns
  */
-const Otp = ({ to, channel = 'sms', size = 6 }) => {
+const Otp = () => {
   const [loading, setLoading] = useState(false);
+  const { to, channel, size } = useParams();
 
   const [email, setEmail] = useState(to);
   const [otp, setOtp] = useState(); // Array to store individual digits
@@ -25,6 +26,8 @@ const Otp = ({ to, channel = 'sms', size = 6 }) => {
   const [isVerificationSuccess, setVerificationSuccess] = useState(false);
 
   const handleVerification = async () => {
+    console.log(to);
+    console.log(otp);
     // Basic input validation
     if (!to || otp.length < 4) {
       setError("Please fill in the OTP fields.");
@@ -34,13 +37,14 @@ const Otp = ({ to, channel = 'sms', size = 6 }) => {
     try {
       setLoading(true);
       console.log(otp);
-      const { message } = await apiClient.post("user/verify-email", {
-        json: {
-          email: to,
-          otp,
-        }
-      }).json();
-
+      const { message } = await apiClient
+        .post("user/verify-email", {
+          json: {
+            email: to,
+            otp,
+          },
+        })
+        .json();
 
       // Handle the success response here
       console.log(message);
@@ -68,18 +72,20 @@ const Otp = ({ to, channel = 'sms', size = 6 }) => {
   const requestOtp = async (form) => {
     form.preventDefault();
     try {
-      const { message } = await apiClient.post('otp/get', {
-        json: {
-          reason: 'Verification',
-          to: to,
-        }
-      }).json()
+      const { message } = await apiClient
+        .post("otp/get", {
+          json: {
+            reason: "Verification",
+            to: to,
+          },
+        })
+        .json();
 
-      return toast.success(message)
+      return toast.success(message);
     } catch (error) {
-      console.error(error)
-      toast.error(error.message)
-      toast.error(error.response.json().message)
+      console.error(error);
+      toast.error(error.message);
+      toast.error(error.response.json().message);
     }
   };
 
@@ -139,12 +145,13 @@ const Otp = ({ to, channel = 'sms', size = 6 }) => {
 
         {/* OTP input fields */}
 
-        <OtpInput length={size} setValue={setOtp} />
+        {/* <OtpInput length={size} setValue={setOtp} /> */}
+        <OtpInput length={4} setValue={setOtp} />
 
-        <div className="flex justify-end my-3 w-full">
+        <div className="my-3 flex w-full justify-end">
           <button
             onClick={requestOtp}
-            className="rounded text-brand-red p-2 transition hover:text-[#E3383B]"
+            className="rounded p-2 text-brand-red transition hover:text-[#E3383B]"
           >
             Resend OTP
           </button>
@@ -236,12 +243,13 @@ const Otp = ({ to, channel = 'sms', size = 6 }) => {
           )}
 
           {/* OTP input fields */}
-          <OtpInput length={size} setValue={setOtp} />
+          {/* <OtpInput length={size} setValue={setOtp} /> */}
+          <OtpInput length={4} setValue={setOtp} />
 
-          <div className="flex justify-end my-3 w-full">
+          <div className="my-3 flex w-full justify-end">
             <button
               onClick={requestOtp}
-              className="rounded text-brand-red p-2 transition hover:text-[#E3383B]"
+              className="rounded p-2 text-brand-red transition hover:text-[#E3383B]"
             >
               Resend OTP
             </button>

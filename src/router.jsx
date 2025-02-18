@@ -21,6 +21,7 @@ import HelpSupport from "./Pages/user/HelpSupport";
 import PrivateRoute from "./PrivateRoute.jsx";
 import Services from "./Pages/user/Services.jsx";
 import AuthRoute from "./AuthRoutes.jsx";
+import Otp from "./component/Otp.jsx";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup />,
+      },
+      {
+        path: "/otp/:to/:channel/:size",
+        element: <Otp />,
       },
     ],
   },

@@ -2,17 +2,25 @@ import React, { useState, useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import apiClient from "../utils/apiClient";
 
 const ShowWaitlist = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [formData, setFormData] = useState({ fullName: "", contact: "" });
   const [errors, setErrors] = useState({});
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 200);
-    return () => clearTimeout(timer);
+    // const timer = setTimeout(() => {
+    //   setIsVisible(true);
+    // }, 200);
+    // return () => clearTimeout(timer);
+    const hasJoinedWaitlist = localStorage.getItem("hasJoinedWaitlist");
+
+    if (!hasJoinedWaitlist) {
+      setTimeout(() => setIsVisible(true), 200);
+    }
   }, []);
 
   const closeModal = () => {
@@ -35,39 +43,41 @@ const ShowWaitlist = () => {
     return newErrors;
   };
 
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const validationErrors = validateForm();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-    } else {
-      // Redirect to the Google Form link
-      window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSdiwgEAMgKuKcZstJumlTj8I-26Fw8mwGtR-LEblR6i7AcKNA/viewform";
+    setLoading(true);
+
+    try {
+      const validationErrors = validateForm();
+      if (Object.keys(validationErrors).length > 0) {
+        setErrors(validationErrors);
+        toast.error(Object.values(validationErrors).join(", "));
+        return;
+      }
+
+      const response = await apiClient.post(`waitlist/create`, {
+        json: {
+          name: formData.fullName,
+          phoneNumber: formData.contact,
+        },
+      });
+
+      const { message } = await response.json();
+
+      toast.success(message);
       setErrors({});
+      localStorage.setItem("hasJoinedWaitlist", "true");
       closeModal();
+    } catch (error) {
+      const errorMessage =
+        error.response?.data?.message ||
+        "Error signing up. Please try again later.";
+      setMessage(errorMessage);
+      toast.error(errorMessage);
+    } finally {
+      setLoading(false);
     }
   };
-  
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const validationErrors = validateForm();
-  //   if (Object.keys(validationErrors).length > 0) {
-  //     setErrors(validationErrors);
-  //   } else {
-  //     toast.success("🎉 Thank you for registering!", {
-  //       position: "top-right",
-  //       autoClose: 3000,
-  //       hideProgressBar: false,
-  //       closeOnClick: true,
-  //       pauseOnHover: true,
-  //       draggable: true,
-  //       progress: undefined,
-  //     });
-  //     setErrors({});
-  //     closeModal();
-  //   }
-  // };
 
   return (
     <>
@@ -125,7 +135,7 @@ const ShowWaitlist = () => {
                         placeholder="Enter your name here"
                         value={formData.fullName}
                         onChange={handleInputChange}
-                        className="rounded-md border bg-gray-50 p-2 px-3 focus:duration-200 focus:outline-none focus:ring-2 focus:ring-red-500"
+                        className="rounded-md border bg-gray-50 p-2 px-3 focus:outline-none focus:ring-2 focus:ring-red-500 focus:duration-200"
                       />
                       {errors.fullName && (
                         <span className="mt-1 text-sm text-red-500">
@@ -160,7 +170,7 @@ const ShowWaitlist = () => {
                       type="submit"
                       className="w-full rounded-md bg-red-500 py-2 text-white transition duration-300 hover:bg-red-400"
                     >
-                      Register Now
+                      Join Now
                     </button>
                   </form>
                 </div>
