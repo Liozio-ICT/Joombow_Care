@@ -10,7 +10,9 @@ import Footer from "./component/Footer";
 import Work from "./component/Work";
 import "aos/dist/aos.css"; // Import AOS styles
 import AOS from "aos";
-import WaitlistModal from './component/WaitlistModal'
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import WaitlistModal from "./component/WaitlistModal";
 
 import "./App.css";
 import { ScrollRestoration } from "react-router-dom";
@@ -23,7 +25,7 @@ function App() {
   });
   return (
     <>
-
+      <ToastContainer />
       <ScrollRestoration />
       <div className="">
         <Loader />
@@ -39,7 +41,7 @@ function App() {
           <Review />
           </div> */}
         <Footer />
-          <WaitlistModal />
+        <WaitlistModal />
       </div>
     </>
   );

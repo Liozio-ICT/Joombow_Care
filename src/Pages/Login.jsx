@@ -5,14 +5,14 @@ import { GrFormPreviousLink } from "react-icons/gr";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 import Loader from "../component/Loader";
 import apiClient from "../utils/apiClient";
 import { ScrollRestoration } from "react-router-dom";
 import { useAuth } from "../provders/AuthProvider";
 import Input from "../components/Input";
-import './auth.css'
+import "./auth.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -30,15 +30,27 @@ const Login = () => {
         return;
       }
 
-      const { message, token, user } = await apiClient.post("user/login", { json: { email, password } }).json();
+      const { message, token, user } = await apiClient
+        .post("user/login", { json: { email, password } })
+        .json();
 
       toast.success(message);
       login(token, user);
       navigate("/user");
-
     } catch (error) {
-      toast.error("Error during login:", error.message);
-      console.error("Error during login:", error.message);
+      let errorMessage = "Error logging in. Please try again later.";
+
+      // Check if the error response has a JSON body
+      if (error.response) {
+        try {
+          const errorData = await error.response.json();
+          errorMessage = errorData.message || errorMessage;
+        } catch (jsonError) {
+          console.error("Error parsing error response:", jsonError);
+        }
+      }
+      console.error("Error during login:", errorMessage);
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -53,12 +65,14 @@ const Login = () => {
       const result = await signInWithPopup(Gauth, provider);
       console.log("AUTH", result);
 
-      const { message, token, user } = await apiClient.post("user/login/google", {
-        json: {
-          name: result?.user.displayName,
-          email: result?.user.email,
-        }
-      }).json();
+      const { message, token, user } = await apiClient
+        .post("user/login/google", {
+          json: {
+            name: result?.user.displayName,
+            email: result?.user.email,
+          },
+        })
+        .json();
 
       toast.success(message);
       login(token, user);
@@ -66,8 +80,8 @@ const Login = () => {
     } catch (error) {
       toast.error(error.message);
       console.log("Could not login with Google", error);
-      toast.error(error.response.json().message)
-      toast.error('Could not login with Google');
+      toast.error(error.response.json().message);
+      toast.error("Could not login with Google");
     } finally {
       setLoading(false);
     }
@@ -75,6 +89,7 @@ const Login = () => {
 
   return (
     <main className="loginCon bg-black">
+       <ToastContainer />
       <ScrollRestoration />
 
       <Loader />
@@ -108,7 +123,6 @@ const Login = () => {
           </div>
 
           <div className="inputCon py-2">
-
             <Input
               label={"Password:"}
               name={"password"}
@@ -201,13 +215,13 @@ const Login = () => {
         </span>
         <img
           src="https://res.cloudinary.com/durbee4ln/image/upload/v1711811511/Care_care/man-connecting-jumper-cables-to-battery_ysq6je.jpg"
-          className="fixed inset-0 object-cover size-full"
+          className="fixed inset-0 size-full object-cover"
           alt=""
         />
 
         <div className="fixed inset-0 bg-black opacity-70"></div>
 
-        <div className="absolute inset-0 flex w-full justify-center text-white my-5">
+        <div className="absolute inset-0 my-5 flex w-full justify-center text-white">
           <form className="mt-2 w-[50%] bg-[#433F3FCC]" id="registrationForm">
             <main className="block px-[1rem]">
               <Link to="/">

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import "react-toastify/dist/ReactToastify.css";
 import apiClient from "../utils/apiClient";
 
 const ShowWaitlist = () => {
@@ -70,9 +70,22 @@ const ShowWaitlist = () => {
       closeModal();
     } catch (error) {
       console.error(error);
-      const errorMessage =
-        error.response?.data?.message ||
-        "Error joining waitlist. Please try again later.";
+      let errorMessage = "Error joining waitlist. Please try again later.";
+      // Check if the error response has a JSON body
+      if (error.response) {
+        try {
+          const errorData = await error.response.json();
+          errorMessage = errorData.message || errorMessage;
+        } catch (jsonError) {
+          console.error(
+            "Error joining waitlist. Please try again later.",
+            jsonError,
+          );
+        }
+      }
+      // const errorData = await error.response.json();
+      // const errorMessage =
+      //   errorData || "Error joining waitlist. Please try again later.";
       setMessage(errorMessage);
       toast.error(errorMessage);
     } finally {
@@ -82,7 +95,7 @@ const ShowWaitlist = () => {
 
   return (
     <>
-      <ToastContainer />
+      {/* <ToastContainer /> */}
 
       {isVisible && (
         <>

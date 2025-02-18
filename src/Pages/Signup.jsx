@@ -6,8 +6,8 @@ import { FcGoogle } from "react-icons/fc";
 import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
 import { app } from "../component/firebaseConfig";
 import Otp from "../component/Otp";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 import Loader from "../component/Loader";
 import apiClient from "../utils/apiClient";
@@ -133,7 +133,7 @@ const Signup = () => {
       toast.error(errorMessage);
     } finally {
       setLoading(false);
-    }
+    } 
   };
 
   const handleOAuth = async () => {
@@ -172,6 +172,7 @@ const Signup = () => {
 
   return (
     <>
+       <ToastContainer />
       <Loader />
       <ScrollRestoration />
 
