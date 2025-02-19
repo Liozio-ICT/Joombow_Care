@@ -2,7 +2,7 @@ import ky from "ky";
 
 export const API_URL =
   import.meta.env.VITE_SERVER_URL ??
-  "https://car-care-backend-joombow-kwo1.vercel.app/";
+  "https://car-care-backend-joombow.vercel.app/";
 // import.meta.env.VITE_SERVER_URL ??
 // "localhost:3000";
 
