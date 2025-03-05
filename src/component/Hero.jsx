@@ -74,7 +74,7 @@ function Hero() {
             <h3 className="mb-2 font-clash text-6xl">
               Joombow Car Care & Repair Centre
             </h3>
-            <h1 className="mb-2 text-[35px]">Southwest Nigeria</h1>
+            <h1 className="mb-2 text-[35px]">Ibadan Nigeria</h1>
             <h1 className="mb-6 text-6xl text-[#EAB251]">
               {" "}
               <AutoType />
