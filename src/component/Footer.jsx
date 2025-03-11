@@ -136,8 +136,8 @@ const Footer = () => {
                       class="text-balance text-[14px] md:text-[16px]"
                       id="location"
                     >
-                      No 3, Chief Wole Olanipekun Crescent, <br /> State
-                      Secretariat, Agodi, Ibadan, Oyo State, Nigeria.
+                      No 13,Akingbola Street, <br /> State
+                      Ashi Rd, Bodija, Ibadan, Oyo State, Nigeria.
                     </p>
                   </div>
                 </div>
