@@ -136,7 +136,7 @@ const Footer = () => {
                       class="text-balance text-[14px] md:text-[16px]"
                       id="location"
                     >
-                      No 13,Akingbola Street, <br /> State
+                      No 13,Akingbola Street, <br />
                       Ashi Rd, Bodija, Ibadan, Oyo State, Nigeria.
                     </p>
                   </div>
