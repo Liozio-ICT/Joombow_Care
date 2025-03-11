@@ -49,7 +49,7 @@ function Discount() {
                 type="button"
                 className="w-full rounded-sm border border-[#F8CB47] bg-[#080808] py-[12px] text-white transition duration-200 hover:bg-gray-900"
               >
-                Regiter Now
+                Register Now
               </button>
             </div>
           </form>
