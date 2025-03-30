@@ -8,11 +8,8 @@ const AutoType = () => {
       <Typewriter
         options={{
           strings: [
-            "Auto Detailing",
-            "Car Care & Repair",
-            "Vehicle Servicing ",
-            "Collision Repair ",
-            "Diagnostic repair"
+            "EID AL-FITR",
+            "EID MUBARAK",
           ],
           autoStart: true,
           loop: true,
