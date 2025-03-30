@@ -8,7 +8,7 @@ function About() {
         className="abtContainer flex gap-6 flex-wrap lg:flex-nowrap py-2 md:py-6 lg:py-6 px-4 lg:px-[4rem] bg-black">
         <div data-aos="fade-up" className="abt w-full lg:w-[40%] mb-2">
           <img
-            src="https://res.cloudinary.com/durbee4ln/image/upload/v1711811528/Care_care/mechanic-examining-car_pwvuck.jpg"
+            src="https://res.cloudinary.com/dcz2xlx1b/image/upload/v1743320385/la1kkol771xoq40qkccf.jpg"
             className="w-full h-[300px] lg:h-[700px] object-cover rounded-lg shadow-lg"
             alt="Image"
           />
