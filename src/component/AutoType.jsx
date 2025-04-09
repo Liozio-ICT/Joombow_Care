@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Typewriter from 'typewriter-effect';
 
@@ -8,8 +9,11 @@ const AutoType = () => {
       <Typewriter
         options={{
           strings: [
-            "EID AL-FITR",
-            "EID MUBARAK",
+            "Auto Detailing",
+            "Car Care & Repair",
+            "Vehicle Servicing ",
+            "Collision Repair ",
+            "Diagnostic repair"
           ],
           autoStart: true,
           loop: true,
