@@ -9,11 +9,9 @@ const AutoType = () => {
       <Typewriter
         options={{
           strings: [
-            "Auto Detailing",
-            "Car Care & Repair",
-            "Vehicle Servicing ",
-            "Collision Repair ",
-            "Diagnostic repair"
+            "Joombow Car Care and Repair Centre",
+            "Wishes you all a",
+            "Happy Easter Celebration ",
           ],
           autoStart: true,
           loop: true,
