@@ -27,7 +27,7 @@ function Hero() {
               Joombow Car Care <br /> & Repair Centre
             </h3>
             <h1 class="mb-2 text-xl md:text-2xl lg:text-3xl">
-              Wishes its Muslim Brethren
+              
             </h1>
             <h1 className="mb-6 text-3xl text-[#EAB251]">
               {" "}
